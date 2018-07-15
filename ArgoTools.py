@@ -36,8 +36,8 @@ def fileSearch(full_path,SearchLimits,StartDate,EndDate):
             LAT_good_loci = np.where((s_lim <= LAT) & (LAT <= n_lim))
             LON_good_loci = np.where((w_lim <= LON) & (LON <= e_lim))
             JULD_good_loci = np.where((StartDate <= JULD) & (JULD < (EndDate+1)))
-            good_profiles = np.intersect1d(np.intersect1d(LAT_good_loci,LON_good_loci),JULD_good_loci)
-            if (len(good_profiles) > 0):
+            loci_of_good_profiles = np.intersect1d(np.intersect1d(LAT_good_loci,LON_good_loci),JULD_good_loci)
+            if (len(loci_of_good_profiles) > 0):
                 specific_list.append(filename) # Record filename to list.
         except Exception as error_message:
             print(error_message)
