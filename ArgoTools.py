@@ -21,7 +21,7 @@ def ArgoDate(year,month,day):
     d = datetime.date(year, month, day)-datetime.date(1950,1,1)
     return d.days
 
-# Identifies files in local directory that might contain matching profiles.
+# Identifies files in local directory that contain matching profiles.
 # Returns a list of the full pathnames of these files.
 def fileSearch(full_path,SearchLimits,StartDate,EndDate):
     s_lim, n_lim, w_lim, e_lim = SearchLimits[:]
@@ -30,15 +30,18 @@ def fileSearch(full_path,SearchLimits,StartDate,EndDate):
     for filename in filename_list:
         nc = Dataset(filename)
         try:
-            LAT = nc.variables['LATITUDE'][:]
-            LON = nc.variables['LONGITUDE'][:]
-            JULD = nc.variables['JULD'][:]
-        except Exception:
+            LAT = np.array(nc.variables['LATITUDE'])
+            LON = np.array(nc.variables['LONGITUDE'])
+            JULD = np.array(nc.variables['JULD'])
+            LAT_good_loci = np.where((s_lim <= LAT) & (LAT <= n_lim))
+            LON_good_loci = np.where((w_lim <= LON) & (LON <= e_lim))
+            JULD_good_loci = np.where((StartDate <= JULD) & (JULD < (EndDate+1)))
+            good_profiles = np.intersect1d(np.intersect1d(LAT_good_loci,LON_good_loci),JULD_good_loci)
+            if (len(good_profiles) > 0):
+                specific_list.append(filename) # Record filename to list.
+        except Exception as error_message:
+            print(error_message)
             print('Missing data')
-        if any( s_lim <= x <= n_lim for x in LAT):
-            if any( w_lim <= x <= e_lim for x in LON):
-                if any( StartDate <= x < (EndDate+1) for x in JULD):
-                    specific_list.append(filename) # Record filename to list.
         nc.close()
     print('\nMatching files:\n'+'\n'.join(specific_list))
     return(specific_list)
