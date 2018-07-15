@@ -41,7 +41,6 @@ def fileSearch(full_path,SearchLimits,StartDate,EndDate):
                 specific_list.append(filename) # Record filename to list.
         except Exception as error_message:
             print(error_message)
-            print('Missing data')
         nc.close()
     print('\nMatching files:\n'+'\n'.join(specific_list))
     return(specific_list)
