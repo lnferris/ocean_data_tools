@@ -6,7 +6,7 @@
 %  Website: https://github.com/lnferris/ocean_data_tools
 %  Jul 2018; Last revision: 28-Jul-2018
 %  Distributed under the terms of the MIT License
-%  Dependencies: borders.m by Chad Greene for map_dataframe()
+%  Dependencies: borders.m by Chad Greene for map_datatable()
 
 %%                 EXAMPLE SCRIPT
 
