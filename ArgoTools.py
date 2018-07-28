@@ -4,7 +4,7 @@
 # Institute: Virginia Institute of Marine Science
 # Email address: lnferris@alum.mit.edu
 # Website: https://github.com/lnferris/ocean_data_tools
-# Jul 2018; Last revision: 15-Jul-2018
+# Jul 2018; Last revision: 27-Jul-2018
 # Distributed under the terms of the MIT License
 
 import os
@@ -48,22 +48,17 @@ def getProfiles(full_path,SearchLimits,StartDate,EndDate,FillValue):
 
             if (len(loci_of_good_profiles) > 0): # If there is at least one good profile in this file...
                 matching_file_list.append(filename) # Record filename to list.
-                for locus in loci_of_good_profiles: # Read each good profile in the file.
-                    try:
-                        LAT = np.array(nc.variables['LATITUDE'])[locus]
-                        LON = np.array(nc.variables['LONGITUDE'])[locus]
-                        JULD = np.array(nc.variables['JULD'])[locus]
-                        TEMPR = np.array(nc.variables['TEMP_ADJUSTED'])[locus]
-                        PSAL = np.array(nc.variables['PSAL_ADJUSTED'][locus])
-                        PRES = np.array(nc.variables['PRES_ADJUSTED'])[locus]
-                        ID = netCDF4.chartostring(np.array(nc.variables['PLATFORM_NUMBER']))[locus]
-                        ID = ID.astype(np.int)
-                        if not all(x == FillValue for x in PRES): # As long is profile is not just fill values...
-                            Profile_Dataframe = pd.DataFrame({"PRES":[PRES],"PSAL":[PSAL],"TEMPR":[TEMPR],\
-                                                         "LAT":LAT,"LON":LON,"JULD":JULD,"ID":ID},index=[0]) # Write profile into a temporary dataframe.
-                            Argo_Dataframe= pd.concat([Argo_Dataframe, Profile_Dataframe],axis=0,sort=False) # Combine temporary with general dataframe.
-                    except Exception as error_message: # Throw an exception if unable to read profile.
-                        print(error_message)
+                TEMPR = np.array(nc.variables['TEMP_ADJUSTED']) # Read all profiles in the file.
+                PSAL = np.array(nc.variables['PSAL_ADJUSTED'])
+                PRES = np.array(nc.variables['PRES_ADJUSTED'])
+                ID = netCDF4.chartostring(np.array(nc.variables['PLATFORM_NUMBER']))
+                ID = ID.astype(np.int)
+
+                for locus in loci_of_good_profiles: # Write each good profile into temporary cell array...
+                    if not all(x == FillValue for x in PRES[locus]): # As long is profile is not just fill values.
+                        Profile_Dataframe = pd.DataFrame({"PRES":[PRES[locus]],"PSAL":[PSAL[locus]],"TEMPR":[TEMPR[locus]],\
+                                                    "LAT":LAT[locus],"LON":LON[locus],"JULD":JULD[locus],"ID":ID[locus]},index=[0])
+                        Argo_Dataframe= pd.concat([Argo_Dataframe, Profile_Dataframe],axis=0,sort=False) # Combine temporary with general dataframe.
 
         except Exception as error_message: # Throw an exception if unable to read file.
             print(error_message)
