@@ -84,7 +84,7 @@ for i = 1:length(full_path) % For each file in full_path...
 end
 end
 
-% map_dataframe() plots latitude vs. longitude of profiles over basemap.
+% map_datatable() plots latitude vs. longitude of profiles over basemap.
 function map_datatable(Argo_DataTable,BasemapLimits)
 figure
 south = BasemapLimits(1); north = BasemapLimits(2);  % Unpack BasemapLimits.
