@@ -85,8 +85,8 @@ def map_dataframe(Argo_Dataframe,BasemapLimits):
 
 
 # Example of how plot salinity vs. depth for each profile in dataframe.
-def vertical_profile(Small_Frame,FillValue):
-    for index, row in Small_Frame.iterrows():
+def vertical_profile(Argo_Dataframe,FillValue):
+    for index, row in Argo_Dataframe.iterrows():
         psal = np.array(row["PSAL"])
         psal[np.where(psal==FillValue)] = np.nan
         pres = np.array(row["PRES"])
