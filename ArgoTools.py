@@ -88,8 +88,8 @@ def map_dataframe(Argo_Dataframe,BasemapLimits):
 def vertical_profile(Argo_Dataframe,FillValue):
     for index, row in Argo_Dataframe.iterrows():
         psal = np.array(row["PSAL"])
+	pres = np.array(row["PRES"])
         psal[np.where(psal==FillValue)] = np.nan
-        pres = np.array(row["PRES"])
         pres[np.where(pres==FillValue)] = np.nan
         plt.plot(psal,-pres,marker='.',linestyle='None',markersize=1)
     plt.show()
