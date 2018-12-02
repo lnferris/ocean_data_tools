@@ -12,3 +12,6 @@ Choose a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and download t
 
 # ocean_data_tools/inspect_GOSHIP.py
 Run this script on one of your downloaded GO-SHIP data files to learn which variables are in the file. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters.
+
+# ocean_data_tools/HYCOMTools2D.m
+This script requires an internet connection. Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. Click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url. Makes 2-D plots of temperature, salinity, velcoity, sea surface elevation.
