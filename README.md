@@ -4,9 +4,6 @@ Tools for searching, subsetting, and analyzing ocean data.
 # ocean_data_tools/ArgoTools.py 
 Download Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection) or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl). Run this Python script to search your data for profiles in a specific region and date range. Make a map of profile locations. Plot vertical profiles.
 
-https://github.com/lnferris/ocean_data_tools/blob/master/ArgoTools.map_dataframe().png
-https://github.com/lnferris/ocean_data_tools/blob/master/ArgoTools.vertical_profile().png
-
 # ocean_data_tools/ArgoTools.m
 Same as above, but for MATLAB users.
 
@@ -18,5 +15,3 @@ Run this script on one of your downloaded GO-SHIP data files to learn which vari
 
 # ocean_data_tools/HYCOMTools2D.m
 This script requires an internet connection. Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url.
-
-https://github.com/lnferris/ocean_data_tools/blob/master/HYCOMTools2D.velocity.png
