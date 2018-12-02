@@ -18,3 +18,5 @@ Run this script on one of your downloaded GO-SHIP data files to learn which vari
 
 # ocean_data_tools/HYCOMTools2D.m
 This script requires an internet connection. Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url.
+
+https://github.com/lnferris/ocean_data_tools/blob/master/HYCOMTools2D.velocity.png
