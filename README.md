@@ -24,3 +24,9 @@ Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis
 ![temp](https://user-images.githubusercontent.com/24570061/49345159-f00bfe80-f64e-11e8-9d03-e6a2b94aa85c.png)
 ![hycomtools2d velocity-1](https://user-images.githubusercontent.com/24570061/49345157-eda9a480-f64e-11e8-8122-4e3cd6834776.png)
 ![elev](https://user-images.githubusercontent.com/24570061/49345162-f26e5880-f64e-11e8-8dfe-7770691555ba.png)
+
+### HYCOMTools3D.m
+
+![3v](https://user-images.githubusercontent.com/24570061/49357354-ff199d80-f69c-11e8-94fa-d2ca99824cd6.png)
+![3t](https://user-images.githubusercontent.com/24570061/49357355-00e36100-f69d-11e8-8594-3ce401f0ad6e.png)
+![in](https://user-images.githubusercontent.com/24570061/49357358-02148e00-f69d-11e8-99a0-368033269a73.png)
