@@ -76,7 +76,7 @@ hcb = colorbar; title(hcb,sv_u.attribute('units'));
 %hold on % Add directional arrows. (Slow to view; not recommended.)
 %quiver3(lon_arr1D,lat_arr1D,dep_arr1D,u_arr1D,v_arr1D,u_arr1D.*0,'w') %quiver3(x,y,z,u,v,w)
 
-%%                4. Crudely interpolate and slice temperature or salinity data
+%%                4a. Crudely interpolate and slice temperature or salinity data
 
 ts_interp = interp3(lon_domain,lat_domain,dep_domain,ts_data,lon_mesh,lat_mesh,dep_mesh);
 
@@ -87,3 +87,15 @@ slice(lon_mesh,lat_mesh,dep_mesh,ts_interp,xslice,yslice,[]); %slice(x,y,z,v,xsl
 shading flat
 title({sprintf('%s (interpolated)',sv.attribute('standard_name'));url;datestr(svg.time(tin))},'interpreter','none');
 hcb = colorbar; title(hcb,sv.attribute('units'));
+
+%%                4b. Crudely interpolate and slice velocity data
+
+velocim_interp = interp3(lon_domain,lat_domain,dep_domain,velocim_data,lon_mesh,lat_mesh,dep_mesh);
+
+figure
+xslice = lon_mesh(1):1:lon_mesh(end); % Lon locations to slice.
+yslice = lat_mesh(1):1:lat_mesh(end); % Lat locations to slice.
+slice(lon_mesh,lat_mesh,dep_mesh,velocim_interp,xslice,yslice,[]); %slice(x,y,z,v,xslice,yslice,zslice)
+shading flat
+title({'velocity magnitude (interpolated)';url;datestr(svg_u.time(tin))},'interpreter','none');
+hcb = colorbar; title(hcb,sv_u.attribute('units'));
