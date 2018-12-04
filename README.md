@@ -2,18 +2,23 @@
 Scripts for searching, subsetting, and analyzing ocean data.
 
 ### ArgoTools.py
-Download Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection) or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl). Run this Python script to search your data for profiles in a specific region and date range. Make a map of profile locations. Plot vertical profiles.
+1.Download Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection) or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl). 
+2. Run this Python script to search the data for profiles in a specific region and date range. Make plots.
 
 ### ArgoTools.m
-Same as above, but for MATLAB users.
+MATLAB version.
 
 <img width="500" alt="screen shot 2018-12-02 at 16 20 16" src="https://user-images.githubusercontent.com/24570061/49345111-4c225300-f64e-11e8-9cfd-d126c814e5c5.png">
 
 ### Argo_download
-Alternative to using the data selections tools. Download data directly from GDAC FTP servers using this shell script.
+This is an alternative to using the data selections tools (mentioned above). Download data directly from GDAC FTP servers using this shell script.
+
+<img width="450" alt="screen shot 2018-12-04 at 14 02 21" src="https://user-images.githubusercontent.com/24570061/49466280-a72e8400-f7cd-11e8-9043-198a8467df3b.png">
+<img width="200" alt="screen shot 2018-12-04 at 13 45 52" src="https://user-images.githubusercontent.com/24570061/49466281-a72e8400-f7cd-11e8-90f9-3646f8e7d7b5.png">
 
 ### GOSHIPTools.py
-Choose a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and download the **CTD** data in **whp_netcdf** format. Run this Python script to load the data into a dataframe, subset the data by date/region, map the station locations, or plot vertical profiles.
+1. Choose a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and download the **CTD** data in **whp_netcdf** format. 
+2. Run this Python script to load the data into a dataframe, subset the data by date/region, map the station locations, or plot vertical profiles.
 
 ### GOSHIP_inspect.py
 Run this script on one of your downloaded GO-SHIP data files to learn which variables are in the file. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters.
