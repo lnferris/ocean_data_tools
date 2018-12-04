@@ -1,0 +1,29 @@
+#!/bin/csh
+
+# Instructions:
+# 1. Copy this into a new text file. Save as 'Argo_download' (no file extention).
+# 2. Open a terminal window.
+# 3. Run command:  chmod ugo+x Argo_download
+# 4. Run command:  ./Argo_download
+
+# Choose GDAC FTP server.
+set gdac = 'ftp.ifremer.fr/ifremer/argo' # or 'usgodae.org/pub/outgoing/argo'
+
+# Choose ocean.
+set basin = 'atlantic_ocean' # 'atlantic_ocean' 'indian_ocean''pacific_ocean'
+
+# Choose year.
+set year = '2017'
+
+# Choose month.
+set month = '08'
+
+# Create a directory to hold data.
+set folder = 'argo_ftp_data'
+mkdir $folder
+
+# Download netcdf files.
+wget -c -x -P./$folder -r -N ftp://$gdac'/geo/'$basin'/'$year'/'$month
+# Loads files at ftp://ftp.ifremer.fr/ifremer/argo/geo/atlantic_ocean/2017/08/
+
+exit 0
