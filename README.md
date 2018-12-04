@@ -2,7 +2,7 @@
 Scripts for searching, subsetting, and analyzing ocean data.
 
 ### ArgoTools.py (Python)
-1. Download Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection) or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl). \
+1. Download Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection) or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl). 
 2. Run this Python script to search the data for profiles in a specific region and date range. Make plots.
 
 ### ArgoTools.m (Matlab)
@@ -20,7 +20,7 @@ This is an alternative to using the Argo data selections tools. Download data di
 2. Run this Python script to load the data into a dataframe, subset the data by date/region, map the station locations, or plot vertical profiles.
 
 ### GOSHIP_inspect.py (Python)
-Run this script on *one* of the downloaded files to learn which variables are in the file. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters.
+Run this script on **one** of the downloaded files to get information about variables in the file. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters.
 
 <img width="200" alt="screen shot 2018-12-02 at 16 18 12" src="https://user-images.githubusercontent.com/24570061/49345120-74aa4d00-f64e-11e8-9dad-9e2eac5ef1a5.png">
 <img width="200" alt="screen shot 2018-12-02 at 16 18 23" src="https://user-images.githubusercontent.com/24570061/49345122-76741080-f64e-11e8-83dc-3064d23abd00.png">
