@@ -9,6 +9,9 @@ Same as above, but for MATLAB users.
 
 <img width="500" alt="screen shot 2018-12-02 at 16 20 16" src="https://user-images.githubusercontent.com/24570061/49345111-4c225300-f64e-11e8-9cfd-d126c814e5c5.png">
 
+### Argo_download
+Alternative to using the data selections tools. Download data directly from GDAC FTP servers using this shell script.
+
 ### GOSHIPTools.py
 Choose a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and download the **CTD** data in **whp_netcdf** format. Run this Python script to load the data into a dataframe, subset the data by date/region, map the station locations, or plot vertical profiles.
 
