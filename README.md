@@ -15,7 +15,7 @@ This is an alternative to using the Argo data selections tools. Download data di
 <img width="450" alt="screen shot 2018-12-04 at 14 02 21" src="https://user-images.githubusercontent.com/24570061/49466280-a72e8400-f7cd-11e8-9043-198a8467df3b.png">
 <img width="200" alt="screen shot 2018-12-04 at 13 45 52" src="https://user-images.githubusercontent.com/24570061/49466281-a72e8400-f7cd-11e8-90f9-3646f8e7d7b5.png">
 
-### GOSHIPTools.py (Python)
+### GOSHIP_CTDO.py (Python)
 1. Choose a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and download the **CTD** data in **whp_netcdf** format. 
 2. Run this Python script to load the data into a dataframe, subset the data by date/region, map the station locations, or plot vertical profiles.
 
