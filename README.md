@@ -22,7 +22,7 @@ This is an alternative to using the Argo data selections tools. Download data di
 <img width="200" alt="screen shot 2018-12-02 at 16 18 12" src="https://user-images.githubusercontent.com/24570061/49345120-74aa4d00-f64e-11e8-9dad-9e2eac5ef1a5.png">
 <img width="200" alt="screen shot 2018-12-02 at 16 18 23" src="https://user-images.githubusercontent.com/24570061/49345122-76741080-f64e-11e8-83dc-3064d23abd00.png">
 
-### GOSHIP_inspect.py (Python)
+### GOSHIP_peek.py (Python)
 Run this script on **one** of the downloaded files to get information about variables in the file. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters.
 
 <img width="400" alt="screen shot 2018-12-04 at 14 28 55" src="https://user-images.githubusercontent.com/24570061/49467753-270a1d80-f7d1-11e8-9e0e-df00bcf72296.png">
