@@ -31,8 +31,6 @@ Run this script on **one** of the downloaded files to get information about vari
 1. Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url.
 2. Paste into script and run.
 
-![temp](https://user-images.githubusercontent.com/24570061/49345159-f00bfe80-f64e-11e8-9d03-e6a2b94aa85c.png)
-
 ![hycomtools2d velocity-1](https://user-images.githubusercontent.com/24570061/49345157-eda9a480-f64e-11e8-8122-4e3cd6834776.png)
 
 ![elev](https://user-images.githubusercontent.com/24570061/49345162-f26e5880-f64e-11e8-8dfe-7770691555ba.png)
@@ -42,11 +40,9 @@ Run this script on **one** of the downloaded files to get information about vari
 
 ![3t](https://user-images.githubusercontent.com/24570061/49357355-00e36100-f69d-11e8-8594-3ce401f0ad6e.png)
 
-![in](https://user-images.githubusercontent.com/24570061/49357358-02148e00-f69d-11e8-99a0-368033269a73.png)
-
 ### HYCOM_slice.m (Matlab)
 
-Slice a HYCOM domain at strange angles (without using nctoolbox vslicg).
+Slice HYCOM data at strange angles (without using nctoolbox vslicg).
 
 ![4](https://user-images.githubusercontent.com/24570061/49703388-7934af80-fbd2-11e8-8fb2-03f6152472c5.png)
 
