@@ -44,6 +44,14 @@ Run this script on **one** of the downloaded files to get information about vari
 
 ![in](https://user-images.githubusercontent.com/24570061/49357358-02148e00-f69d-11e8-99a0-368033269a73.png)
 
+### HYCOM_slice.m (Matlab)
+
+Slice a HYCOM domain at strange angles (without using nctoolbox vslicg).
+
+![4](https://user-images.githubusercontent.com/24570061/49703388-7934af80-fbd2-11e8-8fb2-03f6152472c5.png)
+
+![3](https://user-images.githubusercontent.com/24570061/49703389-7a65dc80-fbd2-11e8-95ae-29994bdf693c.png)
+
 ### MOCHA_2D.m (Matlab)
 Plot data from Rutgers MOCHA monthly climatology. 
 
