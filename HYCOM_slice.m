@@ -66,3 +66,13 @@ plot(lon_arr1D(in),lat_arr1D(in),'r+') % Plot points inside polygon
 %%                5. Make vertical section plot for transect
 figure
 scatter(lat_arr1D(in),dep_arr1D(in),[],data_arr1D(in)) % Decide whether plotting against lon or lat makes more sense...
+
+%%                6. Plot (3-D) virtual transect though domain (3-D)
+
+figure % Plot the T/S data.
+scatter3(lon_arr1D,lat_arr1D,dep_arr1D,[],data_arr1D,'.')
+title({sprintf('%s',sv.attribute('standard_name'));url;datestr(svg.time(tin))},'interpreter','none');
+hcb = colorbar; title(hcb,sv.attribute('units'));
+hold on
+plot(poly_x,poly_y,'LineWidth',1) % % plot polygon
+plot(lon_arr1D(in),lat_arr1D(in),'r+') % points inside polygon
