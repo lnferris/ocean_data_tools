@@ -14,20 +14,21 @@ This is an alternative to using the Argo data selections tools. Download data di
 
 <img width="450" alt="screen shot 2018-12-04 at 14 02 21" src="https://user-images.githubusercontent.com/24570061/49466280-a72e8400-f7cd-11e8-9043-198a8467df3b.png">
 
-<img width="200" alt="screen shot 2018-12-04 at 13 45 52" src="https://user-images.githubusercontent.com/24570061/49466281-a72e8400-f7cd-11e8-90f9-3646f8e7d7b5.png">
+<img width="350" alt="screen shot 2018-12-04 at 13 45 41" src="https://user-images.githubusercontent.com/24570061/49701826-2e5d6c80-fbbf-11e8-899d-658848a9eae9.png">
+
 
 ### GOSHIP_CTDO.py (Python)
 1. Choose a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and download the **CTD** data in **whp_netcdf** format. 
 2. Run this Python script to load the data into a dataframe, subset the data by date/region, map the station locations, or plot vertical profiles.
 
-<img width="200" alt="screen shot 2018-12-02 at 16 18 12" src="https://user-images.githubusercontent.com/24570061/49345120-74aa4d00-f64e-11e8-9dad-9e2eac5ef1a5.png">
+<img width="250" alt="screen shot 2018-12-02 at 16 18 12" src="https://user-images.githubusercontent.com/24570061/49345120-74aa4d00-f64e-11e8-9dad-9e2eac5ef1a5.png">
 
-<img width="200" alt="screen shot 2018-12-02 at 16 18 23" src="https://user-images.githubusercontent.com/24570061/49345122-76741080-f64e-11e8-83dc-3064d23abd00.png">
+<img width="250" alt="screen shot 2018-12-02 at 16 18 23" src="https://user-images.githubusercontent.com/24570061/49345122-76741080-f64e-11e8-83dc-3064d23abd00.png">
 
 ### GOSHIP_peek.py (Python)
 Run this script on **one** of the downloaded files to get information about variables in the file. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters.
 
-<img width="400" alt="screen shot 2018-12-04 at 14 28 55" src="https://user-images.githubusercontent.com/24570061/49467753-270a1d80-f7d1-11e8-9e0e-df00bcf72296.png">
+<img width="300" alt="screen shot 2018-12-04 at 14 28 55" src="https://user-images.githubusercontent.com/24570061/49467753-270a1d80-f7d1-11e8-9e0e-df00bcf72296.png">
 
 ### HYCOMTools2D.m (Matlab)
 1. Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url.
