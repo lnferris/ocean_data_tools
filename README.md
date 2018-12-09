@@ -11,8 +11,7 @@ Scripts for searching, subsetting, and analyzing ocean data.
 ### Argo_download (Unix executable)
 This is an alternative to using the Argo data selections tools. Download data directly from GDAC FTP servers using this shell script.
 
-<img width="450" alt="screen shot 2018-12-04 at 14 02 21" src="https://user-images.githubusercontent.com/24570061/49466280-a72e8400-f7cd-11e8-9043-198a8467df3b.png">
-<img width="350" alt="screen shot 2018-12-04 at 13 45 41" src="https://user-images.githubusercontent.com/24570061/49701826-2e5d6c80-fbbf-11e8-899d-658848a9eae9.png">
+<img width="400" alt="screen shot 2018-12-04 at 13 45 41" src="https://user-images.githubusercontent.com/24570061/49701826-2e5d6c80-fbbf-11e8-899d-658848a9eae9.png">
 
 ### GOSHIP_CTDO.py (Python)
 1. Choose a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and download the **CTD** data in **whp_netcdf** format. 
