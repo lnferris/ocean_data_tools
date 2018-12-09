@@ -7,12 +7,13 @@ Scripts for searching, subsetting, and analyzing ocean data.
 
 ### ArgoTools.m (Matlab)
 
-<img width="500" alt="screen shot 2018-12-02 at 16 20 16" src="https://user-images.githubusercontent.com/24570061/49345111-4c225300-f64e-11e8-9cfd-d126c814e5c5.png">
+<img width="400" alt="49345111-4c225300-f64e-11e8-9cfd-d126c814e5c5" src="https://user-images.githubusercontent.com/24570061/49701762-62845d80-fbbe-11e8-92aa-ac4f8a44e786.png">
 
 ### Argo_download (Unix executable)
 This is an alternative to using the Argo data selections tools. Download data directly from GDAC FTP servers using this shell script.
 
 <img width="450" alt="screen shot 2018-12-04 at 14 02 21" src="https://user-images.githubusercontent.com/24570061/49466280-a72e8400-f7cd-11e8-9043-198a8467df3b.png">
+
 <img width="200" alt="screen shot 2018-12-04 at 13 45 52" src="https://user-images.githubusercontent.com/24570061/49466281-a72e8400-f7cd-11e8-90f9-3646f8e7d7b5.png">
 
 ### GOSHIP_CTDO.py (Python)
@@ -20,6 +21,7 @@ This is an alternative to using the Argo data selections tools. Download data di
 2. Run this Python script to load the data into a dataframe, subset the data by date/region, map the station locations, or plot vertical profiles.
 
 <img width="200" alt="screen shot 2018-12-02 at 16 18 12" src="https://user-images.githubusercontent.com/24570061/49345120-74aa4d00-f64e-11e8-9dad-9e2eac5ef1a5.png">
+
 <img width="200" alt="screen shot 2018-12-02 at 16 18 23" src="https://user-images.githubusercontent.com/24570061/49345122-76741080-f64e-11e8-83dc-3064d23abd00.png">
 
 ### GOSHIP_peek.py (Python)
@@ -32,11 +34,20 @@ Run this script on **one** of the downloaded files to get information about vari
 2. Paste into script and run.
 
 ![temp](https://user-images.githubusercontent.com/24570061/49345159-f00bfe80-f64e-11e8-9d03-e6a2b94aa85c.png)
+
 ![hycomtools2d velocity-1](https://user-images.githubusercontent.com/24570061/49345157-eda9a480-f64e-11e8-8122-4e3cd6834776.png)
+
 ![elev](https://user-images.githubusercontent.com/24570061/49345162-f26e5880-f64e-11e8-8dfe-7770691555ba.png)
 
 ### HYCOMTools3D.m (Matlab)
 
 ![3v](https://user-images.githubusercontent.com/24570061/49357354-ff199d80-f69c-11e8-94fa-d2ca99824cd6.png)
+
 ![3t](https://user-images.githubusercontent.com/24570061/49357355-00e36100-f69d-11e8-8594-3ce401f0ad6e.png)
+
 ![in](https://user-images.githubusercontent.com/24570061/49357358-02148e00-f69d-11e8-99a0-368033269a73.png)
+
+### MOCHA_2D.m (Matlab)
+Plot data from MOCHA monthly climatology (Rutgers). 
+
+![ex](https://user-images.githubusercontent.com/24570061/49701723-cc503780-fbbd-11e8-9b34-8e0a64104cca.png)
