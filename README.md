@@ -12,7 +12,6 @@ Scripts for searching, subsetting, and analyzing ocean data.
 This is an alternative to using the Argo data selections tools. Download data directly from GDAC FTP servers using this shell script.
 
 <img width="450" alt="screen shot 2018-12-04 at 14 02 21" src="https://user-images.githubusercontent.com/24570061/49466280-a72e8400-f7cd-11e8-9043-198a8467df3b.png">
-
 <img width="350" alt="screen shot 2018-12-04 at 13 45 41" src="https://user-images.githubusercontent.com/24570061/49701826-2e5d6c80-fbbf-11e8-899d-658848a9eae9.png">
 
 ### GOSHIP_CTDO.py (Python)
@@ -46,6 +45,6 @@ Run this script on **one** of the downloaded files to get information about vari
 ![in](https://user-images.githubusercontent.com/24570061/49357358-02148e00-f69d-11e8-99a0-368033269a73.png)
 
 ### MOCHA_2D.m (Matlab)
-Plot data from MOCHA monthly climatology (Rutgers). 
+Plot data from Rutgers MOCHA monthly climatology. 
 
 ![ex](https://user-images.githubusercontent.com/24570061/49701723-cc503780-fbbd-11e8-9b34-8e0a64104cca.png)
