@@ -11,8 +11,6 @@ Scripts for searching, subsetting, and analyzing ocean data.
 ### Argo_download (Unix executable)
 This is an alternative to using the Argo data selections tools. Download data directly from GDAC FTP servers using this shell script.
 
-<img width="400" alt="screen shot 2018-12-04 at 13 45 41" src="https://user-images.githubusercontent.com/24570061/49701826-2e5d6c80-fbbf-11e8-899d-658848a9eae9.png">
-
 ### GOSHIP_CTDO.py (Python)
 1. Choose a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and download the **CTD** data in **whp_netcdf** format. 
 2. Run this Python script to load the data into a dataframe, subset the data by date/region, map the station locations, or plot vertical profiles.
@@ -23,8 +21,6 @@ This is an alternative to using the Argo data selections tools. Download data di
 
 ### GOSHIP_peek.py (Python)
 Run this script on **one** of the downloaded files to get information about variables in the file. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters.
-
-<img width="300" alt="screen shot 2018-12-04 at 14 28 55" src="https://user-images.githubusercontent.com/24570061/49467753-270a1d80-f7d1-11e8-9e0e-df00bcf72296.png">
 
 ### HYCOMTools2D.m (Matlab)
 1. Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url.
@@ -45,7 +41,9 @@ Slice HYCOM data at strange angles (without using nctoolbox vslicg) and make ver
 
 ![4](https://user-images.githubusercontent.com/24570061/49703388-7934af80-fbd2-11e8-8fb2-03f6152472c5.png)
 
-![3](https://user-images.githubusercontent.com/24570061/49703389-7a65dc80-fbd2-11e8-95ae-29994bdf693c.png)
+![8](https://user-images.githubusercontent.com/24570061/49703719-910e3280-fbd6-11e8-9f6b-4a032ffb600d.png)
+
+![5](https://user-images.githubusercontent.com/24570061/49703727-b602a580-fbd6-11e8-95ef-040dcaf37686.png)
 
 ### MOCHA_2D.m (Matlab)
 Plot data from Rutgers MOCHA monthly climatology. 
