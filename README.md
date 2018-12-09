@@ -39,7 +39,7 @@ Run this script on **one** of the downloaded files to get information about vari
 
 ### HYCOM_slice.m (Matlab)
 
-Slice HYCOM data at strange angles (without using nctoolbox vslicg) and make vertical section plots.
+Subset HYCOM data at strange angles (without using nctoolbox vslicg or interpolation) and make vertical section plots.
 
 ![8](https://user-images.githubusercontent.com/24570061/49703719-910e3280-fbd6-11e8-9f6b-4a032ffb600d.png)
 
