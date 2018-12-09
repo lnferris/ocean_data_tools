@@ -6,7 +6,6 @@ Scripts for searching, subsetting, and analyzing ocean data.
 2. Run this Python script to search the data for profiles in a specific region and date range. Make plots.
 
 ### ArgoTools.m (Matlab)
-
 <img width="400" alt="49345111-4c225300-f64e-11e8-9cfd-d126c814e5c5" src="https://user-images.githubusercontent.com/24570061/49701762-62845d80-fbbe-11e8-92aa-ac4f8a44e786.png">
 
 ### Argo_download (Unix executable)
@@ -15,7 +14,6 @@ This is an alternative to using the Argo data selections tools. Download data di
 <img width="450" alt="screen shot 2018-12-04 at 14 02 21" src="https://user-images.githubusercontent.com/24570061/49466280-a72e8400-f7cd-11e8-9043-198a8467df3b.png">
 
 <img width="350" alt="screen shot 2018-12-04 at 13 45 41" src="https://user-images.githubusercontent.com/24570061/49701826-2e5d6c80-fbbf-11e8-899d-658848a9eae9.png">
-
 
 ### GOSHIP_CTDO.py (Python)
 1. Choose a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and download the **CTD** data in **whp_netcdf** format. 
@@ -41,7 +39,6 @@ Run this script on **one** of the downloaded files to get information about vari
 ![elev](https://user-images.githubusercontent.com/24570061/49345162-f26e5880-f64e-11e8-8dfe-7770691555ba.png)
 
 ### HYCOMTools3D.m (Matlab)
-
 ![3v](https://user-images.githubusercontent.com/24570061/49357354-ff199d80-f69c-11e8-94fa-d2ca99824cd6.png)
 
 ![3t](https://user-images.githubusercontent.com/24570061/49357355-00e36100-f69d-11e8-8594-3ce401f0ad6e.png)
