@@ -41,8 +41,6 @@ Run this script on **one** of the downloaded files to get information about vari
 
 Slice HYCOM data at strange angles (without using nctoolbox vslicg) and make vertical section plots.
 
-![4](https://user-images.githubusercontent.com/24570061/49703388-7934af80-fbd2-11e8-8fb2-03f6152472c5.png)
-
 ![8](https://user-images.githubusercontent.com/24570061/49703719-910e3280-fbd6-11e8-9f6b-4a032ffb600d.png)
 
 ![5](https://user-images.githubusercontent.com/24570061/49703727-b602a580-fbd6-11e8-95ef-040dcaf37686.png)
