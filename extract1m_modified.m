@@ -1,9 +1,9 @@
 function  [image_data,vlat,vlon] = extract1m_modified(region,ssfname)
 %    [Z,LAT,LON] = extract1m_modified(REGION) extracts 1-minute data from Sandwell and Smith bathymetry
 
-%                                               Author: Catherine de Groot-Hedlin
-%                                               modified Rich Pawlowicz (added post-v9 option)
-%                                               modified L.N. Ferris (removed pre-v9 option)
+%                                               Author: Catherine de Groot-Hedlin (UCSD)
+%                                               modified Rich Pawlowicz (UBC), added post-v9 option
+%                                               modified L.N. Ferris, removed pre-v9 option
 %       input:
 %               REGION =[west east south north]; % limits [-180 180 -80.738 80.738]
 %       output:
