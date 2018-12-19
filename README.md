@@ -51,7 +51,7 @@ Plot data from Rutgers MOCHA monthly climatology.
 ![ex](https://user-images.githubusercontent.com/24570061/49701723-cc503780-fbbd-11e8-9b34-8e0a64104cca.png)
 
 ### SSbathymetry.m (Matlab)
-Download Smith & Sandwell "Global Topography V18.1" (https://topex.ucsd.edu/marine_topo/). Make sure **extract1m_modified.m** is in the path. This is a standalone function. Use it to add bathymetry to other data plots e.g.: SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',SearchLimits,'3Dsurf');
+This is a standalone function; use it to add bathymetry to other 2D (lat/lon) or 3D (lat/lon/depth) data plots. Download Smith & Sandwell "Global Topography V18.1" (https://topex.ucsd.edu/marine_topo/). Make sure **extract1m_modified.m** is in the path. 
 
 ![bath](https://user-images.githubusercontent.com/24570061/50197983-a4787680-0317-11e9-9b55-5469c914b592.png)
 
