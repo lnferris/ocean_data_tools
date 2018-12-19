@@ -6,7 +6,7 @@
 %  Website: https://github.com/lnferris/ocean_data_tools
 %  Jul 2018; Last revision: 28-Jul-2018
 %  Distributed under the terms of the MIT License
-%  Dependencies: borders.m by Chad Greene for map_datatable()
+%  Dependencies: borders.m by Chad Greene for map_datatable(), SSbathymetry() optional
 
 %%                 EXAMPLE SCRIPT
 
@@ -22,6 +22,7 @@ BasemapLimits = [-70 -35.0 140.0 185.0]; % Dimensions of lat/lon map.
 
 % Map profiles in datatable.
 map_datatable(Argo_DataTable,BasemapLimits)
+% SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',SearchLimits,'2Dcontour') % Add bathymetry contours (optional)
 
 % Access and plot vertical profile data.
 vertical_profile(Argo_DataTable,FillValue)
