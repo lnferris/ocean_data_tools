@@ -22,7 +22,11 @@ BasemapLimits = [-70 -35.0 140.0 185.0]; % Dimensions of lat/lon map.
 
 % Map profiles in datatable.
 map_datatable(Argo_DataTable,BasemapLimits)
-% SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',SearchLimits,'2Dcontour') % Add bathymetry contours (optional)
+SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',SearchLimits,'2Dcontour') % Add bathymetry (optional).
+
+% Map profiles, this time coloring by Argo platform.
+map_platformcolor(Argo_DataTable,BasemapLimits)
+SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',SearchLimits,'2Dcontour') % Add bathymetry (optional).
 
 % Access and plot vertical profile data.
 vertical_profile(Argo_DataTable,FillValue)
@@ -95,6 +99,28 @@ axis([west east south north])
 grid on; grid minor
 plot(Argo_DataTable.LON, Argo_DataTable.LAT,'.','MarkerSize',14)
 end    
+
+% map_platformcolor() is the same as map_datatable, but profiles are colored by the platform that produced them.
+function map_platformcolor(Argo_DataTable,BasemapLimits)
+figure
+hold on
+south = BasemapLimits(1); north = BasemapLimits(2);  % Unpack BasemapLimits.
+west = BasemapLimits(3); east = BasemapLimits(4);
+platformIDs = unique(Argo_DataTable.ID); % Get IDs of the platforms.
+x = 1:length(platformIDs); % Make vector of short 1..2..3.. labels.
+% For each unique platform:
+for i = 1:length(unique(Argo_DataTable.ID)) 
+    % Plot lat/lon for all profiles.
+    plot(Argo_DataTable.LON(Argo_DataTable.ID==platformIDs(i)),Argo_DataTable.LAT(Argo_DataTable.ID==platformIDs(i)),'.','MarkerSize',14)
+    text(Argo_DataTable.LON(Argo_DataTable.ID==platformIDs(i)),Argo_DataTable.LAT(Argo_DataTable.ID==platformIDs(i)),string(x(i)),'FontSize',6)
+end
+borders('countries','facecolor','k','nomap')
+axis([west east south north])
+grid on; grid minor
+number_labels = cellstr(num2str(x(:))); % Make legend.
+platform_labels = cellstr(num2str(platformIDs(:)));
+legend(strcat(number_labels,' (',platform_labels,')'))
+end
 
 % Example of how plot salinity vs. depth for each profile in datatable.
 function vertical_profile(Argo_DataTable,FillValue)
