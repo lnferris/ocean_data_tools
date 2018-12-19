@@ -5,9 +5,15 @@ Scripts for searching, subsetting, and analyzing ocean data. No need to cite thi
 1. Download Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection) or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl). 
 2. Run this Python script to search the data for profiles in a specific region and date range. Make plots.
 
-### ArgoTools.m (Matlab)
+![djn7dqox0ae2mn8](https://user-images.githubusercontent.com/24570061/50254524-4f427080-03bc-11e9-92c2-188d6485e34a.jpg)
 
-<img width="400" alt="49345111-4c225300-f64e-11e8-9cfd-d126c814e5c5" src="https://user-images.githubusercontent.com/24570061/49701762-62845d80-fbbe-11e8-92aa-ac4f8a44e786.png">
+![djn7dqox0ae2mn8 copy](https://user-images.githubusercontent.com/24570061/50254525-50739d80-03bc-11e9-8c73-999fc3dc9856.jpg)
+
+### ArgoTools.m (Matlab)
+Slightly more functionality than Python version.
+
+![22](https://user-images.githubusercontent.com/24570061/50254542-684b2180-03bc-11e9-99b5-fb56385c9922.png)
+
 
 ### Argo_download (Unix executable)
 This is an alternative to using the Argo data selections tools. Download data directly from GDAC FTP servers using this shell script.
