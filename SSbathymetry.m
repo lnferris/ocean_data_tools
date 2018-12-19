@@ -8,35 +8,51 @@
 %  Distributed under the terms of the MIT License
 %  Dependencies: extract1m_modified.m
 
-%%  Load version 18.1 Bathymetry data
+% inputs: 
+    % ss_path= '/Users/lnferris/Desktop/topo_18.1.img'; % Path to Smith & Sandwell database
+    % region = S N W E [-80.738 80.738 -180 180 ];
+    % type = '2Dscatter' '2Dcontour' '3Dsurf'
 
-ss_path='/Users/lnferris/Desktop/topo_18.1.img'; % Path to Smith & Sandwell database
-region = [-95.0 -75.0 55.0 70.0]; % W E S N, limits [-180 180 -80.738 80.738]
+function SSbathymetry(ss_path,region,type)
+
+% Remap region from SNWE to WESN.
+region = [region(3) region(4) region(1) region(2)];
+
+% Load bathymetry data.
 [data,vlat,vlon] = extract1m_modified(region,ss_path);
+
+% Comment out this next line if you want to cross the dateline...
 vlon(vlon>180) = vlon(vlon>180)-360; % Wrap bathymetry lons to -180/180
 
-%%  2D Scatter Plot
+if strcmp(type,'2Dscatter')
+    
+    % 2D Scatter Plot
+    disp('Plotting...2Dscatter is slow.');
+    [lon_mesh,lat_mesh] = meshgrid(vlon,vlat); % Create coordinate mesh from lons/lats.
+    lon_mesh = reshape(lon_mesh,[],1); 
+    lat_mesh = reshape(lat_mesh,[],1); 
+    data_mesh = reshape(data,[],1); % Reshape in vectors.
+    scatter(lon_mesh,lat_mesh,[],data_mesh)
+    c1 = colorbar;
+    ylabel(c1,'Depth [m]')
+    colormap jet
+    
+elseif strcmp(type,'2Dcontour')
 
-[lon_mesh,lat_mesh] = meshgrid(vlon,vlat); % Create coordinate mesh from lons/lats.
-lon_mesh = reshape(lon_mesh,[],1); 
-lat_mesh = reshape(lat_mesh,[],1); 
-data_mesh = reshape(data,[],1); % Reshape in vectors.
+    % 2D Contour plot
+    contour(vlon,vlat,data)
+    c1 = colorbar;
+    ylabel(c1,'Depth [m]')
+    colormap jet
 
-figure
-scatter(lon_mesh,lat_mesh,[],data_mesh)
-colorbar
-colormap('gray')
-
-%%  2D Contour plot
-
-figure
-contour(vlon,vlat,data)
-colormap('gray')
-
-%%  3D Surface plot
-
-figure 
-surf(vlon,vlat,data,'LineStyle','none')
-colorbar
-colormap('gray')
-light('Position',[-1 0 0],'Style','local')
+elseif strcmp(type,'3Dsurf')
+    
+    % 3D Surface plot
+    surf(vlon,vlat,data,'LineStyle','none')
+    c1 = colorbar;
+    ylabel(c1,'Depth [m]')
+    colormap jet
+    light('Position',[-1 0 0],'Style','local')
+else 
+    disp('Check spelling of plot type');
+end
