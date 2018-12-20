@@ -9,11 +9,8 @@ Scripts for searching, subsetting, and analyzing ocean data. Please consider ack
 Slightly more functionality than Python version.
 
 ![plot3](https://user-images.githubusercontent.com/24570061/50263249-d4d91700-03e2-11e9-9838-1127f13a1717.png)
-
 ![u9999](https://user-images.githubusercontent.com/24570061/50261387-61cba280-03da-11e9-8b32-64c218428aa4.png)
-
 ![u888](https://user-images.githubusercontent.com/24570061/50261389-62fccf80-03da-11e9-99ca-e619c3b71b88.png)
-
 
 ### Argo_download (Unix executable)
 This is an alternative to using the Argo data selections tools. Download data directly from GDAC FTP servers using this shell script.
