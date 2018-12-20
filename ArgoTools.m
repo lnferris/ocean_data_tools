@@ -8,6 +8,7 @@
 %  Distributed under the terms of the MIT License
 %  Dependencies: borders.m by Chad Greene for map_datatable(), SSbathymetry() optional
 
+
 %%                 EXAMPLE SCRIPT
 
 SearchLimits = [-65.0 -40.0 150.0 175.0]; %  S N W E [-90 90 -180, 180]
@@ -17,6 +18,7 @@ full_path = '/Users/lnferris/Desktop/ArgoData/*profiles*.nc'; % Data directory.
 FillValue = 99999; % From Argo manual.
 BasemapLimits = [-70 -35.0 140.0 185.0]; % Dimensions of lat/lon map.
 
+
 % Get list of relevant netcdf files. Write matching profiles to datatable.
 [ncfiles,Argo_DataTable] = getProfiles(full_path,SearchLimits,StartDate,EndDate,FillValue);
 
@@ -24,15 +26,26 @@ BasemapLimits = [-70 -35.0 140.0 185.0]; % Dimensions of lat/lon map.
 map_datatable(Argo_DataTable,BasemapLimits)
 SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',SearchLimits,'2Dcontour') % Add bathymetry (optional).
 
-% Map profiles, this time coloring by Argo platform.
+% Expand default color order.
+more_colors()
+
+% Map profiles in datatable, this time coloring by Argo platform.
 map_platformcolor(Argo_DataTable,BasemapLimits)
 SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',SearchLimits,'2Dcontour') % Add bathymetry (optional).
+
+% Map profiles in datatable, this time coloring by individual profile.
+map_profilecolor(Argo_DataTable,BasemapLimits)
+SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',SearchLimits,'2Dcontour')  % Add bathymetry (optional).
 
 % Access and plot vertical profile data.
 vertical_profile(Argo_DataTable,FillValue)
 
+% Access and plot vertical profile data, this time coloring individual profiles to correspond with map_profilecolor().
+vertical_profile_color(Argo_DataTable,FillValue)
+
 % Subset datatable based on platform,day,etc. (see definition).
 Small_Table = subset_datatable(Argo_DataTable);
+
 
 %%                    FUNCTIONS
 
@@ -41,18 +54,25 @@ function [argo_date] = ArgoDate(year,month,day)
 argo_date = datenum(year,month,day)-datenum(1950,1,1);
 end
 
-function [matching_file_list,Argo_DataTable] = getProfiles(full_path,SearchLimits,StartDate,EndDate,FillValue)
+function more_colors()
+c_order = [0 .447 .741;.85 .325 .098; .929 .694 .125;0 1 0;.494 .184 .556;...
+      .466 .674 .188;1 .7 .7; .301 .745 .933;0 0 0; .635 .078 .184;0 .5 0;...
+      0 .75 .75;.75 0 .75;.75 .75 0;1 .5 .8;.25 .25 .25;1 0 1;0 1 1;1 0 0;...
+      0 0 1;.7 1 .7;.7 .7 1];
+set(groot,'defaultAxesColorOrder',c_order);
+end
 
+function [matching_file_list,Argo_DataTable] = getProfiles(full_path,SearchLimits,StartDate,EndDate,FillValue)
 s_lim = SearchLimits(1); n_lim = SearchLimits(2);  % Unpack SearchLimits.
 w_lim = SearchLimits(3); e_lim = SearchLimits(4);
 
 matching_file_list = []; % Make an empty list to hold filenames.
 Argo_DataTable = cell2table(cell(0,7)); % Make an empty table to hold profile data.
 Argo_DataTable.Properties.VariableNames = {'ID' 'JULD' 'LAT' 'LON' 'PRES' 'PSAL' 'TEMPR'};
-
 full_path = dir(full_path);
 for i = 1:length(full_path) % For each file in full_path...
     filename = full_path(i).name;
+    
         nc = netcdf.open(filename, 'NOWRITE'); % Open the file as a netcdf datasource.
         try % Try to read the file.
             LAT = netcdf.getVar(nc,netcdf.inqVarID(nc,'LATITUDE'));
@@ -122,6 +142,28 @@ platform_labels = cellstr(num2str(platformIDs(:)));
 legend(strcat(number_labels,' (',platform_labels,')'))
 end
 
+% map_profilecolor() is the same as map_datatable, but profiles are colored/annotated.
+function map_profilecolor(Argo_DataTable,BasemapLimits)
+figure
+hold on
+south = BasemapLimits(1); north = BasemapLimits(2);  % Unpack BasemapLimits.
+west = BasemapLimits(3); east = BasemapLimits(4);
+x = 1:height(Argo_DataTable); % Make vector of short 1..2..3.. labels.
+% For each unique platform:
+for row = 1:height(Argo_DataTable) 
+    % Plot lat/lon for all profiles.
+    plot(Argo_DataTable.LON(row),Argo_DataTable.LAT(row),'.','MarkerSize',14)
+    text(Argo_DataTable.LON(row),Argo_DataTable.LAT(row),string(x(row)),'FontSize',6)
+end
+borders('countries','facecolor','k','nomap')
+axis([west east south north])
+grid on; grid minor
+title('By Profile');
+number_labels = cellstr(num2str(x(:))); % Make legend.
+platform_labels = cellstr(num2str(Argo_DataTable.ID(:)));
+legend(strcat(number_labels,' (',platform_labels,')'))
+end
+
 % Example of how plot salinity vs. depth for each profile in datatable.
 function vertical_profile(Argo_DataTable,FillValue)
 figure 
@@ -134,6 +176,19 @@ for row = 1:height(Argo_DataTable)
     plot(psal,-1*pres,'.');
 end  
 end
+
+function vertical_profile_color(Argo_DataTable,FillValue)
+figure 
+hold on
+x = 1:height(Argo_DataTable); 
+for row = 1:height(Argo_DataTable)    
+    psal = cell2mat(Argo_DataTable.PSAL(row,:));
+    pres = cell2mat(Argo_DataTable.PRES(row,:));
+    psal(psal==FillValue) = NaN;
+    pres(pres==FillValue) = NaN;
+    plot(psal,-1*pres,'.');
+    text(double(psal(1)),5*row,string(x(row)),'FontSize',8)
+end 
 
 % Example of how to subset dataframe based on values in a column.
 function [Small_Table] = subset_datatable(Argo_DataTable)
