@@ -1,4 +1,4 @@
-## ocean_data_tools
+# ocean_data_tools
 Scripts for searching, subsetting, and analyzing ocean data. Please consider acknowledgment or collaboration (lnferris@alum.mit.edu) if this is very useful to your project.
 
 ### ArgoTools.py (Python)
