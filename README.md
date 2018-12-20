@@ -10,9 +10,9 @@ Slightly more functionality than Python version.
 
 ![untitleddd](https://user-images.githubusercontent.com/24570061/50255138-af3a1680-03be-11e9-9d56-e05ae9e80f01.png)
 
-![colorprf](https://user-images.githubusercontent.com/24570061/50259615-d569b180-03d2-11e9-886d-61f41b6bc58e.png)
+![u9999](https://user-images.githubusercontent.com/24570061/50261387-61cba280-03da-11e9-8b32-64c218428aa4.png)
 
-![colorma](https://user-images.githubusercontent.com/24570061/50259619-d69ade80-03d2-11e9-8542-8e28f3b21ffc.png)
+![u888](https://user-images.githubusercontent.com/24570061/50261389-62fccf80-03da-11e9-99ca-e619c3b71b88.png)
 
 
 ### Argo_download (Unix executable)
