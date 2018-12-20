@@ -8,7 +8,7 @@ Scripts for searching, subsetting, and analyzing ocean data. Please consider ack
 ### ArgoTools.m (Matlab)
 Slightly more functionality than Python version.
 
-![plot3](https://user-images.githubusercontent.com/24570061/50263183-8e83b800-03e2-11e9-9884-0abdfb593a53.png)
+![plot3](https://user-images.githubusercontent.com/24570061/50263249-d4d91700-03e2-11e9-9838-1127f13a1717.png)
 
 ![u9999](https://user-images.githubusercontent.com/24570061/50261387-61cba280-03da-11e9-8b32-64c218428aa4.png)
 
