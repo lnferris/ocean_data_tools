@@ -9,7 +9,7 @@ Scripts for searching, subsetting, and analyzing ocean data. Please consider ack
 Slightly more functionality than Python version.
 
 ![untitleddd](https://user-images.githubusercontent.com/24570061/50263322-339e9080-03e3-11e9-8288-44484ffc85fa.png)
-![u9999](https://user-images.githubusercontent.com/24570061/50261387-61cba280-03da-11e9-8b32-64c218428aa4.png)
+
 ![u888](https://user-images.githubusercontent.com/24570061/50261389-62fccf80-03da-11e9-99ca-e619c3b71b88.png)
 
 ### Argo_download (Unix executable)
