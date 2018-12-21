@@ -6,7 +6,7 @@
 %  Website: https://github.com/lnferris/ocean_data_tools
 %  Dec 2018; Last revision: 9-Dec-2018
 %  Distributed under the terms of the MIT License
-%  Dependencies: nctoolbox.github.io/nctoolbox/
+%  Dependencies: nctoolbox.github.io/nctoolbox/, SSsection() optional
 %  Remember to run the command "setup_nctoolbox".
 %  The user inputs are on lines 16 (url), 19 (T or S), 26-30 (region/date),
 %  42-44 (transect), 68 (decide to plot against lat or lon).
@@ -66,6 +66,8 @@ plot(lon_arr1D(in),lat_arr1D(in),'r+') % Plot points inside polygon
 %%                5. Make vertical section plot for transect
 figure
 scatter(lat_arr1D(in),dep_arr1D(in),[],data_arr1D(in)) % Decide whether plotting against lon or lat makes more sense...
+hold on
+SSsection('/Users/lnferris/Desktop/topo_18.1.img',[60.0 80.0 -35.0 0.0],start_t,stop_t,'lat') % Add bathymetry (optional).
 
 %%                6. Plot (3-D) virtual transect though domain (3-D)
 
