@@ -14,6 +14,7 @@
     % type = '2Dscatter' '2Dcontour' '3Dsurf'
 
 function SSbathymetry(ss_path,region,type)
+%SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',[-65.0 -40.0 150.0 175.0],'2Dcontour')
 
 % Remap region from SNWE to WESN.
 region = [region(3) region(4) region(1) region(2)];
