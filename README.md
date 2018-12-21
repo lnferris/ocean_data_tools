@@ -58,3 +58,7 @@ This is a standalone function; use it to add bathymetry to other 2D (lat/lon) or
 
 ![bath](https://user-images.githubusercontent.com/24570061/50197983-a4787680-0317-11e9-9b55-5469c914b592.png)
 
+### SSsection.m (Matlab)
+Same as above, but for section plots. There is an example of how to use this function in HYCOM_slice.m
+
+![b](https://user-images.githubusercontent.com/24570061/50329509-99634900-04c5-11e9-8f07-d5286c071b6f.png)
