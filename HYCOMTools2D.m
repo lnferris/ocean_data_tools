@@ -6,6 +6,7 @@
 %  Website: https://github.com/lnferris/ocean_data_tools
 %  Dec 2018; Last revision: 2-Dec-2018
 %  Distributed under the terms of the MIT License
+%  Remember to run the command "setup_nctoolbox".
 %  Dependencies: nctoolbox.github.io/nctoolbox/
 
 %%                 1. Load the Data
