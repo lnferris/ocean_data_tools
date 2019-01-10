@@ -1,12 +1,12 @@
 # ocean_data_tools
-Scripts for searching, subsetting, and analyzing ocean data (originally written for my personal use). Might reformat them into proper modules at some point. Please consider acknowledgment or collaboration (lnferris@alum.mit.edu) if you find these to be useful to your project.
+Scripts for searching, subsetting, and analyzing ocean data (originally written for my personal use). Might reformat into proper modules at some point. Please consider acknowledgment or collaboration (lnferris@alum.mit.edu) if you find these to be useful to your project :-) 
 
 ### ArgoTools.py (Python)
 1. Download Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection) or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl). 
-2. Run this Python script to search the data for profiles in a specific region and date range. Make plots.
+2. Run this Python script to search the data for profiles in a specific region and date range, make plots.
 
 ### ArgoTools.m (Matlab script)
-Slightly more functionality than Python version.
+More functionality than Python version.
 
 ![50263322-339e9080-03e3-11e9-8288-44484ffc85fa](https://user-images.githubusercontent.com/24570061/50994659-d92cb780-14ea-11e9-837a-3609292bf58c.png)
 
