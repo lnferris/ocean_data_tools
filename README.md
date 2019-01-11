@@ -1,5 +1,7 @@
 # ocean_data_tools
-Scripts for searching, subsetting, and analyzing ocean data (originally written for my personal use). Might reformat into proper modules at some point. Please consider acknowledgment or collaboration (lnferris@alum.mit.edu) if you find these to be useful to your project :-) 
+Scripts for searching, subsetting, and analyzing ocean data (originally written for my personal use). Might reformat into proper modules at some point. Please consider acknowledgment or collaboration (lnferris@alum.mit.edu) if you find these to be useful to your project :-)  
+
+Copyright (c) 2018 lnferris
 
 ### ArgoTools.py (Python)
 Get Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl), or File Transfer Protocal (see Argo_download below).
