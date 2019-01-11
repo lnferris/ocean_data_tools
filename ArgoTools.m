@@ -4,9 +4,9 @@
 %  Institute: Virginia Institute of Marine Science
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jul 2018; Last revision: 19-Dec-2018
+%  Jul 2018; Last revision: 11-Jan-2019
 %  Distributed under the terms of the MIT License
-%  Dependencies: borders.m by Chad Greene for map_datatable(), SSbathymetry() optional
+%  Dependencies: borders.m (C. Greene) for map_datatable(), SSbathymetry() optional
 
 
 %%                 EXAMPLE SCRIPT
@@ -14,12 +14,13 @@
 SearchLimits = [-65.0 -40.0 150.0 175.0]; %  S N W E [-90 90 -180, 180]
 StartDate = ArgoDate(2016,1,1); % YYYY, M, D
 EndDate = ArgoDate(2016,1,3);
-full_path = '/Users/lnferris/Desktop/ArgoData/*profiles*.nc'; % Data directory.
+data_directory = '/Users/lnferris/Desktop/ArgoData/'; % Data directory.
+extension = '*profiles*.nc';
 FillValue = 99999; % From Argo manual.
 BasemapLimits = [-70 -35.0 145.0 180.0]; % Dimensions of lat/lon map.
 
 % Get list of relevant netcdf files. Write matching profiles to datatable.
-[ncfiles,Argo_DataTable] = getProfiles(full_path,SearchLimits,StartDate,EndDate,FillValue);
+[ncfiles,Argo_DataTable] = getProfiles(data_directory,extension,SearchLimits,StartDate,EndDate,FillValue);
 
 % Map profiles in datatable.
 map_datatable(Argo_DataTable,BasemapLimits)
@@ -59,18 +60,18 @@ c_order = [0 .447 .741;.85 .325 .098; .929 .694 .125;0 1 0;.494 .184 .556;...
 set(groot,'defaultAxesColorOrder',c_order);
 end
 
-function [matching_file_list,Argo_DataTable] = getProfiles(full_path,SearchLimits,StartDate,EndDate,FillValue)
+function [matching_file_list,Argo_DataTable] = getProfiles(data_directory,extension,SearchLimits,StartDate,EndDate,FillValue)
 s_lim = SearchLimits(1); n_lim = SearchLimits(2);  % Unpack SearchLimits.
 w_lim = SearchLimits(3); e_lim = SearchLimits(4);
 
 matching_file_list = []; % Make an empty list to hold filenames.
 Argo_DataTable = cell2table(cell(0,7)); % Make an empty table to hold profile data.
 Argo_DataTable.Properties.VariableNames = {'ID' 'JULD' 'LAT' 'LON' 'PRES' 'PSAL' 'TEMPR'};
-full_path = dir(full_path);
+full_path = dir([data_directory extension]);
 for i = 1:length(full_path) % For each file in full_path...
     filename = full_path(i).name;
     
-        nc = netcdf.open(filename, 'NOWRITE'); % Open the file as a netcdf datasource.
+        nc = netcdf.open([data_directory filename], 'NOWRITE'); % Open the file as a netcdf datasource.
         try % Try to read the file.
             LAT = netcdf.getVar(nc,netcdf.inqVarID(nc,'LATITUDE'));
             LON = netcdf.getVar(nc,netcdf.inqVarID(nc,'LONGITUDE'));
