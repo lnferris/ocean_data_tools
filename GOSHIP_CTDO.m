@@ -4,15 +4,16 @@
 %  Website: https://github.com/lnferris/ocean_data_tools
 %  Aug 2018; Last revision: 10-Jan-2019
 %  Distributed under the terms of the MIT License
-%  Dependencies: borders.m by Chad Greene for map_datatable(), SSbathymetry() optional
+%  Dependencies: borders.m (C. Greene) for map_datatable(), SSbathymetry() optional
 
 %%                 EXAMPLE SCRIPT
 
-full_path = '/Users/lnferris/Desktop/33RO20150525/*.nc'; % Data directory.
+data_directory = '/Users/lnferris/Desktop/33RO20150525/'; % Data directory.
+extension = '*.nc';
 BasemapLimits = [40.0, 65.0, -155.0, -125.0]; % Dimensions of lat/lon map.
 
 % Get list of relevant netcdf files. Write matching profiles to datatable.
-[Hydro_DataTable] = getStations(full_path);
+[Hydro_DataTable] = getStations(data_directory,extension);
 
 % Map profiles in datatable.
 map_datatable(Hydro_DataTable,BasemapLimits)
@@ -31,14 +32,14 @@ SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',BasemapLimits,'2Dcontour') 
 %%                    FUNCTIONS
 
 
-function [Hydro_DataTable] = getStations(full_path)
+function [Hydro_DataTable] = getStations(data_directory,extension)
 
 Hydro_DataTable = cell2table(cell(0,7)); % Make an empty table to hold profile data.
 Hydro_DataTable.Properties.VariableNames = {'CTDPRS' 'CTDSAL' 'CTDTMP' 'CTDOXY' 'LAT' 'LON' 'UTC'};  
-full_path = dir(full_path);
+full_path = dir([data_directory extension]);
 for i = 1:length(full_path) % For each file in full_path...
     filename = full_path(i).name;
-    nc = netcdf.open(filename, 'NOWRITE'); % Open the file as a netcdf datasource.
+    nc = netcdf.open([data_directory filename], 'NOWRITE'); % Open the file as a netcdf datasource.
         try % Try to read the file.
         LAT = netcdf.getVar(nc,netcdf.inqVarID(nc,'latitude'));
         LON = netcdf.getVar(nc,netcdf.inqVarID(nc,'longitude'));
@@ -48,7 +49,6 @@ for i = 1:length(full_path) % For each file in full_path...
         CTDOXY = netcdf.getVar(nc,netcdf.inqVarID(nc,'oxygen'));
         UTC = netcdf.getVar(nc,netcdf.inqVarID(nc,'woce_date'));
         
-            
         Station_DataTable = {CTDPRS, CTDSAL, CTDTMP, CTDOXY, LAT, LON, UTC};
         Hydro_DataTable = [Hydro_DataTable;Station_DataTable]; % Combine temporary cell array with general datatable.
         catch ME % Throw an exception if unable to read file.
