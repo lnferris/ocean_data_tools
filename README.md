@@ -12,7 +12,7 @@ More functionality than Python version.
 ![u888](https://user-images.githubusercontent.com/24570061/50261389-62fccf80-03da-11e9-99ca-e619c3b71b88.png)
 
 ### Argo_download (Unix executable)
-Download data directly from GDAC FTP servers using this shell script.
+Download data directly from GDAC FTP servers.
 
 ### GOSHIP_CTDO.py (Python)
 Get data by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and downloading the **CTD** data in **whp_netcdf** format. 
@@ -20,7 +20,7 @@ Get data by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) 
 <img width="300" alt="screen shot 2018-12-02 at 16 18 23" src="https://user-images.githubusercontent.com/24570061/49345122-76741080-f64e-11e8-83dc-3064d23abd00.png">
 
 ### GOSHIP_peek.py (Python)
-Run this script on **one** of the downloaded files to get information about variables in the file. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters.
+Get information about the variables in one of the whp_netcdf files. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters.
 
 ### GOSHIP_CTDO.m (Matlab script)
 Same as Python version.
@@ -53,7 +53,7 @@ Plot data from Rutgers MOCHA monthly climatology.
 ![ex](https://user-images.githubusercontent.com/24570061/49701723-cc503780-fbbd-11e8-9b34-8e0a64104cca.png)
 
 ### SSbathymetry.m (Matlab function)
-This is a standalone function; use it to add bathymetry to other 2D (lat/lon) or 3D (lat/lon/depth) data plots. Download Smith & Sandwell "Global Topography V18.1" (https://topex.ucsd.edu/marine_topo/). Make sure **extract1m_modified.m** is in the path. There is an example of how to use this function in ArgoTools.m
+Standalone function; use it to add bathymetry to other 2D (lat/lon) or 3D (lat/lon/depth) data plots. Download Smith & Sandwell "Global Topography V18.1" (https://topex.ucsd.edu/marine_topo/). **extract1m_modified.m** must be in the path. There is an example of how to use this function in ArgoTools.m
 
 ![bath](https://user-images.githubusercontent.com/24570061/50197983-a4787680-0317-11e9-9b55-5469c914b592.png)
 
