@@ -2,8 +2,7 @@
 Scripts for searching, subsetting, and analyzing ocean data (originally written for my personal use). Might reformat into proper modules at some point. Please consider acknowledgment or collaboration (lnferris@alum.mit.edu) if you find these to be useful to your project :-) 
 
 ### ArgoTools.py (Python)
-1. Download Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection) or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl). 
-2. Run this Python script to search the data for profiles in a specific region and date range, make plots.
+Get Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl), or File Transfer Protocal (see Argo_download below).
 
 ### ArgoTools.m (Matlab script)
 More functionality than Python version.
@@ -13,15 +12,14 @@ More functionality than Python version.
 ![u888](https://user-images.githubusercontent.com/24570061/50261389-62fccf80-03da-11e9-99ca-e619c3b71b88.png)
 
 ### Argo_download (Unix executable)
-This is an alternative to using the Argo data selections tools. Download data directly from GDAC FTP servers using this shell script.
+Download data directly from GDAC FTP servers using this shell script.
 
 ### GOSHIP_CTDO.m (Matlab script)
 
 ![go](https://user-images.githubusercontent.com/24570061/50993109-d62fc800-14e6-11e9-98f1-0ecada45428e.png)
 
 ### GOSHIP_CTDO.py (Python)
-1. Choose a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and download the **CTD** data in **whp_netcdf** format. 
-2. Run this Python script to load the data into a dataframe, subset the data by date/region, map the station locations, or plot vertical profiles.
+Get data by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and downloading the **CTD** data in **whp_netcdf** format. 
 
 <img width="250" alt="screen shot 2018-12-02 at 16 18 23" src="https://user-images.githubusercontent.com/24570061/49345122-76741080-f64e-11e8-83dc-3064d23abd00.png">
 
@@ -29,8 +27,7 @@ This is an alternative to using the Argo data selections tools. Download data di
 Run this script on **one** of the downloaded files to get information about variables in the file. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters.
 
 ### HYCOMTools2D.m (Matlab script)
-1. Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url.
-2. Paste into script and run.
+Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url.
 
 ![hycomtools2d velocity-1](https://user-images.githubusercontent.com/24570061/49345157-eda9a480-f64e-11e8-8122-4e3cd6834776.png)
 
@@ -43,7 +40,6 @@ Run this script on **one** of the downloaded files to get information about vari
 ![3t](https://user-images.githubusercontent.com/24570061/49357355-00e36100-f69d-11e8-8594-3ce401f0ad6e.png)
 
 ### HYCOM_slice.m (Matlab script)
-
 Subset HYCOM data at strange angles (without using nctoolbox vslicg or interpolation) and make vertical section plots.
 
 ![8](https://user-images.githubusercontent.com/24570061/49703719-910e3280-fbd6-11e8-9f6b-4a032ffb600d.png)
