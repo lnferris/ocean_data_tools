@@ -16,13 +16,13 @@ More functionality than Python version.
 ### Argo_download (Unix executable)
 Download data directly from GDAC FTP servers.
 
+### netcdf_peek.py (Python)
+Get information about variables contained in one netcdf file in the data directory. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters, specific to GO-SHIP.
+
 ### GOSHIP_CTDO.py (Python)
 Get data by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and downloading the **CTD** data in **whp_netcdf** format. 
 
 <img width="300" alt="screen shot 2018-12-02 at 16 18 23" src="https://user-images.githubusercontent.com/24570061/49345122-76741080-f64e-11e8-83dc-3064d23abd00.png">
-
-### GOSHIP_peek.py (Python)
-Get information about the variables in one of the whp_netcdf files. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters.
 
 ### GOSHIP_CTDO.m (Matlab script)
 Same as Python version.
