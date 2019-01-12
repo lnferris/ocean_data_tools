@@ -5,7 +5,7 @@
 # Institute: Virginia Institute of Marine Science
 # Email address: lnferris@alum.mit.edu
 # Website: https://github.com/lnferris/ocean_data_tools
-# Aug 2018; Last revision: 10-Jan-2018
+# Aug 2018; Last revision: 10-Jan-2019
 # Distributed under the terms of the MIT License
 
 import datetime
