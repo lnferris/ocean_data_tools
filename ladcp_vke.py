@@ -60,7 +60,7 @@ def vertical_profile(Hydro_Dataframe):
 
 #___________Example_Script______________________________________________________
 
-full_path = '/Users/lnferris/Desktop/processed_w_20181030/*VKEprof.nc' # Data directory.
+full_path = '/Users/lnferris/Desktop/processed_w_20181230/*VKEprof.nc' # Data directory.
 
 # Write station data from files in full_path to dataframe.
 Hydro_Dataframe = getStations(full_path)
