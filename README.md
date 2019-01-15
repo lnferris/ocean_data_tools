@@ -23,8 +23,9 @@ Get data by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) 
 
 ![go](https://user-images.githubusercontent.com/24570061/50993109-d62fc800-14e6-11e9-98f1-0ecada45428e.png)
 
-### lacdp_uv.m, ladcp_w.m, ladcp_vke.m (Matlab scripts)
-### ladcp_w.py, ladcp_vke.py (Python)
+### lacdp_uv.m (Matlab script)
+### ladcp_w.py (Python), ladcp_w.m (Matlab script)
+### ladcp_vke.py (Python), ladcp_vke.m (Matlab scripts)
 
 For LADCP data (ftp://ftp.ldeo.columbia.edu/pub/ant/Data/).
 
