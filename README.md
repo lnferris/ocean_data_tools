@@ -3,11 +3,8 @@ Scripts that pull data from the local directory or an online server (THREDDS, OP
 
 Copyright (c) 2018 lnferris
 
-### ArgoTools.py (Python)
-Get Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl), or File Transfer Protocal (see Argo_download below).
-
-### ArgoTools.m (Matlab script)
-More functionality than Python version.
+### ArgoTools.py (Python), ArgoTools.m (Matlab script)
+Get Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl), or File Transfer Protocal (see Argo_download below). Matlab version has more functionality than Python version.
 
 ![50994659-d92cb14ea-11e9-837a-3609292bf58c](https://user-images.githubusercontent.com/24570061/51057422-8ec33d80-15b3-11e9-82d1-ed214285846f.png)
 
@@ -19,18 +16,17 @@ Download data directly from GDAC FTP servers.
 ### netcdf_peek.py (Python)
 Get information about variables contained in one netcdf file in the data directory. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters, specific to GO-SHIP.
 
-### GOSHIP_CTDO.py (Python)
+### GOSHIP_CTDO.py (Python), GOSHIP_CTDO.m (Matlab script)
 Get data by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and downloading the **CTD** data in **whp_netcdf** format. 
 
 <img width="300" alt="screen shot 2018-12-02 at 16 18 23" src="https://user-images.githubusercontent.com/24570061/49345122-76741080-f64e-11e8-83dc-3064d23abd00.png">
-
-### GOSHIP_CTDO.m (Matlab script)
-Same as Python version.
 
 ![go](https://user-images.githubusercontent.com/24570061/50993109-d62fc800-14e6-11e9-98f1-0ecada45428e.png)
 
 ### lacdp_uv.m, ladcp_w.m, ladcp_vke.m (Matlab scripts)
 ### ladcp_w.py, ladcp_vke.py (Python)
+
+For LADCP data (ftp://ftp.ldeo.columbia.edu/pub/ant/Data/).
 
 ![uv](https://user-images.githubusercontent.com/24570061/51152792-62215700-183b-11e9-9185-9e724cf79756.png)
 ![w](https://user-images.githubusercontent.com/24570061/51152793-62b9ed80-183b-11e9-9756-07cfad5390af.png)
