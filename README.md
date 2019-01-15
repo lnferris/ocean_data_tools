@@ -3,18 +3,18 @@ Scripts that pull data from the local directory or an online server (THREDDS, OP
 
 Copyright (c) 2018 lnferris
 
+### Argo_download (Unix executable)
+Download data directly from GDAC FTP servers.
+
 ### ArgoTools.py (Python)
 ### ArgoTools.m (Matlab script)
-Get Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl), or File Transfer Protocal (see Argo_download below). Matlab version has more functionality than Python version.
+Get Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl), or File Transfer Protocal (see Argo_download). Matlab version has more functionality than Python version.
 
 ![50994659-d92cb14ea-11e9-837a-3609292bf58c](https://user-images.githubusercontent.com/24570061/51057422-8ec33d80-15b3-11e9-82d1-ed214285846f.png)
 
 ![u888](https://user-images.githubusercontent.com/24570061/50261389-62fccf80-03da-11e9-99ca-e619c3b71b88.png)
 
-### Argo_download (Unix executable)
-Download data directly from GDAC FTP servers.
-
-### netcdf_peek.py (Python)
+### NetCDF_variables.py (Python)
 Get information about variables contained in one netcdf file in the data directory. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters, specific to GO-SHIP.
 
 ### GOSHIP_CTDO.py (Python)
@@ -25,16 +25,15 @@ Get data by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) 
 
 ![go](https://user-images.githubusercontent.com/24570061/50993109-d62fc800-14e6-11e9-98f1-0ecada45428e.png)
 
+### ladcp_w.py (Python)
+### ladcp_vke.py (Python)
 ### lacdp_uv.m (Matlab script)
 ### ladcp_w.m (Matlab script)
 ### ladcp_vke.m (Matlab script)
-### ladcp_w.py (Python)
-### ladcp_vke.py (Python)
-
 For LADCP data (ftp://ftp.ldeo.columbia.edu/pub/ant/Data/).
 
-![uv](https://user-images.githubusercontent.com/24570061/51152792-62215700-183b-11e9-9185-9e724cf79756.png)
 ![w](https://user-images.githubusercontent.com/24570061/51152793-62b9ed80-183b-11e9-9756-07cfad5390af.png)
+![uv](https://user-images.githubusercontent.com/24570061/51152792-62215700-183b-11e9-9185-9e724cf79756.png)
 
 ### HYCOMTools2D.m (Matlab script)
 Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url.
