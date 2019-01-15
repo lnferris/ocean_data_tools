@@ -1,5 +1,5 @@
 # ocean_data_tools
-Scripts for searching, subsetting, and analyzing ocean data (originally written for my personal use). Please consider acknowledgment or collaboration (lnferris@alum.mit.edu) if you find these to be useful to your project.
+Scripts that pull data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and do some basic plotting. Please consider acknowledgment or collaboration (lnferris@alum.mit.edu) if you find these to be useful to your project.
 
 Copyright (c) 2018 lnferris
 
@@ -28,6 +28,12 @@ Get data by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) 
 Same as Python version.
 
 ![go](https://user-images.githubusercontent.com/24570061/50993109-d62fc800-14e6-11e9-98f1-0ecada45428e.png)
+
+### lacdp_uv.m, ladcp_w.m, ladcp_vke.m (Matlab scripts)
+### ladcp_w.py, ladcp_vke.py (Python)
+
+![uv](https://user-images.githubusercontent.com/24570061/51152792-62215700-183b-11e9-9185-9e724cf79756.png)
+![w](https://user-images.githubusercontent.com/24570061/51152793-62b9ed80-183b-11e9-9756-07cfad5390af.png)
 
 ### HYCOMTools2D.m (Matlab script)
 Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url.
