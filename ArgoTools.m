@@ -112,7 +112,7 @@ function map_datatable(Argo_DataTable,BasemapLimits)
 figure
 south = BasemapLimits(1); north = BasemapLimits(2);  % Unpack BasemapLimits.
 west = BasemapLimits(3); east = BasemapLimits(4);
-borders('countries','facecolor','k','nomap')
+borders('countries','facecolor','k')
 axis([west east south north])
 grid on; grid minor
 plot(Argo_DataTable.LON, Argo_DataTable.LAT,'.','MarkerSize',14)
@@ -132,7 +132,7 @@ for i = 1:length(unique(Argo_DataTable.ID))
     plot(Argo_DataTable.LON(Argo_DataTable.ID==platformIDs(i)),Argo_DataTable.LAT(Argo_DataTable.ID==platformIDs(i)),'.','MarkerSize',14)
     text(Argo_DataTable.LON(Argo_DataTable.ID==platformIDs(i)),Argo_DataTable.LAT(Argo_DataTable.ID==platformIDs(i)),string(x(i)),'FontSize',6)
 end
-borders('countries','facecolor','k','nomap')
+borders('countries','facecolor','k')
 axis([west east south north])
 grid on; grid minor
 title('By platform')
@@ -152,7 +152,7 @@ for row = 1:height(Argo_DataTable)
     plot(Argo_DataTable.LON(row),Argo_DataTable.LAT(row),'.','MarkerSize',14)
     text(Argo_DataTable.LON(row),Argo_DataTable.LAT(row),string(x(row)),'FontSize',6)
 end
-borders('countries','facecolor','k','nomap')
+borders('countries','facecolor','k')
 axis([west east south north])
 grid on; grid minor
 title('By Profile');
