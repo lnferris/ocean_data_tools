@@ -64,7 +64,7 @@ function map_datatable(Hydro_DataTable,BasemapLimits)
 figure
 south = BasemapLimits(1); north = BasemapLimits(2);  % Unpack BasemapLimits.
 west = BasemapLimits(3); east = BasemapLimits(4);
-borders('countries','facecolor','k','nomap')
+borders('countries','facecolor','k')
 axis([west east south north])
 grid on; grid minor
 plot(Hydro_DataTable.LON, Hydro_DataTable.LAT,'.','MarkerSize',14)
