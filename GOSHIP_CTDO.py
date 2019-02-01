@@ -5,7 +5,7 @@
 # Institute: Virginia Institute of Marine Science
 # Email address: lnferris@alum.mit.edu
 # Website: https://github.com/lnferris/ocean_data_tools
-# Aug 2018; Last revision: 3-Aug-2018
+# Aug 2018; Last revision: 01-Feb-2019
 # Distributed under the terms of the MIT License
 
 import datetime
@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
-
+import gsw
 
 # getStations() finds files in local directory that match full_path.
 # Writes stations into a pandas dataframe and returns dataframe.
@@ -71,6 +71,20 @@ def vertical_profile(Hydro_Dataframe):
         plt.plot(tracer,-pres,marker='.',linestyle='None',markersize=1)
     plt.show()
 
+# Calculate and plot density profiles using Thermodynamic Equation of Seawater 2010 (TEOS-10).
+def density_profile(Hydro_Dataframe):
+    for index, row in Hydro_Dataframe.iterrows():
+        t = np.array(row["CTDTMP"]) #ITS-90
+        SP = np.array(row["CTDSAL"]) # PSS-78
+        p = np.array(row["CTDPRS"]) # decibar
+        lon = [row["LON"]]*t.size
+        lat = [row["LAT"]]*t.size
+        SA = gsw.SA_from_SP(SP, p, lon, lat) #gsw.SA_from_SP(SP, p, lon, lat)
+        CT = gsw.CT_from_t(SA,t,p) # gsw.CT_from_t(SA, t, p)
+        D = gsw.density.sigma0(SA, CT)# gsw.density.sigma0(SA, CT)
+        plt.plot(D+1000,-p,marker='.',linestyle='None',markersize=1)
+    plt.show()
+
 # Example of how to subset dataframe by date of data collection.
 def subset_by_date(Hydro_Dataframe):
     date1 = datetime.datetime(2015, 6, 15)
@@ -89,7 +103,7 @@ def subset_by_region(Hydro_Dataframe):
 
 #___________Example_Script______________________________________________________
 
-full_path = '/Users/lnferris/Desktop/33RO20150525/*.nc' # Data directory.
+full_path = '/Users/lnferris/Documents/data/goship/P16N/*.nc'
 BasemapLimits = [40.0, 65.0, -155.0, -125.0] # Dimensions of lat/lon map.
 
 # Write station data from files in full_path to dataframe.
@@ -100,6 +114,9 @@ map_dataframe(Hydro_Dataframe,BasemapLimits)
 
 # Access and plot vertical profile data.
 vertical_profile(Hydro_Dataframe)
+
+# Calculate and plot density profiles using Thermodynamic Equation of Seawater 2010 (TEOS-10).
+density_profile(Hydro_Dataframe)
 
 # Subset dataframe by date.
 Small_Date_Frame = subset_by_date(Hydro_Dataframe)
