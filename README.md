@@ -8,7 +8,7 @@ Download data directly from GDAC FTP servers.
 
 ### ArgoTools.py (Python)
 ### ArgoTools.m (Matlab script)
-Get Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl), or File Transfer Protocal (see Argo_download). Matlab version has more functionality than Python version.
+Get Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl), or File Transfer Protocal (see Argo_download). Matlab version has more functionality than Python version. Documentation for GSW-Python at (https://teos-10.github.io/GSW-Python/).
 
 ![50994659-d92cb14ea-11e9-837a-3609292bf58c](https://user-images.githubusercontent.com/24570061/51057422-8ec33d80-15b3-11e9-82d1-ed214285846f.png)
 
