@@ -4,7 +4,7 @@
 # Institute: Virginia Institute of Marine Science
 # Email address: lnferris@alum.mit.edu
 # Website: https://github.com/lnferris/ocean_data_tools
-# Jul 2018; Last revision: 27-Jul-2018
+# Jul 2018; Last revision: 01-Feb-2019
 # Distributed under the terms of the MIT License
 
 import os
@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
+import gsw
 
 # ArgoDate() converts calendar date to Argo date (days since 1950-01-01).
 def ArgoDate(year,month,day):
@@ -88,12 +89,28 @@ def map_dataframe(Argo_Dataframe,BasemapLimits):
 def vertical_profile(Argo_Dataframe,FillValue):
     for index, row in Argo_Dataframe.iterrows():
         psal = np.array(row["PSAL"])
-	pres = np.array(row["PRES"])
+        pres = np.array(row["PRES"])
         psal[np.where(psal==FillValue)] = np.nan
         pres[np.where(pres==FillValue)] = np.nan
         plt.plot(psal,-pres,marker='.',linestyle='None',markersize=1)
     plt.show()
 
+# Calculate and plot density profiles using Thermodynamic Equation of Seawater 2010 (TEOS-10).
+def density_profile(Argo_Dataframe):
+    for index, row in Argo_Dataframe.iterrows():
+        t = np.array(row["TEMPR"]) #ITS-90
+        SP = np.array(row["PSAL"]) # PSS-78
+        p = np.array(row["PRES"]) # decibar
+        t[np.where(t==FillValue)] = np.nan
+        SP[np.where(SP==FillValue)] = np.nan
+        p[np.where(p==FillValue)] = np.nan
+        lon = [row["LON"]]*t.size
+        lat = [row["LAT"]]*t.size
+        SA = gsw.SA_from_SP(SP, p, lon, lat) #gsw.SA_from_SP(SP, p, lon, lat)
+        CT = gsw.CT_from_t(SA,t,p) # gsw.CT_from_t(SA, t, p)
+        D = gsw.density.sigma0(SA, CT)# gsw.density.sigma0(SA, CT)
+        plt.plot(D+1000,-p,marker='.',linestyle='None',markersize=1)
+    plt.show()
 
 # Example of how to subset dataframe based on values in a column.
 def subset_dataframe(Argo_Dataframe):
@@ -104,7 +121,7 @@ def subset_dataframe(Argo_Dataframe):
 
 SearchLimits= [-65.0, -40.0, 150.0, 175.0] # S N W E [-90.0 90.0 -180.0, 180.0]
 StartDate, EndDate = ArgoDate(2016,1,1), ArgoDate(2016,1,5) # YYYY, M, D
-full_path = '/Users/lnferris/Desktop/ArgoData/*profiles*.nc' # Data directory.
+full_path = '/Users/lnferris/Documents/data/argo/coriolis_25feb2018/*profiles*.nc' # Data directory.
 FillValue = 99999.0 # From Argo manual.
 BasemapLimits = [-70.0, -35.0, 140.0, 185.0 ] # Dimensions of lat/lon map.
 
@@ -116,6 +133,9 @@ map_dataframe(Argo_Dataframe,BasemapLimits)
 
 # Access and plot vertical profile data.
 vertical_profile(Argo_Dataframe,FillValue)
+
+# Calculate and plot density profiles using Thermodynamic Equation of Seawater 2010 (TEOS-10).
+density_profile(Argo_Dataframe)
 
 # Subset dataframe based on platform,day,etc. (see definition).
 Small_Frame = subset_dataframe(Argo_Dataframe)
