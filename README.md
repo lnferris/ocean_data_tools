@@ -21,9 +21,9 @@ Get information about variables contained in one netcdf file in the data directo
 ### GOSHIP_CTDO.m (Matlab script)
 Get data by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and downloading the **CTD** data in **whp_netcdf** format. Documentation for GSW-Python at (https://teos-10.github.io/GSW-Python/).
 
-<img width="300" alt="screen shot 2018-12-02 at 16 18 23" src="https://user-images.githubusercontent.com/24570061/49345122-76741080-f64e-11e8-83dc-3064d23abd00.png">
-
 ![go](https://user-images.githubusercontent.com/24570061/50993109-d62fc800-14e6-11e9-98f1-0ecada45428e.png)
+
+<img width="300" alt="screen shot 2018-12-02 at 16 18 23" src="https://user-images.githubusercontent.com/24570061/49345122-76741080-f64e-11e8-83dc-3064d23abd00.png">
 
 ![sec co](https://user-images.githubusercontent.com/24570061/52182264-8385bb00-27c9-11e9-92b4-0194b77a2415.png)
 
