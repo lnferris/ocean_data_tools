@@ -2,22 +2,22 @@
 %  Institute: Virginia Institute of Marine Science
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Aug 2018; Last revision: 10-Jan-2019
+%  Aug 2018; Last revision: 03-Feb-2019
 %  Distributed under the terms of the MIT License
 %  Dependencies: borders.m (C. Greene) for map_datatable(), SSbathymetry() optional
 
 %%                 EXAMPLE SCRIPT
 
-data_directory = '/Users/lnferris/Desktop/33RO20150525/'; % Data directory.
+data_directory = '/Users/lnferris/Documents/data/goship/P16N/'; % Data directory.
 extension = '*.nc';
-BasemapLimits = [40.0, 65.0, -155.0, -125.0]; % Dimensions of lat/lon map.
+BasemapLimits = [20.0, 65.0, -155.0, -125.0]; % Dimensions of lat/lon map.
 
 % Get list of relevant netcdf files. Write matching profiles to datatable.
 [Hydro_DataTable] = getStations(data_directory,extension);
 
 % Map profiles in datatable.
 map_datatable(Hydro_DataTable,BasemapLimits)
-SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',BasemapLimits,'2Dcontour') % Add bathymetry (optional).
+%SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',BasemapLimits,'2Dcontour') % Add bathymetry (optional).
 
 % Access and plot vertical profile data.
 vertical_profile(Hydro_DataTable)
@@ -27,7 +27,11 @@ Small_Table = subset_datatable(Hydro_DataTable);
 
 % Map profiles in datatable.
 map_datatable(Small_Table,BasemapLimits)
-SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',BasemapLimits,'2Dcontour') % Add bathymetry (optional).
+%SSbathymetry('/Users/lnferris/Desktop/topo_18.1.img',BasemapLimits,'2Dcontour') % Add bathymetry (optional).
+
+% Make section plots of temperature, salinity, oxygen.
+section_plot(Small_Table)
+
 
 %%                    FUNCTIONS
 
@@ -83,6 +87,32 @@ end
 
 % Example of how to subset dataframe based on values in a column.
 function [Small_Table] = subset_datatable(Hydro_DataTable)
-rows = Hydro_DataTable.LAT >= 50;
+rows = Hydro_DataTable.LON <= -151.5;
 Small_Table = Hydro_DataTable(rows,:);
+end
+
+% Make temperature, salinity, oxygen section plots.
+function section_plot(Small_Table)
+temp = [];
+sal = [];
+oxy = [];
+pres = [];
+lat = [];
+ 
+for row = 1:height(Small_Table)    
+    
+    temp = [temp; cell2mat(Small_Table.CTDTMP(row,:))];
+    sal = [sal; cell2mat(Small_Table.CTDSAL(row,:))];
+    oxy = [oxy;cell2mat(Small_Table.CTDOXY(row,:))];
+    pres = [pres;  cell2mat(Small_Table.CTDPRS(row,:)) ];
+    lat = [lat; Small_Table.LAT(row)*ones(length(cell2mat(Small_Table.CTDPRS(row,:))),1)];  
+end 
+  
+figure
+subplot(3,1,1)
+scatter(lat,-pres,[],temp,'s');
+subplot(3,1,2)
+scatter(lat,-pres,[],sal,'s');
+subplot(3,1,3)
+scatter(lat,-pres,[],oxy,'s');
 end
