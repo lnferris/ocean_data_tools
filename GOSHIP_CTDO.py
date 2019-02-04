@@ -5,7 +5,7 @@
 # Institute: Virginia Institute of Marine Science
 # Email address: lnferris@alum.mit.edu
 # Website: https://github.com/lnferris/ocean_data_tools
-# Aug 2018; Last revision: 01-Feb-2019
+# Aug 2018; Last revision: 03-Feb-2019
 # Distributed under the terms of the MIT License
 
 import datetime
@@ -28,16 +28,15 @@ def getStations(full_path):
     for filename in filename_list: # For each file in full_path...
         nc = netCDF4.Dataset(filename) # Call the Dataset constructor.
 
-        LAT = np.array(nc.variables['latitude'])
-        LON = np.array(nc.variables['longitude'])
-        CTDTMP = np.array(nc.variables['temperature'])[:]
-        CTDSAL = np.array(nc.variables['salinity'][:])
-        CTDPRS = np.array(nc.variables['pressure'])[:]
-        CTDOXY = np.array(nc.variables['oxygen'])[:]
-        UTC = np.array(nc.variables['woce_date'])
+        LAT = nc.variables['latitude'][:]
+        LON = nc.variables['longitude'][:]
+        CTDTMP = nc.variables['temperature'][:]
+        CTDSAL = nc.variables['salinity'][:]
+        CTDPRS = nc.variables['pressure'][:]
+        CTDOXY = nc.variables['oxygen'][:]
+        UTC = nc.variables['woce_date'][:]
 
-        Station_Dataframe = pd.DataFrame({"CTDPRS":[CTDPRS],"CTDSAL":[CTDSAL],"CTDTMP":[CTDTMP],"CTDOXY":[CTDOXY],\
-                                "LAT":LAT,"LON":LON,"UTC":UTC},index=[0]) # Write station into a temporary dataframe.
+        Station_Dataframe = pd.DataFrame({"CTDPRS":[CTDPRS],"CTDSAL":[CTDSAL],"CTDTMP":[CTDTMP],"CTDOXY":[CTDOXY],"LAT":LAT,"LON":LON,"UTC":UTC},index=[0]) # Write station into a temporary dataframe.
         Hydro_Dataframe= pd.concat([Hydro_Dataframe, Station_Dataframe],axis=0,sort=False) # Combine temporary with general dataframe.
 
         nc.close() # Close the file.
@@ -53,8 +52,7 @@ def getStations(full_path):
 # map_dataframe() plots latitude vs. longitude of profiles over basemap.
 def map_dataframe(Hydro_Dataframe,BasemapLimits):
     south, north, west, east = BasemapLimits[:]
-    map = Basemap(projection='cyl',llcrnrlon=west,llcrnrlat=south,\
-		               urcrnrlon=east,urcrnrlat=north,resolution='l') # c'l'ihf (Choose basemap resolution.)
+    map = Basemap(projection='cyl',llcrnrlon=west,llcrnrlat=south,urcrnrlon=east,urcrnrlat=north,resolution='l') # c'l'ihf (Choose basemap resolution.)
     map.drawcoastlines()
     map.fillcontinents(color='black',lake_color='white')
     map.drawparallels(np.arange(south,north,5.0))
@@ -66,17 +64,17 @@ def map_dataframe(Hydro_Dataframe,BasemapLimits):
 # Example of how plot oxygen vs. depth for each station in dataframe.
 def vertical_profile(Hydro_Dataframe):
     for index, row in Hydro_Dataframe.iterrows():
-        tracer = np.array(row["CTDOXY"])
-        pres = np.array(row["CTDPRS"])
+        tracer = row["CTDOXY"]
+        pres = row["CTDPRS"]
         plt.plot(tracer,-pres,marker='.',linestyle='None',markersize=1)
     plt.show()
 
 # Calculate and plot density profiles using Thermodynamic Equation of Seawater 2010 (TEOS-10).
 def density_profile(Hydro_Dataframe):
     for index, row in Hydro_Dataframe.iterrows():
-        t = np.array(row["CTDTMP"]) #ITS-90
-        SP = np.array(row["CTDSAL"]) # PSS-78
-        p = np.array(row["CTDPRS"]) # decibar
+        t = row["CTDTMP"] #ITS-90
+        SP = row["CTDSAL"] # PSS-78
+        p = row["CTDPRS"] # decibar
         lon = [row["LON"]]*t.size
         lat = [row["LAT"]]*t.size
         SA = gsw.SA_from_SP(SP, p, lon, lat) #gsw.SA_from_SP(SP, p, lon, lat)

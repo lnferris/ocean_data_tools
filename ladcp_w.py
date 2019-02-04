@@ -5,7 +5,7 @@
 # Institute: Virginia Institute of Marine Science
 # Email address: lnferris@alum.mit.edu
 # Website: https://github.com/lnferris/ocean_data_tools
-# Aug 2018; Last revision: 10-Jan-2019
+# Aug 2018; Last revision: 03-Feb-2019
 # Distributed under the terms of the MIT License
 
 import datetime
@@ -15,7 +15,6 @@ import numpy as np
 import pandas as pd
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
-
 
 # getStations() finds files in local directory that match full_path.
 # Writes stations into a pandas dataframe and returns dataframe.
@@ -28,14 +27,14 @@ def getStations(full_path):
     for filename in filename_list: # For each file in full_path...
         nc = netCDF4.Dataset(filename) # Call the Dataset constructor.
 
-        DEP = np.array(nc.variables['depth']) # Depth m
-        HAB = np.array(nc.variables['hab']) # Height Above Seabed m
-        DC_EL = np.array(nc.variables['dc_elapsed']) # Downcast Elapsed Time
-        DC_W = np.array(nc.variables['dc_w']) # Downcast Vertical Ocean Velocity m/s
+        DEP = nc.variables['depth'][:] # Depth m
+        HAB = nc.variables['hab'][:] # Height Above Seabed m
+        DC_EL = nc.variables['dc_elapsed'][:] # Downcast Elapsed Time
+        DC_W = nc.variables['dc_w'][:] # Downcast Vertical Ocean Velocity m/s
         # Downcast Mean Absolute Deviation in Bin
         # Downcast Number of Samples in Bin
         # Upcast Elapsed Time
-        UC_W = np.array(nc.variables['uc_w']) # Upcast Vertical Ocean Velocity, m/s, uc_w(depth)
+        UC_W = nc.variables['uc_w'][:] # Upcast Vertical Ocean Velocity, m/s, uc_w(depth)
         # Upcast Mean Absolute Deviation in Bin, uc_w.mad(depth)
         # Upcast Number of Samples in Bin, uc_w.nsamp(depth)
 
@@ -50,14 +49,14 @@ def getStations(full_path):
 
 def vertical_profile(Hydro_Dataframe):
     for index, row in Hydro_Dataframe.iterrows():
-        tracer = np.array(row["UC_W"])
-        pres = np.array(row["DEP"])
+        tracer = row["UC_W"]
+        pres = row["DEP"]
         plt.plot(tracer,-pres,marker='.',markersize=1,linestyle='None')
     plt.show()
 
 #___________Example_Script______________________________________________________
 
-full_path = '/Users/lnferris/Desktop/processed_w_20181230/*wprof.nc' # Data directory.
+full_path = '/Users/lnferris/Documents/data/adcp/processed_w_20181230/*wprof.nc' # Data directory.
 
 # Write station data from files in full_path to dataframe.
 Hydro_Dataframe = getStations(full_path)

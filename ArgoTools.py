@@ -4,10 +4,9 @@
 # Institute: Virginia Institute of Marine Science
 # Email address: lnferris@alum.mit.edu
 # Website: https://github.com/lnferris/ocean_data_tools
-# Jul 2018; Last revision: 01-Feb-2019
+# Jul 2018; Last revision: 03-Feb-2019
 # Distributed under the terms of the MIT License
 
-import os
 import datetime
 import glob
 import netCDF4
@@ -37,9 +36,9 @@ def getProfiles(full_path,SearchLimits,StartDate,EndDate,FillValue):
         nc = netCDF4.Dataset(filename) # Call the Dataset constructor.
 
         try: # Try to read the file.
-            LAT = np.array(nc.variables['LATITUDE'])
-            LON = np.array(nc.variables['LONGITUDE'])
-            JULD = np.array(nc.variables['JULD'])
+            LAT = nc.variables['LATITUDE'][:]
+            LON = nc.variables['LONGITUDE'][:]
+            JULD = nc.variables['JULD'][:]
 
             # See which profiles have the correct lat,lon,date.
             LAT_good_loci = np.where((s_lim <= LAT) & (LAT <= n_lim))
@@ -49,16 +48,15 @@ def getProfiles(full_path,SearchLimits,StartDate,EndDate,FillValue):
 
             if (len(loci_of_good_profiles) > 0): # If there is at least one good profile in this file...
                 matching_file_list.append(filename) # Record filename to list.
-                TEMPR = np.array(nc.variables['TEMP_ADJUSTED']) # Read all profiles in the file.
-                PSAL = np.array(nc.variables['PSAL_ADJUSTED'])
-                PRES = np.array(nc.variables['PRES_ADJUSTED'])
-                ID = netCDF4.chartostring(np.array(nc.variables['PLATFORM_NUMBER']))
+                TEMPR = nc.variables['TEMP_ADJUSTED'][:] # Read all profiles in the file.
+                PSAL = nc.variables['PSAL_ADJUSTED'][:]
+                PRES = nc.variables['PRES_ADJUSTED'][:]
+                ID = netCDF4.chartostring(nc.variables['PLATFORM_NUMBER'][:])
                 ID = ID.astype(np.int)
 
                 for locus in loci_of_good_profiles: # Write each good profile into temporary cell array...
                     if not all(x == FillValue for x in PRES[locus]): # As long is profile is not just fill values.
-                        Profile_Dataframe = pd.DataFrame({"PRES":[PRES[locus]],"PSAL":[PSAL[locus]],"TEMPR":[TEMPR[locus]],\
-                                                    "LAT":LAT[locus],"LON":LON[locus],"JULD":JULD[locus],"ID":ID[locus]},index=[0])
+                        Profile_Dataframe = pd.DataFrame({"PRES":[PRES[locus]],"PSAL":[PSAL[locus]],"TEMPR":[TEMPR[locus]],"LAT":LAT[locus],"LON":LON[locus],"JULD":JULD[locus],"ID":ID[locus]},index=[0])
                         Argo_Dataframe= pd.concat([Argo_Dataframe, Profile_Dataframe],axis=0,sort=False) # Combine temporary with general dataframe.
 
         except Exception as error_message: # Throw an exception if unable to read file.
@@ -88,8 +86,8 @@ def map_dataframe(Argo_Dataframe,BasemapLimits):
 # Example of how plot salinity vs. depth for each profile in dataframe.
 def vertical_profile(Argo_Dataframe,FillValue):
     for index, row in Argo_Dataframe.iterrows():
-        psal = np.array(row["PSAL"])
-        pres = np.array(row["PRES"])
+        psal = row["PSAL"]
+        pres = row["PRES"]
         psal[np.where(psal==FillValue)] = np.nan
         pres[np.where(pres==FillValue)] = np.nan
         plt.plot(psal,-pres,marker='.',linestyle='None',markersize=1)
@@ -98,9 +96,9 @@ def vertical_profile(Argo_Dataframe,FillValue):
 # Calculate and plot density profiles using Thermodynamic Equation of Seawater 2010 (TEOS-10).
 def density_profile(Argo_Dataframe):
     for index, row in Argo_Dataframe.iterrows():
-        t = np.array(row["TEMPR"]) #ITS-90
-        SP = np.array(row["PSAL"]) # PSS-78
-        p = np.array(row["PRES"]) # decibar
+        t = row["TEMPR"] #ITS-90
+        SP = row["PSAL"] # PSS-78
+        p = row["PRES"] # decibar
         t[np.where(t==FillValue)] = np.nan
         SP[np.where(SP==FillValue)] = np.nan
         p[np.where(p==FillValue)] = np.nan
