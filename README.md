@@ -4,7 +4,7 @@ Scripts that pull data from the local directory or an online server (THREDDS, OP
 Copyright (c) 2018 lnferris
 
 ### CopernicusPhys_download (Unix executable)
-Download Copernicus Marine data directly. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Follow instructions for modifying ~/.netrc file in comments at top of script.
+Download Copernicus Marine data directly from FTP servers. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Follow instructions for modifying ~/.netrc file in comments at top of script.
 
 ### Argo_download (Unix executable)
 Download data directly from GDAC FTP servers.
