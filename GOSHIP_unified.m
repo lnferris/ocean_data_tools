@@ -23,7 +23,7 @@ w_directory = '/Users/lnferris/Documents/data/goship/processed_w';
 w_extension = '*wprof.nc';
 
 % LADCP vke data
-vke_directory = '/Users/lnferris/Documents/data/goship/S04P/processed_w';
+vke_directory = '/Users/lnferris/Documents/data/goship/processed_w';
 vke_extension = '*VKEprof.nc';
 
 % Build unified Datatable
