@@ -46,7 +46,7 @@ For LADCP data. Recent data at (ftp://ftp.ldeo.columbia.edu/pub/ant/Data/), olde
 ![uv](https://user-images.githubusercontent.com/24570061/51152792-62215700-183b-11e9-9185-9e724cf79756.png)
 
 ### HYCOMTools2D.m (Matlab script)
-Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url.
+Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url. *NOTE: Some HYCOM runs are distributed in -180/180 longitudes, some are in 0/360 lognitudes. Add 360 to the input in lines 26 and 27 to accommodate the latter.
 
 ![hycomtools2d velocity-1](https://user-images.githubusercontent.com/24570061/49345157-eda9a480-f64e-11e8-8122-4e3cd6834776.png)
 
