@@ -1,5 +1,5 @@
 # ocean_data_tools
-Scripts that pull data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and do some basic plotting. Please consider acknowledgment or collaboration (lnferris@alum.mit.edu) if you find these to be useful to your project.
+Scripts that pull data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and do some basic plotting. **Please consider acknowledgment or collaboration (lnferris@alum.mit.edu) if you find these to be useful to your project.** Also feel free to email me with questions or if you find a bug. Thank you!
 
 Copyright (c) 2018 lnferris
 
@@ -26,6 +26,14 @@ Get data by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) 
 <img width="300" alt="screen shot 2018-12-02 at 16 18 23" src="https://user-images.githubusercontent.com/24570061/49345122-76741080-f64e-11e8-83dc-3064d23abd00.png">
 
 ![sec co](https://user-images.githubusercontent.com/24570061/52182264-8385bb00-27c9-11e9-92b4-0194b77a2415.png)
+
+### GOSHIP_unified.m (Matlab script)
+Load repeat hydrography data (CTD, LADCP) into one uniform data table, organized by station.
+
+### shapeSubset.m (Matlab function)
+Subset a dataframe using a polygonal lat/lon region, specificed by coordinates. Dataframe columns should be titled TheTableName.LAT and TheTableName.LON, so this script works with ArgoTools.m, GOSHIP_CTDO.m, GOSHIP_unified.m, ladcp_uv.m.
+
+![roi](https://user-images.githubusercontent.com/24570061/54892191-f97fd780-4e86-11e9-8518-cbfee9652fc4.png)
 
 ### ladcp_w.py, ladcp_vke.py (Python)
 ### ladcp_w.m, ladcp_vke.m, lacdp_uv.m (Matlab script)
