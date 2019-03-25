@@ -31,7 +31,7 @@ Get data by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) 
 Load repeat hydrography data (CTD, LADCP) into one uniform data table, organized by station.
 
 ### shapeSubset.m (Matlab function)
-Subset a dataframe using a polygonal lat/lon region, specificed by coordinates. Dataframe columns should be titled TheTableName.LAT and TheTableName.LON, so this script works with ArgoTools.m, GOSHIP_CTDO.m, GOSHIP_unified.m, ladcp_uv.m.
+Subset a dataframe using a polygonal lat/lon region, specificed by coordinates. Dataframe columns should be titled TheTableName.LAT and TheTableName.LON . Out of the box this script works with ArgoTools.m, GOSHIP_CTDO.m, GOSHIP_unified.m, ladcp_uv.m.
 
 ![roi](https://user-images.githubusercontent.com/24570061/54892191-f97fd780-4e86-11e9-8518-cbfee9652fc4.png)
 
