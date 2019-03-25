@@ -1,5 +1,5 @@
 # ocean_data_tools
-Scripts that pull data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and do some basic plotting. **Please consider acknowledgment or collaboration (lnferris@alum.mit.edu) if you find these to be useful to your project.** Also feel free to email me with questions or if you find a bug. Thank you!
+Scripts that pull data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and do some basic plotting. **Please consider acknowledgment or collaboration (lnferris@alum.mit.edu) if you find these to be useful to your project.** Email me with questions or if you find a bug. Thanks!
 
 Copyright (c) 2018 lnferris
 
