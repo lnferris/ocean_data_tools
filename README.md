@@ -38,8 +38,11 @@ Subset a dataframe using a polygonal lat/lon region, specificed by coordinates. 
 
 ![roi](https://user-images.githubusercontent.com/24570061/54892191-f97fd780-4e86-11e9-8518-cbfee9652fc4.png)
 
-### ladcp_w.py, ladcp_vke.py (Python)
-### ladcp_w.m, ladcp_vke.m, lacdp_uv.m (Matlab script)
+### ladcp_w.py (Python)
+### ladcp_vke.py (Python)
+### ladcp_w.m (Matlab script)
+### ladcp_vke.m (Matlab script)
+### lacdp_uv.m (Matlab script)
 For LADCP data. Recent data at (ftp://ftp.ldeo.columbia.edu/pub/ant/Data/), older data at (https://currents.soest.hawaii.edu/clivar/ladcp/). Code is written for recent data.
 
 ![w](https://user-images.githubusercontent.com/24570061/51152793-62b9ed80-183b-11e9-9756-07cfad5390af.png)
