@@ -70,6 +70,11 @@ Plot data from Rutgers MOCHA monthly climatology.
 
 ![ex](https://user-images.githubusercontent.com/24570061/49701723-cc503780-fbbd-11e8-9b34-8e0a64104cca.png)
 
+### WOD.m (Matlab function)
+Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html.
+
+![untitled](https://user-images.githubusercontent.com/24570061/61960746-1262db80-af94-11e9-916e-d16bf6fbcd89.jpg)
+
 ### SSbathymetry.m (Matlab function)
 Standalone function for adding bathymetry to existing 2D (lat/lon) or 3D (lat/lon/depth) data plots. Download Smith & Sandwell "Global Topography V18.1" (https://topex.ucsd.edu/marine_topo/). **extract1m_modified.m** must be in the path. Example in ArgoTools.m
 
