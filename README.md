@@ -72,6 +72,9 @@ Subset HYCOM data at strange angles (without using nctoolbox vslicg or interpola
 
 Create a virtual cast from HYCOM ncgeovariable object (constructed using HYCOMTools2D.m, HYCOMTools3D.m, or HYCOM_slice.m) at a specific point on the domain (lat/lon).
 
+![untitled](https://user-images.githubusercontent.com/24570061/61972979-ea35a580-afb0-11e9-9667-65e256d04479.jpg)
+![untitledd](https://user-images.githubusercontent.com/24570061/61972985-edc92c80-afb0-11e9-9e8f-b556a86e31a5.jpg)
+
 ### MOCHA_2D.m (Matlab script)
 Plot data from Rutgers MOCHA monthly climatology. 
 
