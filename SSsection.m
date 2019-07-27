@@ -24,7 +24,6 @@ region = [region(3) region(4) region(1) region(2)];
 % Load bathymetry data.
 [bath,vlat,vlon] = extract1m_modified(region,ss_path);
 
-% Comment out this next line if you want to cross the dateline...
 vlon(vlon>180) = vlon(vlon>180)-360; % Wrap bathymetry lons to -180/180
 
 width = 1/60; % of a lat/lon degree
