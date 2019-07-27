@@ -68,7 +68,7 @@ data_U = sqrt(uo.^2+vo.^2);
 
 [lats,ds] = near(lat,45.0); % Find lat index near southern boundary [-90 90] of region.
 [latn,dn] = near(lat,77.0);
-[lonw,dw] = near(lon,155.0);% Find lon index near western boundary [-180 180] of region.
+[lonw,dw] = near(lon,155.0);% Find lon index near western boundary [0 360] of region.
 [lone,de] = near(lon,240.0);
 din = 1; % Choose index of depth (inspect variable 'dep') to use for 2-D plots.
 
