@@ -5,7 +5,7 @@ Copyright (c) 2018 lnferris
 
 ## Table of Contents:
 
-#### Copernicus:
+### Copernicus:
 ##### 1. CopernicusPhys_download (Unix executable)
 ##### 2. CopernicusTools2D.m (Matlab script)
 ##### 3. CopernicusTools2D_NoMerge.m (Matlab script)
@@ -19,7 +19,7 @@ Copyright (c) 2018 lnferris
 ### MOCHA:
 ##### 8. MOCHA_2D.m (Matlab script)
 
-#### Argo:
+### Argo:
 ##### 9. Argo_download (Unix executable)
 ##### 10. ArgoTools.m (Matlab script)
 ##### 11. ArgoTools.py (Python)
@@ -27,7 +27,7 @@ Copyright (c) 2018 lnferris
 ### World Ocean Database:
 ##### 12. WOD.m (Matlab function)
 
-#### GO-SHIP:
+### GO-SHIP:
 ##### 13. GOSHIP_unified.m (Matlab script)
 ##### 14. GOSHIP_CTDO.m (Matlab script)
 ##### 15. GOSHIP_CTDO.py (Python)
