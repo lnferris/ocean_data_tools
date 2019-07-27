@@ -2,6 +2,7 @@
 Basic scripts that pull data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and make plots. **Please consider supporting a young scientist via acknowledgment or collaboration (lnferris@alum.mit.edu) if you find this repository to be useful to your project.** Please also email me with questions or bugs.
 
 Copyright (c) 2018 lnferris
+
 Distributed under the terms of the MIT License
 
 ## Contents of Repository
