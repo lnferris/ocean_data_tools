@@ -25,7 +25,6 @@ COMING SOON
 Produces similar end result to CopernicusTools2D.m but avoids merging separate plots over the dateline (at the cost of speed). This is probably more useful when further analysis would be inhibited by splitting the dataset (as in CopernicusTools2D.m).
 
 ![vel](https://user-images.githubusercontent.com/24570061/61989434-33134b80-affd-11e9-9b9f-21facda68c5b.png)
-
 ![sal](https://user-images.githubusercontent.com/24570061/61989435-34447880-affd-11e9-90bc-80f76a6a0e52.png)
 
 ### NetCDF_variables.py (Python)
