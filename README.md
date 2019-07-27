@@ -3,7 +3,7 @@ Scripts that pull data from the local directory or an online server (THREDDS, OP
 
 Copyright (c) 2018 lnferris
 
-## Table of Contents:
+## Contents
 
 ### Copernicus:
 ##### 1. CopernicusPhys_download (Unix executable)
@@ -45,7 +45,7 @@ Copyright (c) 2018 lnferris
 ##### 23. NetCDF_variables.py (Python)
 ##### 24. shapeSubset.m (Matlab function)
 
-## Descriptions:
+## Descriptions
 
 ##### 1. CopernicusPhys_download (Unix executable)
 Download Copernicus Marine data directly from FTP servers. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Follow instructions for modifying ~/.netrc file in comments at top of script.
