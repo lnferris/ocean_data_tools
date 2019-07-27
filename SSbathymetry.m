@@ -4,7 +4,7 @@
 %  Institute: Virginia Institute of Marine Science
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Dec 2018; Last revision: 18-Dec-2018
+%  Dec 2018; Last revision: 27-July-2019
 %  Distributed under the terms of the MIT License
 %  Dependencies: extract1m_modified.m
 
@@ -22,7 +22,6 @@ region = [region(3) region(4) region(1) region(2)];
 % Load bathymetry data.
 [data,vlat,vlon] = extract1m_modified(region,ss_path);
 
-% Comment out this next line if you want to cross the dateline...
 vlon(vlon>180) = vlon(vlon>180)-360; % Wrap bathymetry lons to -180/180
 
 if strcmp(type,'2Dscatter')
