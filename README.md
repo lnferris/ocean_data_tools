@@ -3,15 +3,6 @@ Scripts that pull data from the local directory or an online server (THREDDS, OP
 
 Copyright (c) 2018 lnferris
 
-### CopernicusPhys_download (Unix executable)
-Download Copernicus Marine data directly from FTP servers. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Follow instructions for modifying ~/.netrc file in comments at top of script.
-
-### CopernicusTools2D.m (Matlab script)
-
-![vel](https://user-images.githubusercontent.com/24570061/61989434-33134b80-affd-11e9-9b9f-21facda68c5b.png)
-
-![sal](https://user-images.githubusercontent.com/24570061/61989435-34447880-affd-11e9-90bc-80f76a6a0e52.png)
-
 ### Argo_download (Unix executable)
 Download data directly from GDAC FTP servers.
 
@@ -22,6 +13,15 @@ Get Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http
 ![50994659-d92cb14ea-11e9-837a-3609292bf58c](https://user-images.githubusercontent.com/24570061/51057422-8ec33d80-15b3-11e9-82d1-ed214285846f.png)
 
 ![u888](https://user-images.githubusercontent.com/24570061/50261389-62fccf80-03da-11e9-99ca-e619c3b71b88.png)
+
+### CopernicusPhys_download (Unix executable)
+Download Copernicus Marine data directly from FTP servers. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Follow instructions for modifying ~/.netrc file in comments at top of script.
+
+### CopernicusTools2D.m (Matlab script)
+
+![vel](https://user-images.githubusercontent.com/24570061/61989434-33134b80-affd-11e9-9b9f-21facda68c5b.png)
+
+![sal](https://user-images.githubusercontent.com/24570061/61989435-34447880-affd-11e9-90bc-80f76a6a0e52.png)
 
 ### NetCDF_variables.py (Python)
 Get information about variables contained in one netcdf file in the data directory. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters, specific to GO-SHIP.
