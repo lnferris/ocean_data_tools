@@ -25,8 +25,8 @@ Download Copernicus Marine data directly from FTP servers. Go to (http://marine.
 ### CopernicusTools2D_NoMerge.m (Matlab script)
 Produces similar end result to CopernicusTools2D.m but avoids merging separate plots over the dateline (at the cost of speed). This is probably more useful when further analysis would be inhibited by splitting the dataset (as in CopernicusTools2D.m).
 
-![vel](https://user-images.githubusercontent.com/24570061/61989434-33134b80-affd-11e9-9b9f-21facda68c5b.png)
-![sal](https://user-images.githubusercontent.com/24570061/61989435-34447880-affd-11e9-90bc-80f76a6a0e52.png)
+![vell](https://user-images.githubusercontent.com/24570061/61997915-66de8780-b076-11e9-8dc7-227407fcc564.png)
+![sall](https://user-images.githubusercontent.com/24570061/61997916-67771e00-b076-11e9-8edd-67c71e9f741e.png)
 
 ### NetCDF_variables.py (Python)
 Get information about variables contained in one netcdf file in the data directory. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters, specific to GO-SHIP.
