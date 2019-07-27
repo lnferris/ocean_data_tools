@@ -3,7 +3,7 @@ Scripts that pull data from the local directory or an online server (THREDDS, OP
 
 Copyright (c) 2018 lnferris
 
-## Contents
+## Contents of Repository
 
 ### Copernicus:
 ##### 1. CopernicusPhys_download (Unix executable)
@@ -45,7 +45,7 @@ Copyright (c) 2018 lnferris
 ##### 23. NetCDF_variables.py (Python)
 ##### 24. shapeSubset.m (Matlab function)
 
-## Descriptions
+## Description of Repository
 
 ##### 1. CopernicusPhys_download (Unix executable)
 Download Copernicus Marine data directly from FTP servers. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Follow instructions for modifying ~/.netrc file in comments at top of script.
@@ -65,20 +65,17 @@ Produces similar end result to CopernicusTools2D.m but avoids merging separate p
 Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url. **NOTE: Some HYCOM runs are distributed in -180/180 longitudes, some are in 0/360 longitudes. Add 360 to the input in lines 26 and 27 to accommodate the latter.**
 
 ![hycomtools2d velocity-1](https://user-images.githubusercontent.com/24570061/49345157-eda9a480-f64e-11e8-8122-4e3cd6834776.png)
-
 ![elev](https://user-images.githubusercontent.com/24570061/49345162-f26e5880-f64e-11e8-8dfe-7770691555ba.png)
 
 ##### 5. HYCOMTools3D.m (Matlab script)
 
 ![3v](https://user-images.githubusercontent.com/24570061/49357354-ff199d80-f69c-11e8-94fa-d2ca99824cd6.png)
-
 ![3t](https://user-images.githubusercontent.com/24570061/49357355-00e36100-f69d-11e8-8594-3ce401f0ad6e.png)
 
 ##### 6. HYCOM_slice.m (Matlab script)
 Subset HYCOM data at strange angles (without using nctoolbox vslicg or interpolation) and make vertical section plots.
 
 ![8](https://user-images.githubusercontent.com/24570061/49703719-910e3280-fbd6-11e8-9f6b-4a032ffb600d.png)
-
 ![5](https://user-images.githubusercontent.com/24570061/49703727-b602a580-fbd6-11e8-95ef-040dcaf37686.png)
 
 ##### 7. HYCOM_virtual_cast.m (Matlab function)
@@ -100,7 +97,6 @@ Download data directly from GDAC FTP servers.
 Get Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl), or File Transfer Protocal (see Argo_download). Matlab version has more functionality than Python version. Documentation for GSW-Python at (https://teos-10.github.io/GSW-Python/).
 
 ![50994659-d92cb14ea-11e9-837a-3609292bf58c](https://user-images.githubusercontent.com/24570061/51057422-8ec33d80-15b3-11e9-82d1-ed214285846f.png)
-
 ![u888](https://user-images.githubusercontent.com/24570061/50261389-62fccf80-03da-11e9-99ca-e619c3b71b88.png)
 
 ##### 11. ArgoTools.py (Python)
@@ -119,9 +115,7 @@ Get data by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) 
 ##### 15. GOSHIP_CTDO.py (Python)
 
 ![go](https://user-images.githubusercontent.com/24570061/50993109-d62fc800-14e6-11e9-98f1-0ecada45428e.png)
-
 <img width="300" alt="screen shot 2018-12-02 at 16 18 23" src="https://user-images.githubusercontent.com/24570061/49345122-76741080-f64e-11e8-83dc-3064d23abd00.png">
-
 ![sec co](https://user-images.githubusercontent.com/24570061/52182264-8385bb00-27c9-11e9-92b4-0194b77a2415.png)
 
 ##### 16. ladcp_w.py (Python)
