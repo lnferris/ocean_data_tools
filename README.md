@@ -3,17 +3,6 @@ Scripts that pull data from the local directory or an online server (THREDDS, OP
 
 Copyright (c) 2018 lnferris
 
-### Argo_download (Unix executable)
-Download data directly from GDAC FTP servers.
-
-### ArgoTools.py (Python)
-### ArgoTools.m (Matlab script)
-Get Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl), or File Transfer Protocal (see Argo_download). Matlab version has more functionality than Python version. Documentation for GSW-Python at (https://teos-10.github.io/GSW-Python/).
-
-![50994659-d92cb14ea-11e9-837a-3609292bf58c](https://user-images.githubusercontent.com/24570061/51057422-8ec33d80-15b3-11e9-82d1-ed214285846f.png)
-
-![u888](https://user-images.githubusercontent.com/24570061/50261389-62fccf80-03da-11e9-99ca-e619c3b71b88.png)
-
 ### CopernicusPhys_download (Unix executable)
 Download Copernicus Marine data directly from FTP servers. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Follow instructions for modifying ~/.netrc file in comments at top of script.
 
@@ -27,6 +16,17 @@ Produces similar end result to CopernicusTools2D.m but avoids merging separate p
 
 ![vell](https://user-images.githubusercontent.com/24570061/61997915-66de8780-b076-11e9-8dc7-227407fcc564.png)
 ![sall](https://user-images.githubusercontent.com/24570061/61997916-67771e00-b076-11e9-8edd-67c71e9f741e.png)
+
+### Argo_download (Unix executable)
+Download data directly from GDAC FTP servers.
+
+### ArgoTools.py (Python)
+### ArgoTools.m (Matlab script)
+Get Argo data (www.argo.ucsd.edu) using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl), or File Transfer Protocal (see Argo_download). Matlab version has more functionality than Python version. Documentation for GSW-Python at (https://teos-10.github.io/GSW-Python/).
+
+![50994659-d92cb14ea-11e9-837a-3609292bf58c](https://user-images.githubusercontent.com/24570061/51057422-8ec33d80-15b3-11e9-82d1-ed214285846f.png)
+
+![u888](https://user-images.githubusercontent.com/24570061/50261389-62fccf80-03da-11e9-99ca-e619c3b71b88.png)
 
 ### NetCDF_variables.py (Python)
 Get information about variables contained in one netcdf file in the data directory. Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters, specific to GO-SHIP.
