@@ -10,7 +10,7 @@
 %  Be aware that Part 2 of this script takes about 70 seconds.
 %  Use command 'ncdisp(file_name)' to get metadata.
 
-%  The user might wonder why this is implemented without nctoolbox dependency of HYCOMTools2D.m, etc.
+%  The user might wonder why this is implemented without nctoolbox dependency e.g. HYCOMTools2D.m .
 %  The reason is dateline-crossing without merging plots, as well as scaling/offsetting in plain view.
 
 %%                 1. Load the Data
