@@ -6,7 +6,7 @@ function  [image_data,vlat,vlon] = extract1m_modified(region,ssfname)
 
 %                                               Author: Catherine de Groot-Hedlin (UCSD)
 %                                               modified Rich Pawlowicz (UBC), added post-v9 option
-%                                               modified L.N. Ferris, removed pre-v9 option
+%                                               modified L.N. Ferris, removed pre-v9 option Dec 2019
 %       input:
 %               REGION =[west east south north]; % limits [-180 180 -80.738 80.738]
 %       output:
