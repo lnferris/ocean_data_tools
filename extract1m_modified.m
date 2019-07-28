@@ -1,3 +1,6 @@
+% The original author of this function is Catherine de Groot-Hedlin (SIO, chedlin@ucsd.edu).
+% Credit belongs to Catherine, and any introduced mistake is likely my own. -lnferris
+
 function  [image_data,vlat,vlon] = extract1m_modified(region,ssfname)
 %    [Z,LAT,LON] = extract1m_modified(REGION) extracts 1-minute data from Sandwell and Smith bathymetry
 
