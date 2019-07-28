@@ -1,5 +1,7 @@
-# ocean_data_tools
-Basic scripts that pull data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and make plots. Please email me (lnferris@alum.mit.edu) with questions or bugs.
+# ocean_data_tools 
+[![DOI](https://zenodo.org/badge/140592821.svg)](https://zenodo.org/badge/latestdoi/140592821)
+
+Basic scripts that pull data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and make plots. Please email me (lnferris@alum.mit.edu) with questions or bugs. :-)
 
 Distributed under the terms of the MIT License, Copyright (c) 2018 lnferris
 
