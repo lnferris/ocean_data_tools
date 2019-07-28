@@ -32,11 +32,11 @@ Distributed under the terms of the MIT License, Copyright (c) 2018 lnferris
 ##### 13. GOSHIP_unified.m (Matlab script)
 ##### 14. GOSHIP_CTDO.m (Matlab script)
 ##### 15. GOSHIP_CTDO.py (Python)
-##### 16. ladcp_w.py (Python)
-##### 17. ladcp_vke.py (Python)
-##### 18. ladcp_w.m (Matlab script)
-##### 19. ladcp_vke.m (Matlab script)
-##### 20. lacdp_uv.m (Matlab script)
+##### 16. GOSHIP_ladcp_w.py (Python)
+##### 17. GOSHIP_ladcp_vke.py (Python)
+##### 18. GOSHIP_ladcp_w.m (Matlab script)
+##### 19. GOSHIP_ladcp_vke.m (Matlab script)
+##### 20. GOSHIP_lacdp_uv.m (Matlab script)
 
 ### Smith & Sandwell:
 ##### 21. SSbathymetry.m (Matlab function)
