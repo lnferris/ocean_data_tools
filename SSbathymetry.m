@@ -33,24 +33,24 @@ if strcmp(type,'2Dscatter')
     lat_mesh = reshape(lat_mesh,[],1); 
     data_mesh = reshape(data,[],1); % Reshape in vectors.
     scatter(lon_mesh,lat_mesh,[],data_mesh)
-    c1 = colorbar;
-    ylabel(c1,'Depth [m]')
+    %c1 = colorbar;
+    %ylabel(c1,'Depth [m]')
     colormap jet
     
 elseif strcmp(type,'2Dcontour')
 
     % 2D Contour plot
     contour(vlon,vlat,data)
-    c1 = colorbar;
-    ylabel(c1,'Depth [m]')
+    %c1 = colorbar;
+    %ylabel(c1,'Depth [m]')
     colormap jet
 
 elseif strcmp(type,'3Dsurf')
     
     % 3D Surface plot
     surf(vlon,vlat,data,'LineStyle','none')
-    c1 = colorbar;
-    ylabel(c1,'Depth [m]')
+    %c1 = colorbar;
+    %ylabel(c1,'Depth [m]')
     colormap jet
     light('Position',[-1 0 0],'Style','local')
 else 
