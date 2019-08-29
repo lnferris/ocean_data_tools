@@ -1,7 +1,7 @@
 # ocean_data_tools 
 [![DOI](https://zenodo.org/badge/140592821.svg)](https://zenodo.org/badge/latestdoi/140592821)
 
-Scripts that pull data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and make plots. Distributed under the terms of the MIT License, Copyright (c) 2018 lnferris. If this is useful to you, please cite as:
+Scripts that pull data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and make plots. Distributed under the terms of the MIT License, Copyright (c) 2018 lnferris. If this is useful to your research, please cite as:
 
 L. N. Ferris (2019): lnferris/ocean_data_tools: Latest Release. doi:10.5281/zenodo.3353611.
 
