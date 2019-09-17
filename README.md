@@ -63,6 +63,9 @@ Produces similar end result to CopernicusTools2D.m but avoids merging separate p
 ![vell](https://user-images.githubusercontent.com/24570061/61997915-66de8780-b076-11e9-8dc7-227407fcc564.png)
 ![sall](https://user-images.githubusercontent.com/24570061/61997916-67771e00-b076-11e9-8edd-67c71e9f741e.png)
 
+##### 4a. HYCOM_download (Unix executable)
+Download subsetted HYCOM data directly using NCSS. Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Click on the *NetcdfSubset* link. Set constraints and copy the NCSS Request URL at the bottom of the page.
+
 ##### 4. HYCOMTools2D.m (Matlab script)
 Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url. **NOTE: Some HYCOM runs are distributed in -180/180 longitudes, some are in 0/360 longitudes. Add 360 to the input in lines 26 and 27 to accommodate the latter.**
 
