@@ -3,7 +3,7 @@
 
 Scripts that pull data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and make plots. Distributed under the terms of the MIT License, Copyright (c) 2018 lnferris. If this is useful to your research, please cite as:
 
-Lauren Newell Ferris (2019): lnferris/ocean_data_tools: Latest Release. doi:10.5281/zenodo.3353611.
+L. N. Ferris (2019): lnferris/ocean_data_tools: Latest Release. doi:10.5281/zenodo.3353611.
 
 
 ## Contents of Repository
