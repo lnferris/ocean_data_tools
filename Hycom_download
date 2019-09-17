@@ -1,0 +1,20 @@
+#!/bin/csh
+
+# Instructions:
+# 0. Save and close the file to store login information.
+# 1. Copy the below script into a *new* text file. Save as 'Hycom_download' (no file extension).
+# 2. Open a terminal window.
+# 3. Run command:  chmod ugo+x Hycom_download
+# 4. Run command:  ./Hycom_download
+
+# Add a day to the last day, it is a cutoff date.
+set FULL_URL="https://ncss.hycom.org/thredds/ncss/GLBv0.08/expt_57.7?var=water_temp&north=25.0000&west=-70&east=-30&south=10.0000&disableLLSubset=on&disableProjSubset=on&horizStride=1&time_start=2017-07-01T12%3A00%3A00Z&time_end=2017-07-04T09%3A00%3A00Z&timeStride=8&vertCoord=&accept=netcdf"
+
+# Create a directory to hold data.
+set folder = 'hycom_ncss_data'
+mkdir $folder
+
+# Download netcdf files.
+wget -c -x -P./$folder -r -N "$FULL_URL" --content-disposition
+
+exit 0
