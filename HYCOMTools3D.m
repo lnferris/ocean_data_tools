@@ -12,7 +12,7 @@
 
 %%                 1. Load the Data
 
-url = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7';
+url = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % url could also be a local file e.g. '/Users/lnferris/expt_57.7.nc'
 nc = ncgeodataset(url); % Assign a ncgeodataset handle.
 nc.variables % Print list of available variables. 
 sv = nc{'water_temp'}; % Assign ncgeovariable handle: 'water_u' 'water_v' 'water_temp' 'salinity'
