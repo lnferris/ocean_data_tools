@@ -1,5 +1,4 @@
-![ocean_data_tools small](https://user-images.githubusercontent.com/24570061/65082040-fc114480-d972-11e9-83df-77810826ff40.jpg)
-
+![ocean_data_tools copy](https://user-images.githubusercontent.com/24570061/65255334-af8d4c80-dacb-11e9-83b9-46434a46bb5f.png)
 
 # ocean_data_tools 
 [![DOI](https://zenodo.org/badge/140592821.svg)](https://zenodo.org/badge/latestdoi/140592821)
