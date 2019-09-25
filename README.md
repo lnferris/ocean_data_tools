@@ -9,6 +9,8 @@ Ferris, L. N. (2019): ocean_data_tools: Scripts for writing bulk freely-availabl
 
 ## Contents of Repository
 
+New code is coming soon :)
+
 ### Copernicus:
 ##### 1. CopernicusPhys_download (Unix executable)
 ##### 2. CopernicusTools2D.m (Matlab script)
