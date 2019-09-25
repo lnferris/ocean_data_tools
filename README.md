@@ -3,9 +3,14 @@
 # ocean_data_tools 
 [![DOI](https://zenodo.org/badge/140592821.svg)](https://zenodo.org/badge/latestdoi/140592821)
 
-Scripts that pull freely-available data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and make plots. Distributed under the terms of the MIT License, Copyright (c) 2018 Lauren Newell Ferris. If this is useful to your research, please cite as:
+These are scripts that pull freely-available data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and make plots. 
+
+You can use this software as is, but perhaps the greatest utility of ocean_data_tools is that you can build on it. Procedures are executed in plain view (e.g. functions are generally defined within the script itself) so you can easily track the flow control. The scripts are yours to fork, modify and slash apart!
+
+Distributed under the terms of the MIT License, Copyright (c) 2018 Lauren Newell Ferris. If this is useful to your research, please cite as:
 
 Ferris, L. N. (2019): ocean_data_tools: Scripts for writing bulk freely-available oceanographic data into data structures and making plots. doi:10.5281/zenodo.3353611.
+
 
 ## Contents of Repository
 
