@@ -1,0 +1,49 @@
+#!/bin/csh
+
+# Instructions:
+# 0. Save and close the file to store login information.
+# 1. Copy the below script into a *new* text file. Save as 'HYCOM_download' (no file extension).
+# 2. Open a terminal window.
+# 3. Run command:  chmod ugo+x HYCOM_bulk_download
+# 4. Run command:  ./HYCOM_bulk_download
+# 5. Set user inputs (lines 14-26).
+
+set folder = 'hycom_ncss_data'                                 # Create a directory to hold data.
+mkdir $folder
+
+set url = 'https://ncss.hycom.org/thredds/ncss/GLBv0.08'
+set experiment = 'expt_57.7'
+set variable = 'water_temp'               # Options: 'water_u' 'water_v' 'water_temp' 'salinity'
+
+set north = '25.0000'
+set west = '-70'
+set east = '-30'
+set south = '10.0000'
+
+set stride = '8'                                                 # Daily timesteps to hop between.
+
+foreach year ('2017')
+foreach month ('06' '07' '08')
+
+foreach calendar_day (`seq 0 30`)                               # This is the calendar day minus one.
+
+  set time_start = `date -j -v${year}y -v${month}m -v1d -v0H -v0M -v0S -v+${calendar_day}d '+%Y-%m-%dT%H:%M:%SZ'`
+
+  set time_end = `date -j -v${year}y -v${month}m -v1d -v0H -v0M -v0S -v+${calendar_day}d -v+1d -v-1S '+%Y-%m-%dT%H:%M:%SZ'`
+
+  set short_name = `date -j -v${year}y -v${month}m -v1d -v0H -v0M -v0S -v+${calendar_day}d '+%Y%m%d'`
+  set outfile = $experiment'_'$short_name'.nc'
+  echo $outfile
+
+  if ( -e $folder'/'$outfile ) then
+    echo "WARNING: File $outfile exists. Skipping ${short_name} duplicate."
+  else
+    curl -f $url'/'$experiment'?var='$variable'&north='$north'&west='$west'&east='$east'&south='$south'&disableLLSubset=on&disableProjSubset=on&horizStride=1&time_start='$time_start'&time_end='$time_end'&timeStride='$stride'&vertCoord=&accept=netcdf' -o $folder'/'$outfile
+  endif
+
+end
+
+end
+end
+
+exit 0
