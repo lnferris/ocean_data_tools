@@ -60,7 +60,7 @@ New code is coming soon :)
 
 ## Description of Repository
 
-##### 1. CopernicusPhys_download (Unix executable)
+##### 1. CopernicusPhys_download (Csh)
 Download Copernicus Marine data directly from FTP servers. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Follow instructions for modifying ~/.netrc file in comments at top of script.
 
 ##### 2. CopernicusTools2D.m (Matlab script)
@@ -109,7 +109,7 @@ Plot data from Rutgers MOCHA monthly climatology.
 
 ![ex](https://user-images.githubusercontent.com/24570061/49701723-cc503780-fbbd-11e8-9b34-8e0a64104cca.png)
 
-##### 10. Argo_download (Unix executable)
+##### 10. Argo_download (Csh)
 Download data directly from GDAC FTP servers.
 
 ##### 11. ArgoTools.m (Matlab script)
