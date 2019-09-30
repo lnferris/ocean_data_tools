@@ -6,6 +6,7 @@
 # 2. Open a terminal window.
 # 3. Run command:  chmod ugo+x HYCOM_download_bulk_monthly
 # 4. Run command:  ./HYCOM_download_bulk_monthly
+# 5. Set user inputs (lines 14-26).
 
 set folder = 'hycom_ncss_data'                                 # Create a directory to hold data.
 mkdir $folder
