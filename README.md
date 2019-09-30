@@ -21,8 +21,9 @@ Distributed under the terms of the MIT License, Copyright (c) 2018 Lauren Newell
 ##### 3. CopernicusTools2D_NoMerge.m (Matlab script)
 
 ### HYCOM:
-##### 4a. HYCOM_download (Csh)
-##### 4b. HYCOM_bulk_download (Csh)
+##### 4a. HYCOM_download_lite (Csh)
+##### 4b. HYCOM_download_bulk_daily (Csh)
+##### 4c. HYCOM_download_bulk_monthly (Csh)
 ##### 5. HYCOMTools2D.m (Matlab script)
 ##### 6. HYCOMTools3D.m (Matlab script)
 ##### 7. HYCOM_slice.m (Matlab script)
@@ -76,8 +77,11 @@ Produces similar end result to CopernicusTools2D.m but avoids merging separate p
 ##### 4a. HYCOM_download (Csh)
 Download subsetted HYCOM data directly using NCSS. Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Click on the **NetcdfSubset** link. Set constraints and copy the NCSS Request URL at the bottom of the page.
 
-##### 4b. HYCOM_bulk_download (Csh)
-Same as above, but for downloading multiple months or years. Use responsibly.
+##### 4b. HYCOM_download_bulk_daily (Csh)
+Same as above, but for downloading multiple months or years. Partitions data into daily files. Use responsibly.
+
+##### 4c. HYCOM_download_bulk_monthly (Csh)
+Same as above, but for downloading multiple months or years. Partitions data into monthly files. Use responsibly.
 
 ##### 5. HYCOMTools2D.m (Matlab script)
 Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Copy the OPENDAP url. **NOTE: Some HYCOM runs are distributed in -180/180 longitudes, some are in 0/360 longitudes. Add 360 to the input in lines 26 and 27 to accommodate the latter.**
@@ -108,7 +112,7 @@ Plot data from Rutgers MOCHA monthly climatology.
 
 ![ex](https://user-images.githubusercontent.com/24570061/49701723-cc503780-fbbd-11e8-9b34-8e0a64104cca.png)
 
-##### 10. Argo_download (Csh)
+##### 10. Argo_download_lite (Csh)
 Download data directly from GDAC FTP servers.
 
 ##### 11. ArgoTools.m (Matlab script)
