@@ -9,7 +9,7 @@ You can use this software as is, but perhaps the greatest utility of ocean_data_
 
 Distributed under the terms of the MIT License, Copyright (c) 2018 Lauren Newell Ferris. If this is useful to your research, cite as:
 
-Ferris, L. N. (2019): ocean_data_tools: Scripts for writing bulk freely-available oceanographic data into data structures and making plots. doi:10.5281/zenodo.3353611.
+**Ferris, L. N. (2019): ocean_data_tools: Scripts for writing bulk freely-available oceanographic data into data structures and making plots. doi:10.5281/zenodo.3353611.**
 
 
 ## Contents of Repository
