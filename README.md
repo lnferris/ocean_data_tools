@@ -12,9 +12,8 @@ Distributed under the terms of the MIT License, Copyright (c) 2018 Lauren Newell
 **Ferris, L. N. (2019): ocean_data_tools: Scripts for writing bulk freely-available oceanographic data into data structures and making plots. doi:10.5281/zenodo.3353611.**
 
 
-## Contents of Repository
 
-New code is coming soon :)
+## Contents of Repository
 
 ### Copernicus:
 ##### 1. CopernicusPhys_download (Csh)
