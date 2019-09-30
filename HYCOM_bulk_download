@@ -1,3 +1,10 @@
+#  Author: Lauren Newell Ferris
+#  Institute: Virginia Institute of Marine Science
+#  Email address: lnferris@alum.mit.edu
+#  Website: https://github.com/lnferris/ocean_data_tools
+#  Sep 2019; Last revision: 30-Sep-2019
+#  Distributed under the terms of the MIT License
+
 #!/bin/csh
 
 # Instructions:
@@ -6,7 +13,7 @@
 # 2. Open a terminal window.
 # 3. Run command:  chmod ugo+x HYCOM_bulk_download
 # 4. Run command:  ./HYCOM_bulk_download
-# 5. Set user inputs (lines 14-26).
+# 5. Set user inputs (lines 21-33).
 
 set folder = 'hycom_ncss_data'                                 # Create a directory to hold data.
 mkdir $folder
