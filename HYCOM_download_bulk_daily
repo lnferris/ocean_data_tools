@@ -4,8 +4,8 @@
 # 0. Save and close the file to store login information.
 # 1. Copy the below script into a *new* text file. Save as 'HYCOM_download' (no file extension).
 # 2. Open a terminal window.
-# 3. Run command:  chmod ugo+x HYCOM_bulk_download
-# 4. Run command:  ./HYCOM_bulk_download
+# 3. Run command:  chmod ugo+x HYCOM_download_bulk_daily 
+# 4. Run command:  ./HYCOM_download_bulk_daily
 # 5. Set user inputs (lines 14-26). Do not touch line 28 (even if it looks tempting).
 
 set folder = 'hycom_ncss_data'                                 # Create a directory to hold data.
