@@ -13,7 +13,7 @@
 # 2. Open a terminal window.
 # 3. Run command:  chmod ugo+x HYCOM_bulk_download
 # 4. Run command:  ./HYCOM_bulk_download
-# 5. Set user inputs (lines 21-33).
+# 5. Set user inputs (lines 21-33). Do not touch line 35 (even if it looks tempting).
 
 set folder = 'hycom_ncss_data'                                 # Create a directory to hold data.
 mkdir $folder
