@@ -3,6 +3,8 @@
 
 # ocean_data_tools 
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![release](https://img.shields.io/github/release-date/lnferris/ocean_data_tools) ![stars](https://img.shields.io/github/stars/lnferris/ocean_data_tools?style=social)
+
 Scripts to pull freely-available data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and make plots. 
 
 You can use this software as is, but perhaps the greatest utility of ocean_data_tools is that you can build on it. Procedures are executed in plain view (e.g. functions are generally defined within the scripts themselves) so you can track the flow of data. The code is yours to fork, modify, and slash apart.
