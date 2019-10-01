@@ -3,8 +3,6 @@
 
 # ocean_data_tools 
 
-[![DOI](https://zenodo.org/badge/140592821.svg)](https://zenodo.org/badge/latestdoi/140592821)
-
 Scripts to pull freely-available data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and make plots. 
 
 You can use this software as is, but perhaps the greatest utility of ocean_data_tools is that you can build on it. Procedures are executed in plain view (e.g. functions are generally defined within the scripts themselves) so you can track the flow of data. The code is yours to fork, modify, and slash apart.
