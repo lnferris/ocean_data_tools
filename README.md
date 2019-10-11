@@ -134,6 +134,7 @@ Search and select World Ocean Database data at (https://www.nodc.noaa.gov/OC5/SE
 ![untitled](https://user-images.githubusercontent.com/24570061/61960746-1262db80-af94-11e9-916e-d16bf6fbcd89.jpg)
 
 ##### 12. World_Ocean_Atlas.m (Matlab script)
+Temperature, salinity, and oxygen are included. Access other variables at https://www.nodc.noaa.gov/OC5/woa18/woa18data.html.
 
 ##### 13. GOSHIP_unified.m (Matlab script)
 Load repeat hydrography data (CTD, LADCP) into one uniform data table, organized by station.
