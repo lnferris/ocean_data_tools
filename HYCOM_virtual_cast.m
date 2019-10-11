@@ -30,10 +30,10 @@ hycom_tracer = sv.data(tin,:,hycom_latind,hycom_lonind);
 hycom_z = svg.z(:);
 
 if strcmp(flag,'cast_map')
-   scatter(svg.lon(hycom_lonind),svg.lat(hycom_latind));
+   scatter(svg.lon(hycom_lonind),svg.lat(hycom_latind),'k');
     
 elseif strcmp(flag,'cast_profile')
-   scatter(hycom_tracer,hycom_z)
+   scatter(hycom_tracer,hycom_z,'k')
    
 else 
    disp('Check spelling of plot type');
