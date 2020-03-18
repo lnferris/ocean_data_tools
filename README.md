@@ -15,12 +15,12 @@ Ferris, L. N. (2019): ocean_data_tools: Scripts for writing bulk freely-availabl
 
 ## Contents of Repository
 
-### Copernicus:
+### Copernicus 1/12-deg model:
 ##### 1. CopernicusPhys_download (Csh)
 ##### 2a. CopernicusTools2D.m (Matlab script)
 ##### 2b. CopernicusTools2D_NoMerge.m (Matlab script)
 
-### HYCOM:
+### HYCOM 1/12-deg model:
 ##### 3a. HYCOM_download_lite (Csh)
 ##### 3b. HYCOM_download_bulk_daily (Csh)
 ##### 3c. HYCOM_download_bulk_monthly (Csh)
@@ -29,7 +29,7 @@ Ferris, L. N. (2019): ocean_data_tools: Scripts for writing bulk freely-availabl
 ##### 6. HYCOM_slice.m (Matlab script)
 ##### 7. HYCOM_virtual_cast.m (Matlab function)
 
-### MOCHA:
+### MOCHA model:
 ##### 8. MOCHA_2D.m (Matlab script)
 
 ### Argo:
