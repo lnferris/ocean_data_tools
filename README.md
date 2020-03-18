@@ -7,9 +7,9 @@
 
 Scripts to pull freely-available data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and make plots. 
 
-Copyright (c) 2019 lnferris. If this is useful to your research publication, cite as:
+Copyright (c) 2019 lnferris. If this is useful to your research publication, consider citing as:
 
-**Ferris, L. N. (2019): ocean_data_tools: Scripts for writing bulk freely-available oceanographic data into data structures and making plots. doi:10.5281/zenodo.3353610.**
+Ferris, L. N. (2019): ocean_data_tools: Scripts for writing bulk freely-available oceanographic data into data structures and making plots. doi:10.5281/zenodo.3353610.
 
 
 
