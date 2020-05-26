@@ -24,6 +24,11 @@ region = [region(3) region(4) region(1) region(2)];
 % Load bathymetry data.
 [bath,vlat,vlon] = extract1m_modified(region,ss_path);
 
+% Remap to -180/180 if not crossing dateline.
+if min(vlon) > 180
+    vlon = vlon-360;
+end   
+
 width = 1/60; % of a lat/lon degree
 poly_x = [start_t(1)+width/2 start_t(1)-width/2 stop_t(1)-width/2 stop_t(1)+width/2 start_t(1)+width/2];
 poly_y = [start_t(2)+width/2 start_t(2)-width/2 stop_t(2)-width/2 stop_t(2)+width/2 start_t(2)+width/2];

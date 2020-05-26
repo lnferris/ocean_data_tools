@@ -22,6 +22,11 @@ region = [region(3) region(4) region(1) region(2)];
 % Load bathymetry data.
 [data,vlat,vlon] = extract1m_modified(region,ss_path);
 
+% Remap to -180/180 if not crossing dateline.
+if min(vlon) > 180
+    vlon = vlon-360;
+end    
+
 if strcmp(type,'2Dscatter')
     
     % 2D Scatter Plot
