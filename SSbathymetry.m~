@@ -18,9 +18,20 @@ function SSbathymetry(ss_path,region,type)
 
 % Remap region from SNWE to WESN.
 region = [region(3) region(4) region(1) region(2)];
+   
+if region(1) < 180 && && region(2)region(2)+360 > 180           % handle dateline-crossing input [# # 160 -170]
+    region(2) = region(2) +360;    
+elseif region(1)+360 < 180 && region(2)+360 > 180   % handle dateline-crossing input [# # -200 -170]
+    region(2) = region(2) +360;
+    region(1) = region(1) +360;   
+end
 
 % Load bathymetry data.
 [data,vlat,vlon] = extract1m_modified(region,ss_path);
+
+if  region(1) < 180 && region(2) > 180              % handle dateline-crossing input [# # 160 190]
+    vlon(vlon>180) = vlon(vlon>180)-360;    
+end
 
 if strcmp(type,'2Dscatter')
     

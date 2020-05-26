@@ -24,8 +24,6 @@ region = [region(3) region(4) region(1) region(2)];
 % Load bathymetry data.
 [bath,vlat,vlon] = extract1m_modified(region,ss_path);
 
-vlon(vlon>180) = vlon(vlon>180)-360; % Wrap bathymetry lons to -180/180
-
 width = 1/60; % of a lat/lon degree
 poly_x = [start_t(1)+width/2 start_t(1)-width/2 stop_t(1)-width/2 stop_t(1)+width/2 start_t(1)+width/2];
 poly_y = [start_t(2)+width/2 start_t(2)-width/2 stop_t(2)-width/2 stop_t(2)+width/2 start_t(2)+width/2];
