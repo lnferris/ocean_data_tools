@@ -1,3 +1,6 @@
+
+## *Version 1.0 coming soon!*
+
 ![ocean_data_tools copy](https://user-images.githubusercontent.com/24570061/65255334-af8d4c80-dacb-11e9-83b9-46434a46bb5f.png)
 
 
