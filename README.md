@@ -8,7 +8,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![release](https://img.shields.io/github/release-date/lnferris/ocean_data_tools) ![stars](https://img.shields.io/github/stars/lnferris/ocean_data_tools?style=social)
 
-Scripts to pull freely-available data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and make plots. *Note: Version 1.0 will be reformatted into standalone functions, but the script-based version will remain available.
+Scripts to pull freely-available data from the local directory or an online server (THREDDS, OPeNDAP, FTP), write them into data structures, and make plots. Note: Version 1.0 will be reformatted into standalone functions, but the script-based version will remain available.
 
 Copyright (c) 2019 lnferris. If this is useful to your research publication, consider citing as:
 
