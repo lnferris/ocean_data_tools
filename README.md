@@ -6,7 +6,7 @@
 
 **Copyright (c) 2019 lnferris**
 
-ocean_data_tools Version 1.0 is a toolbox for interacting with freely-available ocean data. The script-based version of ocean_data_tools is archived in ocean_data_tools/archive/. Some functions (WOA, Mercator, HYCOM 3D) have not yet been added; if you need them in the meantime, head on over to the archived version.
+ocean_data_tools Version 1.0 is a toolbox for interacting with freely-available ocean data. The script-based version of ocean_data_tools is archived in ocean_data_tools/archive/. Some functions (WOA, Mercator, HYCOM 3D) have not yet been added. If you need them in the meantime, head on over to the archived version.
 
 The ethos of ocean_data_tools is to create data objects (e.g. hycom, wod, woa, cruise, argo) and call functions on these objects. General functions are compatible with any of these objects.
 
