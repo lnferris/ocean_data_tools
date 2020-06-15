@@ -1,4 +1,4 @@
-![logo ](https://user-images.githubusercontent.com/24570061/84697364-00778780-af1c-11ea-94ba-31562659e003.png)
+![logo700 ](https://user-images.githubusercontent.com/24570061/84697805-c6f34c00-af1c-11ea-8492-717a562113af.png)
 
 # ocean_data_tools 
 
@@ -6,13 +6,13 @@
 
 **Copyright (c) 2019 lnferris**
 
-Version 1.0 is a toolbox for interacting with freely-available ocean data. The old version of ocean_data_tools is located in ocean_data_tools/archive/.
+ocean_data_tools Version 1.0 is a toolbox for interacting with freely-available ocean data. The old version of ocean_data_tools is located in ocean_data_tools/archive/.
 
 The ethos of ocean_data_tools is to create data objects (e.g. hycom, wod, woa, cruise, argo) and call functions on these objects. General functions are compatible with any of these objects.
 
 Email Laur Ferris (lnferris@vims.edu) if you find a bug and we’ll get it fixed. Version 1.0 was completely rewritten from Version 0.5, so this is definitely anticipated.
 
-See demos/demos.m for examples.
+See **demos/demos.m** for examples.
 
 ## DEPENDENCIES
 
@@ -22,19 +22,19 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 
 #### Mercator
 
-Download Copernicus Marine data directly from FTP servers. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Follow instructions for modifying ~/.netrc file in comments at top of script and run the script shell_scripts/download_mercator.
+Download Copernicus Marine data directly from FTP servers. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Follow instructions for modifying ~/.netrc file in comments at top of script and run the script **shell_scripts/download_mercator**.
 
 #### HYCOM
 
-Download subsetted HYCOM data directly using NCSS. Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Click on the NetcdfSubset link. Set constraints and copy the NCSS Request URL at the bottom of the page. Run shell_scripts/download_hycom_lite.
+Download subsetted HYCOM data directly using NCSS. Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Click on the NetcdfSubset link. Set constraints and copy the NCSS Request URL at the bottom of the page. Run **shell_scripts/download_hycom_lite**.
 
-To download multiple months or years, run shell_scripts/download_hycom_bulk_daily (partition files by day) or shell_scripts/download_hycom_bulk_monthly (partition files by month). Please use responsibly.
+To download multiple months or years, run **shell_scripts/download_hycom_bulk_daily** (partition files by day) or **shell_scripts/download_hycom_bulk_monthly** (partition files by month). Please use responsibly.
 
 #### Argo Floats
 
 Download argo (www.argo.ucsd.edu)  data directly from GDAC FTP servers using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl).
 
-Alternatively run shell_scripts/download_argo to download data via File Transfer Protocol.
+Alternatively run **shell_scripts/download_argo** to download data via File Transfer Protocol.
 
 #### World Ocean Database (WOD)
 
@@ -57,4 +57,4 @@ To get bathymetry data (for bathymetry_dir), download Smith & Sandwell "Global T
 
 ## SPECIAL THANKS
 
-The bathymetry functions in this toolbox call the utilities/extract1m_modified, the original author of which is Catherine de Groot-Hedlin (SIO, chedlin@ucsd.edu).
+The bathymetry functions in this toolbox call the **utilities/extract1m_modified**, the original author of which is Catherine de Groot-Hedlin (SIO, chedlin@ucsd.edu).
