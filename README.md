@@ -55,6 +55,4 @@ Get LADCP data (for uv_dir, wke_dir) at https://currents.soest.hawaii.edu/go-shi
 
 To get bathymetry data (for bathymetry_dir), download Smith & Sandwell "Global Topography V18.1" (https://topex.ucsd.edu/marine_topo/).
 
-## Special Thanks
-
-The bathymetry functions in this toolbox call the **utilities/extract1m_modified**, the original author of which is Catherine de Groot-Hedlin (SIO, chedlin@ucsd.edu).
+Special thanks: the bathymetry functions in this toolbox call **utilities/extract1m_modified**, the original author of which is Catherine de Groot-Hedlin (SIO, chedlin@ucsd.edu).
