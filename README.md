@@ -6,8 +6,6 @@
 
 **Copyright (c) 2019 lnferris**
 
-## INFO
-
 Version 1.0 is a toolbox for interacting with freely-available ocean data. The old version of ocean_data_tools is located in ocean_data_tools/archive/.
 
 The ethos of ocean_data_tools is to create data objects (e.g. hycom, wod, woa, cruise, argo) and call functions on these objects. General functions are compatible with any of these objects.
