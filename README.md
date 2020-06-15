@@ -14,6 +14,8 @@ The ethos of ocean_data_tools is to create data objects (e.g. hycom, wod, woa, c
 
 Email Laur Ferris (lnferris@vims.edu) if you find a bug and we’ll get it fixed. Version 1.0 was completely rewritten from Version 0.5, so this is definitely anticipated.
 
+## Demos
+
 See **demos/demos.m** for examples.
 
 ## Dependencies
