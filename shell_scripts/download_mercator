@@ -1,0 +1,29 @@
+#!/bin/csh
+
+# Instructions:
+# 0. Open your computer's existing ~/.netrc file in a text editor.
+# 0. Add the line:  machine nrt.cmems-du.eu login yourusernamehere password yourpasswordhere
+# 0. Save and close the file to store login information.
+# 1. Copy the below script into a *new* text file. Save as 'download_mercator' (no file extension).
+# 2. Open a terminal window.
+# 3. Run command:  chmod ugo+x download_mercator
+# 4. Run command:  ./download_mercator
+
+# Choose FTP server.
+set serv = 'nrt.cmems-du.eu/Core/GLOBAL_ANALYSIS_FORECAST_PHY_001_024/global-analysis-forecast-phy-001-024'
+
+# Choose year.
+set year = '2018'
+
+# Choose month.
+set month = '03'
+
+# Create a directory to hold data.
+set folder = 'copernicus_ftp_data'
+mkdir $folder
+
+# Download netcdf files.
+wget -c -x -P./$folder -r -N ftp://$serv'/'$year'/'$month
+# Loads files at ftp://nrt.cmems-du.eu/Core/GLOBAL_ANALYSIS_FORECAST_PHY_001_024/global-analysis-forecast-phy-001-024/2018/03/
+
+exit 0
