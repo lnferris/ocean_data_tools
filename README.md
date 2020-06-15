@@ -14,11 +14,11 @@ Email Laur Ferris (lnferris@vims.edu) if you find a bug and we’ll get it fixed
 
 See **demos/demos.m** for examples.
 
-### DEPENDENCIES
+## Dependencies
 
 nctoolbox (https://github.com/nctoolbox/nctoolbox)
 
-### GETTING DATA
+## Getting Data
 
 #### Mercator
 
@@ -55,6 +55,6 @@ Get LADCP data (for uv_dir, wke_dir) at https://currents.soest.hawaii.edu/go-shi
 
 To get bathymetry data (for bathymetry_dir), download Smith & Sandwell "Global Topography V18.1" (https://topex.ucsd.edu/marine_topo/).
 
-### SPECIAL THANKS
+## Special Thanks
 
 The bathymetry functions in this toolbox call the **utilities/extract1m_modified**, the original author of which is Catherine de Groot-Hedlin (SIO, chedlin@ucsd.edu).
