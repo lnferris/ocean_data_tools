@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 15-Jun-2020
+%  Jun 2020; Last revision: 16-Jun-2020
 %  Distributed under the terms of the MIT License
 
 function argo_profiles_map(argo,annotate)
@@ -11,13 +11,12 @@ function argo_profiles_map(argo,annotate)
     figure
     hold on
 
-    x = 1:height(argo); % Make vector of short 1..2..3.. labels.
     % For each unique platform:
-    for row = 1:height(argo) 
+    for prof = 1:length(argo.STN) 
         % Plot lat/lon for all profiles.
-        plot(argo.LON(row),argo.LAT(row),'.','MarkerSize',14)
+        plot(argo.LON(prof),argo.LAT(prof),'.','MarkerSize',14)
         if nargin == 2 && annotate ==1
-            text(argo.LON(row),argo.LAT(row),string(x(row)),'FontSize',6)
+            text(argo.LON(prof),argo.LAT(prof),string(argo.STN(prof)),'FontSize',6)
         end
     end
 
@@ -26,7 +25,7 @@ function argo_profiles_map(argo,annotate)
 
     title('By Profile');
     if nargin == 2 && annotate ==1
-        legend(strcat(cellstr(num2str(x(:))),' (',cellstr(num2str(argo.ID(:))),')')) % Make legend.
+        legend(strcat(cellstr(num2str(argo.STN(:))),' (',cellstr(num2str(argo.ID(:))),')')) % Make legend.
     end
     
 end

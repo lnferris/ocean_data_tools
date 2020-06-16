@@ -8,10 +8,15 @@ function  general_section(object,variable,xref)
 
 cvar = eval(['object.',variable]);
 
+if nanmean(object.depth,'all') > 0
+    
+    object.depth = -object.depth;
+end
+
 figure
 hold on
 
-for i = 1:length(object.STN)
+for prof = 1:length(object.STN)
 
     if strcmp(xref,'LON')
         xvar = object.LON;
@@ -26,7 +31,15 @@ for i = 1:length(object.STN)
         disp('Check spelling of reference axis');  
     end
     
-    scatter(xvar(i)*ones(length(object.depth),1),object.depth,[],cvar(:,i))
+    if isvector(object.depth)
+    
+        scatter(xvar(prof)*ones(length(object.depth),1),object.depth,[],cvar(:,prof))
+    
+    else
+        
+        scatter(xvar(prof)*ones(length(object.depth),1),object.depth(:,prof),[],cvar(:,prof))
+        
+    end
    
 end
 

@@ -2,7 +2,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 15-Jun-2020
+%  Jun 2020; Last revision: 16-Jun-2020
 %  Distributed under the terms of the MIT License
 
 function [argo,matching_files] = argo_load(argo_dir,search_region,start_date,end_date)
@@ -61,4 +61,47 @@ end
 if min(argo.LON) < -170 && max(argo.LON)>170  % if working near dateline wrap to 0/360
     argo.LON(argo.LON < 0) = argo.LON(argo.LON < 0)+360; 
 end   
+
+
+% find necessary array dimensions
+prof_dim = height(argo);
+z_dim = 0;
+for prof = 1:height(argo)   
+    if length(argo.PRES{prof,:}) > z_dim
+        z_dim = length(argo.PRES{prof,:});
+    end
+end
+
+% load table data into arrays
+aid = NaN(1,prof_dim);
+astn = NaN(1,prof_dim);
+alon = NaN(1,prof_dim);
+alat = NaN(1,prof_dim);
+adate = NaN(1,prof_dim);
+adepth = NaN(z_dim,prof_dim);
+asal = NaN(z_dim,prof_dim);
+atemp = NaN(z_dim,prof_dim);
+
+for prof = 1:prof_dim
+    
+    ind_last = length(argo.PRES{prof,:});
+    astn(prof) = prof;
+    aid(prof) = argo.ID(prof);
+    alon(prof) = argo.LON(prof);
+    alat(prof) = argo.LAT(prof);
+    adate(prof) = argo.JULD(prof);
+    adepth(1:ind_last,prof) = argo.PRES{prof,:};
+    asal(1:ind_last,prof) = argo.PSAL{prof,:};
+    atemp(1:ind_last,prof) = argo.TEMP{prof,:};
+    
+end
+
+% clean fill values
+asal(adepth==FillValue | asal==FillValue) = NaN;
+atemp(adepth==FillValue | atemp==FillValue) = NaN;
+adepth(adepth==FillValue) = NaN;
+
+% output as struct
+argo = struct('ID',aid,'STN',astn, 'date',adate, 'LON',alon,'LAT',alat, 'depth',adepth, 'salinity',asal, 'temperature',atemp);
+
 end

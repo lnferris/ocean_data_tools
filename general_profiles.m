@@ -9,11 +9,25 @@ function general_profiles(object,variable)
 
 cvar = eval(['object.',variable]);
 
+if nanmean(object.depth,'all') > 0
+    
+    object.depth = -object.depth;
+end
+
 figure
 hold on
 
-for i = 1:length(object.STN) 
-    scatter(cvar(:,i),object.depth,'k','.');  
+for prof = 1:length(object.STN) 
+    
+    if isvector(object.depth)
+    
+        scatter(cvar(:,prof),object.depth,'.');  
+        
+    else
+        
+        scatter(cvar(:,prof),object.depth(:,prof),'.');  
+        
+    end
 end
 
 end

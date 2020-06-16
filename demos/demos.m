@@ -23,6 +23,11 @@ start_date = '01-Jan-2016 00:00:00';
 end_date = '10-Jan-2016 00:00:00';
 [argo,matching_files] = argo_load(argo_dir,region,start_date,end_date);
 
+% argo_platform_subset
+
+platform_id = 7900204;
+[argo_sub] = argo_platform_subset(argo,platform_id);
+
 % argo_platform_map
 
 annotate = 1; 
@@ -30,22 +35,17 @@ argo_platform_map(argo,annotate) % annotate optional,  1=on 0=off
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
 bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour')
 
-% argo_platform_subset
+% argo_profiles
 
-platform_id = 1901411;
-[argo_sub] = argo_platform_subset(argo,platform_id);
+variable = 'temperature'; % 'temperature' 'salinity'
+annotate = 1; 
+argo_profiles(argo,variable,annotate) % annotate optional,  1=on 0=off
 
 % argo_profiles_map
 
 annotate = 1; 
 argo_profiles_map(argo,annotate) % annotate optional,  1=on 0=off
 bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour') % add bathymetry contours
-
-% argo_profiles
-
-variable = 'TEMP'; % 'PSAL' 'TEMP'
-annotate = 1; 
-argo_profiles(argo,variable,annotate) % annotate optional,  1=on 0=off
 
 
 %% bathymetry (smith & sandwell)
@@ -103,14 +103,14 @@ general_map(object)
 
 % general_section
 
-object = hycom; % hycom or woa
+object = hycom; % hycom or woa or argo
 variable = 'salinity'; % see particular object for options
 xref = 'STN'; % 'LAT' 'LON' 'STN';
 general_section(object,variable,xref)
 
 % general_profiles
 
-object = hycom; % hycom or woa
+object = hycom; % hycom or woa or argo
 variable = 'salinity'; % see particular object for options
 general_profiles(object,variable)
 
@@ -174,8 +174,6 @@ whp_cruise_profiles(cruise,variable)
 
 %% woa (world ocean atlas)
 
-% woa_simple_plot
-
 % woa_build_profiles   
 
 variable = 'salinity';  % 'salinity' 'temperature' 'oxygen'
@@ -185,6 +183,7 @@ bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
 general_map(woa,bathymetry_dir,'2Dcontour')
 general_section(woa,variable,'STN')
 general_profiles(woa,variable)
+
 
 %% wod (world ocean database)
 
