@@ -103,14 +103,14 @@ general_map(object)
 
 % general_section
 
-object = hycom; % hycom or woa or argo
+object = hycom; % hycom or woa or argo or wod
 variable = 'salinity'; % see particular object for options
 xref = 'STN'; % 'LAT' 'LON' 'STN';
 general_section(object,variable,xref)
 
 % general_profiles
 
-object = hycom; % hycom or woa or argo
+object = hycom; % hycom or woa or argo or wod
 variable = 'salinity'; % see particular object for options
 general_profiles(object,variable)
 
@@ -191,10 +191,7 @@ general_profiles(woa,variable)
 
 wod_dir = '/Users/lnferris/Desktop/woddata/*.nc';
 [wod] = wod_load(wod_dir);
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
 general_map(wod,bathymetry_dir)
-
-% wod_profiles
-
-variable = 'CTDTMP'; % 'CTDTMP'' 'CTDSAL'
-wod_profiles(wod,variable)
+general_profiles(wod,'temperature')
 
