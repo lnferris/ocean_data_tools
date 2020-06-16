@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 15-Jun-2020
+%  Jun 2020; Last revision: 16-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -96,10 +96,23 @@ general_map(object,bathymetry_dir,ptype)
 
 % general_region_subset
 
-object = hycom; % cruise or argo or wod hycom
+object = hycom; % cruise or argo or wod or hycom
 general_map(object)
 [xcoords,ycoords] = region_select(); % click desired  region on the figure
 [hycom_sub] = general_region_subset(object,xcoords,ycoords); 
+
+% general_section
+
+object = hycom; % hycom or woa
+variable = 'salinity'; % see particular object for options
+xref = 'STN'; % 'LAT' 'LON' 'STN';
+general_section(object,variable,xref)
+
+% general_profiles
+
+object = hycom; % hycom or woa
+variable = 'salinity'; % see particular object for options
+general_profiles(object,variable)
 
 
 %% hycom
@@ -124,16 +137,9 @@ hycom_simple_plot(url,date,variable,region,0)
 [hycom] =  hycom_build_profiles(url,date,variable,xcoords,ycoords);
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
 general_map(hycom,bathymetry_dir,'2Dcontour')
+general_section(hycom,variable,'STN')
+general_profiles(hycom,variable)
 
-% hycom_section
-
-xref = 'STN'; % 'LAT' 'LON' 'STN';
-variable = 'salinity';  % 'water_u' 'water_v' 'water_temp' 'salinity'
-hycom_section(hycom,variable,xref)
-
-% hycom_profiles
-
-hycom_profiles(hycom,variable)
 
 %% mocha
 
@@ -166,22 +172,30 @@ whp_cruise_section(cruise,variable,xref)
 whp_cruise_profiles(cruise,variable)
 
 
-%% wod_load
+%% woa (world ocean atlas)
+
+% woa_simple_plot
+
+% woa_build_profiles   
+
+variable = 'salinity';  % 'salinity' 'temperature' 'oxygen'
+[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+[woa] =  woa_build_profiles(variable,xcoords,ycoords);
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
+general_map(woa,bathymetry_dir,'2Dcontour')
+general_section(woa,variable,'STN')
+general_profiles(woa,variable)
+
+%% wod (world ocean database)
+
+% wod_load
 
 wod_dir = '/Users/lnferris/Desktop/woddata/*.nc';
 [wod] = wod_load(wod_dir);
 general_map(wod,bathymetry_dir)
 
-
-%% wod_profiles
+% wod_profiles
 
 variable = 'CTDTMP'; % 'CTDTMP'' 'CTDSAL'
 wod_profiles(wod,variable)
-
-
-
-
-
-
-
 
