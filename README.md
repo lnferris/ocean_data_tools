@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![release](https://img.shields.io/github/release-date/lnferris/ocean_data_tools) ![stars](https://img.shields.io/github/stars/lnferris/ocean_data_tools?style=social)
 
-**Copyright (c) 2018 lnferris**
+**Copyright (c) 2020 lnferris**
 
 ocean_data_tools Version 1.0 is a toolbox for interacting with freely-available ocean data. The script-based version of ocean_data_tools is archived in ocean_data_tools/archive/. Some functions (WOA, Mercator, HYCOM 3D) have not yet been added. If you need them in the meantime, head on over to the archived version.
 
