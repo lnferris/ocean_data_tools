@@ -34,14 +34,13 @@ east_inds = find(xcoords>180);  % deal with xcoords spanning dateline
         % get cast
         [lon_ind,~] = near(svg.lon,xcoords(cast));
         [lat_ind,~] = near(svg.lat,ycoords(cast));
-        tracer = sv.data(tin,:,lat_ind,lon_ind);
 
         % interpolate cast
         hstn(cast) = cast;
         hdate(cast) = svg.time(tin);
         hlon(cast) = svg.lon(lon_ind);
         hlat(cast) = svg.lat(lat_ind);
-        hvariable(:,cast) = interp1(svg.z(:),tracer,hdepth,'linear');
+        hvariable(:,cast) = interp1(svg.z(:),sv.data(tin,:,lat_ind,lon_ind),hdepth,'linear');
         
         if ismember(cast,east_inds)
             hlon(cast) = hlon(cast)+360; 

@@ -73,35 +73,35 @@ for prof = 1:height(argo)
 end
 
 % load table data into arrays
-aid = NaN(1,prof_dim);
-astn = NaN(1,prof_dim);
-alon = NaN(1,prof_dim);
-alat = NaN(1,prof_dim);
-adate = NaN(1,prof_dim);
-adepth = NaN(z_dim,prof_dim);
-asal = NaN(z_dim,prof_dim);
-atemp = NaN(z_dim,prof_dim);
+id = NaN(1,prof_dim);
+stn = NaN(1,prof_dim);
+lon = NaN(1,prof_dim);
+lat = NaN(1,prof_dim);
+date = NaN(1,prof_dim);
+depth = NaN(z_dim,prof_dim);
+sal = NaN(z_dim,prof_dim);
+temp = NaN(z_dim,prof_dim);
 
 for prof = 1:prof_dim
     
     ind_last = length(argo.PRES{prof,:});
-    astn(prof) = prof;
-    aid(prof) = argo.ID(prof);
-    alon(prof) = argo.LON(prof);
-    alat(prof) = argo.LAT(prof);
-    adate(prof) = argo.JULD(prof);
-    adepth(1:ind_last,prof) = argo.PRES{prof,:};
-    asal(1:ind_last,prof) = argo.PSAL{prof,:};
-    atemp(1:ind_last,prof) = argo.TEMP{prof,:};
+    stn(prof) = prof;
+    id(prof) = argo.ID(prof);
+    lon(prof) = argo.LON(prof);
+    lat(prof) = argo.LAT(prof);
+    date(prof) = argo.JULD(prof);
+    depth(1:ind_last,prof) = argo.PRES{prof,:};
+    sal(1:ind_last,prof) = argo.PSAL{prof,:};
+    temp(1:ind_last,prof) = argo.TEMP{prof,:};
     
 end
 
 % clean fill values
-asal(adepth==FillValue | asal==FillValue) = NaN;
-atemp(adepth==FillValue | atemp==FillValue) = NaN;
-adepth(adepth==FillValue) = NaN;
+sal(depth==FillValue | sal==FillValue) = NaN;
+temp(depth==FillValue | temp==FillValue) = NaN;
+depth(depth==FillValue) = NaN;
 
 % output as struct
-argo = struct('ID',aid,'STN',astn, 'date',adate, 'LON',alon,'LAT',alat, 'depth',adepth, 'salinity',asal, 'temperature',atemp);
+argo = struct('ID',id,'STN',stn, 'date',date, 'LON',lon,'LAT',lat, 'depth',depth, 'salinity',sal, 'temperature',temp);
 
 end

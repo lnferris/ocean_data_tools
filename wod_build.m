@@ -39,28 +39,28 @@ for prof = 1:height(wod)
 end
 
 % load table data into arrays
-wstn = NaN(1,prof_dim);
-wlon = NaN(1,prof_dim);
-wlat = NaN(1,prof_dim);
-wdate = NaN(1,prof_dim);
-wdepth = NaN(z_dim,prof_dim);
-wsal = NaN(z_dim,prof_dim);
-wtemp = NaN(z_dim,prof_dim);
+stn = NaN(1,prof_dim);
+lon = NaN(1,prof_dim);
+lat = NaN(1,prof_dim);
+date = NaN(1,prof_dim);
+depth = NaN(z_dim,prof_dim);
+sal = NaN(z_dim,prof_dim);
+temp = NaN(z_dim,prof_dim);
 
 for prof = 1:prof_dim
     
     ind_last = length(wod.ALT{prof,:});
-    wstn(prof) = prof;
-    wlon(prof) = wod.LON(prof);
-    wlat(prof) = wod.LAT(prof);
-    wdate(prof) = wod.DATE(prof);
-    wdepth(1:ind_last,prof) = wod.ALT{prof,:};
-    wsal(1:ind_last,prof) = wod.CTDSAL{prof,:};
-    wtemp(1:ind_last,prof) = wod.CTDTMP{prof,:};
+    stn(prof) = prof;
+    lon(prof) = wod.LON(prof);
+    lat(prof) = wod.LAT(prof);
+    date(prof) = wod.DATE(prof);
+    depth(1:ind_last,prof) = wod.ALT{prof,:};
+    sal(1:ind_last,prof) = wod.CTDSAL{prof,:};
+    temp(1:ind_last,prof) = wod.CTDTMP{prof,:};
     
 end
 
 % output as struct
-wod = struct('STN',wstn, 'date',wdate, 'LON',wlon,'LAT',wlat, 'depth',wdepth, 'salinity',wsal, 'temperature',wtemp);
+wod = struct('STN',stn, 'date',date, 'LON',lon,'LAT',lat, 'depth',depth, 'salinity',sal, 'temperature',temp);
 
 end
