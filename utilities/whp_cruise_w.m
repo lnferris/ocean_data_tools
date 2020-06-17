@@ -6,8 +6,8 @@ function [w] = whp_cruise_w(wvke_dir)
     for i = 1:length(full_path) % For each file in full_path...
         filename = [full_path(i).folder '/' full_path(i).name];
         try
-            nc = netcdf.open(filename, 'NOWRITE'); % Open the file as a netcdf datasource.
-            STN = num2str(str2double(filename(end-11:end-9)));   
+            nc = netcdf.open(filename, 'NOWRITE'); % Open the file as a netcdf datasource. 
+            STN = filename(end-11:end-9); 
             WDEP = netcdf.getVar(nc,netcdf.inqVarID(nc,'depth')); % Depth m
             WHAB = netcdf.getVar(nc,netcdf.inqVarID(nc,'hab')); % Height Above Seabed m
             DC_W = netcdf.getVar(nc,netcdf.inqVarID(nc,'dc_w')); % Downcast Vertical Ocean Velocity m/s

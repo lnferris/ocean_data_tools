@@ -7,7 +7,7 @@ function [vke] = whp_cruise_vke(wvke_dir)
         filename = [full_path(i).folder '/' full_path(i).name];
         try
             nc = netcdf.open(filename, 'NOWRITE'); % Open the file as a netcdf datasource.
-            STN = num2str(str2double(filename(end-13:end-11)));  
+            STN = filename(end-13:end-11);  
             VKEDEP = netcdf.getVar(nc,netcdf.inqVarID(nc,'depth')); % Window Center Depth, m
             VKEHAB = netcdf.getVar(nc,netcdf.inqVarID(nc,'hab')); % Window Center Height Above Seabed
             P0 = netcdf.getVar(nc,netcdf.inqVarID(nc,'p0')); % Normalized VKE Density, W/kg

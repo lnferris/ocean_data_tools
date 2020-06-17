@@ -8,7 +8,7 @@ function [ctdo] = whp_cruise_ctdo(ctdo_dir)
         filename = [full_path(i).folder '/' full_path(i).name]; 
         try
             nc = netcdf.open(filename, 'NOWRITE'); % Open the file as a netcdf datasource.
-            STN = num2str(str2double(netcdf.getVar(nc,netcdf.inqVarID(nc,'station')))); %
+            STN = netcdf.getVar(nc,netcdf.inqVarID(nc,'station')); 
             UTC = netcdf.getVar(nc,netcdf.inqVarID(nc,'woce_date'));
             LON = double(netcdf.getVar(nc,netcdf.inqVarID(nc,'longitude')));
             LAT = double(netcdf.getVar(nc,netcdf.inqVarID(nc,'latitude')));

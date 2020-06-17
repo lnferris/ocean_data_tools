@@ -7,13 +7,13 @@ function [uv] = whp_cruise_uv(uv_dir)
         filename = [full_path(i).folder '/' full_path(i).name];
         try
             if strcmp(filename(end-2:end),'mat')                   % handle .mat files
-                STN  = num2str(str2double(filename(end-6:end-4))); 
+                STN  = filename(end-6:end-4); 
                 load(filename,'-mat');
                 Z = dr.z;
                 U = dr.u;
                 V = dr.v;
             elseif strcmp(filename(end-2:end),'.nc')               % handle .nc files
-                STN  = num2str(str2double(filename(end-5:end-3))); 
+                STN  = filename(end-5:end-3); 
                 nc = netcdf.open(filename, 'NOWRITE'); % Open the file as a netcdf datasource.
                 Z = netcdf.getVar(nc,netcdf.inqVarID(nc,'z')); % Depth m
                 U = netcdf.getVar(nc,netcdf.inqVarID(nc,'u')); % Depth m
