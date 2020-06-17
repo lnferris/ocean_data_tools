@@ -3,7 +3,6 @@
 %  Website: https://github.com/lnferris/ocean_data_tools
 %  Jun 2020; Last revision: 16-Jun-2020
 %  Distributed under the terms of the MIT License
-%  Dependencies: nctoolbox
 
 function argo_profiles(argo,variable,annotate)
 
