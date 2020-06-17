@@ -18,5 +18,12 @@ function [w] = whp_cruise_w(wvke_dir)
             disp(['Cannot read ', full_path(i).name])
         end
     end
+    
+    % deal with null directory
+    if height(w)==0     
+        w = cell2table(cell(1,5)); % Make an empty table to hold profile data.
+        w.Properties.VariableNames = {'STN','WDEP','WHAB','DC_W','UC_W'};  
+        w{1,:} = {'1', NaN, NaN, NaN,NaN};
+    end  
 
 end

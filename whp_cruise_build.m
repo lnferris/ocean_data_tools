@@ -7,47 +7,36 @@
 function [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir)
 
 % get ctdo stations
-
 [ctdo] = whp_cruise_ctdo(ctdo_dir);
 
-if nargin >= 2
+% get ladcp uv if available    
+[uv] = whp_cruise_uv(uv_dir);
 
-        % get ladcp uv if available    
-
-        [uv] = whp_cruise_uv(uv_dir);
-
-    if nargin == 3
-
-        % also get ladcp w and vke if available   
-
-        [w] = whp_cruise_w(wvke_dir);
-
-        [vke] = whp_cruise_vke(wvke_dir);
-
-    end
-
-end
+% also get ladcp w and vke if available   
+[w] = whp_cruise_w(wvke_dir);
+[vke] = whp_cruise_vke(wvke_dir);
 
 % merge tables
 
 ctdo.STN = str2double(ctdo.STN);
+uv.STN = str2double(uv.STN);
+w.STN = str2double(w.STN);
+vke.STN = str2double(vke.STN);
 
-if exist('uv','var') == 1
-    uv.STN = str2double(uv.STN);
-    cruise = outerjoin(ctdo,uv,'MergeKeys',true);
-    
-    if exist('w','var') == 1
-        w.STN = str2double(w.STN);
-        vke.STN = str2double(vke.STN);
-        cruise = outerjoin(cruise,w,'MergeKeys',true);  
-        cruise = outerjoin(cruise,vke,'MergeKeys',true);  
-    end
+cruise = outerjoin(ctdo,uv,'MergeKeys',true);
+cruise = outerjoin(cruise,w,'MergeKeys',true);  
+cruise = outerjoin(cruise,vke,'MergeKeys',true);  
+
+% in case of null ctdo_dir
+try   
+    cruise.LON = cell2mat(cruise.LON);
+    cruise.LAT = cell2mat(cruise.LAT);
+    cruise.UTC = cell2mat(cruise.UTC);
+catch     
+    cruise.LON = NaN*cruise.STN;
+    cruise.LAT = NaN*cruise.STN;
+    cruise.UTC = NaN*cruise.STN;
 end
-
-
-cruise.LON = cell2mat(cruise.LON);
-cruise.LAT = cell2mat(cruise.LAT);
-cruise.UTC = cell2mat(cruise.UTC);
 
 if min(cruise.LON) < -170 && max(cruise.LON)>170  % if working near dateline wrap to 0/360
     cruise.LON(cruise.LON < 0) = cruise.LON(cruise.LON < 0)+360; 
@@ -118,5 +107,14 @@ end
 cruise = struct('STN',STN,'LON',LON,'LAT',LAT,'DATE',UTC,'CTDPRS',CTDPRS,'CTDTMP',CTDTMP,...
                 'CTDSAL',CTDSAL,'CTDOXY',CTDOXY,'Z',Z,'U',U,'V',V,'WDEP',WDEP,'WHAB',WHAB,...
                 'DC_W',DC_W,'UC_W',UC_W,'VKE_DEP',VKEDEP,'VKE_HAB',VKEHAB,'P0',P0,'EPS',EPS);
+            
+% delete null fields
+fns = fieldnames(cruise);
+for i = 1:length(fns)  
+    field = cruise.(fns{i});
+    if isempty(field(~isnan(field))) 
+        cruise = rmfield(cruise,fns{i});
+    end
+end
 
 end

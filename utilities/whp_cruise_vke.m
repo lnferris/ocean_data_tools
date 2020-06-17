@@ -18,5 +18,11 @@ function [vke] = whp_cruise_vke(wvke_dir)
             disp(['Cannot read ', full_path(i).name])
         end
     end
-
+    
+    % deal with null directory
+    if height(vke)==0     
+        vke = cell2table(cell(1,5)); % Make an empty table to hold profile data.
+        vke.Properties.VariableNames = {'STN','VKEDEP','VKEHAB','P0','EPS'};  
+        vke{1,:} = {'1', NaN, NaN, NaN,NaN};
+    end     
 end

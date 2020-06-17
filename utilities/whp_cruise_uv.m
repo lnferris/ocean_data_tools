@@ -25,4 +25,11 @@ function [uv] = whp_cruise_uv(uv_dir)
             disp(['Cannot read ', full_path(i).name])
         end
     end
+    
+    % deal with null directory
+    if height(uv)==0     
+        uv = cell2table(cell(1,4)); % Make an empty table to hold profile data.
+        uv.Properties.VariableNames = {'STN','Z','U','V'};  
+        uv{1,:} = {'1', NaN, NaN, NaN};
+    end      
 end

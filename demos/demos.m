@@ -159,7 +159,7 @@ ctdo_dir = '/Users/lnferris/Desktop/S04P/320620180309_nc_ctd/*.nc';
 %uv_dir = '/Users/lnferris/Desktop/S04P/processed_uv_20181030_nc/*.nc'; % Can use .nc or .mat for uv
 uv_dir = '/Users/lnferris/Desktop/S04P/processed_uv_20181030/*.mat';
 wvke_dir = '/Users/lnferris/Desktop/S04P/processed_w_20181030/';
-[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir); % uv_dir, wvke_dir optional 
+[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir); % Use a dummy path (e.g. uv_dir ='null') if missing data. 
 
 % whp_cruise_section
 
