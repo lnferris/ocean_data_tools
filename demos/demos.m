@@ -91,26 +91,26 @@ bathymetry_section_whp(bathymetry_dir,cruise,xref)
 
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
 ptype = '2Dcontour'; % '2Dscatter' '2Dcontour'
-object = cruise; % cruise or argo or wod or hycom
+object = cruise; % argo or cruise or hycom or woa or wod
 general_map(object,bathymetry_dir,ptype)
 
 % general_region_subset
 
-object = hycom; % cruise or argo or wod or hycom
+object = hycom; % argo or cruise or hycom or woa or wod
 general_map(object)
 [xcoords,ycoords] = region_select(); % click desired  region on the figure
 [hycom_sub] = general_region_subset(object,xcoords,ycoords); 
 
 % general_section
 
-object = hycom; % hycom or woa or argo or wod
+object = hycom; % argo or hycom or woa or wod
 variable = 'salinity'; % see particular object for options
 xref = 'STN'; % 'LAT' 'LON' 'STN';
 general_section(object,variable,xref)
 
 % general_profiles
 
-object = hycom; % hycom or woa or argo or wod
+object = hycom; % argo or hycom or woa or wod
 variable = 'salinity'; % see particular object for options
 general_profiles(object,variable)
 

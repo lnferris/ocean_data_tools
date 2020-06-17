@@ -77,6 +77,6 @@ end
 
     end
     
-woa = struct('STN', wstn, 'date', wdate, 'LON', wlon,'LAT', wlat,'depth',wdepth.', variable, wvariable);
+woa = struct('STN', wstn, 'DATE', wdate, 'LON', wlon,'LAT', wlat,'depth',wdepth.', variable, wvariable);
   
 end

@@ -48,7 +48,7 @@ east_inds = find(xcoords>180);  % deal with xcoords spanning dateline
 
     end
     
-hycom = struct('STN', hstn, 'date', hdate, 'LON', hlon,'LAT', hlat,'depth',hdepth.', variable, hvariable);
+hycom = struct('STN', hstn, 'DATE', hdate, 'LON', hlon,'LAT', hlat,'depth',hdepth.', variable, hvariable);
 
     
 end

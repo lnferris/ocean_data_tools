@@ -61,6 +61,6 @@ for prof = 1:prof_dim
 end
 
 % output as struct
-wod = struct('STN',stn, 'date',date, 'LON',lon,'LAT',lat, 'depth',depth, 'salinity',sal, 'temperature',temp);
+wod = struct('STN',stn, 'DATE',date, 'LON',lon,'LAT',lat, 'depth',depth, 'salinity',sal, 'temperature',temp);
 
 end
