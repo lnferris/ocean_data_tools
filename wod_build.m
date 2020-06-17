@@ -4,7 +4,7 @@
 %  Jun 2020; Last revision: 16-Jun-2020
 %  Distributed under the terms of the MIT License
 
-function [wod] = wod_load(wod_dir)
+function [wod] = wod_build(wod_dir)
 
     wod = cell2table(cell(0,6)); % Make an empty table to hold profile data.
     wod.Properties.VariableNames = {'ALT' 'CTDSAL' 'CTDTMP' 'LAT' 'LON' 'DATE'};  

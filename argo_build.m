@@ -5,7 +5,7 @@
 %  Jun 2020; Last revision: 16-Jun-2020
 %  Distributed under the terms of the MIT License
 
-function [argo,matching_files] = argo_load(argo_dir,search_region,start_date,end_date)
+function [argo,matching_files] = argo_build(argo_dir,search_region,start_date,end_date)
 
 FillValue = 99999; % From Argo manual.
 

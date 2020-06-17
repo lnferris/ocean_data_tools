@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 16-Jun-2020
+%  Jun 2020; Last revision: 17-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -15,13 +15,13 @@ setup_nctoolbox
 
 %% argo
 
-% argo_load
+% argo_build
 
 argo_dir = '/Users/lnferris/Desktop/coriolis_25feb2018/*profiles*.nc';
 region = [-90.0 90.0 -90.0 -60.0]; %  Search region [-90 90 -180 180]
 start_date = '01-Jan-2016 00:00:00';
 end_date = '10-Jan-2016 00:00:00';
-[argo,matching_files] = argo_load(argo_dir,region,start_date,end_date);
+[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date);
 
 % argo_platform_subset
 
@@ -153,13 +153,13 @@ mocha_simple_plot(month,depth,variable)
 
 %% whp cruise data (go-ship)
 
-% whp_cruise_load
+% whp_cruise_build
 
 ctdo_dir = '/Users/lnferris/Desktop/S04P/320620180309_nc_ctd/*.nc';
 %uv_dir = '/Users/lnferris/Desktop/S04P/processed_uv_20181030_nc/*.nc'; % Can use .nc or .mat for uv
 uv_dir = '/Users/lnferris/Desktop/S04P/processed_uv_20181030/*.mat';
 wvke_dir = '/Users/lnferris/Desktop/S04P/processed_w_20181030/';
-[cruise] = whp_cruise_load(ctdo_dir,uv_dir,wvke_dir); % uv_dir, wvke_dir optional 
+[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir); % uv_dir, wvke_dir optional 
 
 % whp_cruise_section
 
@@ -187,10 +187,10 @@ general_profiles(woa,variable)
 
 %% wod (world ocean database)
 
-% wod_load
+% wod_build
 
 wod_dir = '/Users/lnferris/Desktop/woddata/*.nc';
-[wod] = wod_load(wod_dir);
+[wod] = wod_build(wod_dir);
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
 general_map(wod,bathymetry_dir)
 general_profiles(wod,'temperature')

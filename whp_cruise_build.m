@@ -4,7 +4,7 @@
 %  Jun 2020; Last revision: 17-Jun-2020
 %  Distributed under the terms of the MIT License
 
-function [cruise] = whp_cruise_load(ctdo_dir,uv_dir,wvke_dir)
+function [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir)
 
 % get ctdo stations
 
