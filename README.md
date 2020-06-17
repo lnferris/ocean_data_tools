@@ -10,7 +10,7 @@ ocean_data_tools Version 1.0 is a toolbox for interacting with freely-available 
 
 The ethos of ocean_data_tools is to build data objects (e.g. argo, cruise, hycom, woa, wod, woa) and call general functions on these objects.
 
-Email Laur Ferris (lnferris@vims.edu) if you find a bug and we’ll get it fixed.
+Please email Laur Ferris (lnferris@alum.mit.edu.edu) if you find a bug.
 
 ## Demos
 
