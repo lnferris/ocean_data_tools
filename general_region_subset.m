@@ -12,21 +12,13 @@ hold on
 plot([xcoords; xcoords(1)],[ycoords; ycoords(1)],'LineWidth',1) % % Plot polygon
 plot(object.LON(in),object.LAT(in),'r+') % Plot points inside polygon
 
-if isa(object,'table')
-    
-    subobject = object(in,:); % Create new datable of only flagged profiles.
-    
-elseif isa(object,'struct')
-    
-    subobject.LON = object.LON(in);
-    subobject.LAT = object.LAT(in);
-    subobject.STN = object.STN(in);
-    subobject.date = object.date(in);
-    subobject.depth = object.depth;
-    fns = fieldnames(object);
-    subobject.(fns{6}) = object.(fns{6})(:,in);
-
-end
+subobject.LON = object.LON(in);
+subobject.LAT = object.LAT(in);
+subobject.STN = object.STN(in);
+subobject.date = object.date(in);
+subobject.depth = object.depth;
+fns = fieldnames(object);
+subobject.(fns{6}) = object.(fns{6})(:,in);
 
 legend('object','region','subobject')
 
