@@ -6,23 +6,17 @@
 
 function [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir)
 
-% get ctdo stations
+% load data
 [ctdo] = whp_cruise_ctdo(ctdo_dir);
-
-% get ladcp uv if available    
-[uv] = whp_cruise_uv(uv_dir);
-
-% also get ladcp w and vke if available   
+[uv] = whp_cruise_uv(uv_dir);   
 [w] = whp_cruise_w(wvke_dir);
 [vke] = whp_cruise_vke(wvke_dir);
 
-% merge tables
-
+% format and merge tables
 ctdo.STN = str2double(ctdo.STN);
 uv.STN = str2double(uv.STN);
 w.STN = str2double(w.STN);
 vke.STN = str2double(vke.STN);
-
 cruise = outerjoin(ctdo,uv,'MergeKeys',true);
 cruise = outerjoin(cruise,w,'MergeKeys',true);  
 cruise = outerjoin(cruise,vke,'MergeKeys',true);  
@@ -38,12 +32,12 @@ catch
     cruise.UTC = NaN*cruise.STN;
 end
 
-if min(cruise.LON) < -170 && max(cruise.LON)>170  % if working near dateline wrap to 0/360
+% if working near dateline wrap to 0/360
+if min(cruise.LON) < -170 && max(cruise.LON)>170
     cruise.LON(cruise.LON < 0) = cruise.LON(cruise.LON < 0)+360; 
 end  
 
-
-% find necessary array dimensions
+% find appropriate array dimensions
 prof_dim = height(cruise);
 z_dim = 0;
 for prof = 1:height(cruise)   
