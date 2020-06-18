@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 17-Jun-2020
+%  Jun 2020; Last revision: 18-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -74,15 +74,9 @@ bathymetry_plot(bathymetry_dir,region,ptype)
 
 xref = 'LON'; % 'LON' 'LAT'
 whp_cruise_section(cruise,variable,xref)
-xcoords = linspace(170,280,50); % could alternatively use transect_select() to select coordinates
-ycoords = linspace(-70,-66,50);
+xcoords = cruise.LON; % could alternatively use transect_select() to select coordinates
+ycoords = cruise.LAT;
 bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)
-
-% bathymetry_section_whp
-
-xref = 'LON'; % 'LON' 'LAT'
-whp_cruise_section(cruise,variable,xref)
-bathymetry_section_whp(bathymetry_dir,cruise,xref)
 
 
 %% general

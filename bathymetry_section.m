@@ -31,20 +31,21 @@ for i = 1:length(xcoords)
     bathymetry_section(i) = bath(lat_ind,lon_ind);
 end
 
-hold on
 
 if strcmp(xref,'LON')
-
-    plot(xcoords,bathymetry_section,'k','LineWidth',4)
-
+    xvar = xcoords;   
 elseif strcmp(xref,'LAT')
-
-    plot(ycoords,bathymetry_section,'k','LineWidth',4)
-
+    xvar = ycoords;   
 else
     disp('Check spelling of reference axis');  
 end
 
+% order bathymetry data by xref.
+[xvar,xvar_inds] = sort(xvar);
+bathymetry_section = bathymetry_section(xvar_inds);
+
+hold on
+plot(xvar,bathymetry_section,'k','LineWidth',4)
 hold off
 
 end
