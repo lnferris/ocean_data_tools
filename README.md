@@ -2,15 +2,14 @@
 
 # ocean_data_tools 
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![release](https://img.shields.io/github/release-date/lnferris/ocean_data_tools) ![stars](https://img.shields.io/github/stars/lnferris/ocean_data_tools?style=social)
+[![GitHub license](https://img.shields.io/github/license/lnferris/ocean_data_tools)](https://github.com/lnferris/ocean_data_tools/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/lnferris/ocean_data_tools)](https://github.com/lnferris/ocean_data_tools/stargazers) [![GitHub forks](https://img.shields.io/github/forks/lnferris/ocean_data_tools)](https://github.com/lnferris/ocean_data_tools/network) [![GitHub issues](https://img.shields.io/github/issues/lnferris/ocean_data_tools)](https://github.com/lnferris/ocean_data_tools/issues)
 
-**Copyright (c) 2020 lnferris**
+**Copyright (c) 2020 lnferris** (lnferris@alum.mit.edu)
 
 ocean_data_tools Version 1.0 is a toolbox for interacting with freely-available ocean data. The script-based version of ocean_data_tools is archived in ocean_data_tools/archive/. Some functions (WOA, Mercator, HYCOM 3D) have not yet been added. If you need them in the meantime, head on over to the archived version.
 
 The ethos of ocean_data_tools is to build data objects (e.g. argo, cruise, hycom, woa, wod, woa) and call general functions on these objects.
 
-Please email Laur Ferris (lnferris@alum.mit.edu.edu) if you find a bug and we can fix it.
 
 ## Demos
 
