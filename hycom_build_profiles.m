@@ -1,18 +1,22 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 15-Jun-2020
+%  Jun 2020; Last revision: 20-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
-function [hycom] =  hycom_build_profiles(url,date,variable,xcoords,ycoords)
+function [hycom] =  hycom_build_profiles(url,date,variable_list,xcoords,ycoords)
 
 east_inds = find(xcoords>180);  % deal with xcoords spanning dateline
-    xcoords(east_inds) = xcoords(east_inds)-360;
+xcoords(east_inds) = xcoords(east_inds)-360;
 
-    % create grid
-    nc = ncgeodataset(url); % Assign a ncgeodataset handle.
-    nc.variables            % Print list of available variables. 
+n = length(variable_list);
+nc = ncgeodataset(url); % Assign a ncgeodataset handle.
+nc.variables            % Print list of available variables.
+
+for i = 1
+
+    variable = variable_list{i};
     sv = nc{variable}; % Assign ncgeovariable handle: 'water_u' 'water_v' 'water_temp' 'salinity'
     sv.attributes % Print ncgeovariable attributes.
     datestr(sv.timeextent(),29) % Print date range of the ncgeovariable.
@@ -41,14 +45,39 @@ east_inds = find(xcoords>180);  % deal with xcoords spanning dateline
         hlon(cast) = svg.lon(lon_ind);
         hlat(cast) = svg.lat(lat_ind);
         hvariable(:,cast) = interp1(svg.z(:),sv.data(tin,:,lat_ind,lon_ind),hdepth,'linear');
-        
+
         if ismember(cast,east_inds)
             hlon(cast) = hlon(cast)+360; 
         end
 
     end
-    
-hycom = struct('STN', hstn, 'DATE', hdate, 'LON', hlon,'LAT', hlat,'depth',hdepth.', variable, hvariable);
 
+    hycom = struct('STN', hstn, 'DATE', hdate, 'LON', hlon,'LAT', hlat,'depth',hdepth.', variable, hvariable);
+
+end  
     
+% pickup additonal variables
+
+if n > 1     
+    for i = 2:n
+    
+        variable = variable_list{i};
+        sv = nc{variable}; % Assign ncgeovariable handle: 'water_u' 'water_v' 'water_temp' 'salinity'
+        svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
+        
+        if  tin ~= near(svg.time,datenum(date,'dd-mmm-yyyy HH:MM:SS'))
+            disp('A variable is missing timestep. Please remove from variable_list.')
+            return
+        end
+
+        hvariable = NaN(round(max(abs(svg.z)))+1,length(xcoords));
+        for cast = 1:length(xcoords)
+            [lon_ind,~] = near(svg.lon,xcoords(cast));
+            [lat_ind,~] = near(svg.lat,ycoords(cast));
+            hvariable(:,cast) = interp1(svg.z(:),sv.data(tin,:,lat_ind,lon_ind),hycom.depth,'linear');
+        end
+
+        hycom.(variable) =  hvariable;
+        
+    end  
 end

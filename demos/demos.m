@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 18-Jun-2020
+%  Jun 2020; Last revision: 20-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -123,17 +123,15 @@ depth = -150;                          % Depth level between 0 and -5000m
 arrows = 0;                            % Velocity direction arrows 1=on 0=off
 hycom_simple_plot(url,date,variable,region,depth,arrows) % arrows optional 
 
-
 % hycom_build_profiles   
 
-variable = 'salinity';  % 'water_u' 'water_v' 'water_temp' 'salinity'
-hycom_simple_plot(url,date,variable,region,0)
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
-[hycom] =  hycom_build_profiles(url,date,variable,xcoords,ycoords);
+variable_list = {'water_temp','salinity'}; % 'water_u' 'water_v' 'water_temp' 'salinity'
+[hycom] =  hycom_build_profiles(url,date,variable_list,xcoords,ycoords);
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
 general_map(hycom,bathymetry_dir,'2Dcontour')
-general_section(hycom,variable,'STN')
-general_profiles(hycom,variable)
+general_section(hycom,'water_temp','STN')
+general_profiles(hycom,'salinity')
 
 
 %% mocha
