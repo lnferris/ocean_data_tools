@@ -5,27 +5,18 @@
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
-function [sv,svg] = hycom_simple_plot_slab(url,date,variable,region)
+function [sv,svg] = hycom_simple_plot_layer(nc,date,variable,region)
 
-nc = ncgeodataset(url); % Assign a ncgeodataset handle.
-nc.variables            % Print list of available variables. 
 sv = nc{variable}; % Assign ncgeovariable handle.
 sv.attributes % Print ncgeovariable attributes.
 datestr(sv.timeextent(),29) % Print date range of the ncgeovariable.
 svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
-
+ 
 % Find Indices
 
 [tin,~] = near(svg.time,datenum(date,'dd-mmm-yyyy HH:MM:SS'));  % Find time index near date of interest. 
 [lats,~] = near(svg.lat,region(1)); % Find lat index near southern boundary [-90 90] of region.
 [latn,~] = near(svg.lat,region(2));
-
-if region(3) > 180
-    region(3) = region(3)-360;
-end
-if region(4) > 180
-    region(4) = region(4)-360;
-end
 
 if region(3) > region(4) && region(4) < 0 % If data spans the dateline...
     [lonw_A] = near(svg.lon,region(3));% Find lon indexes of lefthand chunk.

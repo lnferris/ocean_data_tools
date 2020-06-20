@@ -7,17 +7,28 @@
 
 function hycom_simple_plot(url,date,variable,region,depth,arrows)
 
+% format input
+if region(3) > 180
+    region(3) = region(3)-360;
+end
+if region(4) > 180
+    region(4) = region(4)-360;
+end
+
+nc = ncgeodataset(url); % Assign a ncgeodataset handle.
+nc.variables            % Print list of available variables. 
+
 standard_vars = {'water_u','water_v','water_temp','salinity'};
 slab_vars = {'water_u_bottom','water_v_bottom','water_temp_bottom','salinity_bottom','surf_el'};
 
 if ~any(strcmp(standard_vars,variable))  
     
     if any(strcmp(slab_vars,variable))
-        hycom_simple_plot_slab(url,date,variable,region)
+        hycom_simple_plot_layer(nc,date,variable,region)
         return
         
     elseif strcmp(variable,'velocity') 
-        hycom_simple_plot_velocity(url,date,region,depth,arrows) 
+        hycom_simple_plot_velocity(nc,date,region,depth,arrows) 
         return 
         
     else    
@@ -26,8 +37,6 @@ if ~any(strcmp(standard_vars,variable))
     
 end
 
-nc = ncgeodataset(url); % Assign a ncgeodataset handle.
-nc.variables            % Print list of available variables. 
 sv = nc{variable}; % Assign ncgeovariable handle: 'water_u' 'water_v' 'water_temp' 'salinity'
 sv.attributes % Print ncgeovariable attributes.
 datestr(sv.timeextent(),29) % Print date range of the ncgeovariable.
@@ -37,16 +46,8 @@ svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates 
 
 [tin,~] = near(svg.time,datenum(date,'dd-mmm-yyyy HH:MM:SS'));  % Find time index near date of interest. 
 [din,~] = near(svg.z,depth); % Choose index of depth (z-level) to use for 2-D plots; see svg.z for options.
-
 [lats,~] = near(svg.lat,region(1)); % Find lat index near southern boundary [-90 90] of region.
 [latn,~] = near(svg.lat,region(2));
-
-if region(3) > 180
-    region(3) = region(3)-360;
-end
-if region(4) > 180
-    region(4) = region(4)-360;
-end
 
 if region(3) > region(4) && region(4) < 0 % If data spans the dateline...
     [lonw_A] = near(svg.lon,region(3));% Find lon indexes of lefthand chunk.
