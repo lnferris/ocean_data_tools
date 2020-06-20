@@ -117,11 +117,12 @@ setup_nctoolbox
 
 url = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % Could also be a local file e.g. '/Users/lnferris/expt_57.7.nc'
 date = '28-Aug-2017 00:00:00';   
-variable = 'velocity';                 % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity'
+variable = 'velocity';                 % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 'surf_el' 'water_u_bottom' 'water_v_bottom' 'water_temp_bottom' 'salinity_bottom' 
 region = [-5.0, 45.0 ,120, -150];      % [-90 90 -180 180]
 depth = -150;                          % Depth level between 0 and -5000m
 arrows = 0;                            % Velocity direction arrows 1=on 0=off
 hycom_simple_plot(url,date,variable,region,depth,arrows) % arrows optional 
+
 
 % hycom_build_profiles   
 

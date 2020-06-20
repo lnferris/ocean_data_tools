@@ -5,30 +5,11 @@
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
-function hycom_simple_plot(url,date,variable,region,depth,arrows)
-
-standard_vars = {'water_u','water_v','water_temp','salinity'};
-slab_vars = {'water_u_bottom','water_v_bottom','water_temp_bottom','salinity_bottom','surf_el'};
-
-if ~any(strcmp(standard_vars,variable))  
-    
-    if any(strcmp(slab_vars,variable))
-        hycom_simple_plot_slab(url,date,variable,region)
-        return
-        
-    elseif strcmp(variable,'velocity') 
-        hycom_simple_plot_velocity(url,date,region,depth,arrows) 
-        return 
-        
-    else    
-        disp('Check spelling of variable variable');    
-    end
-    
-end
+function [sv,svg] = hycom_simple_plot_slab(url,date,variable,region)
 
 nc = ncgeodataset(url); % Assign a ncgeodataset handle.
 nc.variables            % Print list of available variables. 
-sv = nc{variable}; % Assign ncgeovariable handle: 'water_u' 'water_v' 'water_temp' 'salinity'
+sv = nc{variable}; % Assign ncgeovariable handle.
 sv.attributes % Print ncgeovariable attributes.
 datestr(sv.timeextent(),29) % Print date range of the ncgeovariable.
 svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
@@ -36,8 +17,6 @@ svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates 
 % Find Indices
 
 [tin,~] = near(svg.time,datenum(date,'dd-mmm-yyyy HH:MM:SS'));  % Find time index near date of interest. 
-[din,~] = near(svg.z,depth); % Choose index of depth (z-level) to use for 2-D plots; see svg.z for options.
-
 [lats,~] = near(svg.lat,region(1)); % Find lat index near southern boundary [-90 90] of region.
 [latn,~] = near(svg.lat,region(2));
 
@@ -62,20 +41,20 @@ end
 if region(3) > region(4) && region(4) < 0 % If data spans the dateline...
 
     figA = figure; % Plot the lefthand depth level.
-    pcolorjw(svg.lon(lonw_A:lone_A),svg.lat(lats:latn),double(sv.data(tin,din,lats:latn,lonw_A:lone_A))); % pcolorjw(x,y,c(time,depth,lat,lon))
+    pcolorjw(svg.lon(lonw_A:lone_A),svg.lat(lats:latn),double(sv.data(tin,lats:latn,lonw_A:lone_A))); % pcolorjw(x,y,c(time,depth,lat,lon))
 
     figB = figure; % Plot the righthand depth level. 
-    pcolorjw(svg.lon(lonw_B:lone_B)+360,svg.lat(lats:latn),double(sv.data(tin,din,lats:latn,lonw_B:lone_B))); % pcolorjw(x,y,c(time,depth,lat,lon))
+    pcolorjw(svg.lon(lonw_B:lone_B)+360,svg.lat(lats:latn),double(sv.data(tin,lats:latn,lonw_B:lone_B))); % pcolorjw(x,y,c(time,depth,lat,lon))
 
     merge_figures(figA,figB)
-    title({sprintf('%s %.0fm',sv.attribute('standard_name'),svg.z(din));datestr(svg.time(tin))},'interpreter','none');
+    title({sprintf('%s %.0fm',sv.attribute('standard_name'));datestr(svg.time(tin))},'interpreter','none');
     hcb = colorbar; title(hcb,sv.attribute('units'));axis tight;
 
 else   
 
     figure % Plot the depth level in standard manner.
-    pcolorjw(svg.lon(lonw:lone),svg.lat(lats:latn),double(sv.data(tin,din,lats:latn,lonw:lone))); % pcolorjw(x,y,c(time,depth,lat,lon))
-    title({sprintf('%s %.0fm',sv.attribute('standard_name'),svg.z(din));datestr(svg.time(tin))},'interpreter','none');
+    pcolorjw(svg.lon(lonw:lone),svg.lat(lats:latn),double(sv.data(tin,lats:latn,lonw:lone))); % pcolorjw(x,y,c(time,depth,lat,lon))
+    title({sprintf('%s %.0fm',sv.attribute('standard_name'));datestr(svg.time(tin))},'interpreter','none');
     hcb = colorbar; title(hcb,sv.attribute('units'));
 
 end    
