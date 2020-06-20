@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 15-Jun-2020
+%  Jun 2020; Last revision: 20-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -12,18 +12,17 @@ function [sv,svg] = hycom_simple_plot(url,date,variable,region,depth,arrows)
 nc = ncgeodataset(url); % Assign a ncgeodataset handle.
 nc.variables            % Print list of available variables. 
 
-if strcmp(variable,'water_u') || strcmp(variable,'water_v') || strcmp(variable,'water_temp') || strcmp(variable,'salinity')
-  
-    grid_variable = variable;
+existing_vars = {'water_u','water_v','water_temp','salinity'};
+
+if any(strcmp(existing_vars,variable))
+    grid_variable = variable;  
     
-elseif strcmp(variable,'velocity')
-    
+elseif strcmp(variable,'velocity') 
     grid_variable = 'water_u';   
-    sv_v = nc{'water_v'};         % Assign ncgeovariable handles for water_u, water_v.
+    sv_v = nc{'water_v'};         % Assign ncgeovariable handles for water_u, water_v    
     
-else
-    
-    disp('Check spelling of variable variable');
+else    
+    disp('Check spelling of variable variable');   
     
 end
 
@@ -34,11 +33,11 @@ svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates 
 
 % Find Indices
 
-[tin,dt] = near(svg.time,datenum(date,'dd-mmm-yyyy HH:MM:SS'));  % Find time index near date of interest. 
-[din,dz] = near(svg.z,depth); % Choose index of depth (z-level) to use for 2-D plots; see svg.z for options.
+[tin,~] = near(svg.time,datenum(date,'dd-mmm-yyyy HH:MM:SS'));  % Find time index near date of interest. 
+[din,~] = near(svg.z,depth); % Choose index of depth (z-level) to use for 2-D plots; see svg.z for options.
 
-[lats,ds] = near(svg.lat,region(1)); % Find lat index near southern boundary [-90 90] of region.
-[latn,dn] = near(svg.lat,region(2));
+[lats,~] = near(svg.lat,region(1)); % Find lat index near southern boundary [-90 90] of region.
+[latn,~] = near(svg.lat,region(2));
 
 if region(3) > 180
     region(3) = region(3)-360;
@@ -63,7 +62,7 @@ end
 
 % Make Plot
 
-if strcmp(variable,'water_u') || strcmp(variable,'water_v') || strcmp(variable,'water_temp') || strcmp(variable,'salinity')
+if any(strcmp(existing_vars ,variable))
 
     if region(3) > region(4) && region(4) < 0 % If data spans the dateline...
 

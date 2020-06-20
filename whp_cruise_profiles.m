@@ -1,21 +1,29 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 17-Jun-2020
+%  Jun 2020; Last revision: 20-Jun-2020
 %  Distributed under the terms of the MIT License
 
 function whp_cruise_profiles(cruise,variable)
 
     cvar = eval(['cruise.',variable]);
-
-    if strcmp(variable,'CTDSAL') || strcmp(variable,'CTDTMP') || strcmp(variable,'CTDOXY')    
+    
+    ctd_vars = {'CTDSAL','CTDTMP','CTDOXY'};
+    uv_vars  = {'U','V'};
+    w_vars   = {'DC_W'};
+    vke_vars = {'P0','EPS'};
+    
+    if any(strcmp(ctd_vars,variable))
         zvar = eval(['cruise.','CTDPRS']);   
-    elseif  strcmp(variable,'U') || strcmp(variable,'V')    
+        
+    elseif  any(strcmp(uv_vars,variable))  
         zvar = eval(['cruise.','Z']);
-    elseif  strcmp(variable,'DC_W')    
+        
+    elseif  any(strcmp(w_vars,variable))   
         zvar = eval(['cruise.','WDEP']);    
-    elseif  strcmp(variable,'P0') || strcmp(variable,'EPS')    
-        zvar = eval(['cruise.','VKEDEP']);     
+        
+    elseif  any(strcmp(vke_vars,variable))   
+        zvar = eval(['cruise.','VKE_DEP']);     
     end
     
     if nanmean(zvar,'all') > 0
