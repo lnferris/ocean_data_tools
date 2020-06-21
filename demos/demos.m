@@ -60,7 +60,8 @@ lat2 = -66.5;
 xref = 'LON'; % 'LON' 'LAT'
 width = 1/60; % Approximate width of chord in degrees
 whp_cruise_section(cruise,variable,xref) 
-bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,width) % width optional
+filled = 0;
+bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,width,filled) % width, filled optional
 
 % bathymetry_plot
 
@@ -76,7 +77,8 @@ xref = 'LON'; % 'LON' 'LAT'
 whp_cruise_section(cruise,variable,xref)
 xcoords = cruise.LON; % could alternatively use transect_select() to select coordinates
 ycoords = cruise.LAT;
-bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)
+filled = 1;  % 1=on 0=off
+bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled) % filled optional
 
 
 %% general

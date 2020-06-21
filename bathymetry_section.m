@@ -1,14 +1,18 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 18-Jun-2020
+%  Jun 2020; Last revision: 21-Jun-2020
 %  Distributed under the terms of the MIT License
 
 % inputs: 
     % ss_path= '/Users/lnferris/Desktop/topo_18.1.img'; % Path to Smith & Sandwell database
     % xref = 'lat' 'lon'
 
-function bathymetry_section(ss_path,xcoords,ycoords,xref)
+function bathymetry_section(ss_path,xcoords,ycoords,xref,filled)
+
+if nargin < 5
+    filled = 0;
+end
 
 % Auto-select region.
 region = [min(ycoords)-1 max(ycoords)+1 min(xcoords)-1 max(xcoords)+1];
@@ -46,6 +50,12 @@ bathymetry_section = bathymetry_section(xvar_inds);
 
 hold on
 plot(xvar,bathymetry_section,'k','LineWidth',4)
-hold off
 
+if filled ==1
+    basevalue = min(bathymetry_section);
+    area(xvar,bathymetry_section,basevalue,'FaceColor','k')
+    ylim([min(bathymetry_section) 10])
+end
+
+hold off
 end
