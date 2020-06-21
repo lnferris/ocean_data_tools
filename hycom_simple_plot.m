@@ -7,6 +7,10 @@
 
 function hycom_simple_plot(url,date,variable,region,depth,arrows)
 
+if nargin <6 
+    arrows = 0;
+end
+
 % format input
 if region(3) > 180
     region(3) = region(3)-360;

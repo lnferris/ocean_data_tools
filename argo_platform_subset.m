@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 16-Jun-2020
+%  Jun 2020; Last revision: 21-Jun-2020
 %  Distributed under the terms of the MIT License
 
 function [subargo] = argo_platform_subset(argo,platform_id)
@@ -12,7 +12,7 @@ function [subargo] = argo_platform_subset(argo,platform_id)
     subargo.LON = argo.LON(float_inds);
     subargo.LAT = argo.LAT(float_inds);
     subargo.STN = argo.STN(float_inds);
-    subargo.date = argo.date(float_inds);
+    subargo.DATE = argo.DATE(float_inds);
     subargo.depth = argo.depth(:,float_inds);
     subargo.salinity = argo.salinity(:,float_inds);
     subargo.temperature= argo.temperature(:,float_inds);

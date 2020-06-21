@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 20-Jun-2020
+%  Jun 2020; Last revision: 21-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -99,8 +99,10 @@ general_map(object)
 
 object = hycom; % argo or hycom or woa or wod
 variable = 'salinity'; % see particular object for options
-xref = 'STN'; % 'LAT' 'LON' 'STN';
-general_section(object,variable,xref)
+xref = 'LAT'; % 'LAT' 'LON' 'STN';
+interpolate = 1; % 1=on 0=off
+contours = 1; % 1=on 0=off
+general_section(object,variable,xref,interpolate,contours) % interpolate, contours optional
 
 % general_profiles
 
@@ -158,7 +160,9 @@ wvke_dir = '/Users/lnferris/Desktop/S04P/processed_w_20181030/';
 
 variable = 'CTDTMP'; % 'CTDSAL' 'CTDTMP' 'CTDOXY' 'U' 'V' 'DC_W' 'P0' 'EPS'
 xref = 'LON'; %'LON' 'LAT' 'STN' 
-whp_cruise_section(cruise,variable,xref)
+interpolate = 0; % 1=on 0=off
+contours = 0; % 1=on 0=off
+whp_cruise_section(cruise,variable,xref,interpolate,contours) % interpolate, contours optional
 
 % whp_cruise_profiles
 
@@ -187,4 +191,3 @@ wod_dir = '/Users/lnferris/Desktop/woddata/*.nc';
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
 general_map(wod,bathymetry_dir)
 general_profiles(wod,'temperature')
-

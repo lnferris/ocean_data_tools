@@ -42,7 +42,7 @@ function hycom_simple_plot_velocity(nc,date,region,depth,arrows)
         title({sprintf('velocity magnitude %.0fm',svg.z(din));datestr(svg.time(tin))},'interpreter','none');
         hcb = colorbar; title(hcb,sv.attribute('units'));
 
-        if nargin == 6 && arrows==1
+        if  arrows==1
             u_left = squeeze(double(sv.data(tin,din,lats:latn,lonw_B:lone_B))); % Add directional arrows.
             v_left = squeeze(double(sv_v.data(tin,din,lats:latn,lonw_B:lone_B)));
             lon_left = svg.lon(lonw_B:lone_B)+360;
@@ -60,7 +60,7 @@ function hycom_simple_plot_velocity(nc,date,region,depth,arrows)
         title({sprintf('velocity magnitude %.0fm',svg.z(din));datestr(svg.time(tin))},'interpreter','none');
         hcb = colorbar; title(hcb,sv.attribute('units'));
 
-        if nargin == 6 && arrows==1
+        if arrows==1
             u = squeeze(double(sv.data(tin,din,lats:latn,lonw:lone))); % Add directional arrows.
             v = squeeze(double(sv_v.data(tin,din,lats:latn,lonw:lone)));
             hold on
