@@ -32,7 +32,7 @@ platform_id = 7900204;
 
 annotate = 1; 
 argo_platform_map(argo,annotate) % annotate optional,  1=on 0=off
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour')
 
 % argo_profiles
@@ -52,7 +52,7 @@ bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour') % add bathym
 
 %  bathymetry_chord
 
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 lon1 = 160; % Starting point of linear slice.
 lat1 = -67;
 lon2 = 280; % Ending point of linear slice.
@@ -65,9 +65,9 @@ bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,width,filled) % width, 
 
 % bathymetry_plot
 
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 region = [-5.0, 45.0 ,120, -150];      % [-90 90 -180 180]
-ptype = '3Dsurf'; % '2Dscatter' '2Dcontour' '3Dsurf'
+ptype = '2Dcontour'; % '2Dscatter' '2Dcontour' '3Dsurf'
 figure
 bathymetry_plot(bathymetry_dir,region,ptype)
 
@@ -85,7 +85,7 @@ bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled) % filled optional
 
 % general_map
 
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 ptype = '2Dcontour'; % '2Dscatter' '2Dcontour'
 object = cruise; % argo or cruise or hycom or woa or wod
 general_map(object,bathymetry_dir,ptype)
@@ -132,7 +132,7 @@ hycom_simple_plot(url,date,variable,region,depth,arrows) % arrows optional
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
 variable_list = {'water_temp','salinity'}; % 'water_u' 'water_v' 'water_temp' 'salinity'
 [hycom] =  hycom_build_profiles(url,date,variable_list,xcoords,ycoords);
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 general_map(hycom,bathymetry_dir,'2Dcontour')
 general_section(hycom,'water_temp','STN')
 general_profiles(hycom,'salinity')
@@ -178,7 +178,7 @@ whp_cruise_profiles(cruise,variable)
 variable = 'salinity';  % 'salinity' 'temperature' 'oxygen'
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
 [woa] =  woa_build_profiles(variable,xcoords,ycoords);
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 general_map(woa,bathymetry_dir,'2Dcontour')
 general_section(woa,variable,'STN')
 general_profiles(woa,variable)
@@ -190,6 +190,6 @@ general_profiles(woa,variable)
 
 wod_dir = '/Users/lnferris/Desktop/woddata/*.nc';
 [wod] = wod_build(wod_dir);
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_18.1.img';
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 general_map(wod,bathymetry_dir)
 general_profiles(wod,'temperature')

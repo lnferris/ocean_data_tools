@@ -4,11 +4,9 @@
 %  Jun 2020; Last revision: 21-Jun-2020
 %  Distributed under the terms of the MIT License
 
-% inputs: 
-    % ss_path= '/Users/lnferris/Desktop/topo_18.1.img'; % Path to Smith & Sandwell database
-    % xref = 'lat' 'lon'
+% bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % Path to Smith & Sandwell database 
 
-function bathymetry_section(ss_path,xcoords,ycoords,xref,filled)
+function bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)
 
 if nargin < 5
     filled = 0;
@@ -17,22 +15,14 @@ end
 % Auto-select region.
 region = [min(ycoords)-1 max(ycoords)+1 min(xcoords)-1 max(xcoords)+1];
 
-% Remap region from SNWE to WESN.
-region = [region(3) region(4) region(1) region(2)];
-
 % Load bathymetry data.
-[bath,vlat,vlon] = extract1m_modified(region,ss_path);
-
-% Remap to -180/180 if not crossing dateline.
-if min(vlon) > 180
-    vlon = vlon-360;    
-end   
+[bath,lat,lon] = bathymetry_extract(bathymetry_dir,region);
 
 bathymetry_section = NaN(1,length(xcoords));
 for i = 1:length(xcoords)
-    [lon_ind,~] = near(vlon,xcoords(i));
-    [lat_ind,~] = near(vlat,ycoords(i));
-    bathymetry_section(i) = bath(lat_ind,lon_ind);
+    [lon_ind,~] = near(lon,xcoords(i));
+    [lat_ind,~] = near(lat,ycoords(i));
+    bathymetry_section(i) = bath(lon_ind,lat_ind);
 end
 
 
