@@ -115,8 +115,6 @@ general_profiles(object,variable)
 
 %% hycom
 
-setup_nctoolbox 
-
 % hycom_simple_plot
 
 url = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % Could also be a local file e.g. '/Users/lnferris/expt_57.7.nc'
@@ -140,6 +138,18 @@ bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 general_map(hycom,bathymetry_dir,'2Dcontour')
 general_section(hycom,'water_temp','STN')
 general_profiles(hycom,'salinity')
+
+%% mercator
+
+% mercator_simple_plot
+
+mercator_dir = '/Users/lnferris/Desktop/global-analysis-forecast-phy-001-024_1592862540227.nc';
+date = '18-Mar-2020 00:00:00';   
+variable = 'siconc'; % 'thetao' 'so' 'uo' 'vo' 'velocity' 'mlotst' 'siconc' 'usi' 'vsi' 'sithick' 'bottomT' 'zos'
+region = [45.0, 80.0 ,-80, -50];      % [-90 90 -180 180]
+depth = -150;                          % Depth level between 0 and -5728m
+arrows = 0;  
+mercator_simple_plot(mercator_dir,date,variable,region,depth,arrows) % arrows optional 
 
 
 %% mocha
@@ -188,8 +198,6 @@ woa_simple_plot(variable,time,region,depth)
 % woa_domain_plot
 
 woa_domain_plot(variable,time,region)
-
-%%
 
 % woa_build_profiles   
 
