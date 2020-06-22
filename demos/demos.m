@@ -173,6 +173,13 @@ whp_cruise_profiles(cruise,variable)
 
 %% woa (world ocean atlas)
 
+% woa_simple_plot
+variable = 'nitrate'; % 'temperature' 'salinity' 'dissolved_oxygen' 'percent_oxygen_saturation' 'apparent_oxygen_utilization' 'silicate' 'phosphate' 'nitrate'
+time = '01'; % '00' for annual climatology '01' '10' etc. for monthly climatology
+region = [-5.0, 45.0 ,120, -150]; 
+depth = -0; % meters -0 to -5500
+woa_simple_plot(variable,time,region,depth)
+
 % woa_build_profiles   
 
 variable = 'salinity';  % 'salinity' 'temperature' 'oxygen'

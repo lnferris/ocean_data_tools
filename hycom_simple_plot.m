@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 20-Jun-2020
+%  Jun 2020; Last revision: 21-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -11,13 +11,9 @@ if nargin <6
     arrows = 0;
 end
 
-% format input
-if region(3) > 180
-    region(3) = region(3)-360;
-end
-if region(4) > 180
-    region(4) = region(4)-360;
-end
+% deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
+region(region>180) = region(region>180)- 360;
+region(region<-180) = region(region<-180)+360;
 
 nc = ncgeodataset(url); % Assign a ncgeodataset handle.
 nc.variables            % Print list of available variables. 
