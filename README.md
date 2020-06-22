@@ -23,11 +23,15 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 
 ## Getting Data
 
-#### Mercator
+#### Argo Floats
 
-Download Copernicus Marine data directly from FTP servers. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Use the selection tool to download GLOBAL_ANALYSIS_FORECAST_PHY_001_024. 
+Download argo (www.argo.ucsd.edu)  data directly from GDAC FTP servers using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl).
 
-Alternatively run **shell_scripts/download_mercator**. Before running the script, follow the instructions for modifying your ~/.netrc file in the comments of the script.
+Alternatively run **shell_scripts/download_argo** to download data via File Transfer Protocol.
+
+#### Bathymetry (Smith & Sandwell)
+
+To get bathymetry data (for bathymetry_dir), download Smith & Sandwell under "Global Topography V19.1" (https://topex.ucsd.edu/marine_topo/) in netcdf form (topo_19.1.nc or topo_20.1.nc).
 
 #### HYCOM
 
@@ -35,28 +39,23 @@ Download subsetted HYCOM data directly using NCSS. Get the data url by visiting�
 
 To download multiple months or years, run **shell_scripts/download_hycom_bulk_daily** (partition files by day) or **shell_scripts/download_hycom_bulk_monthly** (partition files by month). Please use responsibly.
 
-#### Argo Floats
+#### Mercator
 
-Download argo (www.argo.ucsd.edu)  data directly from GDAC FTP servers using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl).
+Download Copernicus Marine data directly from FTP servers. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Use the selection tool to download GLOBAL_ANALYSIS_FORECAST_PHY_001_024. 
 
-Alternatively run **shell_scripts/download_argo** to download data via File Transfer Protocol.
+Alternatively run **shell_scripts/download_mercator**. Before running the script, follow the instructions for modifying your ~/.netrc file in the comments of the script.
 
-#### World Ocean Database (WOD)
-
-Search and select World Ocean Database data at (https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html).
-
-#### World Ocean Atlas (WOA)
-
-Functions build the url based on arguments, but coarser resolutions and seasonal climatologies are available at (https://www.nodc.noaa.gov/OC5/woa18/woa18data.html). Note NCEI is scheduled to update data urls in the near future. Functions will be updated as such.
-
-#### GO-SHIP (WHP Cruise)
+#### WHP Cruise (GO-SHIP)
 
 Get data CTD data (for ctdo_dir) by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and downloading the CTD data in whp_netcdf format. 
 Visit (https://exchange-format.readthedocs.io/en/latest/index.html#) for information about whp_netcdf parameters, specific to GO-SHIP.
 
 Get LADCP data (for uv_dir, wke_dir) at https://currents.soest.hawaii.edu/go-ship/ladcp/.
 
-#### Bathymetry (Smith & Sandwell)
+#### World Ocean Atlas (WOA)
 
-To get bathymetry data (for bathymetry_dir), download Smith & Sandwell under "Global Topography V19.1" (https://topex.ucsd.edu/marine_topo/) in netcdf form (topo_19.1.nc or topo_20.1.nc).
+Functions build the url based on arguments, but coarser resolutions and seasonal climatologies are available at (https://www.nodc.noaa.gov/OC5/woa18/woa18data.html). Note NCEI is scheduled to update data urls in the near future. Functions will be updated as such.
 
+#### World Ocean Database (WOD)
+
+Search and select World Ocean Database data at (https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html).
