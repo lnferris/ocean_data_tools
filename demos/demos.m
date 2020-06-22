@@ -127,6 +127,10 @@ depth = -150;                          % Depth level between 0 and -5000m
 arrows = 0;                            % Velocity direction arrows 1=on 0=off
 hycom_simple_plot(url,date,variable,region,depth,arrows) % arrows optional 
 
+% hycom_domain_plot
+
+hycom_domain_plot(url,date,variable,region)
+
 % hycom_build_profiles   
 
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 

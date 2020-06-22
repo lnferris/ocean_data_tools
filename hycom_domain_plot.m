@@ -1,15 +1,12 @@
+
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 21-Jun-2020
+%  Jun 2020; Last revision: 22-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
-function hycom_simple_plot(url,date,variable,region,depth,arrows)
-
-if nargin <6 
-    arrows = 0;
-end
+function hycom_domain_plot(url,date,variable,region)
 
 % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;
@@ -19,22 +16,14 @@ nc = ncgeodataset(url); % Assign a ncgeodataset handle.
 nc.variables            % Print list of available variables. 
 
 standard_vars = {'water_u','water_v','water_temp','salinity'};
-slab_vars = {'water_u_bottom','water_v_bottom','water_temp_bottom','salinity_bottom','surf_el'};
 
-if ~any(strcmp(standard_vars,variable))  
-    
-    if any(strcmp(slab_vars,variable))
-        hycom_simple_plot_layer(nc,date,variable,region)
-        return
-        
-    elseif strcmp(variable,'velocity') 
-        hycom_simple_plot_velocity(nc,date,region,depth,arrows) 
+if ~any(strcmp(standard_vars,variable))    
+    if strcmp(variable,'velocity') 
+        hycom_domain_plot_velocity(nc,date,region) 
         return 
-        
     else    
         disp('Check spelling of variable variable');    
-    end
-    
+    end  
 end
 
 sv = nc{variable}; % Assign ncgeovariable handle: 'water_u' 'water_v' 'water_temp' 'salinity'
@@ -45,7 +34,6 @@ svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates 
 % Find Indices
 
 [tin,~] = near(svg.time,datenum(date,'dd-mmm-yyyy HH:MM:SS'));  % Find time index near date of interest. 
-[din,~] = near(svg.z,depth); % Choose index of depth (z-level) to use for 2-D plots; see svg.z for options.
 [lats,~] = near(svg.lat,region(1)); % Find lat index near southern boundary [-90 90] of region.
 [latn,~] = near(svg.lat,region(2));
 
@@ -61,24 +49,38 @@ end
 
 % Make Plot
 if region(3) > region(4) && region(4) < 0 % If data spans the dateline...
+    
+    figure; % Plot left side
+    data = reshape(permute(squeeze(double(sv.data(tin,:,lats:latn,lonw_A:lone_A))),[2,3,1]),[],1); % permute array to be lon x lat x dep
+    [lon_mesh,lat_mesh,dep_mesh] = meshgrid(svg.lon(lonw_A:lone_A),svg.lat(lats:latn),svg.z(:)); 
+    lon = reshape(lon_mesh,[],1); 
+    lat = reshape(lat_mesh,[],1); 
+    z = reshape(dep_mesh,[],1);
+    scatter3(lon,lat,z,[],data,'.')
+    
+    hold on % Plot right side
+    data = reshape(permute(squeeze(double(sv.data(tin,:,lats:latn,lonw_B:lone_B))),[2,3,1]),[],1); % permute array to be lon x lat x dep
+    [lon_mesh,lat_mesh,dep_mesh] = meshgrid(svg.lon(lonw_B:lone_B)+360,svg.lat(lats:latn),svg.z(:)); 
+    lon = reshape(lon_mesh,[],1); 
+    lat = reshape(lat_mesh,[],1); 
+    z = reshape(dep_mesh,[],1);
+    scatter3(lon,lat,z,[],data,'.')
 
-    figA = figure; % Plot the lefthand depth level.
-    pcolorjw(svg.lon(lonw_A:lone_A),svg.lat(lats:latn),double(sv.data(tin,din,lats:latn,lonw_A:lone_A))); % pcolorjw(x,y,c(time,depth,lat,lon))
-
-    figB = figure; % Plot the righthand depth level. 
-    pcolorjw(svg.lon(lonw_B:lone_B)+360,svg.lat(lats:latn),double(sv.data(tin,din,lats:latn,lonw_B:lone_B))); % pcolorjw(x,y,c(time,depth,lat,lon))
-
-    merge_figures(figA,figB)
-    title({sprintf('%s %.0fm',sv.attribute('standard_name'),svg.z(din));datestr(svg.time(tin))},'interpreter','none');
-    hcb = colorbar; title(hcb,sv.attribute('units'));axis tight;
-
-else   
-
-    figure % Plot the depth level in standard manner.
-    pcolorjw(svg.lon(lonw:lone),svg.lat(lats:latn),double(sv.data(tin,din,lats:latn,lonw:lone))); % pcolorjw(x,y,c(time,depth,lat,lon))
-    title({sprintf('%s %.0fm',sv.attribute('standard_name'),svg.z(din));datestr(svg.time(tin))},'interpreter','none');
+    title({sprintf('%s',sv.attribute('standard_name'));datestr(svg.time(tin))},'interpreter','none');
     hcb = colorbar; title(hcb,sv.attribute('units'));
 
+else   
+    data = reshape(permute(squeeze(double(sv.data(tin,:,lats:latn,lonw:lone))),[2,3,1]),[],1); % permute array to be lon x lat x dep
+    [lon_mesh,lat_mesh,dep_mesh] = meshgrid(svg.lon(lonw:lone),svg.lat(lats:latn),svg.z(:)); 
+    lon = reshape(lon_mesh,[],1); 
+    lat = reshape(lat_mesh,[],1); 
+    z = reshape(dep_mesh,[],1);
+
+    figure 
+    scatter3(lon,lat,z,[],data,'.')
+    title({sprintf('%s',sv.attribute('standard_name'));datestr(svg.time(tin))},'interpreter','none');
+    hcb = colorbar; title(hcb,sv.attribute('units'));
 end    
+
 
 end
