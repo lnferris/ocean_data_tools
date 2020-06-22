@@ -45,6 +45,10 @@ Download Copernicus Marine data directly from FTP servers. Go to (http://marine.
 
 Alternatively run **shell_scripts/download_mercator**. Before running the script, follow the instructions for modifying your ~/.netrc file in the comments of the script.
 
+#### MOCHA
+
+The url is embedded.
+
 #### WHP Cruise (GO-SHIP)
 
 Get data CTD data (for ctdo_dir) by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and downloading the CTD data in whp_netcdf format. 
