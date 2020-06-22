@@ -45,7 +45,7 @@ Search and select World Ocean Database data at (https://www.nodc.noaa.gov/OC5/SE
 
 #### World Ocean Atlas (WOA)
 
-Temperature, salinity, and oxygen are included. Access other variables at https://www.nodc.noaa.gov/OC5/woa18/woa18data.html.
+Functions build url, no seeking necessary. Other resolutions and seasonal options available at (https://www.nodc.noaa.gov/OC5/woa18/woa18data.html).
 
 #### GO-SHIP (WHP Cruise)
 
