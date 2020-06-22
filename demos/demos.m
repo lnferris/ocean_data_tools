@@ -174,21 +174,24 @@ whp_cruise_profiles(cruise,variable)
 %% woa (world ocean atlas)
 
 % woa_simple_plot
-variable = 'nitrate'; % 'temperature' 'salinity' 'dissolved_oxygen' 'percent_oxygen_saturation' 'apparent_oxygen_utilization' 'silicate' 'phosphate' 'nitrate'
-time = '01'; % '00' for annual climatology '01' '10' etc. for monthly climatology
+
+variable = 'nitrate'; % 'temperature' 'salinity' 'oxygen' 'o2sat' 'AOU' 'silicate' 'phosphate' 'nitrate'
+time = '03'; % '00' for annual climatology '01' '10' etc. for monthly climatology
 region = [-5.0, 45.0 ,120, -150]; 
 depth = -0; % meters -0 to -5500
 woa_simple_plot(variable,time,region,depth)
 
 % woa_build_profiles   
 
-variable = 'salinity';  % 'salinity' 'temperature' 'oxygen'
+variable_list = {'temperature','salinity','oxygen'}; % 'temperature' 'salinity' 'oxygen' 'o2sat' 'AOU' 'silicate' 'phosphate' 'nitrate'
+time = '00'; % '00' for annual climatology '01' '10' etc. for monthly climatology
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
-[woa] =  woa_build_profiles(variable,xcoords,ycoords);
+
+[woa] =  woa_build_profiles(variable_list,time,xcoords,ycoords);
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 general_map(woa,bathymetry_dir,'2Dcontour')
-general_section(woa,variable,'STN')
-general_profiles(woa,variable)
+general_section(woa,'salinity','STN')
+general_profiles(woa,'oxygen')
 
 
 %% wod (world ocean database)

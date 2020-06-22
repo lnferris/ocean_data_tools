@@ -7,9 +7,9 @@
 
 % 'temperature' (degrees Celsius)           't'
 % 'salinity' (psu)                          's'
-% 'dissolved_oxygen' (umol/kg)              'o'
-% 'percent_oxygen_saturation' (%)           'O'
-% 'apparent_oxygen_utilization' (umol/kg)   'A'
+% 'oxygen' (umol/kg)              'o'
+% 'o2sat' (%)           'O'
+% 'AOU' (umol/kg)   'A'
 % 'silicate' (umol/kg)                      'i'
 % 'phosphate' (umol/kg)                     'p'
 % 'nitrate' (umol/kg)                       'n'
@@ -21,7 +21,7 @@ region(region>180) = region(region>180)- 360;
 region(region<-180) = region(region<-180)+360;
 
 fine_vars = {'temperature','salinity'};
-coarse_vars = {'dissolved_oxygen','percent_oxygen_saturation','apparent_oxygen_utilization','silicate','phosphate','nitrate'};
+coarse_vars = {'oxygen','o2sat','AOU','silicate','phosphate','nitrate'};
 
 if any(strcmp(fine_vars,variable)) 
     mod = '/decav/0.25/woa18_decav_'; 
