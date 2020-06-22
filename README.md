@@ -25,7 +25,9 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 
 #### Mercator
 
-Download Copernicus Marine data directly from FTP servers. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Follow instructions for modifying ~/.netrc file in comments at top of script and run the script **shell_scripts/download_mercator**.
+Download Copernicus Marine data directly from FTP servers. Go to (http://marine.copernicus.eu/services-portfolio/access-to-products/) and make a Copernicus account. Use the selection tool to download GLOBAL_ANALYSIS_FORECAST_PHY_001_024. 
+
+Alternatively run **shell_scripts/download_mercator**. Before running the script, follow the instructions for modifying your ~/.netrc file in the comments of the shell script.
 
 #### HYCOM
 
