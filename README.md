@@ -45,7 +45,7 @@ Search and select World Ocean Database data at (https://www.nodc.noaa.gov/OC5/SE
 
 #### World Ocean Atlas (WOA)
 
-Functions build the url based on arguments, but coarser resolutions and seasonal climatologies are available at (https://www.nodc.noaa.gov/OC5/woa18/woa18data.html). Note NCEI is scheduled to change data urls in the near future; functions will be updated accordingly.
+Functions build the url based on arguments, but coarser resolutions and seasonal climatologies are available at (https://www.nodc.noaa.gov/OC5/woa18/woa18data.html). Note NCEI is scheduled to update data urls in the near future. Functions will be updated accordingly.
 
 #### GO-SHIP (WHP Cruise)
 
