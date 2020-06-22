@@ -185,6 +185,12 @@ region = [-5.0, 45.0 ,120, -150];
 depth = -0; % meters -0 to -5500
 woa_simple_plot(variable,time,region,depth)
 
+% woa_domain_plot
+
+woa_domain_plot(variable,time,region)
+
+%%
+
 % woa_build_profiles   
 
 variable_list = {'temperature','salinity','oxygen'}; % 'temperature' 'salinity' 'oxygen' 'o2sat' 'AOU' 'silicate' 'phosphate' 'nitrate'

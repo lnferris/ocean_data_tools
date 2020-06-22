@@ -14,7 +14,7 @@
 % 'phosphate' (umol/kg)                     'p'
 % 'nitrate' (umol/kg)                       'n'
 
-function woa_simple_plot(variable,time,region,depth)
+function woa_domain_plot(variable,time,region)
 
 % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;
@@ -47,7 +47,6 @@ svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates 
 
 % Find Indices
 
-[din,~] = near(svg.z,depth); % Choose index of depth (z-level) to use for 2-D plots; see svg.z for options.
 [lats,~] = near(svg.lat,region(1)); % Find lat index near southern boundary [-90 90] of region.
 [latn,~] = near(svg.lat,region(2));
 
@@ -63,23 +62,39 @@ end
 
 % Make Plot
 if region(3) > region(4) && region(4) < 0 % If data spans the dateline...
+    
+    figure; % Plot left side
+    data = reshape(permute(squeeze(double(sv.data(1,:,lats:latn,lonw_A:lone_A))),[2,3,1]),[],1); % permute array to be lon x lat x dep
+    [lon_mesh,lat_mesh,dep_mesh] = meshgrid(svg.lon(lonw_A:lone_A),svg.lat(lats:latn),svg.z(:)); 
+    lon = reshape(lon_mesh,[],1); 
+    lat = reshape(lat_mesh,[],1); 
+    z = reshape(dep_mesh,[],1);
+    scatter3(lon,lat,z,[],data,'.')
+    
+    hold on % Plot right side
+    data = reshape(permute(squeeze(double(sv.data(1,:,lats:latn,lonw_B:lone_B))),[2,3,1]),[],1); % permute array to be lon x lat x dep
+    [lon_mesh,lat_mesh,dep_mesh] = meshgrid(svg.lon(lonw_B:lone_B)+360,svg.lat(lats:latn),svg.z(:)); 
+    lon = reshape(lon_mesh,[],1); 
+    lat = reshape(lat_mesh,[],1); 
+    z = reshape(dep_mesh,[],1);
+    scatter3(lon,lat,z,[],data,'.')
 
-    figA = figure; % Plot the lefthand depth level.
-    pcolorjw(svg.lon(lonw_A:lone_A),svg.lat(lats:latn),double(sv.data(1,din,lats:latn,lonw_A:lone_A))); % pcolorjw(x,y,c(time,depth,lat,lon))
-
-    figB = figure; % Plot the righthand depth level. 
-    pcolorjw(svg.lon(lonw_B:lone_B)+360,svg.lat(lats:latn),double(sv.data(1,din,lats:latn,lonw_B:lone_B))); % pcolorjw(x,y,c(time,depth,lat,lon))
-
-    merge_figures(figA,figB)
-    title({sprintf('%s %.0fm',sv.attribute('standard_name'),svg.z(din));path},'interpreter','none');
-    hcb = colorbar; title(hcb,sv.attribute('units'));axis tight;
-
+    title({sprintf('%s',sv.attribute('standard_name'))},'interpreter','none');
+    hcb = colorbar; title(hcb,sv.attribute('units'));
+      
 else   
 
-    figure % Plot the depth level in standard manner.
-    pcolorjw(svg.lon(lonw:lone),svg.lat(lats:latn),double(sv.data(1,din,lats:latn,lonw:lone))); % pcolorjw(x,y,c(time,depth,lat,lon))
-    title({sprintf('%s %.0fm',sv.attribute('standard_name'),svg.z(din));path},'interpreter','none');
-    hcb = colorbar; title(hcb,sv.attribute('units'));
+    data = reshape(permute(squeeze(double(sv.data(1,:,lats:latn,lonw:lone))),[2,3,1]),[],1); % permute array to be lon x lat x dep
+    [lon_mesh,lat_mesh,dep_mesh] = meshgrid(svg.lon(lonw:lone),svg.lat(lats:latn),svg.z(:)); 
+    lon = reshape(lon_mesh,[],1); 
+    lat = reshape(lat_mesh,[],1); 
+    z = reshape(dep_mesh,[],1);
 
-end    
+    figure 
+    scatter3(lon,lat,z,[],data,'.')
+    title({sprintf('%s',sv.attribute('standard_name'))},'interpreter','none');
+    hcb = colorbar; title(hcb,sv.attribute('units'));
+    
+end  
+
 end
