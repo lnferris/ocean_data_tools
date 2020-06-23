@@ -6,7 +6,7 @@
 
 **Copyright (c) 2020 lnferris** 
 
-ocean_data_tools Version 1.0 is a toolbox for interacting with freely-available ocean data. The script-based version of ocean_data_tools is archived as a previous release. The ethos of ocean_data_tools is to build data objects (e.g. argo, cruise, hycom, mercator, woa, wod) and call general functions on these objects. Find a bug? Open an issue or contact lnferris@alum.mit.edu.
+ocean_data_tools Version 1.0 is a toolbox for interacting with freely-available ocean data. The script-based version of ocean_data_tools is archived as a previous release. The ethos of ocean_data_tools is to build data structs (e.g. argo, cruise, hycom, mercator, woa, wod) and call general functions on these structs. Find a bug? Open an issue or contact lnferris@alum.mit.edu.
 
 ## Demos
 
