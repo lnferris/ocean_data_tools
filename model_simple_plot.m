@@ -1,25 +1,38 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 21-Jun-2020
+%  Jun 2020; Last revision: 22-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
-function hycom_simple_plot(url,date,variable,region,depth,arrows)
+function model_simple_plot(model,source,date,variable,region,depth,arrows)
 
-if nargin <6 
+if nargin < 7
     arrows = 0;
+end
+
+if strcmp(model,'hycom')  
+    
+    standard_vars = {'water_u','water_v','water_temp','salinity'};
+    slab_vars = {'water_u_bottom','water_v_bottom','water_temp_bottom','salinity_bottom','surf_el'};    
+
+elseif strcmp(model,'mercator') 
+    
+    standard_vars = {'thetao','so','uo','vo'};
+    slab_vars = {'mlotst','siconc','usi','vsi','sithick','bottomT','zos'};          
+
+else
+    disp('Check spelling of model.');
+    
+    return
 end
 
 % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;
 region(region<-180) = region(region<-180)+360;
 
-nc = ncgeodataset(url); % Assign a ncgeodataset handle.
+nc = ncgeodataset(source); % Assign a ncgeodataset handle.
 nc.variables            % Print list of available variables. 
-
-standard_vars = {'water_u','water_v','water_temp','salinity'};
-slab_vars = {'water_u_bottom','water_v_bottom','water_temp_bottom','salinity_bottom','surf_el'};
 
 if ~any(strcmp(standard_vars,variable))  
     
@@ -28,7 +41,7 @@ if ~any(strcmp(standard_vars,variable))
         return
         
     elseif strcmp(variable,'velocity') 
-        hycom_simple_plot_velocity(nc,date,region,depth,arrows) 
+        model_simple_plot_velocity(model,nc,date,region,depth,arrows)
         return 
         
     else    

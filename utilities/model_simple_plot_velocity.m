@@ -1,14 +1,23 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 20-Jun-2020
+%  Jun 2020; Last revision: 22-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
-function hycom_simple_plot_velocity(nc,date,region,depth,arrows)
+function model_simple_plot_velocity(model,nc,date,region,depth,arrows)
 
-    sv = nc{'water_u'};     % Assign ncgeovariable handle.
-    sv_v = nc{'water_v'}; 
+    if strcmp(model,'hycom')  
+        sv = nc{'water_u'};     % Assign ncgeovariable handle.
+        sv_v = nc{'water_v'};     
+    elseif strcmp(model,'mercator') 
+        sv = nc{'uo'};     % Assign ncgeovariable handle.
+        sv_v = nc{'vo'};        
+    else
+        disp('Check spelling of model.');
+        return
+    end
+
     sv.attributes % Print ncgeovariable attributes.
     datestr(sv.timeextent(),29) % Print date range of the ncgeovariable.
     svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.

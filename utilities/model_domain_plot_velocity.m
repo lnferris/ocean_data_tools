@@ -6,11 +6,19 @@
 %  Dependencies: nctoolbox
 
 
-function hycom_domain_plot_velocity(nc,date,region)
+function model_domain_plot_velocity(model,nc,date,region)
 
+if strcmp(model,'hycom')  
+    sv = nc{'water_u'};     % Assign ncgeovariable handle.
+    sv_v = nc{'water_v'};     
+elseif strcmp(model,'mercator') 
+    sv = nc{'uo'};     % Assign ncgeovariable handle.
+    sv_v = nc{'vo'};        
+else
+    disp('Check spelling of model.');
+    return
+end
 
-sv = nc{'water_u'};     % Assign ncgeovariable handle.
-sv_v = nc{'water_v'}; 
 sv.attributes % Print ncgeovariable attributes.
 datestr(sv.timeextent(),29) % Print date range of the ncgeovariable.
 svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.

@@ -6,27 +6,35 @@
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
-function mercator_domain_plot(url,date,variable,region)
+function model_domain_plot(model,source,date,variable,region)
 
 % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;
 region(region<-180) = region(region<-180)+360;
 
-nc = ncgeodataset(url); % Assign a ncgeodataset handle.
+nc = ncgeodataset(source); % Assign a ncgeodataset handle.
 nc.variables            % Print list of available variables. 
 
-standard_vars = {'thetao','so','uo','vo'};
+if strcmp(model,'hycom')  
+    standard_vars = {'water_u','water_v','water_temp','salinity'}; 
+elseif strcmp(model,'mercator') 
+    standard_vars = {'thetao','so','uo','vo'};    
+else
+    disp('Check spelling of model.');
+    
+    return
+end
 
 if ~any(strcmp(standard_vars,variable))    
     if strcmp(variable,'velocity') 
-        mercator_domain_plot_velocity(nc,date,region) 
+        model_domain_plot_velocity(model,nc,date,region)
         return 
     else    
         disp('Check spelling of variable variable');    
     end  
 end
 
-sv = nc{variable}; % Assign ncgeovariable handle
+sv = nc{variable}; % Assign ncgeovariable handle: 'water_u' 'water_v' 'water_temp' 'salinity'
 sv.attributes % Print ncgeovariable attributes.
 datestr(sv.timeextent(),29) % Print date range of the ncgeovariable.
 svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.

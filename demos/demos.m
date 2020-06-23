@@ -113,65 +113,9 @@ variable = 'salinity'; % see particular object for options
 general_profiles(object,variable)
 
 
-%% hycom
-
-% hycom_simple_plot
-
-url = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % Could also be a local file e.g. '/Users/lnferris/expt_57.7.nc'
-date = '28-Aug-2017 00:00:00';   
-variable = 'velocity';                 % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 'surf_el' 'water_u_bottom' 'water_v_bottom' 'water_temp_bottom' 'salinity_bottom' 
-region = [-5.0, 45.0 ,120, -150];      % [-90 90 -180 180]
-depth = -150;                          % Depth level between 0 and -5000m
-arrows = 0;                            % Velocity direction arrows 1=on 0=off
-hycom_simple_plot(url,date,variable,region,depth,arrows) % arrows optional 
-
-% model_build_profiles   
-
-[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
-variable_list = {'water_temp','salinity'}; % 'water_u' 'water_v' 'water_temp' 'salinity'
-source = url;
-[hycom] =  model_build_profiles(source,date,variable_list,xcoords,ycoords);
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
-general_map(hycom,bathymetry_dir,'2Dcontour')
-general_section(hycom,'water_temp','STN')
-general_profiles(hycom,'salinity')
-
-% hycom_domain_plot
-
-variable = 'salinity'; % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 
-hycom_domain_plot(url,date,variable,region) 
-
-
-%% mercator
-
-% mercator_simple_plot
-
-mercator_dir = '/Users/lnferris/Desktop/global-analysis-forecast-phy-001-024_1592862540227.nc';
-date = '18-Mar-2020 00:00:00';   
-variable = 'siconc'; % 'thetao' 'so' 'uo' 'vo' 'velocity' 'mlotst' 'siconc' 'usi' 'vsi' 'sithick' 'bottomT' 'zos'
-region = [45.0, 80.0 ,-80, -50];      % [-90 90 -180 180]
-depth = -150;                          % Depth level between 0 and -5728m
-arrows = 0;  
-mercator_simple_plot(mercator_dir,date,variable,region,depth,arrows) % arrows optional 
-
-% model_build_profiles   
-
-[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
-variable_list = {'thetao','so','uo'}; % thetao' 'so' 'uo' 'vo'
-source = mercator_dir;
-[mercator] =  model_build_profiles(source,date,variable_list,xcoords,ycoords);
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
-general_map(mercator,bathymetry_dir,'2Dcontour')
-general_section(mercator,'thetao','STN')
-general_profiles(mercator,'so')
-
-% mercator_domain_plot
-
-variable = 'velocity';  % thetao' 'so' 'uo' 'vo' 'velocity'
-mercator_domain_plot(mercator_dir,date,variable,region)
-
-
 %% mocha
+
+setup_nctoolbox
 
 %mocha_simple_plot
 
@@ -179,6 +123,68 @@ month = 10;
 depth = 0;
 variable = 'temperature'; %  'temperature' 'salinity'
 mocha_simple_plot(month,depth,variable)
+
+
+%% model (hycom example)
+
+setup_nctoolbox
+
+% model_simple_plot - HYCOM EXAMPLE
+
+model = 'hycom'; % 'hycom' 'mercator'
+source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % url or local .nc 
+date = '28-Aug-2017 00:00:00';  
+variable = 'surf_el';                  % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 'surf_el' 'water_u_bottom' 'water_v_bottom' 'water_temp_bottom' 'salinity_bottom' 
+region = [-5.0, 45.0 ,120, -150];      % [-90 90 -180 180]
+depth = -150;                          % Depth level between 0 and -5000m
+arrows = 0;                            % Velocity direction arrows 1=on 0=off
+model_simple_plot(model,source,date,variable,region,depth,arrows)
+
+% model_build_profiles  - HYCOM EXAMPLE
+
+[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+variable_list = {'water_temp','salinity'}; % 'water_u' 'water_v' 'water_temp' 'salinity'
+[hycom] =  model_build_profiles(source,date,variable_list,xcoords,ycoords);
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
+general_map(hycom,bathymetry_dir,'2Dcontour')
+general_section(hycom,'water_temp','STN')
+general_profiles(hycom,'salinity')
+
+% model_domain_plot - HYCOM EXAMPLE
+
+variable = 'velocity'; % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 
+model_domain_plot(model,source,date,variable,region)
+
+
+%% model (mercator example)
+
+setup_nctoolbox
+
+% model_simple_plot - MERCATOR EXAMPLE
+
+model = 'mercator'; % 'hycom' 'mercator'
+source = '/Users/lnferris/Desktop/global-analysis-forecast-phy-001-024_1592862540227.nc';
+date = '18-Mar-2020 00:00:00';   
+variable = 'thetao'; % 'thetao' 'so' 'uo' 'vo' 'velocity' 'mlotst' 'siconc' 'usi' 'vsi' 'sithick' 'bottomT' 'zos'
+region = [45.0, 80.0 ,-80, -50];      % [-90 90 -180 180]
+depth = -150;                          % Depth level between 0 and -5728m
+arrows = 0;  
+model_simple_plot(model,source,date,variable,region,depth,arrows)
+
+% model_build_profiles  - MERCATOR EXAMPLE
+
+[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+variable_list = {'thetao','so','uo'}; % thetao' 'so' 'uo' 'vo'
+[mercator] =  model_build_profiles(source,date,variable_list,xcoords,ycoords);
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
+general_map(mercator,bathymetry_dir,'2Dcontour')
+general_section(mercator,'thetao','STN')
+general_profiles(mercator,'so')
+
+% model_domain_plot - MERCATOR EXAMPLE
+
+variable = 'velocity';  % thetao' 'so' 'uo' 'vo' 'velocity'
+model_domain_plot(model,source,date,variable,region)
 
 
 %% whp cruise data (go-ship)
@@ -205,6 +211,8 @@ whp_cruise_profiles(cruise,variable)
 
 
 %% woa (world ocean atlas)
+
+setup_nctoolbox
 
 % woa_simple_plot
 
