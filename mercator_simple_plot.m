@@ -24,7 +24,7 @@ slab_vars = {'mlotst','siconc','usi','vsi','sithick','bottomT','zos'};
 if ~any(strcmp(standard_vars,variable))  
     
     if any(strcmp(slab_vars,variable))
-        hycom_mercator_simple_plot_layer(nc,date,variable,region)
+        model_simple_plot_layer(nc,date,variable,region)
         return
         
     elseif strcmp(variable,'velocity') 

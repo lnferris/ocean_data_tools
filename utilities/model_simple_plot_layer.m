@@ -5,7 +5,7 @@
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
-function [sv,svg] = hycom_mercator_simple_plot_layer(nc,date,variable,region)
+function [sv,svg] = model_simple_plot_layer(nc,date,variable,region)
 
 sv = nc{variable}; % Assign ncgeovariable handle.
 sv.attributes % Print ncgeovariable attributes.

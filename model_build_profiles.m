@@ -5,7 +5,7 @@
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
-function [model] =  hycom_mercator_build_profiles(source,date,variable_list,xcoords,ycoords)
+function [model] =  model_build_profiles(source,date,variable_list,xcoords,ycoords)
 
 east_inds = find(xcoords>180);  % deal with xcoords spanning dateline
 xcoords(east_inds) = xcoords(east_inds)-360;
