@@ -1,12 +1,11 @@
 
 #!/usr/bin/env python
 
-# Author: Lauren Newell Ferris
-# Institute: Virginia Institute of Marine Science
-# Email address: lnferris@alum.mit.edu
-# Website: https://github.com/lnferris/ocean_data_tools
-# Aug 2018; Last revision: 03-Feb-2019
-# Distributed under the terms of the MIT License
+#  Author: Laur Ferris
+#  Email address: lnferris@alum.mit.edu
+#  Website: https://github.com/lnferris/ocean_data_tools
+#  Jun 2020; Last revision: 16-Jun-2020
+#  Distributed under the terms of the MIT License
 
 import datetime
 import glob
