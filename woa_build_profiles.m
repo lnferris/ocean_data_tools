@@ -67,7 +67,7 @@ for i = 1
     wdate = NaN(1,length(xcoords));
     wlat = NaN(1,length(xcoords));
     wlon = NaN(1,length(xcoords));
-    wvariable = NaN(round(max(abs(svg.z)))+1,length(xcoords));
+    wvariable = NaN(length(wdepth),length(xcoords));
 
     tin = 1; % there is no time dimension in woa climatology
 
@@ -121,7 +121,7 @@ if n > 1
     sv = nc{[var,'_an']}; % Assign ncgeovariable handle. 
     svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
 
-    wvariable = NaN(round(max(abs(svg.z)))+1,length(xcoords));
+    wvariable = NaN(length(wdepth),length(xcoords));
     for cast = 1:length(xcoords)
         [lon_ind,~] = near(svg.lon,xcoords(cast));
         [lat_ind,~] = near(svg.lat,ycoords(cast));

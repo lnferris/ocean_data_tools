@@ -125,19 +125,21 @@ depth = -150;                          % Depth level between 0 and -5000m
 arrows = 0;                            % Velocity direction arrows 1=on 0=off
 hycom_simple_plot(url,date,variable,region,depth,arrows) % arrows optional 
 
-% hycom_domain_plot
-
-hycom_domain_plot(url,date,variable,region)
-
-% hycom_build_profiles   
+% hycom_mercator_build_profiles   
 
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
 variable_list = {'water_temp','salinity'}; % 'water_u' 'water_v' 'water_temp' 'salinity'
-[hycom] =  hycom_build_profiles(url,date,variable_list,xcoords,ycoords);
+source = url;
+[hycom] =  hycom_mercator_build_profiles(source,date,variable_list,xcoords,ycoords);
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 general_map(hycom,bathymetry_dir,'2Dcontour')
 general_section(hycom,'water_temp','STN')
 general_profiles(hycom,'salinity')
+
+% hycom_domain_plot
+variable = 'salinity'; % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 
+hycom_domain_plot(url,date,variable,region) 
+
 
 %% mercator
 
@@ -150,6 +152,22 @@ region = [45.0, 80.0 ,-80, -50];      % [-90 90 -180 180]
 depth = -150;                          % Depth level between 0 and -5728m
 arrows = 0;  
 mercator_simple_plot(mercator_dir,date,variable,region,depth,arrows) % arrows optional 
+
+% hycom_mercator_build_profiles   
+
+[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+variable_list = {'thetao','so','uo'}; % thetao' 'so' 'uo' 'vo'
+source = mercator_dir;
+[mercator] =  hycom_mercator_build_profiles(source,date,variable_list,xcoords,ycoords);
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
+general_map(mercator,bathymetry_dir,'2Dcontour')
+general_section(mercator,'thetao','STN')
+general_profiles(mercator,'so')
+
+% mercator_domain_plot
+
+variable = 'velocity';  % thetao' 'so' 'uo' 'vo' 'velocity'
+mercator_domain_plot(mercator_dir,date,variable,region)
 
 
 %% mocha

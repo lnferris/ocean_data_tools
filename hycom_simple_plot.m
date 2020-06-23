@@ -24,7 +24,7 @@ slab_vars = {'water_u_bottom','water_v_bottom','water_temp_bottom','salinity_bot
 if ~any(strcmp(standard_vars,variable))  
     
     if any(strcmp(slab_vars,variable))
-        hycom_simple_plot_layer(nc,date,variable,region)
+        hycom_mercator_simple_plot_layer(nc,date,variable,region)
         return
         
     elseif strcmp(variable,'velocity') 

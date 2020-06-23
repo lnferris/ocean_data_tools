@@ -1,23 +1,23 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 20-Jun-2020
+%  Jun 2020; Last revision: 22-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
-function [hycom] =  hycom_build_profiles(url,date,variable_list,xcoords,ycoords)
+function [model] =  hycom_mercator_build_profiles(source,date,variable_list,xcoords,ycoords)
 
 east_inds = find(xcoords>180);  % deal with xcoords spanning dateline
 xcoords(east_inds) = xcoords(east_inds)-360;
 
 n = length(variable_list);
-nc = ncgeodataset(url); % Assign a ncgeodataset handle.
+nc = ncgeodataset(source); % Assign a ncgeodataset handle.
 nc.variables            % Print list of available variables.
 
 for i = 1
 
     variable = variable_list{i};
-    sv = nc{variable}; % Assign ncgeovariable handle: 'water_u' 'water_v' 'water_temp' 'salinity'
+    sv = nc{variable}; % Assign ncgeovariable handle
     sv.attributes % Print ncgeovariable attributes.
     datestr(sv.timeextent(),29) % Print date range of the ncgeovariable.
     svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
@@ -29,7 +29,7 @@ for i = 1
     hdate = NaN(1,length(xcoords));
     hlat = NaN(1,length(xcoords));
     hlon = NaN(1,length(xcoords));
-    hvariable = NaN(round(max(abs(svg.z)))+1,length(xcoords));
+    hvariable = NaN(length(hdepth),length(xcoords));
 
     [tin,~] = near(svg.time,datenum(date,'dd-mmm-yyyy HH:MM:SS'));  % Find time index near date of interest.
 
@@ -52,7 +52,7 @@ for i = 1
 
     end
 
-    hycom = struct('STN', hstn, 'DATE', hdate, 'LON', hlon,'LAT', hlat,'depth',hdepth.', variable, hvariable);
+    model = struct('STN', hstn, 'DATE', hdate, 'LON', hlon,'LAT', hlat,'depth',hdepth.', variable, hvariable);
 
 end  
     
@@ -62,7 +62,7 @@ if n > 1
     for i = 2:n
     
         variable = variable_list{i};
-        sv = nc{variable}; % Assign ncgeovariable handle: 'water_u' 'water_v' 'water_temp' 'salinity'
+        sv = nc{variable}; % Assign ncgeovariable handle
         svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
         
         if  tin ~= near(svg.time,datenum(date,'dd-mmm-yyyy HH:MM:SS'))
@@ -70,14 +70,15 @@ if n > 1
             return
         end
 
-        hvariable = NaN(round(max(abs(svg.z)))+1,length(xcoords));
+        hvariable = NaN(length(hdepth),length(xcoords));
         for cast = 1:length(xcoords)
             [lon_ind,~] = near(svg.lon,xcoords(cast));
             [lat_ind,~] = near(svg.lat,ycoords(cast));
-            hvariable(:,cast) = interp1(svg.z(:),sv.data(tin,:,lat_ind,lon_ind),hycom.depth,'linear');
+            hvariable(:,cast) = interp1(svg.z(:),sv.data(tin,:,lat_ind,lon_ind),model.depth,'linear');
         end
 
-        hycom.(variable) =  hvariable;
+        model.(variable) =  hvariable;
         
     end  
+end
 end

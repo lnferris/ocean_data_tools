@@ -5,7 +5,7 @@
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
-function [sv,svg] = mercator_simple_plot_layer(nc,date,variable,region)
+function [sv,svg] = hycom_mercator_simple_plot_layer(nc,date,variable,region)
 
 sv = nc{variable}; % Assign ncgeovariable handle.
 sv.attributes % Print ncgeovariable attributes.
@@ -48,4 +48,4 @@ else
     title({sprintf('%s %.0fm',sv.attribute('standard_name'));datestr(svg.time(tin))},'interpreter','none');
     hcb = colorbar; title(hcb,sv.attribute('units'));
 
-end   
+end    
