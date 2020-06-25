@@ -26,9 +26,9 @@ for i = 1:length(xcoords)
 end
 
 
-if strcmp(xref,'LON')
+if strcmp(xref,'lon')
     xvar = xcoords;   
-elseif strcmp(xref,'LAT')
+elseif strcmp(xref,'lat')
     xvar = ycoords;   
 else
     disp('Check spelling of reference axis');  

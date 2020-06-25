@@ -16,7 +16,7 @@ end
 figure
 hold on
 
-for prof = 1:length(object.STN) 
+for prof = 1:length(object.stn) 
     
     if isvector(object.depth)
     

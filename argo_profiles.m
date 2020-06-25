@@ -18,18 +18,18 @@ end
 figure
 hold on
 
-for prof = 1:length(argo.STN) 
+for prof = 1:length(argo.stn) 
     
         scatter(cvar(:,prof),argo.depth(:,prof),'.');  
         
         if nargin == 3 && annotate ==1
-            text(cvar(1,prof),argo.depth(1,prof),string(argo.STN(prof)),'FontSize',8)
+            text(cvar(1,prof),argo.depth(1,prof),string(argo.stn(prof)),'FontSize',8)
         end
         
 end
 
     if nargin == 3 && annotate ==1
-        legend(strcat(cellstr(num2str(argo.STN(:))),' (',cellstr(num2str(argo.ID(:))),')')) % Make legend.
+        legend(strcat(cellstr(num2str(argo.stn(:))),' (',cellstr(num2str(argo.id(:))),')')) % Make legend.
     end
 
     title([variable,' by profile'])

@@ -6,26 +6,26 @@
 
 function [subobject] = general_region_subset(object,xcoords,ycoords)
 figure
-plot(object.LON,object.LAT,'.','MarkerSize',14)
-in = inpolygon(object.LON,object.LAT,xcoords,ycoords); % Get indices of data in polygon.
+plot(object.lon,object.lat,'.','MarkerSize',14)
+in = inpolygon(object.lon,object.lat,xcoords,ycoords); % Get indices of data in polygon.
 hold on
 plot([xcoords; xcoords(1)],[ycoords; ycoords(1)],'LineWidth',1) % % Plot polygon
-plot(object.LON(in),object.LAT(in),'r+') % Plot points inside polygon
+plot(object.lon(in),object.lat(in),'r+') % Plot points inside polygon
 
-subobject.STN = object.STN(in);
-subobject.LON = object.LON(in);
-subobject.LAT = object.LAT(in);
-subobject.DATE = object.DATE(in);
+subobject.stn = object.stn(in);
+subobject.lon = object.lon(in);
+subobject.lat = object.lat(in);
+subobject.date = object.date(in);
 
 % find fields that ate not these fields
     % decide if variable is vector or array
         % if vector, decide if it is a depth vector or metadata
         % subset variable
         
-prof_dim = length(object.STN);        
+prof_dim = length(object.stn);        
         
 names = fieldnames(object);   
-var_inds = find(~(strcmp(names,'STN')|strcmp(names,'LON')|strcmp(names,'LAT')|strcmp(names,'DATE')));       
+var_inds = find(~(strcmp(names,'stn')|strcmp(names,'lon')|strcmp(names,'lat')|strcmp(names,'date')));       
 
 for i = 1:length(var_inds)  
     if isvector(object.(names{var_inds(i)}))

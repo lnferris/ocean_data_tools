@@ -1,3 +1,3 @@
 function [region] = bathymetry_region(object)
-region = [min(object.LAT)-5 max(object.LAT)+5 min(object.LON)-5 max(object.LON)+5];
+region = [min(object.lat)-5 max(object.lat)+5 min(object.lon)-5 max(object.lon)+5];
 end

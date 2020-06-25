@@ -10,6 +10,7 @@ function [ctdo] = whp_cruise_ctdo(ctdo_dir)
             nc = netcdf.open(filename, 'NOWRITE'); % Open the file as a netcdf datasource.
             STN = netcdf.getVar(nc,netcdf.inqVarID(nc,'station')); 
             UTC = netcdf.getVar(nc,netcdf.inqVarID(nc,'woce_date'));
+            UTC = datenum(num2str(UTC),'yyyymmdd');
             LON = double(netcdf.getVar(nc,netcdf.inqVarID(nc,'longitude')));
             LAT = double(netcdf.getVar(nc,netcdf.inqVarID(nc,'latitude')));
             CTDPRS = netcdf.getVar(nc,netcdf.inqVarID(nc,'pressure'));

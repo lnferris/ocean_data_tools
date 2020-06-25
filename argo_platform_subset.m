@@ -6,13 +6,13 @@
 
 function [subargo] = argo_platform_subset(argo,platform_id)
 
-    float_inds = find(argo.ID==platform_id);
+    float_inds = find(argo.id==platform_id);
 
-    subargo.ID = argo.ID(float_inds);
-    subargo.LON = argo.LON(float_inds);
-    subargo.LAT = argo.LAT(float_inds);
-    subargo.STN = argo.STN(float_inds);
-    subargo.DATE = argo.DATE(float_inds);
+    subargo.id = argo.id(float_inds);
+    subargo.lon = argo.lon(float_inds);
+    subargo.lat = argo.lat(float_inds);
+    subargo.stn = argo.stn(float_inds);
+    subargo.date = argo.date(float_inds);
     subargo.depth = argo.depth(:,float_inds);
     subargo.salinity = argo.salinity(:,float_inds);
     subargo.temperature= argo.temperature(:,float_inds);

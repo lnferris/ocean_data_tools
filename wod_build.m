@@ -19,6 +19,7 @@ function [wod] = wod_build(wod_dir)
             CTDSAL = netcdf.getVar(nc,netcdf.inqVarID(nc,'Salinity'));
             ALT = netcdf.getVar(nc,netcdf.inqVarID(nc,'z'));
             DATE = netcdf.getVar(nc,netcdf.inqVarID(nc,'date'));
+            DATE = datenum(num2str(DATE),'yyyymmdd');
 
             station_table = {ALT, CTDSAL, CTDTMP, LAT, LON, DATE};
             wod = [wod;station_table]; % Combine CTDTMPorary cell array with general datatable.
@@ -61,6 +62,6 @@ for prof = 1:prof_dim
 end
 
 % output as struct
-wod = struct('STN',stn, 'DATE',date, 'LON',lon,'LAT',lat, 'depth',depth, 'salinity',sal, 'temperature',temp);
+wod = struct('stn',stn, 'date',date, 'lon',lon,'lat',lat, 'depth',depth, 'salinity',sal, 'temperature',temp);
 
 end

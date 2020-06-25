@@ -11,26 +11,26 @@ function argo_platform_map(argo,annotate)
     figure
     hold on
 
-    platformIDs = unique(argo.ID); % Get IDs of the platforms.
-    x = 1:length(platformIDs); % Make vector of short 1..2..3.. labels.
+    platformids = unique(argo.id); % Get ids of the platforms.
+    x = 1:length(platformids); % Make vector of short 1..2..3.. labels.
 
     % For each unique platform:
-    for i = 1:length(unique(argo.ID)) 
+    for i = 1:length(unique(argo.id)) 
 
         % Plot lat/lon for all profiles.
-        plot(argo.LON(argo.ID==platformIDs(i)),argo.LAT(argo.ID==platformIDs(i)),'.','MarkerSize',14)
+        plot(argo.lon(argo.id==platformids(i)),argo.lat(argo.id==platformids(i)),'.','MarkerSize',14)
 
         if nargin == 2 && annotate ==1
-            text(argo.LON(argo.ID==platformIDs(i)),argo.LAT(argo.ID==platformIDs(i)),string(x(i)),'FontSize',6)
+            text(argo.lon(argo.id==platformids(i)),argo.lat(argo.id==platformids(i)),string(x(i)),'FontSize',6)
         end
 
     end
 
-    axis([min(argo.LON)-5 max(argo.LON)+5 min(argo.LAT)-5 max(argo.LAT)+5])
+    axis([min(argo.lon)-5 max(argo.lon)+5 min(argo.lat)-5 max(argo.lat)+5])
     grid on; grid minor
     title('By platform')
     if nargin == 2 && annotate ==1
-        legend(strcat(cellstr(num2str(x(:))),' (',cellstr(num2str(platformIDs(:))),')')) % Make legend.
+        legend(strcat(cellstr(num2str(x(:))),' (',cellstr(num2str(platformids(:))),')')) % Make legend.
     end
     
 end

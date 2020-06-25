@@ -19,12 +19,12 @@ function  general_section(object,variable,xref,interpolate,contours)
         zvar = -zvar;
     end
 
-    if strcmp(xref,'LON')
-        xvar = object.LON;
-    elseif strcmp(xref,'LAT')
-        xvar = object.LAT;
-    elseif strcmp(xref,'STN')
-        xvar = object.STN;   
+    if strcmp(xref,'lon')
+        xvar = object.lon;
+    elseif strcmp(xref,'lat')
+        xvar = object.lat;
+    elseif strcmp(xref,'stn')
+        xvar = object.stn;   
     else
         disp('Check spelling of reference axis');  
     end
@@ -33,7 +33,7 @@ function  general_section(object,variable,xref,interpolate,contours)
     hold on
 
     if interpolate==0
-        for prof = 1:length(object.STN)
+        for prof = 1:length(object.stn)
 
             if isvector(zvar)
                 scatter(xvar(prof)*ones(length(zvar),1),zvar,[],cvar(:,prof),'.')  
@@ -74,7 +74,7 @@ function  general_section(object,variable,xref,interpolate,contours)
     colorbar
     title(variable)
     xlabel(xref)
-    ylabel('DEPTH')
+    ylabel('depth')
 
 end
     

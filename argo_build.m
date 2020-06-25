@@ -102,6 +102,6 @@ temp(depth==FillValue | temp==FillValue) = NaN;
 depth(depth==FillValue) = NaN;
 
 % output as struct
-argo = struct('ID',id,'STN',stn, 'DATE',date, 'LON',lon,'LAT',lat, 'depth',depth, 'salinity',sal, 'temperature',temp);
+argo = struct('id',id,'stn',stn, 'date',date, 'lon',lon,'lat',lat, 'depth',depth, 'salinity',sal, 'temperature',temp);
 
 end

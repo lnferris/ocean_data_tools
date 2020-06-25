@@ -91,7 +91,7 @@ for i = 1
 
     end
     
-woa = struct('STN', wstn, 'DATE', wdate, 'LON', wlon,'LAT', wlat,'depth',wdepth.', variable, wvariable);
+woa = struct('stn', wstn, 'date', wdate, 'lon', wlon,'lat', wlat,'depth',wdepth.', variable, wvariable);
 
 end
 

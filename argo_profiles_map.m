@@ -12,20 +12,20 @@ function argo_profiles_map(argo,annotate)
     hold on
 
     % For each unique platform:
-    for prof = 1:length(argo.STN) 
+    for prof = 1:length(argo.stn) 
         % Plot lat/lon for all profiles.
-        plot(argo.LON(prof),argo.LAT(prof),'.','MarkerSize',14)
+        plot(argo.lon(prof),argo.lat(prof),'.','MarkerSize',14)
         if nargin == 2 && annotate ==1
-            text(argo.LON(prof),argo.LAT(prof),string(argo.STN(prof)),'FontSize',6)
+            text(argo.lon(prof),argo.lat(prof),string(argo.stn(prof)),'FontSize',6)
         end
     end
 
-    axis([min(argo.LON)-5 max(argo.LON)+5 min(argo.LAT)-5 max(argo.LAT)+5])
+    axis([min(argo.lon)-5 max(argo.lon)+5 min(argo.lat)-5 max(argo.lat)+5])
     grid on; grid minor
 
     title('By Profile');
     if nargin == 2 && annotate ==1
-        legend(strcat(cellstr(num2str(argo.STN(:))),' (',cellstr(num2str(argo.ID(:))),')')) % Make legend.
+        legend(strcat(cellstr(num2str(argo.stn(:))),' (',cellstr(num2str(argo.id(:))),')')) % Make legend.
     end
     
 end

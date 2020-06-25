@@ -52,7 +52,7 @@ for i = 1
 
     end
 
-    model = struct('STN', hstn, 'DATE', hdate, 'LON', hlon,'LAT', hlat,'depth',hdepth.', variable, hvariable);
+    model = struct('stn', hstn, 'date', hdate, 'lon', hlon,'lat', hlat,'depth',hdepth.', variable, hvariable);
 
 end  
     

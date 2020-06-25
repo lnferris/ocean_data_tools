@@ -33,9 +33,9 @@ lat = (ones(1,length(lon)).*lat).';
 
 in = inpolygon(lon,lat,poly_x,poly_y); % Get indices of data in polygon.
 bathymetry_section = bath(in);
-if strcmp(xref,'LON')
+if strcmp(xref,'lon')
     xvar = lon(in);
-elseif strcmp(xref,'LAT')
+elseif strcmp(xref,'lat')
     xvar = lat(in);
 else
     disp('Check spelling of reference axis');     

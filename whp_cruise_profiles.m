@@ -33,7 +33,7 @@ function whp_cruise_profiles(cruise,variable)
     
     figure
     hold on
-    for prof = 1:length(cruise.STN) 
+    for prof = 1:length(cruise.stn) 
         scatter(cvar(:,prof),zvar(:,prof),'.');  
     end
     hold off

@@ -15,12 +15,12 @@ function whp_cruise_section(cruise,variable,xref,interpolate,contours)
 
    cvar = eval(['cruise.',variable]);
     
-    if strcmp(xref,'LON')
-        xvar = cruise.LON;
-    elseif strcmp(xref,'LAT')
-        xvar = cruise.LAT;
-    elseif strcmp(xref,'STN')
-        xvar = cruise.STN;
+    if strcmp(xref,'lon')
+        xvar = cruise.lon;
+    elseif strcmp(xref,'lat')
+        xvar = cruise.lat;
+    elseif strcmp(xref,'stn')
+        xvar = cruise.stn;
     else
         disp('Check spelling of reference axis');  
     end
@@ -51,7 +51,7 @@ function whp_cruise_section(cruise,variable,xref,interpolate,contours)
     hold on
 
     if interpolate==0
-        for prof = 1:length(cruise.STN)
+        for prof = 1:length(cruise.stn)
             scatter(xvar(prof)*ones(length(zvar(:,prof)),1),zvar(:,prof),[],cvar(:,prof),'.')
         end
         
@@ -77,7 +77,7 @@ function whp_cruise_section(cruise,variable,xref,interpolate,contours)
     colorbar
     title(variable)
     xlabel(xref)
-    ylabel('DEPTH')
+    ylabel('depth')
 
     if strcmp(variable,'EPS')
         title('epsilon')

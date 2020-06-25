@@ -8,8 +8,8 @@ function general_map(object,bathymetry_dir,ptype)
 
     figure
     grid on; grid minor
-    plot(object.LON, object.LAT,'.','MarkerSize',14)
-    axis([min(object.LON)-5 max(object.LON)+5 min(object.LAT)-5 max(object.LAT)+5])
+    plot(object.lon, object.lat,'.','MarkerSize',14)
+    axis([min(object.lon)-5 max(object.lon)+5 min(object.lat)-5 max(object.lat)+5])
     
 
     if nargin >= 2
