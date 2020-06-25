@@ -92,7 +92,7 @@ general_map(object,bathymetry_dir,ptype)
 
 % general_region_subset
 
-object = hycom; % argo or cruise or hycom or woa or wod
+object = cruise; % argo or cruise or hycom or woa or wod
 general_map(object)
 [xcoords,ycoords] = region_select(); % click desired  region on the figure
 [hycom_sub] = general_region_subset(object,xcoords,ycoords); 
@@ -100,7 +100,7 @@ general_map(object)
 % general_section
 
 object = hycom; % argo or hycom or woa or wod
-variable = 'salinity'; % see particular object for options
+variable = 'salinity'; % see particular struct for options
 xref = 'lat'; % 'lat' 'lon' 'stn';
 interpolate = 1; % 1=on 0=off
 contours = 1; % 1=on 0=off
@@ -109,7 +109,7 @@ general_section(object,variable,xref,interpolate,contours) % interpolate, contou
 % general_profiles
 
 object = hycom; % argo or hycom or woa or wod
-variable = 'salinity'; % see particular object for options
+variable = 'salinity'; % see particular struct for options
 general_profiles(object,variable)
 
 
