@@ -122,7 +122,8 @@ setup_nctoolbox
 month = 10; 
 depth = 0;
 variable = 'temperature'; %  'temperature' 'salinity'
-mocha_simple_plot(month,depth,variable)
+region = [34 42  -80 -70]; % [30 48 -80 -58]
+mocha_simple_plot(month,depth,variable,region)
 
 
 %% model (hycom example)
