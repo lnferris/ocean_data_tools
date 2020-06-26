@@ -70,6 +70,10 @@ function [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,
     netcdf.close(nc); % Close the file.
     end
     
+if min(argo_table.LONGITUDE) < -170 && max(argo_table.LONGITUDE)>170  % if working near dateline wrap to 0/360
+    argo_table.LONGITUDE(argo_table.LONGITUDE < 0) = argo_table.LONGITUDE(argo_table.LONGITUDE < 0)+360; 
+end  
+    
 % find necessary array dimensions
 prof_dim = height(argo_table);
 var_dim = width(argo_table);
