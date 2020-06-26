@@ -196,6 +196,7 @@ ctdo_dir = '/Users/lnferris/Desktop/S04P/320620180309_nc_ctd/*.nc';
 %uv_dir = '/Users/lnferris/Desktop/S04P/processed_uv_20181030_nc/*.nc'; % Can use .nc or .mat for uv
 uv_dir = '/Users/lnferris/Desktop/S04P/processed_uv_20181030/*.mat';
 wvke_dir = '/Users/lnferris/Desktop/S04P/processed_w_20181030/';
+netcdf_info(ctdo_dir) % Get cruise information.
 [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir); % Use a dummy path (e.g. uv_dir ='null') if missing data. 
 
 % whp_cruise_section
@@ -243,8 +244,10 @@ woa_domain_plot(variable,time,region)
 
 % wod_build
 
-wod_dir = '/Users/lnferris/Desktop/woddata/*.nc';
-[wod] = wod_build(wod_dir);
+wod_dir = '/Users/lnferris/Desktop/woddata/*O.nc';
+netcdf_info(wod_dir); % Get information to inform choice of variable_list.
+variable_list = {'Temperature','Salinity','Pressure'}; % Variables to read.
+[wod] = wod_build(wod_dir,variable_list);
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 general_map(wod,bathymetry_dir)
-general_profiles(wod,'temperature')
+general_profiles(wod,'Temperature')
