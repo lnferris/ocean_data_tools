@@ -6,16 +6,24 @@
 
 function [subargo] = argo_platform_subset(argo,platform_id)
 
-    float_inds = find(argo.id==platform_id);
+    in = find(argo.id==platform_id);
+    
+    prof_dim = length(argo.stn);              
+    names = fieldnames(argo);   
+    for i = 1:length(names)  
+        if isvector(argo.(names{i}))
 
-    subargo.id = argo.id(float_inds);
-    subargo.lon = argo.lon(float_inds);
-    subargo.lat = argo.lat(float_inds);
-    subargo.stn = argo.stn(float_inds);
-    subargo.date = argo.date(float_inds);
-    subargo.depth = argo.depth(:,float_inds);
-    subargo.salinity = argo.salinity(:,float_inds);
-    subargo.temperature= argo.temperature(:,float_inds);
+            if length(argo.(names{i}))==prof_dim
+                subargo.(names{i}) = argo.(names{i})(in); 
+            else
+                subargo.(names{i}) = argo.(names{i});  
+            end
 
+        else
+            subargo.(names{i}) = argo.(names{i})(:,in);
+        end
+    end
+
+    
 end
 

@@ -11,10 +11,11 @@ full_path = dir(nc_dir);
 for i = 1:length(full_path) % For each file in full_path...
     
     try
-        diary netcdf_info
+        delete netcdf_info-ocean_data_tools
+        diary netcdf_info-ocean_data_tools
         ncdisp([full_path(i).folder '/' full_path(i).name])
         diary off
-        disp(['Info about ',full_path(i).name,' saved to ', pwd,'/netcdf_info.'])
+        disp(['Info about ',full_path(i).name,' saved to ', pwd,'/netcdf_info-ocean_data_tools.'])
         break
     catch
     end

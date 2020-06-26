@@ -18,10 +18,12 @@ setup_nctoolbox
 % argo_build
 
 argo_dir = '/Users/lnferris/Desktop/coriolis_25feb2018/*profiles*.nc';
+netcdf_info(argo_dir);
 region = [-90.0 90.0 -90.0 -60.0]; %  Search region [-90 90 -180 180]
 start_date = '01-Jan-2016 00:00:00';
 end_date = '10-Jan-2016 00:00:00';
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date);
+variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'}; % Variables to read (besides id, lon, lat, date, z).
+[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
 
 % argo_platform_subset
 
@@ -37,7 +39,7 @@ bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour')
 
 % argo_profiles
 
-variable = 'temperature'; % 'temperature' 'salinity'
+variable = 'TEMP_ADJUSTED'; % See object for options.
 annotate = 1; 
 argo_profiles(argo,variable,annotate) % annotate optional,  1=on 0=off
 
@@ -246,7 +248,7 @@ woa_domain_plot(variable,time,region)
 
 wod_dir = '/Users/lnferris/Desktop/woddata/*O.nc';
 netcdf_info(wod_dir); % Get information to inform choice of variable_list.
-variable_list = {'Temperature','Salinity','Pressure'}; % Variables to read.
+variable_list = {'Temperature','Salinity'}; % Variables to read (besides lon, lat, date, z).
 [wod] = wod_build(wod_dir,variable_list);
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 general_map(wod,bathymetry_dir)
