@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 26-Jun-2020
+%  Jun 2020; Last revision: 27-Jun-2020
 %  Distributed under the terms of the MIT License
 
 function [wod] = wod_build(wod_dir,variable_list)
@@ -11,8 +11,7 @@ function [wod] = wod_build(wod_dir,variable_list)
     variable_list = [base_list variable_list];
     nvar = length(variable_list);
     
-    wod_table = cell2table(cell(0,nvar)); % Make an empty table to hold profile data.
-    wod_table.Properties.VariableNames = variable_list;  
+    wod_cell = cell(0,nvar); % Make an empty table to hold profile data.
     full_path = dir(wod_dir);
     
     for i = 1:length(full_path) % For each file in full_path...
@@ -30,66 +29,46 @@ function [wod] = wod_build(wod_dir,variable_list)
                 end
             end
 
-            wod_table = [wod_table;cast_table]; % Combine CTDTMPorary cell array with general datatable.
+            wod_cell = [wod_cell;cast_table]; % Combine CTDTMPorary cell array with general datatable.
         catch ME % Throw an exception if unable to read file.
             ME;
         end    
         netcdf.close(nc); % Close the file.  
 
     end
-   
-% find necessary array dimensions
-prof_dim = height(wod_table);
-var_dim = width(wod_table);
-z_dim = 0;
-is_matrix = zeros(1,var_dim);
-for prof = 1:height(wod_table)   
+    
+    % find necessary array dimensions
+    [sz1,sz2] = cellfun(@size,wod_cell);
+    z_dim = max(max([sz1,sz2]));
+    prof_dim = size(wod_cell,1);
+    var_dim = size(wod_cell,2);
+    is_matrix = sz1(1,:)~=1;
+
+    % load data into structured array
+    wod.stn = NaN(1,prof_dim);
     for var = 1:var_dim
-        try
-            if length(wod_table.(var){prof,:}) > z_dim
-                z_dim = length(wod_table.(var){prof,:});
-            end
-            is_matrix(var) = 1;
-        catch
-            is_matrix(var) = 0;
-        end
-    end
-end
 
-% build structured array
-wod.stn = NaN(1,prof_dim);
-for var = 1:length(variable_list)  
-    variable = variable_list{var};
-    
-    if is_matrix(var)
-        wod.(variable) = NaN(z_dim,prof_dim);
-    else
-        wod.(variable) = NaN(1,prof_dim);
-    end
-    
-end
-
-% load data into structured array
-
-for prof = 1:prof_dim
-    
-    wod.stn(prof) = prof;
-    ind_last = length(wod_table.z{prof,:});
-    
-    for var = 1:length(variable_list)  
         variable = variable_list{var};
-        
         if is_matrix(var)
-            wod.(variable)(1:ind_last,prof) = wod_table.(variable){prof,:};
+            wod.(variable) = NaN(z_dim,prof_dim);
         else
-            wod.(variable)(prof) = wod_table.(variable)(prof);
-        end
-    end
-    
-end
+            wod.(variable) = NaN(1,prof_dim);
+        end 
 
-% rename the depth variable depth
-wod.depth = wod.z;
-wod = rmfield(wod,'z');
+        for prof = 1:prof_dim
+            ind_last = sz1(prof,var);  
+            dat = wod_cell(prof,var);
+            if is_matrix(var)
+                wod.(variable)(1:ind_last,prof) = dat{:};
+            else
+                wod.(variable)(prof) = dat{:};
+            end 
+        end
+
+    end
+
+    % rename the depth variable depth
+    wod.depth = wod.z;
+    wod = rmfield(wod,'z');
 
 end
