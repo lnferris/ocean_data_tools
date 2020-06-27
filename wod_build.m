@@ -19,17 +19,17 @@ function [wod] = wod_build(wod_dir,variable_list)
         nc = netcdf.open(filename, 'NOWRITE'); % Open the file as a netcdf datasource.
         
         try % Try to read the file.
-            cast_table = cell(1,nvar);
+            cast_cell = cell(1,nvar);
             
             for var = 1:nvar
                 if strcmp(variable_list{var},'date')
-                    cast_table{var}  = datenum(num2str(netcdf.getVar(nc,netcdf.inqVarID(nc,variable_list{var}))),'yyyymmdd');   
+                    cast_cell{var}  = datenum(num2str(netcdf.getVar(nc,netcdf.inqVarID(nc,variable_list{var}))),'yyyymmdd');   
                 else
-                    cast_table{var} = netcdf.getVar(nc,netcdf.inqVarID(nc,variable_list{var}));
+                    cast_cell{var} = netcdf.getVar(nc,netcdf.inqVarID(nc,variable_list{var}));
                 end
             end
 
-            wod_cell = [wod_cell;cast_table]; % Combine CTDTMPorary cell array with general datatable.
+            wod_cell = [wod_cell;cast_cell]; % Combine CTDTMPorary cell array with general datatable.
         catch ME % Throw an exception if unable to read file.
             ME;
         end    
