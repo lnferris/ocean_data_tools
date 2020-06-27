@@ -47,7 +47,6 @@ function [wod] = wod_build(wod_dir,variable_list)
     % load data into structured array
     wod.stn = NaN(1,prof_dim);
     for var = 1:var_dim
-
         variable = variable_list{var};
         if is_matrix(var)
             wod.(variable) = NaN(z_dim,prof_dim);
@@ -64,11 +63,15 @@ function [wod] = wod_build(wod_dir,variable_list)
                 wod.(variable)(prof) = dat{:};
             end 
         end
-
     end
-
+    
     % rename the depth variable depth
     wod.depth = wod.z;
     wod = rmfield(wod,'z');
+    
+    % if working near dateline wrap to 0/360
+    if min(wod.lon) < -170 && max(wod.lon)>170  
+        wod.lon(wod.lon < 0) = wod.lon(wod.lon < 0)+360; 
+    end  
 
 end
