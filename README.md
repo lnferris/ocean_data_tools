@@ -6,13 +6,9 @@
 
 **Copyright (c) 2020 lnferris** 
 
-ocean_data_tools 1.0 is a toolbox for interacting with freely-available ocean data.
-
-The ethos of ocean_data_tools is to build data structs (e.g. argo, cruise, hycom, mercator, woa, wod) and call general functions on these structs. Find a bug? Open an issue or contact lnferris@alum.mit.edu.
-
-## Purpose
-
 ocean_data_tools 1.0 simplifies the process of extracting, formatting, and visualizing freely-available oceanographic data. While there is a wealth of oceanographic data online, some potential end-users may be dissuaded from utilizing this data due to the overhead associated with determining how to batch download it, format it into easily-manipulable data structures, and make graphics. ocean_data_tools solves this problem by allowing the user to transform common oceanographic data sources into uniform structs (e.g. argo, cruise, hycom, mercator, woa, wod) and call generalized functions on these structs, or easily perform custom calculations.
+
+Find a bug? Open an issue or contact lnferris@alum.mit.edu.
 
 ## Demos
 
