@@ -119,14 +119,28 @@ general_profiles(object,variable)
 
 setup_nctoolbox
 
-%mocha_simple_plot
+% mocha_simple_plot
 
 month = 10; % Month (1 through 12).
 depth = 0;
 variable = 'temperature'; %  'temperature' 'salinity'
 region = [34 42  -80 -70]; % [30 48 -80 -58]
+
 mocha_simple_plot(month,depth,variable,region)
 
+% mocha_build_profiles
+
+[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+[mocha] = mocha_build_profiles(month,xcoords,ycoords);
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
+general_map(mocha,bathymetry_dir,'2Dcontour')
+general_section(mocha,'temperature','stn')
+general_profiles(mocha,'salinity')
+
+% mocha_domain_plot
+
+mocha_domain_plot(month,variable,region)
+ 
 
 %% model (hycom example)
 
