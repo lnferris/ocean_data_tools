@@ -1,47 +1,21 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 21-Jun-2020
+%  Jun 2020; Last revision: 28-Jun-2020
 %  Distributed under the terms of the MIT License
 
-function whp_cruise_section(cruise,variable,xref,interpolate,contours)
+function whp_cruise_section(cruise,variable,xref,zref,interpolate,contours)
 
-    if nargin <5
+    if nargin <6
         contours = 0;
-        if nargin<4
+        if nargin<5
             interpolate = 0;
         end
     end
 
    cvar = eval(['cruise.',variable]);
-    
-    if strcmp(xref,'lon')
-        xvar = cruise.lon;
-    elseif strcmp(xref,'lat')
-        xvar = cruise.lat;
-    elseif strcmp(xref,'stn')
-        xvar = cruise.stn;
-    else
-        disp('Check spelling of reference axis');  
-    end
-    
-    ctd_vars = {'CTDSAL','CTDTMP','CTDOXY'};
-    uv_vars  = {'U','V'};
-    w_vars   = {'DC_W'};
-    vke_vars = {'P0','EPS'};
-    
-    if any(strcmp(ctd_vars,variable))
-        zvar = eval(['cruise.','CTDPRS']);   
-        
-    elseif  any(strcmp(uv_vars,variable))  
-        zvar = eval(['cruise.','Z']);
-        
-    elseif  any(strcmp(w_vars,variable))   
-        zvar = eval(['cruise.','WDEP']);    
-        
-    elseif  any(strcmp(vke_vars,variable))   
-        zvar = eval(['cruise.','VKE_DEP']);     
-    end
+   xvar = eval(['cruise.',xref]);
+   zvar = eval(['cruise.',zref]);
     
     if nanmean(zvar,'all') > 0
         zvar = -zvar;
@@ -77,13 +51,13 @@ function whp_cruise_section(cruise,variable,xref,interpolate,contours)
     colorbar
     title(variable)
     xlabel(xref)
-    ylabel('depth')
+    ylabel(zref)
 
-    if strcmp(variable,'EPS')
+    if strcmp(variable,'eps_VKE')
         title('epsilon')
         set(gca,'ColorScale','log')
         
-    elseif strcmp(variable,'P0')
+    elseif strcmp(variable,'p0')
         title('Normalized VKE Density, W/kg')
         set(gca,'ColorScale','log')
         

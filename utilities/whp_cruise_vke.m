@@ -1,28 +1,31 @@
 function [vke] = whp_cruise_vke(wvke_dir)
 
+    base_list = {'station','depth','p0','eps_VKE'}; 
+    nvar = length(base_list);
+
     full_path = dir([wvke_dir '*VKEprof.nc']);
-    vke = cell2table(cell(length(full_path),5)); % Make an empty table to hold profile data.
-    vke.Properties.VariableNames = {'STN','VKEDEP','VKEHAB','P0','EPS'}; 
+    vke = cell2table(cell(0,nvar)); % Make an empty table to hold profile data.
+    vke.Properties.VariableNames = base_list; 
     for i = 1:length(full_path) % For each file in full_path...
         filename = [full_path(i).folder '/' full_path(i).name];
+        nc = netcdf.open(filename, 'NOWRITE'); % Open the file as a netcdf datasource. 
         try
-            nc = netcdf.open(filename, 'NOWRITE'); % Open the file as a netcdf datasource.
-            STN = filename(end-13:end-11);  
-            VKEDEP = netcdf.getVar(nc,netcdf.inqVarID(nc,'depth')); % Window Center Depth, m
-            VKEHAB = netcdf.getVar(nc,netcdf.inqVarID(nc,'hab')); % Window Center Height Above Seabed
-            P0 = netcdf.getVar(nc,netcdf.inqVarID(nc,'p0')); % Normalized VKE Density, W/kg
-            EPS = netcdf.getVar(nc,netcdf.inqVarID(nc,'eps.VKE')); % Turbulent Kinetic Energy Dissipation from Finescale VKE Parameterization
-            vke{i,:} = {STN, VKEDEP, VKEHAB, P0, EPS};
-            netcdf.close(nc); % Close the file.  
+            cast_cell = cell(1,nvar);
+            for var = 1:nvar
+                if strcmp(base_list{var},'station')
+                    cast_cell{var}  = str2double(filename(end-13:end-11)); % get station from filename 
+                else
+                    cast_cell{var} = netcdf.getVar(nc,netcdf.inqVarID(nc,strrep(base_list{var},'_','.')));
+                end
+            end
+            vke = [vke;cast_cell]; % Combine CTDTMPorary cell array with general datatable.
         catch
             disp(['Cannot read ', full_path(i).name])
         end
+        netcdf.close(nc); % Close the file.  
     end
     
-    % deal with null directory
-    if height(vke)==0     
-        vke = cell2table(cell(1,5)); % Make an empty table to hold profile data.
-        vke.Properties.VariableNames = {'STN','VKEDEP','VKEHAB','P0','EPS'};  
-        vke{1,:} = {'1', NaN, NaN, NaN,NaN};
-    end     
+    % rename to avoid conflict with w
+    vke.Properties.VariableNames{'depth'} = 'depth_vke';
+
 end

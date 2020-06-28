@@ -195,23 +195,24 @@ model_domain_plot(model,source,date,variable,region)
 % whp_cruise_build
 
 ctdo_dir = '/Users/lnferris/Desktop/S04P/320620180309_nc_ctd/*.nc';
-%uv_dir = '/Users/lnferris/Desktop/S04P/processed_uv_20181030_nc/*.nc'; % Can use .nc or .mat for uv
-uv_dir = '/Users/lnferris/Desktop/S04P/processed_uv_20181030/*.mat';
+uv_dir = '/Users/lnferris/Desktop/S04P/processed_uv_20181030_nc/*.nc';
 wvke_dir = '/Users/lnferris/Desktop/S04P/processed_w_20181030/';
 netcdf_info(ctdo_dir) % Get cruise information.
-[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir); % Use a dummy path (e.g. uv_dir ='null') if missing data. 
+variable_list = {'salinity','temperature','oxygen'};
+[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list); % Use a dummy path (e.g. uv_dir ='null') if missing data. 
 
 % whp_cruise_section
 
-variable = 'CTDTMP'; % 'CTDSAL' 'CTDTMP' 'CTDOXY' 'U' 'V' 'DC_W' 'P0' 'EPS'
-xref = 'lon'; %'lon' 'lat' 'stn' 
-interpolate = 0; % 1=on 0=off
+variable = 'temperature'; % See cruise for options.
+xref = 'lon'; % See cruise for options.
+zref = 'pressure'; % See cruise for options.
+interpolate = 1; % 1=on 0=off
 contours = 0; % 1=on 0=off
-whp_cruise_section(cruise,variable,xref,interpolate,contours) % interpolate, contours optional
+whp_cruise_section(cruise,variable,xref,zref,interpolate,contours) % interpolate, contours optional
 
 % whp_cruise_profiles
 
-whp_cruise_profiles(cruise,variable)
+whp_cruise_profiles(cruise,variable,zref)
 
 
 %% woa (world ocean atlas)
