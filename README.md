@@ -41,7 +41,7 @@ For Mercator, download Copernicus Marine data directly from FTP servers. Go to h
 ### whp_cruise_
 
 For GO-SHIP (https://usgoship.ucsd.edu/hydromap/) data, get CTD data (for ctdo_dir) by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and downloading the CTD data in whp_netcdf format. 
-Visit https://exchange-format.readthedocs.io/en/latest/index.html# for information about whp_netcdf parameters, specific to GO-SHIP. Get LADCP data (for uv_dir, wke_dir) at https://currents.soest.hawaii.edu/go-ship/ladcp/. Information about LACDP processing may be found at https://www.ldeo.columbia.edu/~ant/LADCP.html.
+Visit https://exchange-format.readthedocs.io/en/latest/index.html# for information about whp_netcdf parameters, specific to GO-SHIP. Get LADCP data (for uv_dir, wke_dir) at https://currents.soest.hawaii.edu/go-ship/ladcp/. There is information about LACDP processing at https://www.ldeo.columbia.edu/~ant/LADCP.html.
 
 ### woa_
 
