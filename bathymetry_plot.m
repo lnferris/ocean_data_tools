@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 21-Jun-2020
+%  Jun 2020; Last revision: 28-Jun-2020
 %  Distributed under the terms of the MIT License
 
 % inputs: 
@@ -14,6 +14,20 @@ function bathymetry_plot(bathymetry_dir,region,ptype)
 
 % Load bathymetry data.
 [bath,lat,lon] = bathymetry_extract(bathymetry_dir,region);
+
+
+
+% deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
+region(region>180) = region(region>180)- 360;
+region(region<-180) = region(region<-180)+360;
+
+if region(3) < 0
+    east_inds = find(lon>180);
+    lon(east_inds) = lon(east_inds)-360;    
+end
+
+[lon,lon_inds] = sort(lon);
+bath = bath(lon_inds,:);
 
 hold on
 

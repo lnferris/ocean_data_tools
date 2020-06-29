@@ -1,14 +1,11 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 22-Jun-2020
+%  Jun 2020; Last revision: 28-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
 function [model] =  model_build_profiles(source,date,variable_list,xcoords,ycoords)
-
-east_inds = find(xcoords>180);  % deal with xcoords spanning dateline
-xcoords(east_inds) = xcoords(east_inds)-360;
 
 n = length(variable_list);
 nc = ncgeodataset(source); % Assign a ncgeodataset handle.
@@ -22,6 +19,15 @@ for i = 1
     datestr(sv.timeextent(),29) % Print date range of the ncgeovariable.
     svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
 
+    % Prepare to handle 0/360 model data
+
+    model360 = all(svg.lon>=0); 
+    lon = svg.lon;
+    if model360
+        east_inds = find(lon>180);
+        lon(east_inds) = lon(east_inds)-360;
+    end
+    
     % densify depth levels
     hdepth(:) = svg.z(1):-1:svg.z(end);
 
@@ -36,20 +42,20 @@ for i = 1
     for cast = 1:length(xcoords)
 
         % get cast
-        [lon_ind,~] = near(svg.lon,xcoords(cast));
+        [lon_ind,~] = near(lon,xcoords(cast));
         [lat_ind,~] = near(svg.lat,ycoords(cast));
 
         % interpolate cast
         hstn(cast) = cast;
         hdate(cast) = svg.time(tin);
-        hlon(cast) = svg.lon(lon_ind);
+        hlon(cast) = lon(lon_ind);
         hlat(cast) = svg.lat(lat_ind);
         hvariable(:,cast) = interp1(svg.z(:),sv.data(tin,:,lat_ind,lon_ind),hdepth,'linear');
 
         if ismember(cast,east_inds)
             hlon(cast) = hlon(cast)+360; 
         end
-
+            
     end
 
     model = struct('stn', hstn, 'date', hdate, 'lon', hlon,'lat', hlat,'depth',hdepth.', variable, hvariable);
@@ -72,7 +78,7 @@ if n > 1
 
         hvariable = NaN(length(hdepth),length(xcoords));
         for cast = 1:length(xcoords)
-            [lon_ind,~] = near(svg.lon,xcoords(cast));
+            [lon_ind,~] = near(lon,xcoords(cast));
             [lat_ind,~] = near(svg.lat,ycoords(cast));
             hvariable(:,cast) = interp1(svg.z(:),sv.data(tin,:,lat_ind,lon_ind),model.depth,'linear');
         end

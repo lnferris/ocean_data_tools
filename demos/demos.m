@@ -61,7 +61,7 @@ lon2 = 280; % Ending point of linear slice.
 lat2 = -66.5;
 xref = 'lon'; % 'lon' 'lat'
 width = 1/60; % Approximate width of chord in degrees
-whp_cruise_section(cruise,variable,xref) 
+whp_cruise_section(cruise,variable,xref,zref) 
 filled = 0;
 bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,width,filled) % width, filled optional
 
@@ -76,7 +76,7 @@ bathymetry_plot(bathymetry_dir,region,ptype)
 % bathymetry_section
 
 xref = 'lon'; % 'lon' 'lat'
-whp_cruise_section(cruise,variable,xref)
+whp_cruise_section(cruise,variable,xref,zref)
 xcoords = cruise.lon; % could alternatively use transect_select() to select coordinates
 ycoords = cruise.lat;
 filled = 1;  % 1=on 0=off
@@ -149,10 +149,11 @@ setup_nctoolbox
 % model_simple_plot - HYCOM EXAMPLE
 
 model = 'hycom'; % 'hycom' 'mercator'
-source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % url or local .nc 
+source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_92.9'; % url or local .nc 
+%source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; 
 date = '28-Aug-2017 00:00:00';  
-variable = 'surf_el';                  % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 'surf_el' 'water_u_bottom' 'water_v_bottom' 'water_temp_bottom' 'salinity_bottom' 
-region = [-5.0, 45.0 ,120, -150];      % [-90 90 -180 180]
+variable = 'velocity';                  % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 'surf_el' 'water_u_bottom' 'water_v_bottom' 'water_temp_bottom' 'salinity_bottom' 
+region = [-5.0, 45.0 ,50, -100];      % [-90 90 -180 180]
 depth = -150;                          % Depth level between 0 and -5000m
 arrows = 0;                            % Velocity direction arrows 1=on 0=off
 model_simple_plot(model,source,date,variable,region,depth,arrows)
