@@ -10,13 +10,15 @@ ocean_data_tools simplifies the process of extracting, formatting, and visualizi
 
 Find a bug? Open an issue or contact lnferris@alum.mit.edu.
 
-## Demos
-
-See **demos/demos.m** for examples.
-
 ## Dependencies
 
 nctoolbox (https://github.com/nctoolbox/nctoolbox)
+
+## Getting Started
+
+1. Download [bathymetry](### bathymetry_).
+2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox).
+3. Run each demonstration in **demos/demos.m**. The test data is included in **data/**.
 
 ## Getting Data
 
