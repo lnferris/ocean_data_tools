@@ -29,5 +29,7 @@ for prof = 1:length(object.stn)
     end
 end
 
+title(variable, 'Interpreter', 'none')
+
 end
 

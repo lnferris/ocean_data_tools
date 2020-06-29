@@ -72,7 +72,7 @@ function  general_section(object,variable,xref,interpolate,contours)
     end
     
     colorbar
-    title(variable)
+    title(variable, 'Interpreter', 'none')
     xlabel(xref)
     ylabel('depth')
 

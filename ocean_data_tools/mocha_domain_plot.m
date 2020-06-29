@@ -34,4 +34,6 @@ hcb = colorbar; title(hcb,sv.attribute('units'));
 
 end    
 
+view([-5 -2 5]);
+
 end
