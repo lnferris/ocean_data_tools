@@ -18,7 +18,7 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 
 1. Download bathymetry (see below).
 2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox).
-3. Run each demonstration in **demos/demos.m**. All demo data is included in **data/**.
+3. Run each demonstration in **demos/demos.m**. All demo **data/** is included.
 
 ## Getting Data
 
