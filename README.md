@@ -18,7 +18,7 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 
 1. Download bathymetry (see below).
 2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox).
-3. Run each demonstration in **demos/demos.m**. All demo data is included in **data/**.
+3. Run each demonstration in **demos/demos.m**. All demo **data/** is included.
 
 ## Getting Data
 
@@ -30,7 +30,7 @@ Alternatively run **shell_scripts/download_argo** to download data via File Tran
 
 ### bathymetry_
 
-To get bathymetry data (for bathymetry_dir), download Smith & Sandwell under "Global Topography V19.1" (https://topex.ucsd.edu/marine_topo/) in netcdf form (topo_19.1.nc or topo_20.1.nc).
+To get bathymetry data (for bathymetry_dir), download Smith & Sandwell under "Global Topography V19.1" (https://topex.ucsd.edu/marine_topo/) in netcdf form (topo_20.1.nc).
 
 ### mocha_
 
