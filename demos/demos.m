@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 28-Jun-2020
+%  Jun 2020; Last revision: 29-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -59,7 +59,7 @@ wvke_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/wv
 
 %  bathymetry_chord
 
-lon1 = 160; % Starting point of linear slice.
+lon1 = 160; % Starting point of linear slice. If you want to do something exceptionally weird e.g. 240:210 just use bathymetry_section.
 lat1 = -67;
 lon2 = 280; % Ending point of linear slice.
 lat2 = -66.5;

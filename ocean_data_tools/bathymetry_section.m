@@ -1,12 +1,12 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 21-Jun-2020
+%  Jun 2020; Last revision: 29-Jun-2020
 %  Distributed under the terms of the MIT License
 
 % bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % Path to Smith & Sandwell database 
 
-function bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)
+function [bath_section,lon_section,lat_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)
 
 if nargin < 5
     filled = 0;
@@ -18,33 +18,36 @@ region = [min(ycoords)-1 max(ycoords)+1 min(xcoords)-1 max(xcoords)+1];
 % Load bathymetry data.
 [bath,lat,lon] = bathymetry_extract(bathymetry_dir,region);
 
-bathymetry_section = NaN(1,length(xcoords));
+bath_section = NaN(1,length(xcoords));
+lon_section = NaN(1,length(xcoords));
+lat_section = NaN(1,length(xcoords));
 for i = 1:length(xcoords)
     [lon_ind,~] = near(lon,xcoords(i));
     [lat_ind,~] = near(lat,ycoords(i));
-    bathymetry_section(i) = bath(lon_ind,lat_ind);
+    bath_section(i) = bath(lon_ind,lat_ind);
+    lon_section(i) = lon(lon_ind);
+    lat_section(i) = lat(lat_ind);
 end
 
-
 if strcmp(xref,'lon')
-    xvar = xcoords;   
+    xvar = lon_section;   
 elseif strcmp(xref,'lat')
-    xvar = ycoords;   
+    xvar = lat_section;   
 else
     disp('Check spelling of reference axis');  
 end
 
 % order bathymetry data by xref.
 [xvar,xvar_inds] = sort(xvar);
-bathymetry_section = bathymetry_section(xvar_inds);
+bath_section = bath_section(xvar_inds);
 
 hold on
-plot(xvar,bathymetry_section,'k','LineWidth',4)
+plot(xvar,bath_section,'k','LineWidth',4)
 
 if filled ==1
-    basevalue = min(bathymetry_section);
-    area(xvar,bathymetry_section,basevalue,'FaceColor','k')
-    ylim([min(bathymetry_section) 10])
+    basevalue = min(bath_section);
+    area(xvar,bath_section,basevalue,'FaceColor','k')
+    ylim([min(bath_section) 10])
 end
 
 hold off

@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 20-Jun-2020
+%  Jun 2020; Last revision: 29-Jun-2020
 %  Distributed under the terms of the MIT License
 
 % bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % Path to Smith & Sandwell database 
@@ -23,13 +23,16 @@ netcdf.close(nc); % close the file.
 [si,~] = near(lat,region(1)); % Find lat index near southern boundary [-90 90] of region.
 [ni,~] = near(lat,region(2));
 lat = lat(si:ni);   
-if region(3) > region(4) && region(4) < 0 % if data spans the dateline...
+if region(3) > region(4) % if data spans the dateline...
     [wi_left] = near(lon,region(3));
     [ei_left] = near(lon,180);
     [wi_right] = near(lon,-180); 
     [ei_right] = near(lon,region(4)); 
     bath = [bath(wi_left:ei_left,si:ni); bath(wi_right:ei_right,si:ni)];
     lon = [lon(wi_left:ei_left); lon(wi_right:ei_right)];   
+    lon(lon < 0) = lon(lon < 0) + 360; % map to [0 360]
+    [lon,lon_inds] = sort(lon);
+    bath = bath(lon_inds,:);
 else
     [lonw] = near(lon,region(3));
     [lone] = near(lon,region(4));   
@@ -37,14 +40,9 @@ else
     lon = lon(lonw:lone); 
 end
 
-lon(lon < 0) = lon(lon < 0) + 360; % map to [0 360]
 [lon,lon_inds] = sort(lon);
 bath = bath(lon_inds,:);
-
-if min(lon) > 180 % remap to -180/180 if not crossing dateline.
-    lon = lon-360;    
-end   
-
+ 
 end
 
 

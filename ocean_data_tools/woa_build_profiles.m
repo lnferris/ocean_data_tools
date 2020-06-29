@@ -21,6 +21,7 @@
 function [woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords)
 
 n = length(variable_list);
+ncoords = length(xcoords);
 
 % deal with xcoords spanning dateline
 east_inds = find(xcoords>180);  
@@ -64,14 +65,16 @@ for i = 1
     wdepth(:) = svg.z(1):-1:svg.z(end);
 
     % create additional arrays
-    wdate = NaN(1,length(xcoords));
-    wlat = NaN(1,length(xcoords));
-    wlon = NaN(1,length(xcoords));
-    wvariable = NaN(length(wdepth),length(xcoords));
+    wstn = NaN(1,ncoords);
+    wdate = NaN(1,ncoords);
+    wlat = NaN(1,ncoords);
+    wlon = NaN(1,ncoords);
+    wvariable = NaN(length(wdepth),ncoords);
 
     tin = 1; % there is no time dimension in woa climatology
 
-    for cast = 1:length(xcoords)
+    for cast = 1:ncoords
+        disp([variable,' profile ',num2str(cast),' of ',num2str(ncoords)])
 
         % get cast
         [lon_ind,~] = near(svg.lon,xcoords(cast));
@@ -121,8 +124,9 @@ if n > 1
     sv = nc{[var,'_an']}; % Assign ncgeovariable handle. 
     svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
 
-    wvariable = NaN(length(wdepth),length(xcoords));
-    for cast = 1:length(xcoords)
+    wvariable = NaN(length(wdepth),ncoords);
+    for cast = 1:ncoords
+        disp([variable,' profile ',num2str(cast),' of ',num2str(ncoords)])
         [lon_ind,~] = near(svg.lon,xcoords(cast));
         [lat_ind,~] = near(svg.lat,ycoords(cast));
         wvariable(:,cast) = interp1(svg.z(:),sv.data(tin,:,lat_ind,lon_ind),wdepth,'linear');

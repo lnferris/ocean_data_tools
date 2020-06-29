@@ -9,6 +9,7 @@ function [mocha] = mocha_build_profiles(month,xcoords,ycoords)
 
 variable_list = {'temperature','salinity'};
 n = length(variable_list);
+ncoords = length(xcoords);
 
 url = 'http://tds.marine.rutgers.edu/thredds/dodsC/other/climatology/mocha/MOCHA_v3.nc';
 nc = ncgeodataset(url); % Assign a ncgeodataset handle.
@@ -28,12 +29,13 @@ for i = 1
     hdepth(:) = svg.z(1):-1:svg.z(end);
 
     % create additional arrays
-    hstn = NaN(1,length(xcoords));
-    hlat = NaN(1,length(xcoords));
-    hlon = NaN(1,length(xcoords));
-    hvariable = NaN(length(hdepth),length(xcoords));
+    hstn = NaN(1,ncoords);
+    hlat = NaN(1,ncoords);
+    hlon = NaN(1,ncoords);
+    hvariable = NaN(length(hdepth),ncoords);
 
-    for cast = 1:length(xcoords)
+    for cast = 1:ncoords
+        disp([variable,' profile ',num2str(cast),' of ',num2str(ncoords)])
 
         error = sqrt((svg.lon-xcoords(cast)).^2 + (svg.lat-ycoords(cast)).^2);
         mindiff = min(min(error));
@@ -61,8 +63,9 @@ if n > 1
         svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
         data = squeeze(double(sv.data(month,:,:,:)));
         
-        hvariable = NaN(length(hdepth),length(xcoords));
-        for cast = 1:length(xcoords)
+        hvariable = NaN(length(hdepth),ncoords);
+        for cast = 1:ncoords
+            disp([variable,' profile ',num2str(cast),' of ',num2str(ncoords)])
 
             error = sqrt((svg.lon-xcoords(cast)).^2 + (svg.lat-ycoords(cast)).^2);
             mindiff = min(min(error));

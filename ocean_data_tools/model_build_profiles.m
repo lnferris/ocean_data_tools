@@ -7,6 +7,8 @@
 
 function [model] =  model_build_profiles(source,date,variable_list,xcoords,ycoords)
 
+ncoords = length(xcoords);
+
 % deal with xcoords spanning dateline
 coord_east_inds = find(xcoords>180);  
 xcoords(coord_east_inds) = xcoords(coord_east_inds)-360;
@@ -36,14 +38,16 @@ for i = 1
     hdepth(:) = svg.z(1):-1:svg.z(end);
 
     % create additional arrays
-    hdate = NaN(1,length(xcoords));
-    hlat = NaN(1,length(xcoords));
-    hlon = NaN(1,length(xcoords));
-    hvariable = NaN(length(hdepth),length(xcoords));
+    hstn = NaN(1,ncoords);
+    hdate = NaN(1,ncoords);
+    hlat = NaN(1,ncoords);
+    hlon = NaN(1,ncoords);
+    hvariable = NaN(length(hdepth),ncoords);
 
     [tin,~] = near(svg.time,datenum(date,'dd-mmm-yyyy HH:MM:SS'));  % Find time index near date of interest.
 
-    for cast = 1:length(xcoords)
+    for cast = 1:ncoords
+        disp([variable,' profile ',num2str(cast),' of ',num2str(ncoords)])
 
         % get cast
         [lon_ind,~] = near(lon,xcoords(cast));
@@ -80,8 +84,9 @@ if n > 1
             return
         end
 
-        hvariable = NaN(length(hdepth),length(xcoords));
-        for cast = 1:length(xcoords)
+        hvariable = NaN(length(hdepth),ncoords);
+        for cast = 1:ncoords
+            disp([variable,' profile ',num2str(cast),' of ',num2str(ncoords)])
             [lon_ind,~] = near(lon,xcoords(cast));
             [lat_ind,~] = near(svg.lat,ycoords(cast));
             hvariable(:,cast) = interp1(svg.z(:),sv.data(tin,:,lat_ind,lon_ind),model.depth,'linear');
