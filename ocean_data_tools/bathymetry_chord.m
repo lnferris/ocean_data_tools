@@ -28,8 +28,10 @@ region = [min([lat1 lat2]) max([lat1 lat2]) min([lon1 lon2]) max([lon1 lon2])];
 poly_x = [lon1+width/2 lon1-width/2 lon2-width/2 lon2+width/2 lon1+width/2];
 poly_y = [lat1+width/2 lat1-width/2 lat2-width/2 lat2+width/2 lat1+width/2];
 
-lon = lon.*ones(1,length(lat)); 
-lat = (ones(1,length(lon)).*lat).'; 
+nlon = length(lon);
+nlat = length(lat);
+lon = lon.*ones(1,nlat); 
+lat = (ones(1,nlon).*lat).'; 
 
 in = inpolygon(lon,lat,poly_x,poly_y); % Get indices of data in polygon.
 bathymetry_section = bath(in);
