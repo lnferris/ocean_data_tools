@@ -159,8 +159,7 @@ bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % nee
 % model_simple_plot - HYCOM EXAMPLE
 
 model = 'hycom'; % 'hycom' 'mercator'
-%source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_92.9'; % url or local .nc 
-source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; 
+source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % url or local .nc 
 date = '28-Aug-2017 00:00:00';  
 variable = 'velocity';                  % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 'surf_el' 'water_u_bottom' 'water_v_bottom' 'water_temp_bottom' 'salinity_bottom' 
 region = [-5.0, 45.0 ,160,-150 ];      % [-90 90 -180 180]

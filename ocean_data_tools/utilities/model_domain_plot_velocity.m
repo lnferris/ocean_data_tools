@@ -69,20 +69,20 @@ if need2merge == 1
     v = reshape(permute(squeeze(double(sv_v.data(tin,:,lats:latn,lonw_A:lone_A))),[2,3,1]),[],1); % permute array to be lon x lat x dep
     data = sqrt(u.^2+v.^2);
     [lon_mesh,lat_mesh,dep_mesh] = meshgrid(svg.lon(lonw_A:lone_A),svg.lat(lats:latn),svg.z(:)); 
-    svg.lon = reshape(lon_mesh,[],1); 
+    lon = reshape(lon_mesh,[],1); 
     lat = reshape(lat_mesh,[],1); 
     z = reshape(dep_mesh,[],1);
-    scatter3(svg.lon,lat,z,[],data,'.')
+    scatter3(lon,lat,z,[],data,'.')
     
     hold on % Plot right side
     u = reshape(permute(squeeze(double(sv.data(tin,:,lats:latn,lonw_B:lone_B))),[2,3,1]),[],1); % permute array to be lon x lat x dep
     v = reshape(permute(squeeze(double(sv_v.data(tin,:,lats:latn,lonw_B:lone_B))),[2,3,1]),[],1); % permute array to be lon x lat x dep
     data = sqrt(u.^2+v.^2);
     [lon_mesh,lat_mesh,dep_mesh] = meshgrid(svg.lon(lonw_B:lone_B)+360,svg.lat(lats:latn),svg.z(:)); 
-    svg.lon = reshape(lon_mesh,[],1); 
+    lon = reshape(lon_mesh,[],1); 
     lat = reshape(lat_mesh,[],1); 
     z = reshape(dep_mesh,[],1);
-    scatter3(svg.lon,lat,z,[],data,'.')
+    scatter3(lon,lat,z,[],data,'.')
     
     title({'velocity magnitude';datestr(svg.time(tin))},'interpreter','none');
     hcb = colorbar; title(hcb,sv.attribute('units'));
@@ -92,12 +92,12 @@ else
     v = reshape(permute(squeeze(double(sv_v.data(tin,:,lats:latn,lonw:lone))),[2,3,1]),[],1); % permute array to be lon x lat x dep
     data = sqrt(u.^2+v.^2);
     [lon_mesh,lat_mesh,dep_mesh] = meshgrid(svg.lon(lonw:lone),svg.lat(lats:latn),svg.z(:)); 
-    svg.lon = reshape(lon_mesh,[],1); 
+    lon = reshape(lon_mesh,[],1); 
     lat = reshape(lat_mesh,[],1); 
     z = reshape(dep_mesh,[],1);
 
     figure 
-    scatter3(svg.lon,lat,z,[],data,'.')
+    scatter3(lon,lat,z,[],data,'.')
     title({'velocity magnitude';datestr(svg.time(tin))},'interpreter','none');
     hcb = colorbar; title(hcb,sv.attribute('units'));
 end    
