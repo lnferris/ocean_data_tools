@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 29-Jun-2020
+%  Jun 2020; Last revision: 30-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -159,11 +159,11 @@ bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % nee
 % model_simple_plot - HYCOM EXAMPLE
 
 model = 'hycom'; % 'hycom' 'mercator'
-source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_92.9'; % url or local .nc 
-%source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; 
+%source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_92.9'; % url or local .nc 
+source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; 
 date = '28-Aug-2017 00:00:00';  
 variable = 'velocity';                  % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 'surf_el' 'water_u_bottom' 'water_v_bottom' 'water_temp_bottom' 'salinity_bottom' 
-region = [-5.0, 45.0 ,-120, -150];      % [-90 90 -180 180]
+region = [-5.0, 45.0 ,160,-150 ];      % [-90 90 -180 180]
 depth = -150;                          % Depth level between 0 and -5000m
 arrows = 0;                            % Velocity direction arrows 1=on 0=off
 model_simple_plot(model,source,date,variable,region,depth,arrows)
@@ -179,7 +179,7 @@ general_profiles(hycom,'salinity')
 
 % model_domain_plot - HYCOM EXAMPLE
 
-variable = 'velocity'; % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 
+variable = 'salinity'; % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 
 model_domain_plot(model,source,date,variable,region)
 
 
@@ -213,6 +213,8 @@ general_profiles(mercator,'so')
 
 variable = 'velocity';  % thetao' 'so' 'uo' 'vo' 'velocity'
 model_domain_plot(model,source,date,variable,region)
+bathymetry_plot(bathymetry_dir,region,'3Dsurf')
+caxis([0 1])
 
 
 %%                  whp cruise demonstration
@@ -251,7 +253,7 @@ bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % nee
 
 variable = 'nitrate'; % 'temperature' 'salinity' 'oxygen' 'o2sat' 'AOU' 'silicate' 'phosphate' 'nitrate'
 time = '03'; % '00' for annual climatology '01' '10' etc. for monthly climatology
-region = [-5.0, 45.0 ,120, -150]; 
+region = [-5.0, 45.0 ,-120, -150]; 
 depth = -0; % meters -0 to -5500
 woa_simple_plot(variable,time,region,depth)
 
@@ -262,7 +264,8 @@ time = '00'; % '00' for annual climatology '01' '10' etc. for monthly climatolog
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
 [woa] =  woa_build_profiles(variable_list,time,xcoords,ycoords);
 general_map(woa,bathymetry_dir,'2Dcontour')
-general_section(woa,'salinity','stn')
+general_section(woa,'salinity','lon')
+bathymetry_section(bathymetry_dir,xcoords,ycoords,'lon',1) % filled optional
 general_profiles(woa,'oxygen')
 
 % woa_domain_plot

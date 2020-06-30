@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 29-Jun-2020
+%  Jun 2020; Last revision: 30-Jun-2020
 %  Distributed under the terms of the MIT License
 
 % bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % Path to Smith & Sandwell database 
@@ -17,6 +17,16 @@ region = [min(ycoords)-1 max(ycoords)+1 min(xcoords)-1 max(xcoords)+1];
 
 % Load bathymetry data.
 [bath,lat,lon] = bathymetry_extract(bathymetry_dir,region);
+
+% deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
+region(region>180) = region(region>180)- 360;
+region(region<-180) = region(region<-180)+360;
+
+if region(3) > region(4) && region(3) < 0 && region(4)+360>180    
+    lon(lon>360) = lon(lon>360)-360;
+    [lon,lon_inds] = sort(lon);
+    bath = bath(lon_inds,:);  
+end
 
 bath_section = NaN(1,length(xcoords));
 lon_section = NaN(1,length(xcoords));

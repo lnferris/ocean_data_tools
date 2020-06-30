@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 29-Jun-2020
+%  Jun 2020; Last revision: 30-Jun-2020
 %  Distributed under the terms of the MIT License
 
 % inputs: 
@@ -14,6 +14,16 @@ function bathymetry_plot(bathymetry_dir,region,ptype)
 
 % Load bathymetry data.
 [bath,lat,lon] = bathymetry_extract(bathymetry_dir,region);
+
+% deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
+region(region>180) = region(region>180)- 360;
+region(region<-180) = region(region<-180)+360;
+
+if region(3) > region(4) && region(3) < 0 && region(4)+360>180    
+    lon(lon>360) = lon(lon>360)-360;
+    [lon,lon_inds] = sort(lon);
+    bath = bath(lon_inds,:);  
+end
 
 hold on
 
@@ -40,10 +50,8 @@ elseif strcmp(ptype,'2Dcontour')
 elseif strcmp(ptype,'3Dsurf')
     
     % 3D Surface plot
-    surf(lon,lat,bath.','LineStyle','none')
-    %c1 = colorbar;
+    surf(lon,lat,bath.','LineStyle','none','FaceColor',[0.5 0.5 0.5])
     %ylabel(c1,'Depth [m]')
-    colormap jet
     light('Position',[-1 0 0],'Style','local')
     
 else 

@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 22-Jun-2020
+%  Jun 2020; Last revision: 30-Jun-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -50,19 +50,20 @@ svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates 
 [din,~] = near(svg.z,depth); % Choose index of depth (z-level) to use for 2-D plots; see svg.z for options.
 [lats,~] = near(svg.lat,region(1)); % Find lat index near southern boundary [-90 90] of region.
 [latn,~] = near(svg.lat,region(2));
+[lonw] = near(svg.lon,region(3));% Find lon indexes in standard manner.
+[lone] = near(svg.lon,region(4));   
 
-if region(3) > region(4) && region(4) < 0 % If data spans the dateline...
+need2merge = 0;
+if lonw > lone
+    need2merge = 1;
     [lonw_A] = near(svg.lon,region(3));% Find lon indexes of lefthand chunk.
     [lone_A] = near(svg.lon,180);
     [lonw_B] = near(svg.lon,-180);% Find lon indexes of righthand chunk.
-    [lone_B] = near(svg.lon,region(4)); 
-else
-    [lonw] = near(svg.lon,region(3));% Find lon indexes in standard manner.
-    [lone] = near(svg.lon,region(4));   
+    [lone_B] = near(svg.lon,region(4));    
 end
 
 % Make Plot
-if region(3) > region(4) && region(4) < 0 % If data spans the dateline...
+if need2merge == 1
 
     figA = figure; % Plot the lefthand depth level.
     pcolorjw(svg.lon(lonw_A:lone_A),svg.lat(lats:latn),double(sv.data(1,din,lats:latn,lonw_A:lone_A))); % pcolorjw(x,y,c(time,depth,lat,lon))

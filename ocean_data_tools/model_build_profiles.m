@@ -22,10 +22,17 @@ for i = 1
     svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
     
     model360 = all(svg.lon>=0); 
+    linecross = 0;
     if model360
-        xcoords(xcoords>360) = xcoords(xcoords>360)-360;
+        if max(xcoords)>360
+            xcoords(xcoords>360) = xcoords(xcoords>360)-360;
+            linecross = 1;
+        end
     else
-        xcoords(xcoords>180) = xcoords(xcoords>180)-360;
+        if max(xcoords>180)
+            xcoords(xcoords>180) = xcoords(xcoords>180)-360;
+            linecross = 1;
+        end
     end
 
     % densify depth levels
@@ -86,4 +93,10 @@ if n > 1
         
     end  
 end
+
+
+if ~model360 && linecross
+    model.lon(model.lon<0) = model.lon(model.lon<0)+360;
+end
+
 end

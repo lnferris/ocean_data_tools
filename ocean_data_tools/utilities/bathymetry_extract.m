@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 29-Jun-2020
+%  Jun 2020; Last revision: 30-Jun-2020
 %  Distributed under the terms of the MIT License
 
 % bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % Path to Smith & Sandwell database 
@@ -22,22 +22,21 @@ netcdf.close(nc); % close the file.
 % subset to region
 [si,~] = near(lat,region(1)); % Find lat index near southern boundary [-90 90] of region.
 [ni,~] = near(lat,region(2));
+[wi,~] = near(lon,region(3));
+[ei,~] = near(lon,region(4));
+
 lat = lat(si:ni);   
-if region(3) > region(4) % if data spans the dateline...
+if wi > ei % if data spans the dateline...
     [wi_left] = near(lon,region(3));
     [ei_left] = near(lon,180);
     [wi_right] = near(lon,-180); 
     [ei_right] = near(lon,region(4)); 
     bath = [bath(wi_left:ei_left,si:ni); bath(wi_right:ei_right,si:ni)];
-    lon = [lon(wi_left:ei_left); lon(wi_right:ei_right)];   
-    lon(lon < 0) = lon(lon < 0) + 360; % map to [0 360]
-    [lon,lon_inds] = sort(lon);
-    bath = bath(lon_inds,:);
-else
-    [lonw] = near(lon,region(3));
-    [lone] = near(lon,region(4));   
-    bath = bath(lonw:lone,si:ni);
-    lon = lon(lonw:lone); 
+    lon = [lon(wi_left:ei_left); lon(wi_right:ei_right)+360];   
+
+else 
+    bath = bath(wi:ei,si:ni);
+    lon = lon(wi:ei); 
 end
 
 [lon,lon_inds] = sort(lon);
