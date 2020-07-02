@@ -1,32 +1,24 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 21-Jun-2020
+%  Jun 2020; Last revision: 02-Jul-2020
 %  Distributed under the terms of the MIT License
 
-function  general_section(object,variable,xref,interpolate,contours)
+function  general_section(object,variable,xref,zref,interpolate,contours)
 
-    if nargin <5
+    if nargin <6
         contours = 0;
-        if nargin<4
+        if nargin<5
             interpolate = 0;
         end
     end
 
     cvar = eval(['object.',variable]);
-    zvar = object.depth;
+    xvar = eval(['object.',xref]);
+    zvar = eval(['object.',zref]);
+    
     if nanmean(zvar,'all') > 0
         zvar = -zvar;
-    end
-
-    if strcmp(xref,'lon')
-        xvar = object.lon;
-    elseif strcmp(xref,'lat')
-        xvar = object.lat;
-    elseif strcmp(xref,'stn')
-        xvar = object.stn;   
-    else
-        disp('Check spelling of reference axis');  
     end
     
     figure
@@ -38,7 +30,7 @@ function  general_section(object,variable,xref,interpolate,contours)
             if isvector(zvar)
                 scatter(xvar(prof)*ones(length(zvar),1),zvar,[],cvar(:,prof),'.')  
             else 
-                scatter(xvar(prof)*ones(length(zvar),1),zvar(:,prof),[],cvar(:,prof),'.')    
+                scatter(xvar(prof)*ones(length(zvar(:,prof)),1),zvar(:,prof),[],cvar(:,prof),'.')
             end
         end
 
@@ -74,7 +66,16 @@ function  general_section(object,variable,xref,interpolate,contours)
     colorbar
     title(variable, 'Interpreter', 'none')
     xlabel(xref)
-    ylabel('depth')
+    ylabel(zref)
+    
+    % handle logarithmic whp_cruise variables
+    if strcmp(variable,'eps_VKE')
+        title('epsilon')
+        set(gca,'ColorScale','log') 
+    elseif strcmp(variable,'p0')
+        title('Normalized VKE Density, W/kg')
+        set(gca,'ColorScale','log')    
+    end
 
 end
     
