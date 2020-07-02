@@ -54,6 +54,6 @@ It has already been used in scientific publications (Bemis et al., 2020; Crear e
 
 # Acknowledgements
 
-I am grateful to the Virginia Institute of Marine Science for financial support. I also thank the many organizations providing ongoing freely-available data to the oceanography community. These include (but are not limited to) Argo, the HYCOM consortium, the Copernicus Programme, the International Global Ship-based Hydrographic Investigations Program (GO-SHIP), and the National Oceanic and Atmospheric Administration. This paper is Contribution No.xxxx of the Virginia Institute of Marine Science, William & Mary.
+The Virginia Institute of Marine Science provided financial support for this project. I am grateful to Donglai Gong for supporting my interest in open-source software and for ongoing mentorship. I also thank the many organizations providing freely-available data to the oceanography community. These include (but are not limited to) Argo, the HYCOM consortium, the Copernicus Programme, the International Global Ship-based Hydrographic Investigations Program (GO-SHIP), and the National Oceanic and Atmospheric Administration (NOAA). This paper is Contribution No.xxxx of the Virginia Institute of Marine Science, William & Mary.
 
 # References
