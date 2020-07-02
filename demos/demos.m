@@ -37,11 +37,11 @@ argo_platform_map(argo,annotate) % annotate optional,  1=on 0=off
 
 bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour')
 
-% argo_profiles_plot
+% argo_profiles
 
 variable = 'TEMP_ADJUSTED'; % See object for options.
 annotate = 1; 
-argo_profiles_plot(argo,variable,annotate) % annotate optional,  1=on 0=off
+argo_profiles(argo,variable,annotate) % annotate optional,  1=on 0=off
 
 % argo_profiles_map
 

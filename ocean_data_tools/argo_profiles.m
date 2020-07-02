@@ -4,7 +4,7 @@
 %  Jun 2020; Last revision: 16-Jun-2020
 %  Distributed under the terms of the MIT License
 
-function argo_profiles_plot(argo,variable,annotate)
+function argo_profiles(argo,variable,annotate)
 
 more_colors()
 
