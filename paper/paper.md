@@ -50,4 +50,7 @@ scientific explorations of forthcoming data releases from the *Gaia* mission
 [@gaia] by students and experts alike. The source code for ``Gala`` has been
 archived to Zenodo with the linked DOI: [@zenodo]
 
+It has already been used in scientific publications (Bemis et al., 2020; Crear et al., 2020).
+
+
 # References
