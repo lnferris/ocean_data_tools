@@ -22,7 +22,7 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 
 Functions are named using a two-part system. The prefix (argo_, bathymetry_, general_, etc.) indicates the appropriate data source, while the suffix (\_build, \_profiles, \_section, etc.) indicates the action performed. Functions with the \_build suffix are special because they load raw data into uniform structs (e.g. argo, cruise, hycom, mercator, woa, wod). Uniform structs created by \_build functions are compatable with any **general_** function.
 
-All functions are located in **ocean_data_tools/**. Demonstrations and snapshots are located in **demos/**. Datasets to use with the demonstrations are located in **data/**. Shell scripts for batch downloading data are located in **shell_scripts/**; while shell scripts can be run directly in a macOS Terminal, running them in Windows requires Cygwin (https://www.cygwin.com/) or similar. Python syntax examples are located in **python/**, which might be expanded at a later date.
+Main functions are located in **ocean_data_tools/**. Demonstrations are located in **demos/**. Test datas are located in **data/**. Shell scripts for batch downloading data are located in **shell_scripts/**. While shell scripts can be run directly in a macOS Terminal, running them in Windows requires Cygwin (https://www.cygwin.com/) or similar. Python syntax examples are located in **python/**, which might be expanded at a later date.
 
 ## Getting Data
 
