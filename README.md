@@ -10,12 +10,6 @@ ocean_data_tools simplifies the process of extracting, formatting, and visualizi
 
 Find a bug? Open an issue or contact lnferris@alum.mit.edu.
 
-## Organization
-
-All functions are located in **ocean_data_tools/**. Demonstrations and snapshots are located in **demos/**. Datasets to use with the demonstrations are located in **data/**. Shell scripts for batch downloading data are located in **shell_scripts/**; while shell scripts can be run directly in a macOS Terminal, running them in Windows requires Cygwin (https://www.cygwin.com/) or similar. Python syntax examples are located in **python/**, which might be expanded at a later date.
-
-Functions are named using a two-part system. The prefix (argo_, bathymetry_, general_, etc.) indicates the appropriate data source, while the suffix (\_build, \_profiles, \_section, etc.) indicates the action performed. The **\_build** suffix is special because it loads raw data into uniform structs (e.g. argo, cruise, hycom, mercator, woa, wod). Uniform structs created by **\_build** are compatable with general_ functions.
-
 ## Dependencies
 
 nctoolbox (https://github.com/nctoolbox/nctoolbox)
@@ -25,6 +19,10 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 1. Download bathymetry (see below).
 2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox).
 3. Run each demonstration in **demos/demos.m**.
+
+Functions are named using a two-part system. The prefix (argo_, bathymetry_, general_, etc.) indicates the appropriate data source, while the suffix (\_build, \_profiles, \_section, etc.) indicates the action performed. The **\_build** suffix is special because it loads raw data into uniform structs (e.g. argo, cruise, hycom, mercator, woa, wod). Uniform structs created by **\_build** are compatable with general_ functions.
+
+All functions are located in **ocean_data_tools/**. Demonstrations and snapshots are located in **demos/**. Datasets to use with the demonstrations are located in **data/**. Shell scripts for batch downloading data are located in **shell_scripts/**; while shell scripts can be run directly in a macOS Terminal, running them in Windows requires Cygwin (https://www.cygwin.com/) or similar. Python syntax examples are located in **python/**, which might be expanded at a later date.
 
 ## Getting Data
 
