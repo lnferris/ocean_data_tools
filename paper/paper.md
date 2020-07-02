@@ -8,7 +8,7 @@ authors:
     orcid: 0000-0001-6446-9340
     affiliation: 1
 affiliations:
- - name: Virginia Institute of Marine Science, William & Mary
+ - name: Virginia Institute of Marine Science
    index: 1
 date: 02 July 2020
 bibliography: paper.bib
