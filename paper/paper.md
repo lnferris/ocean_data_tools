@@ -52,5 +52,8 @@ archived to Zenodo with the linked DOI: [@zenodo]
 
 It has already been used in scientific publications (Bemis et al., 2020; Crear et al., 2020).
 
+# Acknowledgements
+
+I am grateful to the Virginia Institute of Marine Science for financial support. I also thank the many organizations providing ongoing freely-available data to the oceanography community. These include (but are not limited to) Argo, the HYCOM consortium, the Copernicus Programme, the International Global Ship-based Hydrographic Investigations Program (GO-SHIP), and the National Oceanic and Atmospheric Administration. This paper is Contribution No.xxxx of the Virginia Institute of Marine Science, William & Mary.
 
 # References
