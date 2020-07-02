@@ -18,7 +18,7 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 
 1. Download bathymetry (see below).
 2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox).
-3. Run each demonstration in **demos/demos.m**, which serves as a guide for each function's argument list.
+3. Run each demonstration in **demos/demos.m**, which serves as the guide for each function's argument list.
 
 Functions are named using a two-part system. The prefix (argo_, bathymetry_, general_, etc.) indicates the appropriate data source, while the suffix (\_build, \_profiles, \_section, etc.) indicates the action performed. Functions with the \_build suffix are special because they load raw data into uniform structs (e.g. argo, cruise, hycom, mercator, woa, wod). Uniform structs created by \_build functions are compatable with any **general_** function.
 
