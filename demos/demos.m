@@ -23,7 +23,6 @@ start_date = '01-Nov-2015 00:00:00';
 end_date = '01-Jan-2017 00:00:00';
 variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'}; % Variables to read (besides id, lon, lat, date, z).
 [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
-disp(matching_files)
 
 % argo_platform_subset
 
