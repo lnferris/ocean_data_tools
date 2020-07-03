@@ -14,7 +14,7 @@ date: 03 July 2020
 bibliography: paper.bib
 ---
 
-# Summary
+# Statement of Need
 
 ``ocean_data_tools`` simplifies the process of extracting, formatting, and 
 visualizing freely-available oceanographic data. A wealth of oceanographic 
@@ -27,6 +27,8 @@ format it into an easily-manipulable data structures. ``ocean_data_tools``
 solves this problem by allowing the user to transform common oceanographic 
 data sources into uniform structs, call general functions on these structs, 
 perform custom calculations, and make graphics.
+
+# Summary
 
 ![Building a virtual cruise from the Operational Mercator global ocean
 analysis and forecast system at 1/12 degree with 3D bathymetry [@Smith:1997]. 
