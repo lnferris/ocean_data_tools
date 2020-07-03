@@ -28,7 +28,7 @@ solves this problem by allowing the user to transform common oceanographic
 data sources into uniform structs, call general functions on these structs, 
 perform custom calculations, and make graphics.
 
-![Figure 1. Building a virtual cruise from the Operational Mercator global ocean
+![Building a virtual cruise from the Operational Mercator global ocean
 analysis and forecast system at 1/12 degree with 3D bathymetry [@Smith:1997]. 
 Showing (a) a 3D velocity plot created using ``model_domain_plot``, (b) 
 virtual cruise selection using ``transect_select``, and ``model_build_profiles``, 
@@ -49,9 +49,9 @@ model output. Some ``ocean_data_tools`` functions employ ``nctoolbox`` [@nctoolb
 
 ``ocean_data_tools`` has already been used in scientific publications [@Bemis:2020] 
 and [@Crear:2020]. The toolbox is built for extensibility, and the working plan 
-is to continuously add support for additional data sets such as Remote Sensing 
-Systems (http://www.remss.com/) products, and European Centre for Medium-Range 
-Weather Forecasts (ECMWF) datasets. The source code for ``ocean_data_tools`` has
+is to continuously add support for additional datasets such as Remote Sensing 
+Systems (RSS) and European Centre for Medium-Range 
+Weather Forecasts (ECMWF) products. The source code for ``ocean_data_tools`` has
 been archived to Zenodo with the linked DOI: [@Ferris:2020].
 
 # Acknowledgements
