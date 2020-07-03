@@ -33,11 +33,7 @@ The workflow of ``ocean_data_tools`` is to build uniform structs (e.g. ``argo``,
 call general functions on these structs to map, subset, or plot. Functions with 
 the ``\_build`` suffix load raw data into uniform structs. Structs are 
 compatible with all ``general_`` functions. One application of the ``\_build`` 
-feature is to create virtual cruises from model output \autoref{fig:1}. The user 
-draws transects on a map (or passes coordinates as an argument) to build casts 
-from model data, which may be used as a cruise planning tool or to facilitate 
-comparison of observations (such as underwater glider surveys) with 
-model output. 
+feature is to create virtual cruises from model output \autoref{fig:1}. 
 
 ![Figure 1. Building a virtual cruise from the Operational Mercator global ocean
 analysis and forecast system at 1/12 degree with 3D bathymetry [@Smith:1997]. 
@@ -46,6 +42,11 @@ virtual cruise selection using ``transect_select``, and ``model_build_profiles``
 (c) coordinates of the resulting uniform struct, and (d) a temperature section 
 plotted using ``general_section`` with ``bathymetry_section``. Three of the 
 subplots use colormaps from cmocean [@Thyng:2016]. \label{fig:1}](figure.png)
+
+The user draws transects on a map (or passes coordinates as an argument) to build casts 
+from model data, which may be used as a cruise planning tool or to facilitate 
+comparison of observations (such as underwater glider surveys) with 
+model output. 
 
 ``ocean_data_tools`` has already been used in scientific publications [@Bemis:2020] 
 and [@Crear:2020]. The toolbox has possibility for extension, and the working plan 
