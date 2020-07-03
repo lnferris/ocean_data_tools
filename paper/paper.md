@@ -45,11 +45,11 @@ subplots use colormaps from cmocean [@Thyng:2016]. \label{fig:1}](figure.png)
 
 The user draws transects on a map (or passes coordinates as an argument) to build casts 
 from model data, which may be used as a cruise planning tool or to facilitate 
-comparison of observations (such as underwater glider surveys) with 
+comparison of observations (such as those from underwater glider surveys) with 
 model output. 
 
 ``ocean_data_tools`` has already been used in scientific publications [@Bemis:2020] 
-and [@Crear:2020]. The toolbox has possibility for extension, and the working plan 
+and [@Crear:2020]. The toolbox is built for extensibility, and the working plan 
 is to continuously add support for additional data sets such as Remote Sensing 
 Systems (http://www.remss.com/) products, and European Centre for Medium-Range 
 Weather Forecasts (ECMWF) datasets. The source code for ``ocean_data_tools`` has
