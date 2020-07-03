@@ -47,7 +47,7 @@ analysis and forecast system at 1/12 degree with 3D bathymetry (Smith & Sandell,
 virtual cruise selection using ``transect_select``, and ``model_build_profiles``, 
 (c) coordinates of the resulting uniform struct, and (d) a temperature section 
 plotted using ``general_section`` with ``bathymetry_section``. Three of the 
-subplots use colormaps from cmocean (Thyng et al., 2017). \label{fig:example}](figure.png)
+subplots use colormaps from cmocean (Thyng et al., 2017). \label{fig:1}](figure.png)
 
 ``ocean_data_tools`` has already been used in scientific publications (Bemis et 
 al., 2020; Crear et al., 2020). The toolbox has possibility for extension, and
