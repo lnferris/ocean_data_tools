@@ -42,19 +42,19 @@ facilitate comparison of observations (from cruises or underwater gliders) with
 model output. 
 
 ![Figure 1. Building a virtual cruise from the Operational Mercator global ocean
-analysis and forecast system at 1/12 degree with 3D bathymetry (Smith & Sandell,
-1997). Showing (a) a 3D velocity plot created using ``model_domain_plot``, (b) 
+analysis and forecast system at 1/12 degree with 3D bathymetry [@Smith:1997]. 
+Showing (a) a 3D velocity plot created using ``model_domain_plot``, (b) 
 virtual cruise selection using ``transect_select``, and ``model_build_profiles``, 
 (c) coordinates of the resulting uniform struct, and (d) a temperature section 
 plotted using ``general_section`` with ``bathymetry_section``. Three of the 
-subplots use colormaps from cmocean (Thyng et al., 2017). \label{fig:1}](figure.png)
+subplots use colormaps from cmocean [@Thyng:2016]. \label{fig:1}](figure.png)
 
-``ocean_data_tools`` has already been used in scientific publications (Bemis et 
-al., 2020; Crear et al., 2020). The toolbox has possibility for extension, and
-the working plan is to continuously add support for additional data sets such as 
-Remote Sensing Systems (http://www.remss.com/) products, and European Centre for 
-Medium-Range Weather Forecasts (ECMWF) datasets. The source code for 
-``ocean_data_tools`` has been archived to Zenodo with the linked DOI: (Ferris, 2020).
+``ocean_data_tools`` has already been used in scientific publications [@Bemis:2020] 
+and [@Crear:2020]. The toolbox has possibility for extension, and the working plan 
+is to continuously add support for additional data sets such as Remote Sensing 
+Systems (http://www.remss.com/) products, and European Centre for Medium-Range 
+Weather Forecasts (ECMWF) datasets. The source code for ``ocean_data_tools`` has
+been archived to Zenodo with the linked DOI: [@Ferris:2020].
 
 # Acknowledgements
 
@@ -63,8 +63,8 @@ I am grateful to Donglai Gong for supporting my interest in open-source software
 for ongoing mentorship. I also thank the many organizations providing freely-available
 data to the oceanography community including (but not limited to) Argo, the HYCOM 
 consortium, the Copernicus Programme, the International Global Ship-based Hydrographic
-Investigations Program (GO-SHIP), and the National Oceanic and Atmospheric Administration
-(NOAA). This paper is Contribution No.xxxx of the Virginia Institute of Marine Science,
-William & Mary.
+Investigations Program (GO-SHIP), and the National Oceanic and Atmospheric 
+Administration (NOAA). This paper is Contribution No.xxxx of the Virginia Institute 
+of Marine Science, William & Mary.
 
 # References
