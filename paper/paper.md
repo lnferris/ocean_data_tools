@@ -36,9 +36,9 @@ call general functions on these structs to map, subset, or plot. Functions with
 the ``\_build`` suffix load raw data into uniform structs. Structs are 
 compatible with all ``general_`` functions. One application of the ``\_build`` 
 feature is to create virtual cruises from model output \autoref{fig:1}. The user 
-draws transects on a map (or passes a vector of query points as an argument) to
-build casts from model data, which may be used as a tool for cruise planning or to 
-facilitate comparison of observations (from cruises or underwater gliders) with 
+draws transects on a map (or passes coordinates as an argument) to build casts 
+from model data, which may be used as a cruise planning tool or to facilitate 
+comparison of observations (from cruises or underwater gliders) with 
 model output. 
 
 ![Figure 1. Building a virtual cruise from the Operational Mercator global ocean
