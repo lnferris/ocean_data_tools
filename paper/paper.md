@@ -36,7 +36,7 @@ call general functions on these structs to map, subset, or plot. Functions with
 the ``\_build`` suffix load raw data into uniform structs. Uniform structs are 
 compatible with any ``general_`` function. One utilization of the ``\_build`` 
 feature is to create virtual cruises from model output \autoref{fig:1}. The user 
-can draw transects on a map (or pass a vector of query points as an argument) to
+draws transects on a map (or passes a vector of query points as an argument) to
 build casts from model data. This may be used as a tool for cruise planning or to 
 facilitate comparison of observations (from cruises or underwater gliders) with 
 model output. 
@@ -47,7 +47,7 @@ analysis and forecast system at 1/12 degree with 3D bathymetry (Smith & Sandell,
 virtual cruise selection using ``transect_select``, and ``model_build_profiles``, 
 (c) coordinates of the resulting uniform struct, and (d) a temperature section 
 plotted using ``general_section`` with ``bathymetry_section``. Three of the 
-subplots use colormaps from cmocean (Thyng et al., 2017).](figure.png)
+subplots use colormaps from cmocean (Thyng et al., 2017). \label{fig:example}](figure.png)
 
 ``ocean_data_tools`` has already been used in scientific publications (Bemis et 
 al., 2020; Crear et al., 2020). The toolbox has possibility for extension, and
