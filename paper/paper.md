@@ -37,7 +37,7 @@ the ``\_build`` suffix load raw data into uniform structs. Uniform structs are
 compatible with any ``general_`` function. One utilization of the ``\_build`` 
 feature is to create virtual cruises from model output \autoref{fig:1}. The user 
 draws transects on a map (or passes a vector of query points as an argument) to
-build casts from model data. This may be used as a tool for cruise planning or to 
+build casts from model data, which may be used as a tool for cruise planning or to 
 facilitate comparison of observations (from cruises or underwater gliders) with 
 model output. 
 
