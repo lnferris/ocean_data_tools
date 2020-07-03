@@ -26,7 +26,7 @@ overhead associated with determining out how to batch download data and
 format it into an easily-manipulable data structures. ``ocean_data_tools``
 solves this problem by allowing the user to transform common oceanographic 
 data sources into uniform structs, call general functions on these structs, 
-easily perform custom calculations, and make graphics.
+perform custom calculations, and make graphics.
 
 # Features
 
