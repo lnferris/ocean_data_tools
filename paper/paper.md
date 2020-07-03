@@ -50,7 +50,7 @@ model output. Some ``ocean_data_tools`` functions employ ``nctoolbox`` [@nctoolb
 ``ocean_data_tools`` has already been used in scientific publications [@Bemis:2020] 
 and [@Crear:2020]. The toolbox is built for extensibility, and the working plan 
 is to continuously add support for additional datasets such as Remote Sensing 
-Systems (RSS) and European Centre for Medium-Range 
+Systems (RSS) products and European Centre for Medium-Range 
 Weather Forecasts (ECMWF) products. The source code for ``ocean_data_tools`` has
 been archived to Zenodo with the linked DOI: [@Ferris:2020].
 
