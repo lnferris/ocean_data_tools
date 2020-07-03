@@ -30,6 +30,10 @@ perform custom calculations, and make graphics.
 
 # Summary
 
+The workflow of ``ocean_data_tools`` is to build uniform structs (e.g. ``argo``,
+``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``) from raw datasets and 
+call general functions on these structs to map, subset, or plot. 
+
 ![Building a virtual cruise from the Operational Mercator global ocean
 analysis and forecast system at 1/12 degree with 3D bathymetry [@Smith:1997]. 
 Showing (a) a 3D velocity plot created using ``model_domain_plot``, (b) 
@@ -38,10 +42,7 @@ virtual cruise selection using ``transect_select``, and ``model_build_profiles``
 plotted using ``general_section`` with ``bathymetry_section``. Three of the 
 subplots use colormaps from cmocean [@Thyng:2016]. \label{fig:1}](figure.png)
 
-The workflow of ``ocean_data_tools`` is to build uniform structs (e.g. ``argo``,
-``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``) from raw datasets and 
-call general functions on these structs to map, subset, or plot. Functions with 
-the ``\_build`` suffix load raw data into uniform structs. Structs are 
+Functions with the ``\_build`` suffix load raw data into uniform structs. Structs are 
 compatible with all ``general_`` functions. One application of the ``\_build`` 
 feature is to create virtual cruises from model output \autoref{fig:1}. The user
 draws transects on a map (or passes coordinates as an argument) to build casts 
