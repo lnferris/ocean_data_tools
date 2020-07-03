@@ -16,7 +16,7 @@ bibliography: paper.bib
 
 # Summary
 
-``ocean_data_tools`` simplifies the process of extracting, formatting, and visualizing freely available oceanographic data. A wealth of oceanographic data (from research cruises, autonomous floats, global ocean models, etc.) is accessible online. However, many oceanographers and environmental scientists (particularly those from subdisciplines not accustomed to working with large datasets) can be dissuaded from utilizing this data because of the overhead associated with determining out how to batch download data and format it into an easily-manipulable data structures. ``ocean_data_tools`` solves this problem by allowing the user to transform common oceanographic data sources into uniform structs, call general functions on these structs, easily perform custom calculations, and make graphics.
+``ocean_data_tools`` simplifies the process of extracting, formatting, and visualizing freely-available oceanographic data. A wealth of oceanographic data (from research cruises, autonomous floats, global ocean models, etc.) is accessible online. However, many oceanographers and environmental scientists (particularly those from subdisciplines not accustomed to working with large datasets) can be dissuaded from utilizing this data because of the overhead associated with determining out how to batch download data and format it into an easily-manipulable data structures. ``ocean_data_tools`` solves this problem by allowing the user to transform common oceanographic data sources into uniform structs, call general functions on these structs, easily perform custom calculations, and make graphics.
 
 # Features
 
