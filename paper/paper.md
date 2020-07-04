@@ -40,7 +40,7 @@ The workflow of ``ocean_data_tools`` is to build uniform structs (e.g. ``argo``,
 ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``) from raw datasets and 
 call general functions on these structs to map, subset, or plot. Functions with 
 the ``\_build`` suffix load raw data into uniform structs. Structs are 
-compatible with all ``general_`` functions, as well as functions in the widely-used
+compatible with all ``general_`` functions, as well as functions in the commonly-used
 Gibbs-SeaWater (GSW) Oceanographic Toolbox [@McDougall:2011]. One application of the ``\_build`` 
 feature is to create virtual cruises from model output \autoref{fig:1}. The user
 draws transects on a map (or passes coordinates as an argument) to build vertical profiles 
