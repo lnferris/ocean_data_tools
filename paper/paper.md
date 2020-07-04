@@ -22,8 +22,8 @@ data (from research cruises, autonomous floats, global ocean models, etc.)
 is accessible online. However, many oceanographers and environmental 
 scientists (particularly those from subdisciplines not accustomed to working
 with large datasets) can be dissuaded from utilizing this data because of the
-overhead associated with determining out how to batch download data and 
-format it into an easily-manipulable data structures. ``ocean_data_tools``
+overhead associated with determining how to batch download data and 
+format it into easily-manipulable data structures. ``ocean_data_tools``
 solves this problem by allowing the user to transform common oceanographic 
 data sources into uniform structs, call general functions on these structs, 
 perform custom calculations, and make graphics.
@@ -43,12 +43,12 @@ the ``\_build`` suffix load raw data into uniform structs. Structs are
 compatible with all ``general_`` functions. One application of the ``\_build`` 
 feature is to create virtual cruises from model output \autoref{fig:1}. The user
 draws transects on a map (or passes coordinates as an argument) to build casts 
-from model data, which may be used as a cruise planning tool or to facilitate 
+from model data. This may be used as a cruise planning tool or to facilitate 
 comparison of observations (such as those from underwater glider surveys) with 
 model output. Some ``ocean_data_tools`` functions employ ``nctoolbox`` [@nctoolbox].
 
 ``ocean_data_tools`` has already been used in scientific publications [@Bemis:2020] 
-and [@Crear:2020]. This toolbox is built for extensibility, and the plan 
+and [@Crear:2020]. This toolbox is built for extensibility; the plan 
 is to continuously add support for additional datasets such as Remote Sensing 
 Systems (http://www.remss.com/) products and European Centre for Medium-Range 
 Weather Forecasts (ECMWF) products. The source code for ``ocean_data_tools`` has
