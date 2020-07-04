@@ -42,7 +42,7 @@ call general functions on these structs to map, subset, or plot. Functions with
 the ``\_build`` suffix load raw data into uniform structs. Structs are 
 compatible with all ``general_`` functions. One application of the ``\_build`` 
 feature is to create virtual cruises from model output \autoref{fig:1}. The user
-draws transects on a map (or passes coordinates as an argument) to build casts 
+draws transects on a map (or passes coordinates as an argument) to build vertical profiles 
 from model data. This may be used as a cruise planning tool or to facilitate 
 comparison of observations (such as those from underwater glider surveys) with 
 model output. Some ``ocean_data_tools`` functions employ ``nctoolbox`` [@nctoolbox].
