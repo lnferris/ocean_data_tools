@@ -1,11 +1,11 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 30-Jun-2020
+%  Jun 2020; Last revision: 05-Jul-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
-function [model] =  model_build_profiles(source,date,variable_list,xcoords,ycoords)
+function [model] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid)
 
 ncoords = length(xcoords);
 
@@ -36,7 +36,13 @@ for i = 1
     end
 
     % densify depth levels
-    hdepth(:) = svg.z(1):-1:svg.z(end);
+    interpolation = 0;
+    if nargin > 5   
+        hdepth(:) = svg.z(1):-zgrid:svg.z(end);
+        interpolation = 1;
+    else
+        hdepth(:) = svg.z(:);
+    end
 
     % create additional arrays
     hstn = NaN(1,ncoords);
@@ -59,7 +65,12 @@ for i = 1
         hdate(cast) = svg.time(tin);
         hlon(cast) = svg.lon(lon_ind);
         hlat(cast) = svg.lat(lat_ind);
-        hvariable(:,cast) = interp1(svg.z(:),sv.data(tin,:,lat_ind,lon_ind),hdepth,'linear');
+        
+        if interpolation
+            hvariable(:,cast) = interp1(svg.z(:),sv.data(tin,:,lat_ind,lon_ind),hdepth,'linear');
+        else
+            hvariable(:,cast) = sv.data(tin,:,lat_ind,lon_ind);
+        end
             
     end
 

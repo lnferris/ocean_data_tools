@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 02-Jul-2020
+%  Jun 2020; Last revision: 05-Jul-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -22,7 +22,7 @@ region = [-60.0 -50.0 150.0 160.0]; %  Search region [-90 90 -180 180]
 start_date = '01-Nov-2015 00:00:00';
 end_date = '01-Jan-2017 00:00:00';
 variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'}; % Variables to read (besides id, lon, lat, date, z).
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
+[argo,~] = argo_build(argo_dir,region,start_date,end_date,variable_list);
 
 % argo_platform_subset
 
@@ -140,7 +140,8 @@ mocha_simple_plot(month,depth,variable,region)
 % mocha_build_profiles
 
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
-[mocha] = mocha_build_profiles(month,xcoords,ycoords);
+zgrid = 1; % vertical grid for linear interpolation in meters
+[mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
 general_map(mocha,bathymetry_dir,'2Dcontour')
 general_section(mocha,'temperature','stn','depth',1,1)
 general_profiles(mocha,'salinity','depth')
@@ -171,7 +172,8 @@ model_simple_plot(model,source,date,variable,region,depth,arrows)
 
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
 variable_list = {'water_temp','salinity'}; % 'water_u' 'water_v' 'water_temp' 'salinity'
-[hycom] =  model_build_profiles(source,date,variable_list,xcoords,ycoords);
+zgrid = 1; % vertical grid for linear interpolation in meters
+[hycom] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
 general_map(hycom,bathymetry_dir,'2Dcontour')
 general_section(hycom,'water_temp','stn','depth',1,1)
 general_profiles(hycom,'salinity','depth')
@@ -201,9 +203,10 @@ model_simple_plot(model,source,date,variable,region,depth,arrows)
 
 % model_build_profiles  - MERCATOR EXAMPLE
 
-[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
 variable_list = {'thetao','so','uo'}; % thetao' 'so' 'uo' 'vo'
-[mercator] =  model_build_profiles(source,date,variable_list,xcoords,ycoords);
+[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+zgrid = 1; % vertical grid for linear interpolation in meters
+[mercator] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
 general_map(mercator,bathymetry_dir,'2Dcontour')
 general_section(mercator,'thetao','stn','depth')
 general_profiles(mercator,'so','depth')
@@ -261,7 +264,8 @@ woa_simple_plot(variable,time,region,depth)
 variable_list = {'temperature','salinity','oxygen'}; % 'temperature' 'salinity' 'oxygen' 'o2sat' 'AOU' 'silicate' 'phosphate' 'nitrate'
 time = '00'; % '00' for annual climatology '01' '10' etc. for monthly climatology
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
-[woa] =  woa_build_profiles(variable_list,time,xcoords,ycoords);
+zgrid = 1; % vertical grid for linear interpolation in meters
+[woa] =  woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
 general_map(woa,bathymetry_dir,'2Dcontour')
 general_section(woa,'salinity','lon','depth')
 bathymetry_section(bathymetry_dir,xcoords,ycoords,'lon',1) % filled optional

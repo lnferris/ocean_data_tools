@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 22-Jun-2020
+%  Jun 2020; Last revision: 05-Jul-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -18,7 +18,7 @@
 % 'phosphate' (umol/kg)                     'p'
 % 'nitrate' (umol/kg)                       'n'
 
-function [woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords)
+function [woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid)
 
 n = length(variable_list);
 ncoords = length(xcoords);
@@ -62,7 +62,13 @@ for i = 1
     svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
 
     % densify depth levels
-    wdepth(:) = svg.z(1):-1:svg.z(end);
+    interpolation = 0;
+    if nargin > 4   
+        wdepth(:) = svg.z(1):-zgrid:svg.z(end);
+        interpolation = 1;
+    else
+        wdepth(:) = svg.z(:);
+    end
 
     % create additional arrays
     wstn = NaN(1,ncoords);
@@ -86,7 +92,12 @@ for i = 1
         wdate(cast) = svg.time(tin);
         wlon(cast) = svg.lon(lon_ind);
         wlat(cast) = svg.lat(lat_ind);
-        wvariable(:,cast) = interp1(svg.z(:),tracer,wdepth,'linear');
+        
+        if interpolation
+            wvariable(:,cast) = interp1(svg.z(:),tracer,wdepth,'linear');
+        else
+            wvariable(:,cast) = tracer;
+        end
         
         if ismember(cast,east_inds)
             wlon(cast) = wlon(cast)+360; 

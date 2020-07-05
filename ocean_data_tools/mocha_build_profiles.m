@@ -1,11 +1,11 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 28-Jun-2020
+%  Jun 2020; Last revision: 05-Jul-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
-function [mocha] = mocha_build_profiles(month,xcoords,ycoords)
+function [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid)
 
 variable_list = {'temperature','salinity'};
 n = length(variable_list);
@@ -22,11 +22,16 @@ for i = 1
     sv = nc{variable}; % Assign ncgeovariable handle: 'climatology_bounds' 'temperature' 'salinity' 'time' 'latitude' 'longitude' 'depth'
     sv.attributes % Print ncgeovariable attributes. % Print ncgeovariable attributes.
     svg = sv.grid_interop(:,:,:,:); % Get standardized (lat,lon,dep,time) coordinates for the ncgeovariable.
-
     data = squeeze(double(sv.data(month,:,:,:)));
 
     % densify depth levels
-    hdepth(:) = svg.z(1):-1:svg.z(end);
+    interpolation = 0;
+    if nargin > 3   
+        hdepth(:) = svg.z(1):-zgrid:svg.z(end);
+        interpolation = 1;
+    else
+        hdepth(:) = svg.z(:);
+    end
 
     % create additional arrays
     hstn = NaN(1,ncoords);
@@ -46,8 +51,13 @@ for i = 1
         hstn(cast) = cast;
         hlon(cast) = svg.lon(row,col);
         hlat(cast) = svg.lat(row,col);
-        hvariable(:,cast) = interp1(svg.z(:),data(:,row,col),hdepth,'linear');
-
+        
+        if interpolation
+            hvariable(:,cast) = interp1(svg.z(:),data(:,row,col),hdepth,'linear');
+        else
+            hvariable(:,cast) = data(:,row,col);
+        end
+        
     end
 
     mocha = struct('stn', hstn, 'lon', hlon,'lat', hlat,'depth',hdepth.', variable, hvariable);
