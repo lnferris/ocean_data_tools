@@ -8,7 +8,7 @@
 
 ocean_data_tools simplifies the process of extracting, formatting, and visualizing freely-available oceanographic data. While there is a wealth of oceanographic data accessible online, some end-users may be dissuaded from utilizing this data due to the overhead associated with batch downloading it and formatting it into usable data structures. ocean_data_tools solves this problem by allowing the user to transform common oceanographic data sources into uniform structs (e.g. argo, cruise, hycom, mercator, woa, wod), call generalized functions on these structs, easily perform custom calculations, and make graphics.
 
-Find a bug? Open an issue or contact lnferris@alum.mit.edu.
+Find a bug or have a question? Open an issue or contact lnferris@alum.mit.edu.
 
 ## Dependencies
 
