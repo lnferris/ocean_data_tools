@@ -110,4 +110,8 @@ if ~model360 && linecross
     model.lon(model.lon<0) = model.lon(model.lon<0)+360;
 end
 
+if model360 && ~linecross && all(model.lon>180)
+    model.lon = model.lon - 360;
+end
+
 end
