@@ -266,6 +266,7 @@ time = '00'; % '00' for annual climatology '01' '10' etc. for monthly climatolog
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
 zgrid = 1; % vertical grid for linear interpolation in meters
 [woa] =  woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
+[woa] = remove_duplicate_profiles(woa); % thin struct to gridding of source
 general_map(woa,bathymetry_dir,'2Dcontour')
 general_section(woa,'salinity','lon','depth')
 bathymetry_section(bathymetry_dir,xcoords,ycoords,'lon',1) % filled optional
