@@ -6,7 +6,7 @@
 
 **Copyright (c) 2020 lnferris** 
 
-``ocean_data_tools`` simplifies the process of extracting, formatting, and visualizing freely-available oceanographic data. While there is a wealth of oceanographic data accessible online, some end-users may be dissuaded from utilizing this data due to the overhead associated with batch downloading it and formatting it into usable data structures. ocean_data_tools solves this problem by allowing the user to transform common oceanographic data sources into uniform structs, call generalized functions on these structs, easily perform custom calculations, and make graphics.
+ocean_data_tools simplifies the process of extracting, formatting, and visualizing freely-available oceanographic data. While there is a wealth of oceanographic data accessible online, some end-users may be dissuaded from utilizing this data due to the overhead associated with batch downloading it and formatting it into usable data structures. ocean_data_tools solves this problem by allowing the user to transform common oceanographic data sources into uniform structs, call generalized functions on these structs, easily perform custom calculations, and make graphics.
 
 Find a bug? Open an issue or email lnferris@alum.mit.edu.
 
@@ -17,7 +17,7 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 ## Getting Started
 
 1. Download bathymetry (see below).
-2. Download the ``nctoolbox`` (https://github.com/nctoolbox/nctoolbox).
+2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox).
 3. Run each demonstration in **demos/demos.m**, which documents the argument list of each function.
 
 Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function, as well as functions in the Gibbs-SeaWater (GSW) Oceanographic Toolbox (http://www.teos-10.org/software.htm#1).
