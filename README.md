@@ -6,9 +6,9 @@
 
 **Copyright (c) 2020 lnferris** 
 
-ocean_data_tools simplifies the process of extracting, formatting, and visualizing freely-available oceanographic data. While there is a wealth of oceanographic data accessible online, some end-users may be dissuaded from utilizing this data due to the overhead associated with batch downloading it and formatting it into usable data structures. ocean_data_tools solves this problem by allowing the user to transform common oceanographic data sources into uniform structs (e.g. argo, cruise, hycom, mercator, woa, wod), call generalized functions on these structs, easily perform custom calculations, and make graphics.
+ocean_data_tools simplifies the process of extracting, formatting, and visualizing freely-available oceanographic data. While there is a wealth of oceanographic data accessible online, some end-users may be dissuaded from utilizing this data due to the overhead associated with batch downloading it and formatting it into usable data structures. ocean_data_tools solves this problem by allowing the user to transform common oceanographic data sources into uniform structs, call generalized functions on these structs, easily perform custom calculations, and make graphics.
 
-Find a bug? Open an issue or contact lnferris@alum.mit.edu.
+Find a bug? Open an issue or email lnferris@alum.mit.edu.
 
 ## Dependencies
 
@@ -20,7 +20,7 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox).
 3. Run each demonstration in **demos/demos.m**, which documents the argument list of each function.
 
-Functions are named using a two-part system. The prefix (argo_, bathymetry_, general_, etc.) indicates the appropriate data source, while the suffix (\_build, \_profiles, \_section, etc.) indicates the action performed. Functions with the \_build suffix are special because they load raw data into uniform structs (e.g. argo, cruise, hycom, mercator, woa, wod). Uniform structs created by \_build functions are compatable with any **general_** function.
+Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function, as well as functions in the Gibbs-SeaWater (GSW) Oceanographic Toolbox (http://www.teos-10.org/software.htm#1).
 
 Main functions are located in **ocean_data_tools/**. Demonstrations are located in **demos/**. Test datas are located in **data/**. Shell scripts for batch downloading data are located in **shell_scripts/**. While shell scripts can be run directly in a macOS Terminal, running them in Windows requires Cygwin (https://www.cygwin.com/) or similar. Python syntax examples are located in **python/**, which may be grow to become a module in the future.
 
@@ -28,13 +28,13 @@ Main functions are located in **ocean_data_tools/**. Demonstrations are located 
 
 ### argo_
 
-Download argo (www.argo.ucsd.edu) data directly from GDAC FTP servers using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl).
+Download Argo (www.argo.ucsd.edu) data directly from GDAC FTP servers using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl).
 
 Alternatively run **shell_scripts/download_argo** to download data via File Transfer Protocol.
 
 ### bathymetry_
 
-To get bathymetry data (for bathymetry_dir), download Smith & Sandwell under "Global Topography V19.1" (https://topex.ucsd.edu/marine_topo/) in netcdf form (topo_20.1.nc).
+To get bathymetry data (for ``bathymetry_dir``), download Smith & Sandwell under "Global Topography V19.1" (https://topex.ucsd.edu/marine_topo/) in netcdf form (topo_20.1.nc).
 
 ### mocha_
 
@@ -48,8 +48,8 @@ For Mercator, download Copernicus Marine data directly from FTP servers. Go to h
 
 ### whp_cruise_
 
-For GO-SHIP (https://usgoship.ucsd.edu/hydromap/) data, get CTD data (for ctdo_dir) by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and downloading the CTD data in whp_netcdf format. 
-Visit https://exchange-format.readthedocs.io/en/latest/index.html# for information about whp_netcdf parameters, specific to GO-SHIP. Get LADCP data (for uv_dir, wke_dir) at https://currents.soest.hawaii.edu/go-ship/ladcp/. There is information about LACDP processing at https://www.ldeo.columbia.edu/~ant/LADCP.html.
+For GO-SHIP (https://usgoship.ucsd.edu/hydromap/) data, get CTD data (for ``ctdo_dir``) by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and downloading the CTD data in whp_netcdf format. 
+Visit https://exchange-format.readthedocs.io/en/latest/index.html# for information about whp_netcdf parameters, specific to GO-SHIP. Get LADCP data (for ``uv_dir``, ``wke_dir``) at https://currents.soest.hawaii.edu/go-ship/ladcp/. There is information about LACDP processing at https://www.ldeo.columbia.edu/~ant/LADCP.html.
 
 ### woa_
 
