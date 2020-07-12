@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 05-Jul-2020
+%  Jun 2020; Last revision: 12-Jul-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -110,7 +110,7 @@ if ~model360 && linecross
     model.lon(model.lon<0) = model.lon(model.lon<0)+360;
 end
 
-if model360 && ~linecross && all(model.lon>180)
+if  all(model.lon>180) && all(model.lon<360)
     model.lon = model.lon - 360;
 end
 
