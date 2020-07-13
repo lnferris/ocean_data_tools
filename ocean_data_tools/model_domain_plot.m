@@ -77,26 +77,24 @@ end
 
 % Make Plot
 
+figure
+
 if need2merge == 1
     
-    figure; % Plot left side
-    data = reshape(permute(squeeze(double(sv.data(tin,:,lats:latn,lonw_A:lone_A))),[2,3,1]),[],1); % permute array to be lon x lat x dep
+    dataA = reshape(permute(squeeze(double(sv.data(tin,:,lats:latn,lonw_A:lone_A))),[2,3,1]),[],1); % permute array to be lon x lat x dep
     [lon_mesh,lat_mesh,dep_mesh] = meshgrid(svg.lon(lonw_A:lone_A),svg.lat(lats:latn),svg.z(:)); 
     lon = reshape(lon_mesh,[],1); 
     lat = reshape(lat_mesh,[],1); 
     z = reshape(dep_mesh,[],1);
-    scatter3(lon,lat,z,[],data,'.')
+    scatter3(lon,lat,z,[],dataA,'.')
     
-    hold on % Plot right side
-    data = reshape(permute(squeeze(double(sv.data(tin,:,lats:latn,lonw_B:lone_B))),[2,3,1]),[],1); % permute array to be lon x lat x dep
+    hold on 
+    dataB = reshape(permute(squeeze(double(sv.data(tin,:,lats:latn,lonw_B:lone_B))),[2,3,1]),[],1); % permute array to be lon x lat x dep
     [lon_mesh,lat_mesh,dep_mesh] = meshgrid(svg.lon(lonw_B:lone_B)+360,svg.lat(lats:latn),svg.z(:)); 
     lon = reshape(lon_mesh,[],1); 
     lat = reshape(lat_mesh,[],1); 
     z = reshape(dep_mesh,[],1);
-    scatter3(lon,lat,z,[],data,'.')
-
-    title({sprintf('%s',sv.attribute('standard_name'));datestr(svg.time(tin))},'interpreter','none');
-    hcb = colorbar; title(hcb,sv.attribute('units'));
+    scatter3(lon,lat,z,[],dataB,'.')
 
 else   
     
@@ -105,12 +103,11 @@ else
     lon = reshape(lon_mesh,[],1); 
     lat = reshape(lat_mesh,[],1); 
     z = reshape(dep_mesh,[],1);
-
-    figure 
     scatter3(lon,lat,z,[],data,'.')
-    title({sprintf('%s',sv.attribute('standard_name'));datestr(svg.time(tin))},'interpreter','none');
-    hcb = colorbar; title(hcb,sv.attribute('units'));
+
 end    
 
+title({sprintf('%s',sv.attribute('standard_name'));datestr(svg.time(tin))},'interpreter','none');
+hcb = colorbar; title(hcb,sv.attribute('units'),'interpreter','none');
 
 end
