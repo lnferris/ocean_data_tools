@@ -63,7 +63,7 @@ for ongoing mentorship. I thank the many organizations providing freely-availabl
 data to the oceanography community including (but not limited to) Argo, the HYCOM 
 consortium, the Copernicus Programme, the International Global Ship-based Hydrographic
 Investigations Program (GO-SHIP), and the National Oceanic and Atmospheric 
-Administration (NOAA). This paper is Contribution No.xxxx of the Virginia Institute 
-of Marine Science, William & Mary.
+Administration (NOAA). This is Contribution No.xxxx of the Virginia Institute 
+of Marine Science.
 
 # References
