@@ -59,58 +59,34 @@ if lonw > lone
     end
 end
 
-   if need2merge == 1
-        velocity_A = sqrt(double(sv.data(tin,din,lats:latn,lonw_A:lone_A)).^2+double(sv_v.data(tin,din,lats:latn,lonw_A:lone_A)).^2);
-        figA = figure; % Plot left
-        pcolorjw(svg.lon(lonw_A:lone_A),svg.lat(lats:latn),velocity_A); % pcolorjw(x,y,c);    
+% Format and merge data
 
-        velocity_B = sqrt(double(sv.data(tin,din,lats:latn,lonw_B:lone_B)).^2+double(sv_v.data(tin,din,lats:latn,lonw_B:lone_B)).^2);
-        figB = figure; % Plot right
-        pcolorjw(svg.lon(lonw_B:lone_B)+360,svg.lat(lats:latn),velocity_B); % pcolorjw(x,y,c); 
+if need2merge == 1  
+    u = cat(2,squeeze(double(sv.data(tin,din,lats:latn,lonw_B:lone_B))),squeeze(double(sv.data(tin,din,lats:latn,lonw_A:lone_A))));
+    v = cat(2,squeeze(double(sv_v.data(tin,din,lats:latn,lonw_B:lone_B))),squeeze(double(sv_v.data(tin,din,lats:latn,lonw_A:lone_A))));
+    lon = [svg.lon(lonw_B:lone_B)+360; svg.lon(lonw_A:lone_A)];
+else
+    u = squeeze(double(sv.data(tin,din,lats:latn,lonw:lone))); % Add directional arrows.
+    v = squeeze(double(sv_v.data(tin,din,lats:latn,lonw:lone)));
+    lon = svg.lon(lonw:lone);
+end
+lat = svg.lat(lats:latn);
+[lon,lon_inds] = sort(lon);
+u = u(:,lon_inds);
+v = v(:,lon_inds);
+data = sqrt(u.^2+v.^2); % calculate velocity
 
-        merge_figures(figA,figB) % Merge left and right
-        title({sprintf('velocity magnitude %.0fm',svg.z(din));datestr(svg.time(tin))},'interpreter','none');
-        hcb = colorbar; title(hcb,sv.attribute('units'));
-        
-        % format optional output.
-        data = cat(2,squeeze(velocity_B),squeeze(velocity_A));
-        lat = svg.lat(lats:latn);
-        lon = [svg.lon(lonw_B:lone_B)+360; svg.lon(lonw_A:lone_A)];
+% Plot
 
-        if  arrows==1
-            u_left = squeeze(double(sv.data(tin,din,lats:latn,lonw_B:lone_B))); % Add directional arrows.
-            v_left = squeeze(double(sv_v.data(tin,din,lats:latn,lonw_B:lone_B)));
-            lon_left = svg.lon(lonw_B:lone_B)+360;
-            u_right = squeeze(double(sv.data(tin,din,lats:latn,lonw_A:lone_A)));  % Add directional arrows.
-            v_right  = squeeze(double(sv_v.data(tin,din,lats:latn,lonw_A:lone_A)));
-            lon_right = svg.lon(lonw_A:lone_A);
-            hold on
-            quiver([lon_left; lon_right],svg.lat(lats:latn),cat(2,u_left,u_right),cat(2,v_left,v_right),'w'); % quiver(x,y,u,v)
-        end
-       
-    else
-        velocity = sqrt(double(sv.data(tin,din,lats:latn,lonw:lone)).^2+double(sv_v.data(tin,din,lats:latn,lonw:lone)).^2);
-        figure % Basic plot
-        pcolorjw(svg.lon(lonw:lone),svg.lat(lats:latn),velocity); % pcolorjw(x,y,c)
-        title({sprintf('velocity magnitude %.0fm',svg.z(din));datestr(svg.time(tin))},'interpreter','none');
-        hcb = colorbar; title(hcb,sv.attribute('units'));
-        
-        % format optional output
-        data = velocity;
-        lat = svg.lat(lats:latn);
-        lon = svg.lon(lonw:lone);
+figure; 
+pcolor(lon,lat,data); 
+shading flat
+title({sprintf('velocity magnitude %.0fm',svg.z(din));datestr(svg.time(tin))},'interpreter','none');
+hcb = colorbar; title(hcb,sv.attribute('units'));
 
-        if arrows==1
-            u = squeeze(double(sv.data(tin,din,lats:latn,lonw:lone))); % Add directional arrows.
-            v = squeeze(double(sv_v.data(tin,din,lats:latn,lonw:lone)));
-            hold on
-            quiver(svg.lon(lonw:lone),svg.lat(lats:latn),u,v,'w'); % quiver(x,y,u,v)
-        end
+if arrows==1
+    hold on
+    quiver(lon,lat,u,v,'w')
+end
 
-   end
-
-    % sort output
-    [lon,lon_inds] = sort(lon);
-    data = data(:,lon_inds);
-   
 end

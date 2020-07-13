@@ -52,13 +52,12 @@ end
 
 if need2merge == 1
     data = cat(2,squeeze(double(sv.data(tin,lats:latn,lonw_B:lone_B))),squeeze(double(sv.data(tin,lats:latn,lonw_A:lone_A))));
-    lat = svg.lat(lats:latn);
     lon = [svg.lon(lonw_B:lone_B)+360; svg.lon(lonw_A:lone_A)];
 else   
     data = squeeze(double(sv.data(tin,lats:latn,lonw:lone)));
-    lat = svg.lat(lats:latn);
     lon = svg.lon(lonw:lone);
 end    
+lat = svg.lat(lats:latn);
 [lon,lon_inds] = sort(lon);
 data = data(:,lon_inds);
 
