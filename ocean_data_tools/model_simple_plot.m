@@ -1,12 +1,12 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 30-Jun-2020
+%  Jun 2020; Last revision: 13-Jul-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
 
-function model_simple_plot(model,source,date,variable,region,depth,arrows)
+function [data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth,arrows)
 
 if nargin < 7
     arrows = 0;
@@ -32,11 +32,11 @@ nc.variables            % Print list of available variables.
 
 if ~any(strcmp(standard_vars,variable))   
     if any(strcmp(slab_vars,variable))
-        model_simple_plot_layer(nc,date,variable,region)
+        [data,lat,lon] = model_simple_plot_layer(nc,date,variable,region);
         return
         
     elseif strcmp(variable,'velocity') 
-        model_simple_plot_velocity(model,nc,date,region,depth,arrows)
+        [data,lat,lon] = model_simple_plot_velocity(model,nc,date,region,depth,arrows);
         return   
     else    
         disp('Check spelling of variable variable');    
@@ -86,28 +86,26 @@ if lonw > lone
     end
 end
 
-% Make Plot
-
+% Format and merge data
 
 if need2merge == 1
-
-    figA = figure; % Plot the lefthand depth level.
-    pcolorjw(svg.lon(lonw_A:lone_A),svg.lat(lats:latn),double(sv.data(tin,din,lats:latn,lonw_A:lone_A))); % pcolorjw(x,y,c(time,depth,lat,lon))
-
-    figB = figure; % Plot the righthand depth level. 
-    pcolorjw(svg.lon(lonw_B:lone_B)+360,svg.lat(lats:latn),double(sv.data(tin,din,lats:latn,lonw_B:lone_B))); % pcolorjw(x,y,c(time,depth,lat,lon))
-
-    merge_figures(figA,figB)
-    title({sprintf('%s %.0fm',sv.attribute('standard_name'),svg.z(din));datestr(svg.time(tin))},'interpreter','none');
-    hcb = colorbar; title(hcb,sv.attribute('units'));axis tight;
-      
+    data = cat(2,squeeze(double(sv.data(tin,din,lats:latn,lonw_B:lone_B))),squeeze(double(sv.data(tin,din,lats:latn,lonw_A:lone_A))));
+    lat = svg.lat(lats:latn);
+    lon = [svg.lon(lonw_B:lone_B)+360; svg.lon(lonw_A:lone_A)];
 else   
-
-    figure % Plot the depth level in standard manner.
-    pcolorjw(svg.lon(lonw:lone),svg.lat(lats:latn),double(sv.data(tin,din,lats:latn,lonw:lone))); % pcolorjw(x,y,c(time,depth,lat,lon))
-    title({sprintf('%s %.0fm',sv.attribute('standard_name'),svg.z(din));datestr(svg.time(tin))},'interpreter','none');
-    hcb = colorbar; title(hcb,sv.attribute('units'));
-
+    data = squeeze(double(sv.data(tin,din,lats:latn,lonw:lone)));
+    lat = svg.lat(lats:latn);
+    lon = svg.lon(lonw:lone);
 end
+[lon,lon_inds] = sort(lon);
+data = data(:,lon_inds);
+
+% Plot
+
+figure; 
+pcolor(lon,lat,data); 
+shading flat
+title({sprintf('%s %.0fm',sv.attribute('standard_name'),svg.z(din));datestr(svg.time(tin))},'interpreter','none');
+hcb = colorbar; title(hcb,sv.attribute('units')); 
 
 end
