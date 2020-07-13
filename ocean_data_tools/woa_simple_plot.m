@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 30-Jun-2020
+%  Jun 2020; Last revision: 12-Jul-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -14,7 +14,7 @@
 % 'phosphate' (umol/kg)                     'p'
 % 'nitrate' (umol/kg)                       'n'
 
-function woa_simple_plot(variable,time,region,depth)
+function [data,lat,lon] = woa_simple_plot(variable,time,region,depth)
 
 % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;
@@ -62,25 +62,25 @@ if lonw > lone
     [lone_B] = near(svg.lon,region(4));    
 end
 
-% Make Plot
+% Format and merge data
+
 if need2merge == 1
-
-    figA = figure; % Plot the lefthand depth level.
-    pcolorjw(svg.lon(lonw_A:lone_A),svg.lat(lats:latn),double(sv.data(1,din,lats:latn,lonw_A:lone_A))); % pcolorjw(x,y,c(time,depth,lat,lon))
-
-    figB = figure; % Plot the righthand depth level. 
-    pcolorjw(svg.lon(lonw_B:lone_B)+360,svg.lat(lats:latn),double(sv.data(1,din,lats:latn,lonw_B:lone_B))); % pcolorjw(x,y,c(time,depth,lat,lon))
-
-    merge_figures(figA,figB)
-    title({sprintf('%s %.0fm',sv.attribute('standard_name'),svg.z(din));path},'interpreter','none');
-    hcb = colorbar; title(hcb,sv.attribute('units'));axis tight;
-
+    data = cat(2,squeeze(double(sv.data(1,din,lats:latn,lonw_B:lone_B))),squeeze(double(sv.data(1,din,lats:latn,lonw_A:lone_A))));
+    lon = [svg.lon(lonw_B:lone_B)+360; svg.lon(lonw_A:lone_A)];
 else   
+    data = squeeze(double(sv.data(1,din,lats:latn,lonw:lone)));
+    lon = svg.lon(lonw:lone);
+end
+lat = svg.lat(lats:latn);
+[lon,lon_inds] = sort(lon);
+data = data(:,lon_inds);
 
-    figure % Plot the depth level in standard manner.
-    pcolorjw(svg.lon(lonw:lone),svg.lat(lats:latn),double(sv.data(1,din,lats:latn,lonw:lone))); % pcolorjw(x,y,c(time,depth,lat,lon))
-    title({sprintf('%s %.0fm',sv.attribute('standard_name'),svg.z(din));path},'interpreter','none');
-    hcb = colorbar; title(hcb,sv.attribute('units'));
+% Plot
 
-end    
+figure; 
+pcolor(lon,lat,data); 
+shading flat
+title({sprintf('%s %.0fm',sv.attribute('standard_name'),svg.z(din));path},'interpreter','none');
+hcb = colorbar; title(hcb,sv.attribute('units'),'interpreter','none');
+
 end
