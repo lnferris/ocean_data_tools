@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 28-Jun-2020
+%  Jun 2020; Last revision: 14-Jul-2020
 %  Distributed under the terms of the MIT License
 
 function [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list)
@@ -78,7 +78,7 @@ for var = 1:var_dim
 end
 
 % if working near dateline wrap to 0/360
-if min(cruise.lon) < -170 && max(cruise.lon)>170  
+if abs(max(cruise.lon) - min(cruise.lon)) > 320 % no cruise is 320 degrees, requires a crossing  
     cruise.lon(cruise.lon < 0) = cruise.lon(cruise.lon < 0)+360; 
 end  
 

@@ -1,7 +1,7 @@
 %  Author: Laur Ferris
 %  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 05-Jul-2020
+%  Jun 2020; Last revision: 14-Jul-2020
 %  Distributed under the terms of the MIT License
 %  Dependencies: nctoolbox
 
@@ -224,12 +224,14 @@ caxis([0 1])
 ctdo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/ctd/*.nc'; % included
 uv_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/uv/*.nc'; % included
 wvke_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/wvke/'; % included
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
 
 % whp_cruise_build
 
 netcdf_info(ctdo_dir) % Get cruise information.
 variable_list = {'salinity','temperature','oxygen'};
 [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list); % Use a dummy path (e.g. uv_dir ='null') if missing data. 
+general_map(cruise,bathymetry_dir,'2Dcontour')
 
 % whp_cruise_section
 
