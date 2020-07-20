@@ -9,14 +9,15 @@ function [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,
 % 
 %% Description 
 % 
-% argo_build searches pathway argo_dir for profiles meeting the search criteria
+% [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)
+% searches pathway argo_dir for profiles meeting the search criteria
 % region, start_date, and end_date. Profiles are loaded into the struct
 % array argo with all variables specified in variable_list. Variables PLATFORM_NUMBER, 
 % LONGITUDE, LATITUDE, JULD, and PRES_ADJUSTED are included automatically.
 % Files containing matching profiles are listed in matching_files.
 % 
 %% Example 1
-% Load Argo data from west of New Zealand 
+% Load Argo data from west of New Zealand:
 % 
 % argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc';
 % region = [-60.0 -50.0 150.0 160.0]; %  Search region [-90 90 -180 180]
