@@ -18,7 +18,7 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 
 1. Download bathymetry (see below).
 2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox).
-3. Run each demonstration in **demos/demos.m**, which documents the argument list of each function.
+3. Run each demonstration in **demos/demos.m**.
 
 Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function, as well as functions in the Gibbs-SeaWater (GSW) Oceanographic Toolbox (http://www.teos-10.org/software.htm#1).
 
@@ -28,7 +28,7 @@ Main functions are located in **ocean_data_tools/**. Demonstrations are located 
 
 ### argo_
 
-Download Argo (www.argo.ucsd.edu) data directly from GDAC FTP servers using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl).
+Download Argo (www.argo.ucsd.edu) data directly from GDAC FTP servers using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl). The Argo User's Manual is found at http://www.argodatamgt.org/Documentation.
 
 Alternatively run **shell_scripts/download_argo** to download data via File Transfer Protocol.
 
