@@ -1,10 +1,35 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 16-Jun-2020
-%  Distributed under the terms of the MIT License
 
 function argo_profiles(argo,variable,annotate)
+% argo_profiles plots vertical profiles in struct argo
+% 
+%% Syntax
+% 
+%  argo_profiles(argo,variable) 
+%  argo_profiles(argo,variable,annotate)
+% 
+%% Description 
+% 
+% argo_profiles(argo,variable) plots vertical profiles in struct
+% argo as a function of depth (PRES_ADJUSTED); where argo is a struct 
+% created by argo_build.
+%  
+% argo_profiles(argo,variable,annotate) adds number annotations to the 
+% markers by default annotate=0. set annotate=1 to turn on annotation. The 
+% annotations of profiles correspond to those of argo_profiles_map called
+% on the same struct.
+% 
+%% Example 1
+% Plot temperature vertical profiles in argo:
+% 
+% variable = 'TEMP_ADJUSTED';
+% annotate = 1; 
+% argo_profiles(argo,variable,annotate) % annotate optional,  1=on 0=off
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 16-Jun-2020
+% 
+% See also argo_build and argo_profiles_map.
 
 more_colors()
 

@@ -33,7 +33,6 @@ platform_id = 1900980;
 
 annotate = 1; 
 argo_platform_map(argo,annotate) % annotate optional,  1=on 0=off
-
 bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour')
 
 % argo_profiles
