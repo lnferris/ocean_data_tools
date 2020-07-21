@@ -1,11 +1,47 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 12-Jul-2020
-%  Distributed under the terms of the MIT License
-%  Dependencies: nctoolbox
 
 function [model] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid)
+% model_build_profiles builds a struct of profiles from HYCOM or Operational Mercator
+% GLOBAL_ANALYSIS_FORECAST_PHY_001_024
+% 
+%% Dependencies
+%
+% nctoolbox
+% 
+%% Syntax
+% 
+% [model] = model_build_profiles(source,date,variable_list,xcoords,ycoords)
+% [model] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid)
+%
+%% Description 
+% 
+% [model] = model_build_profiles(source,date,variable_list,xcoords,ycoords) 
+% builds a struct of profiles fromfrom HYCOM or Operational Mercator
+% GLOBAL_ANALYSIS_FORECAST_PHY_001_024, pulling profiles nearest to coordinates
+% specified by xcoords and ycoords. Profiles are loaded into the struct
+% array model with all variables specified in variable_list.
+%
+% [model] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid)
+% depth-interpolates the profiles to a vertical grid of zgrid, in meters. zgrid=2 would
+% produce profiles interpolated to 2 meter vertical grid.
+%
+%% Example 1
+% Build a struct out of a transect through HYCOM, including temperature and salinity:
+% 
+% model = 'hycom'; % 'hycom' 'mercator'
+% source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % url or local .nc 
+% date = '28-Aug-2017 00:00:00';  
+% xcoords = [-71.2, -71.4, -71.5, -71.7, -71.9]
+% ycoords = [35.9, 36.2, 36.4, 36.6, 36.8];
+% variable_list = {'water_temp','salinity'}; % 'water_u' 'water_v' 'water_temp' 'salinity'
+% zgrid = 1; % vertical grid for linear interpolation in meters
+% [hycom] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 12-Jul-2020
+% 
+% See also model_simple_plot and model_domain_plot.
+
 
 ncoords = length(xcoords);
 

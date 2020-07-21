@@ -1,12 +1,49 @@
 
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 30-Jun-2020
-%  Distributed under the terms of the MIT License
-%  Dependencies: nctoolbox
-
 function model_domain_plot(model,source,date,variable,region)
+% model_domain_plot plots all depth levels of HYCOM or Operational Mercator
+% GLOBAL_ANALYSIS_FORECAST_PHY_001_024
+% 
+%% Dependencies
+%
+% nctoolbox
+% 
+%% Syntax
+% 
+% model_domain_plot(model,source,date,variable,region)
+%
+%% Description 
+% 
+% model_domain_plot(model,source,date,variable,region) plots all depth 
+% levels over a particuler rectangular region. variable specifies the parameter 
+% to be plotted. model='hycom' or model='mercator' specifies the model used.
+% source is the url or local path of the relevant dataset
+%
+%% Example 1
+% Plot a salinity domain from HYCOM:
+% 
+% model = 'hycom'; % 'hycom' 'mercator'
+% source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % url or local .nc 
+% date = '28-Aug-2017 00:00:00';   
+% region = [-5.0, 45.0 ,160,-150 ];      % [-90 90 -180 180]
+% variable = 'salinity'; % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 
+% model_domain_plot(model,source,date,variable,region)
+%
+%% Example 2
+% Plot a temperature domain from Mercator:
+% 
+% model = 'mercator'; % 'hycom' 'mercator'
+% source = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/mercator/global-analysis-forecast-phy-001-024_1593408360353.nc'; % included
+% date = '18-Mar-2020 00:00:00';   
+% region = [60.0, 70.0 ,-80, -60];      % [-90 90 -180 180]
+% variable = 'velocity';  % thetao' 'so' 'uo' 'vo' 'velocity'
+% model_domain_plot(model,source,date,variable,region)
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 30-Jun-2020
+% 
+% See also model_build_profiles and model_simple_plot.
+
 
 % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;

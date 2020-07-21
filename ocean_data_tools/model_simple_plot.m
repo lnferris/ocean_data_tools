@@ -1,12 +1,59 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 13-Jul-2020
-%  Distributed under the terms of the MIT License
-%  Dependencies: nctoolbox
-
 
 function [data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth,arrows)
+% model_simple_plot plots one depth level of HYCOM or Operational Mercator
+% GLOBAL_ANALYSIS_FORECAST_PHY_001_024
+% 
+%% Dependencies
+%
+% nctoolbox
+% 
+%% Syntax
+% 
+% [data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth)
+% [data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth,arrows)
+%
+%% Description 
+% 
+% [data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth) plots 
+% the nearest available depth-level to depth. variable specifies the parameter 
+% to be plotted and region is the rectangular region to be plotted. model='hycom' or
+% model='mercator' specifies the model used. source is the url or local
+% path of the relevant dataset. data, lat, and lon from the plotted layer
+% are available outputs.
+%
+% [data,lat,lon] =
+% model_simple_plot(model,source,date,variable,region,depth,arrows) adds
+% directional arrows if it is a velocity magnitude plot. arrows=1 is on,
+% arrows=0 is off.
+%
+%% Example 1
+% Plot surface velocity from HYCOM:
+% 
+% model = 'hycom'; % 'hycom' 'mercator'
+% source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % url or local .nc 
+% date = '28-Aug-2017 00:00:00';  
+% variable = 'velocity';                 % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 'surf_el' 'water_u_bottom' 'water_v_bottom' 'water_temp_bottom' 'salinity_bottom' 
+% region = [-5.0, 45.0 ,160,-150 ];      % [-90 90 -180 180]
+% depth = -150;                          % Depth level between 0 and -5000m
+% arrows = 0;                            % Velocity direction arrows 1=on 0=off
+% [data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth,arrows); % optionally output the plotted data layer
+%
+%% Example 2
+% Plot temperature at ~150m depth from Mercator:
+% 
+% model = 'mercator'; % 'hycom' 'mercator'
+% source = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/mercator/global-analysis-forecast-phy-001-024_1593408360353.nc'; % included
+% date = '18-Mar-2020 00:00:00';   
+% variable = 'thetao'; % 'thetao' 'so' 'uo' 'vo' 'velocity' 'mlotst' 'siconc' 'usi' 'vsi' 'sithick' 'bottomT' 'zos'
+% region = [60.0, 70.0 ,-80, -60];      % [-90 90 -180 180]
+% depth = -150;                          % Depth level between 0 and -5728m 
+% model_simple_plot(model,source,date,variable,region,depth)
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 13-Jul-2020
+% 
+% See also model_build_profiles and model_domain_plot.
 
 if nargin < 7
     arrows = 0;
