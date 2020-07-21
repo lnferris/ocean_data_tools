@@ -1,12 +1,54 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 30-Jun-2020
-%  Distributed under the terms of the MIT License
-
-% bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % Path to Smith & Sandwell database 
 
 function [bath_section,lon_section,lat_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)
+% bathymetry_section adds global seafloor topography (Smith & Sandwell, 1997) to an existing section
+% plot from points nearest to specified coordinates
+% 
+%% Syntax
+% 
+%  [bath_section,lon_section,lat_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)
+%  [bath_section,lon_section,lat_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)
+% 
+%% Description 
+% 
+% [bath_section,lon_section,lat_section] =
+% bathymetry_section(bathymetry_dir,xcoords,ycoords,xref) extracts
+% Smith & Sandwell Global Topography in path bathymetry_dir for use with a
+% section plot. Points are extracted nearest to each coordinate specified
+% by xcoords (longitude) and ycoords (latitude). The bathymetry section is
+% plotted with xref = 'lon' or xref = 'lat' as the x-axis variable. The
+% extracted data is output bath_section, lon_section, and lat_section.
+%  
+% [bath_section,lon_section,lat_section] =
+% bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled) allows the
+% bathymetry to be filled in black down to the x-axis (instead of a simple line).
+% Set filled=1 to turn on, filled=0 to turn off.
+% 
+%% Example 1
+% Add bathymetry to a temperature section plot from the list of coordinates
+% stored in struct cruise, filling in bathymetry. Use longitude as the x-axis:
+% 
+% xref = 'lon'; % 'lon' 'lat'
+% general_section(cruise,'temperature',xref,'pressure') % plot temperature section
+% xcoords = cruise.lon; 
+% ycoords = cruise.lat;
+% filled = 1;
+% bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)
+%
+%% Example 2
+% Plot bathymetry nearest to a list of coordinates. Use latitude as the x-axis:
+% 
+% xref = 'lat'; 
+% xcoords = [60 60.1 60.4 60.2 59.9]; 
+% ycoords = [10 20.1 15.0 16.1 13.7]; 
+% figure
+% bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 30-Jun-2020
+% 
+% See also general_section and bathymetry_chord.
+
 
 if nargin < 5
     filled = 0;

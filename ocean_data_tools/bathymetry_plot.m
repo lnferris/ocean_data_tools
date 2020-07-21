@@ -1,16 +1,42 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 30-Jun-2020
-%  Distributed under the terms of the MIT License
-
-% inputs: 
-    % bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % Path to
-    % Smith & Sandwell database 
-    % region = S N W E [-80.738 80.738 -180 180 ];
-    % type = '2Dscatter' '2Dcontour' '3Dsurf'
 
 function bathymetry_plot(bathymetry_dir,region,ptype)
+% bathymetry_plot adds global seafloor topography (Smith & Sandwell, 1997)
+% to an existing 2D plot  or 3D plot
+% 
+%% Syntax
+% 
+% bathymetry_plot(bathymetry_dir,region,ptype)
+% 
+%% Description 
+% 
+% bathymetry_plot(bathymetry_dir,region,ptype) extracts
+% Smith & Sandwell Global Topography in path bathymetry_dir for use with a
+% 2D (latitude vs. longitude) or 3D (latitude vs. longitude vs. depth)
+% plot. The region extracted is given by region, maximum latitudes and
+% longitudes are given by [-80.738 80.738 -180 180], and should be in order 
+% [S N W E]. type = '2Dscatter' or '2Dcontour' or '3Dsurf' specifies the plot type.
+%
+%% Example 1
+% Make a contour plot of bathymetry in the North Pacific:
+%
+% region = [-5.0, 45.0 ,120, -150];      % [-90 90 -180 180]
+% ptype = '2Dcontour'; % '2Dscatter' '2Dcontour' '3Dsurf'
+% figure
+% bathymetry_plot(bathymetry_dir,region,ptype)
+%
+%% Example 2
+% Add a bathymetry surface to a 3D plot of model data:
+%
+% variable = 'velocity';  % thetao' 'so' 'uo' 'vo' 'velocity'
+% model_domain_plot(model,source,date,variable,region) % 3D plot of model data
+% bathymetry_plot(bathymetry_dir,region,'3Dsurf')
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 30-Jun-2020
+% 
+% See also general_map and bathymetry_section.
+
 
 % Load bathymetry data.
 [bath,lat,lon] = bathymetry_extract(bathymetry_dir,region);

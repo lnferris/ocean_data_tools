@@ -1,22 +1,60 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 29-Jun-2020
-%  Distributed under the terms of the MIT License
 
-% inputs: 
-    % bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % Path to Smith & Sandwell database 
-    % xref = 'lat' 'lon'
-    % width = 1/60; % Approximate width of chord in degrees
+function [bath_chord,lon_chord,lat_chord] = bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,filled,width)
+% bathymetry_chord adds global seafloor topography (Smith & Sandwell, 1997) to an existing section
+% plot from a bathymetry chord of 1/60-degree width. It is less exact than
+% bathymetry-section; a practical application is to capture seamounts that
+% might have been nearby but not exactly beneath in a transect.
+% 
+%% Syntax
+% 
+% [bath_chord,lon_chord,lat_chord] = bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref)
+% [bath_chord,lon_chord,lat_chord] = bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,filled)
+% [bath_chord,lon_chord,lat_chord] = bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,filled,width)
+% 
+%% Description 
+% 
+% [bath_chord,lon_chord,lat_chord] = bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref) extracts
+% Smith & Sandwell Global Topography in path bathymetry_dir for use with a
+% section plot. Points lying within a narrow chord-like region of width 1/60-degrees 
+% are extracted, with lon1 and lat1 marking the beginning of the chord and
+% lon 2 and lat 2 marking the end of the chord. The bathymetry section is
+% plotted with xref = 'lon' or xref = 'lat' as the x-axis variable. The
+% extracted data is output bath_chord, lon_chord, and lat_chord. 
+%  
+% [bath_chord,lon_chord,lat_chord] = bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,filled) allows the
+% bathymetry to be filled in black down to the x-axis (instead of a simple line).
+% Set filled=1 to turn on, filled=0 to turn off.
+% 
+% [bath_chord,lon_chord,lat_chord] =
+% bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,filled,width) allows
+% the user to change the width of the chord-like region of extraction from
+% the default 1/60 degrees.
+%
+%% Example 1
+% Add bathymetry from 67S,160E to 66.5S,80W to a temperature section plot.
+% Use longitude as the x-axis:
+%
+% xref = 'lon'; % 'lon' 'lat'
+% general_section(cruise,'temperature',xref,'pressure')  % plot temperature section
+% lon1 = 160;
+% lat1 = -67;
+% lon2 = 280; 
+% lat2 = -66.5;
+% bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref)
+% 
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 21-Jul-2020
+% 
+% See also general_section and bathymetry_section.
 
-function [bath_chord,lon_chord,lat_chord] = bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,width,filled)
 
 if nargin < 7 
-    width = 1/60; % default 
+    filled = 0;
 end
 
 if nargin < 8
-    filled = 0;
+    width = 1/60; % default 
 end
 
 % deal with inputs other than [-180 180] e.g  [20 200] 

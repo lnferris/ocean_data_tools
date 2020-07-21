@@ -9,8 +9,8 @@ function argo_profiles(argo,variable,annotate)
 % 
 %% Description 
 % 
-% argo_profiles(argo,variable) plots vertical profiles in struct
-% argo as a function of depth (PRES_ADJUSTED); where argo is a struct 
+% argo_profiles(argo,variable) plots vertical profiles of the specified variable
+% in struct argo as a function of depth (PRES_ADJUSTED); where argo is a struct 
 % created by argo_build.
 %  
 % argo_profiles(argo,variable,annotate) adds number annotations to the 

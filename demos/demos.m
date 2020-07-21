@@ -66,7 +66,7 @@ width = 1/60; % Approximate width of chord in degrees
 [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,{'temperature'}); 
 general_section(cruise,'temperature',xref,'pressure') 
 filled = 0;
-bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,width,filled) % width, filled optional
+bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,filled,width) % filled, width optional
 
 % bathymetry_plot
 

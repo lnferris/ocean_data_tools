@@ -14,7 +14,7 @@ function argo_profiles_map(argo,annotate)
 % coloring markers by profile; where argo is a struct created by argo_build.
 % The colors of profiles corresponds to those of argo_profiles called on the
 % same struct.
-
+%
 % argo_profiles_map(argo,annotate) adds number annotations to the markers. by default annotate=0.
 % set annotate=1 to turn on annotation. The annotations of profiles correspond to
 % those of argo_profiles called on the same struct.
