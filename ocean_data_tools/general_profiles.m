@@ -1,10 +1,32 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 02-Jul-2020
-%  Distributed under the terms of the MIT License
 
 function general_profiles(object,variable,zref)
+% general_profiles plots vertical profiles in struct object
+% 
+%% Syntax
+% 
+%  general_profiles(object,variable,zref)
+% 
+%% Description 
+% 
+% general_profiles(object,variable,zref) plots vertical profiles of the 
+% specified variable in struct object as a function of the depth-variable 
+% specified by zref; where object is a struct created by any of 
+% the _build functions in ocean_data_tools (e.g. argo, cruise, hycom, mercator,
+% woa, wod). 
+% 
+%% Example 1
+% Plot temperature vertical profiles in argo:
+% 
+% object = argo;
+% variable = 'TEMP_ADJUSTED';
+% zref = 'depth';
+% general_profiles(object,variable,zref)
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 02-Jul-2020
+% 
+% See also argo_profiles and general_section.
 
 cvar = eval(['object.',variable]);
 zvar = eval(['object.',zref]);

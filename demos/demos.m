@@ -95,7 +95,7 @@ bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % nee
 [argo,matching_files] = argo_build(argo_dir,[-60.0 -50.0 150.0 160.0],'01-Nov-2015 00:00:00','01-Jan-2017 00:00:00',{'TEMP_ADJUSTED'});
 ptype = '2Dcontour'; % '2Dscatter' '2Dcontour'
 object = argo; % argo, cruise, hycom, mercator, woa, wod
-general_map(object,bathymetry_dir,ptype)
+general_map(object,bathymetry_dir,ptype) % bathymetry_dir, ptype optional
 
 % general_region_subset
 
