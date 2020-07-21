@@ -1,10 +1,30 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 25-Jun-2020
-%  Distributed under the terms of the MIT License
 
 function netcdf_info(nc_dir)
+% netcdf_info gets and information about the first file in path nc_dir
+% and saves it to the working directory
+% 
+%% Syntax
+% 
+%  netcdf_info(nc_dir)
+% 
+%% Description 
+% 
+% netcdf_info(nc_dir) gets and information about the first file in path nc_dir
+% and saves it to the working directory, overwriting file
+% "netcdf_info-ocean_data_tools"
+% 
+%% Example 1
+% Get information about Argo netcdf files:
+% 
+% argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc'; % included
+% netcdf_info(argo_dir);
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 25-Jun-2020
+% 
+% See also ncdisp.
+
 
 full_path = dir(nc_dir);
 
