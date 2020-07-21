@@ -1,11 +1,36 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 25-Jun-2020
-%  Distributed under the terms of the MIT License
-%  Dependencies: nctoolbox
 
 function mocha_simple_plot(month,depth,variable,region)
+% mocha_simple_plot plots one depth level of MOCHA Mid-Atlantic Bight climatology
+% 
+%% Dependencies
+%
+% nctoolbox
+% 
+%% Syntax
+% 
+% mocha_simple_plot(month,depth,variable,region)
+%
+%% Description 
+% 
+% mocha_simple_plot(month,depth,variable,region) plots the nearest available
+% depth-level to depth. variable specifies the parameter to be plotted and region
+% is the rectangular region to be plotted.
+%
+%% Example 1
+% Plot surface temperature from MOCHA climatology for October:
+% 
+% month = 10; % Month (1 through 12).
+% depth = 0;
+% variable = 'temperature'; %  'temperature' 'salinity'
+% region = [34 42  -80 -70]; % [30 48 -80 -58]
+% mocha_simple_plot(month,depth,variable,region)
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 25-Jun-2020
+% 
+% See also mocha_build_profiles and mocha_domain_plot.
+
 
 url = 'http://tds.marine.rutgers.edu/thredds/dodsC/other/climatology/mocha/MOCHA_v3.nc';
 nc = ncgeodataset(url); % Assign a ncgeodataset handle.

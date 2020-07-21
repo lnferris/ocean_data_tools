@@ -133,7 +133,6 @@ month = 10; % Month (1 through 12).
 depth = 0;
 variable = 'temperature'; %  'temperature' 'salinity'
 region = [34 42  -80 -70]; % [30 48 -80 -58]
-
 mocha_simple_plot(month,depth,variable,region)
 
 % mocha_build_profiles

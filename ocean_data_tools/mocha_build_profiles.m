@@ -1,11 +1,43 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 05-Jul-2020
-%  Distributed under the terms of the MIT License
-%  Dependencies: nctoolbox
 
 function [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid)
+% mocha_build_profiles builds a struct of profiles from the MOCHA Mid-Atlantic Bight climatology
+% 
+%% Dependencies
+%
+% nctoolbox
+% 
+%% Syntax
+% 
+% [mocha] = mocha_build_profiles(month,xcoords,ycoords)
+% [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid)
+%
+%% Description 
+% 
+% [mocha] = mocha_build_profiles(month,xcoords,ycoords) builds a struct
+% of profiles from the MOCHA Mid-Atlantic Bight climatology, pulling
+% profiles nearest to coordinates specified by xcoords and ycoords. The
+% calendar month is specified by month.
+%
+% [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid) depth-interpolates
+% the profiles to a vertical grid of zgrid, in meters. zgrid=2 would
+% produce profiles interpolated to 2 meter vertical grid.
+%
+%% Example 1
+% Build a struct out of a transect through MOCHA climatology:
+% 
+% month = 10; % Month (1 through 12).
+% xcoords = [-71.2, -71.4, -71.5, -71.7, -71.9]
+% ycoords = [35.9, 36.2, 36.4, 36.6, 36.8];
+% zgrid = 1; % vertical grid for linear interpolation in meters
+% [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
+%
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 05-Jul-2020
+% 
+% See also mocha_simple_plot and mocha_domain_plot.
+
 
 variable_list = {'temperature','salinity'};
 n = length(variable_list);
