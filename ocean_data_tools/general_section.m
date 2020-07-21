@@ -1,10 +1,43 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 02-Jul-2020
-%  Distributed under the terms of the MIT License
 
 function  general_section(object,variable,xref,zref,interpolate,contours)
+% general_section makes a section plot of a variable in the struct object
+% 
+%% Syntax
+% 
+% general_section(object,variable,xref,zref)
+% general_section(object,variable,xref,zref,interpolate)
+% general_section(object,variable,xref,zref,interpolate,contours)
+% 
+%% Description 
+% 
+% general_section(object,variable,xref,zref) creates a 
+% section plot from object; where object is a struct created by any of 
+% the _build functions in ocean_data_tools (e.g. argo, cruise, hycom, mercator,
+% woa, wod). The color field is specified by variable. xref and zref
+% specify fields to use for the x-axis and z-axis.
+%
+% general_section(object,variable,xref,zref,interpolate) interpolates the
+% plot using the shading function. interpolate=1 for on, interpolate=0 for off.
+%
+% general_section(object,variable,xref,zref,interpolate,contours) adds
+% contours to the section plot. contours=1 for on, contours=0 for off.
+%
+%% Example 1
+% Plot a temperature section from a hycom struct:
+% 
+% object = hycom; % argo, cruise, hycom, mercator, woa, wod
+% variable = 'water_temp';
+% xref = 'stn'; 
+% zref = 'depth'; 
+% interpolate = 1; % 1=on 0=off
+% contours = 1; % 1=on 0=off
+% general_section(object,variable,xref,zref,interpolate,contours)
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 02-Jul-2020
+% 
+% See also shading and general_profiles.
 
     if nargin <6
         contours = 0;

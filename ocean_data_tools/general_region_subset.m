@@ -1,10 +1,34 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 25-Jun-2020
-%  Distributed under the terms of the MIT License
 
 function [subobject] = general_region_subset(object,xcoords,ycoords)
+% general_region_subset subsets object into a polygon region
+% 
+%% Syntax
+% 
+%  [subobject] = general_region_subset(object,xcoords,ycoords)
+% 
+%% Description 
+% 
+% [subobject] = general_region_subset(object,xcoords,ycoords) subsets
+% object into a polygon region specified by xcoords and ycoords (vertices
+% of the polygon); where object is a struct created by any of 
+% the _build functions in ocean_data_tools (e.g. argo, cruise, hycom, mercator,
+% woa, wod). 
+% 
+%% Example 1
+% Spatially subset the profiles in argo:
+% 
+% object = argo; % % argo, cruise, hycom, mercator, woa, wod
+% xcoords = [155.9, 155.1, 161.5, 162.3, 158.8];
+% ycoords = [-53.0, -55.4, -56.6, -54.2,-52.4];
+% [object_sub] = general_region_subset(object,xcoords,ycoords); 
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 25-Jun-2020
+% 
+% See also region_select and remove_duplicate_profiles.
+
+
 figure
 plot(object.lon,object.lat,'.','MarkerSize',14)
 in = inpolygon(object.lon,object.lat,xcoords,ycoords); % Get indices of data in polygon.

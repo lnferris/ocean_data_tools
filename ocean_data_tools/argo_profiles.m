@@ -11,7 +11,7 @@ function argo_profiles(argo,variable,annotate)
 % 
 % argo_profiles(argo,variable) plots vertical profiles of the specified variable
 % in struct argo as a function of depth (PRES_ADJUSTED); where argo is a struct 
-% created by argo_build.
+% created by argo_build and variable is a field name.
 %  
 % argo_profiles(argo,variable,annotate) adds number annotations to the 
 % markers by default annotate=0. set annotate=1 to turn on annotation. The 
