@@ -1,10 +1,31 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 27-Jun-2020
-%  Distributed under the terms of the MIT License
 
 function [wod] = wod_build(wod_dir,variable_list)
+% wod_build searches path wod_dir for relevant profiles and loads them
+% into struct wod
+% 
+%% Syntax
+% 
+% [wod] = wod_build(wod_dir,variable_list)
+% 
+%% Description 
+% 
+% wod_build(wod_dir,variable_list) loads profiles in path wod_dir into the struct
+% wod with all variables specified in variable_list. Variables lon, lat, date, z
+% are included automatically.
+% 
+%% Example 1
+% Load World Ocean Atlas data:
+% 
+% wod_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/wod/*.nc'; % included
+% netcdf_info(wod_dir); % Get information to inform choice of variable_list.
+% variable_list = {'Temperature','Salinity'}; % Variables to read (besides lon, lat, date, z).
+% [wod] = wod_build(wod_dir,variable_list);
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 27-Jun-2020
+% 
+% See also general_profiles and general_region_subset.
 
     base_list = {'lon','lat','date','z'}; % Variables automatically included.
     variable_list(ismember(variable_list, base_list )) = []; % remove redundant vars
