@@ -1,11 +1,9 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 13-Jul-2020
-%  Distributed under the terms of the MIT License
-%  Dependencies: nctoolbox
 
 function [data,lat,lon] = model_simple_plot_velocity(model,nc,date,region,depth,arrows)
+% This is the velocity portion of model_simple_plot
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 13-Jul-2020
+% See also model_simple_plot and model_simple_plot_layer.
 
     if strcmp(model,'hycom')  
         sv = nc{'water_u'};     % Assign ncgeovariable handle.

@@ -26,7 +26,7 @@ function [subobject] = general_region_subset(object,xcoords,ycoords)
 % github.com/lnferris/ocean_data_tools
 % Jun 2020; Last revision: 25-Jun-2020
 % 
-% See also region_select and remove_duplicate_profiles.
+% See also region_select and general_remove_duplicates.
 
 
 figure

@@ -1,11 +1,9 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 13-Jul-2020
-%  Distributed under the terms of the MIT License
-%  Dependencies: nctoolbox
 
 function [data,lat,lon] = model_simple_plot_layer(nc,date,variable,region)
+% This is the layer variable (e.g. sea ice, SSH) portion of model_simple_plot
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 13-Jul-2020
+% See also model_simple_plot and model_simple_plot_velocity.
 
 sv = nc{variable}; % Assign ncgeovariable handle.
 sv.attributes % Print ncgeovariable attributes.

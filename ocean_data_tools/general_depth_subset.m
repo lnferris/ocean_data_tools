@@ -4,11 +4,11 @@
 %  Jul 2020; Last revision: 07-Jul-2020
 %  Distributed under the terms of the MIT License
 
-% object = hycom; % hycom, mercator, mocha (depth-gridded structs only)
+% object = hycom; % hycom, mercator, mocha, woa (depth-gridded structs only)
 % zref = 'depth';
 % zrange = [0 200];
 
-function [subobject] =  depth_subset(object,zref,zrange)
+function [subobject] =  general_depth_subset(object,zref,zrange)
 
 zmin = min(abs(zrange));
 zmax = max(abs(zrange));

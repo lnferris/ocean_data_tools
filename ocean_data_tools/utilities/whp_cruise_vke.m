@@ -1,4 +1,9 @@
+
 function [vke] = whp_cruise_vke(wvke_dir)
+% This loads energy-related vertical LADCP data for whp_cruise_build
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 14-Jul-2020
+% See also whp_cruise_build.
 
     base_list = {'station','depth','p0','eps_VKE'}; 
     nvar = length(base_list);

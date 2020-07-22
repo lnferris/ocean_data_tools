@@ -1,5 +1,9 @@
 
 function [ctdo] = whp_cruise_ctdo(ctdo_dir,variable_list)
+% This loads CTD+ data for whp_cruise_build
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 14-Jul-2020
+% See also whp_cruise_build.
 
     base_list = {'station','woce_date','longitude','latitude','pressure'}; % Variables automatically included.
     variable_list(ismember(variable_list, base_list )) = []; % remove redundant vars

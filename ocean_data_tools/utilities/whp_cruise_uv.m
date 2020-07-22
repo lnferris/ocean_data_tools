@@ -1,4 +1,9 @@
+
 function [uv,uv_meta] = whp_cruise_uv(uv_dir)
+% This loads horizontal LADCP data for whp_cruise_build
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 14-Jul-2020
+% See also whp_cruise_build.
 
     base_list = {'station','z','ctd_s','ctd_t','p','u','v'}; 
     meta_list = {'station','lat','lon','date'};

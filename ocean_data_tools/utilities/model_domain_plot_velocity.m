@@ -1,12 +1,9 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 30-Jun-2020
-%  Distributed under the terms of the MIT License
-%  Dependencies: nctoolbox
-
 
 function model_domain_plot_velocity(model,nc,date,region)
+% This is the velocity portion of model_domain_plot
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 30-Jun-2020
+% See also model_domain_plot.
 
 if strcmp(model,'hycom')  
     sv = nc{'water_u'};     % Assign ncgeovariable handle.

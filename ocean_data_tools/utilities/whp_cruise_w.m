@@ -1,4 +1,9 @@
+
 function [w,w_meta] = whp_cruise_w(wvke_dir)
+% This loads velocity-related vertical LADCP data for whp_cruise_build
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 14-Jul-2020
+% See also whp_cruise_build.
 
     base_list = {'station','depth','dc_w'}; 
     meta_list = {'station','latitude','longitude','date'};
