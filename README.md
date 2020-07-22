@@ -10,6 +10,10 @@ ocean_data_tools simplifies the process of extracting, formatting, and visualizi
 
 Find a bug? Open an issue or email lnferris@alum.mit.edu.
 
+## Dependencies
+
+nctoolbox (https://github.com/nctoolbox/nctoolbox)
+
 ## Getting Started
 
 1. Download bathymetry (see below).
@@ -55,78 +59,4 @@ Functions build the World Ocean Atlas url based on arguments, but coarser resolu
 
 Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html.
 
-# Contents
-
-## Getting information about raw data sources
-
-##### netcdf_info
-
-## Building uniform structs from raw data sources
-
-##### argo_build
-
-##### mocha_build_profiles
-
-##### model_build_profiles
-
-##### model_build_profiles
-
-##### whp_cruise_build
-
-##### woa_build_profiles
-
-##### wod_build
-
-## Cleaning and subsetting uniform structs
-
-##### general_depth_subset
-
-##### general_region_subset
-
-##### general_remove_duplicates
-
-## Plotting 2-D layers of gridded data
-
-##### mocha_simple_plot
-
-##### model_simple_plot
-
-##### woa_simple_plot
-
-## Plotting 3-D domains of gridded data
-
-##### mocha_domain_plot
-
-##### model_domain_plot
-
-##### woa_domain_plot
-
-## Plotting data sections
-
-##### general_section
-
-##### bathymetry_chord
-
-##### bathymetry_section
-
-## Plotting vertical profiles
-
-##### argo_profiles
-
-##### general_profiles
-
-## Plotting coordinate locations
-
-##### argo_platform_map
-
-##### argo_profiles_map
-
-##### general_map
-
-## Drawing coordinates with a mouse
-
-##### region_select
-
-##### transect_select
- 
 
