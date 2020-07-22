@@ -1,24 +1,63 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 05-Jul-2020
-%  Distributed under the terms of the MIT License
-%  Dependencies: nctoolbox
 
-% If the user requests only 0.25-degree variables, data will be returned in 
-% 0.25-degree resolution. If any requested variable is coarser (1-degree)
+function [woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid)
+% woa_build_profiles builds a struct of profiles from World Ocean Atlas 2018 Statistical Mean 
+% for All Decades, Objectively Analyzed Mean Fields at Standard Depth Levels
+% 
+%% Dependencies
+%
+% nctoolbox
+% 
+%% Syntax
+% 
+% [woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords)
+% [woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid)
+%
+%% Description 
+% 
+% [woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords)
+% builds a struct of profiles from World Ocean Atlas 2018 Statistical Mean 
+% for All Decades, pulling profiles nearest to coordinates
+% specified by xcoords and ycoords. time specifies monthly or annual 
+% climatology; time = '00' for annual climatology and '01' '10' etc. for 
+% monthly climatology. Profiles are loaded into the struct
+% array model with all variables specified in variable_list. The function builds the url,
+% extracting the maximum resolution available (typically 0.25-deg or
+% 1.00-degree grid). Resolution depends on the variable.
+% If the user requests only 0.25-degree variables in variable_list, data will
+% be returned in  0.25-degree resolution. If any requested variable is coarser (1-degree)
 % all variables will be returned in 1-degree resolution.
-
+% Units and url codes of each variable are:
+%
 % 'temperature' (degrees Celsius)           't'
 % 'salinity' (psu)                          's'
-% 'dissolved_oxygen' (umol/kg)              'o'
-% 'percent_oxygen_saturation' (%)           'O'
-% 'apparent_oxygen_utilization' (umol/kg)   'A'
+% 'oxygen' (umol/kg)                        'o'
+% 'o2sat' (%)                               'O'
+% 'AOU' (umol/kg)                           'A'
 % 'silicate' (umol/kg)                      'i'
 % 'phosphate' (umol/kg)                     'p'
 % 'nitrate' (umol/kg)                       'n'
+%
+% [woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid)
+% depth-interpolates the profiles to a vertical grid of zgrid, in meters. zgrid=2 would
+% produce profiles interpolated to 2 meter vertical grid.
+%
+%% Example 1
+% Build a struct out of a transect through WOA 18, including temperature, 
+% salinity, and oxygen:
+% 
+% variable_list = {'temperature','salinity','oxygen'}; % 'temperature' 'salinity' 'oxygen' 'o2sat' 'AOU' 'silicate' 'phosphate' 'nitrate'
+% time = '00'; % '00' for annual climatology '01' '10' etc. for monthly climatology
+% xcoords = [-71.2, -71.4, -71.5, -71.7, -71.9]
+% ycoords = [35.9, 36.2, 36.4, 36.6, 36.8]; 
+% zgrid = 1; % vertical grid for linear interpolation in meters
+% [woa] =  woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 05-Jul-2020
+% 
+% See also woa_simple_plot and woa_domain_plot.
 
-function [woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid)
 
 n = length(variable_list);
 ncoords = length(xcoords);

@@ -20,7 +20,7 @@ function [data,lat,lon] = woa_simple_plot(variable,time,region,depth)
 % and '01' '10' etc. for monthly climatology. The function builds the url,
 % extracting the maximum resolution available (typically 0.25-deg or
 % 1.00-degree grid). data, lat, and lon from the plotted layer
-% are available outputs. Units are url codes of each variable are:
+% are available outputs. Units and url codes of each variable are:
 %
 % 'temperature' (degrees Celsius)           't'
 % 'salinity' (psu)                          's'

@@ -21,7 +21,7 @@ function woa_domain_plot(variable,time,region)
 % specifies monthly or annual climatology; time = '00' for annual climatology 
 % and '01' '10' etc. for monthly climatology. The function builds the url,
 % extracting the maximum resolution available (typically 0.25-deg or
-% 1.00-degree grid). Units are url codes of each variable are:
+% 1.00-degree grid). Units and url codes of each variable are:
 %
 % 'temperature' (degrees Celsius)           't'
 % 'salinity' (psu)                          's'

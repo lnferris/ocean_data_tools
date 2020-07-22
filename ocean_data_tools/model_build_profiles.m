@@ -15,7 +15,7 @@ function [model] =  model_build_profiles(source,date,variable_list,xcoords,ycoor
 %% Description 
 % 
 % [model] = model_build_profiles(source,date,variable_list,xcoords,ycoords) 
-% builds a struct of profiles fromfrom HYCOM or Operational Mercator
+% builds a struct of profiles from HYCOM or Operational Mercator
 % GLOBAL_ANALYSIS_FORECAST_PHY_001_024, pulling profiles nearest to coordinates
 % specified by xcoords and ycoords. Profiles are loaded into the struct
 % array model with all variables specified in variable_list.
