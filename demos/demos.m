@@ -1,8 +1,5 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 14-Jul-2020
-%  Distributed under the terms of the MIT License
+%  Jun 2020; Last revision: 22-Jul-2020
 %  Dependencies: nctoolbox
 
 %  These are demonstrations of each function in ocean_data_tools. 
@@ -89,6 +86,9 @@ bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled) % filled optional
 
 
 argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc'; % included
+ctdo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/ctd/*.nc'; % included
+uv_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/uv/*.nc'; % included
+wvke_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/wvke/'; % included
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
 
 % general_map
@@ -97,12 +97,32 @@ ptype = '2Dcontour'; % '2Dscatter' '2Dcontour'
 object = argo; % argo, cruise, hycom, mercator, woa, wod
 general_map(object,bathymetry_dir,ptype) % bathymetry_dir, ptype optional
 
+% general_depth_subset
+
+variable_list = {'salinity','temperature','oxygen'};
+[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list); % Use a dummy path (e.g. uv_dir ='null') if missing data. 
+depth_list = {'pressure','z','depth','depth_vke'}; % list of depth fields to subset
+object = cruise;
+zrange = [350 150]; % order and sign don't matter
+[subobject] =  general_depth_subset(object,zrange,depth_list); % depth_list option, default 'depth'
+
 % general_region_subset
 
 object = argo; % % argo, cruise, hycom, mercator, woa, wod
 general_map(object)
 [xcoords,ycoords] = region_select(); % click desired  region on the figure
 [object_sub] = general_region_subset(object,xcoords,ycoords); 
+
+% general_remove_duplicates
+
+source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7';
+date = '28-Aug-2017 00:00:00'; 
+xcoords = -75:1/48:-74;
+ycoords = 65:1/48:66;
+variable_list = {'water_temp','salinity'}; 
+[hycom] = model_build_profiles(source,date,variable_list,xcoords,ycoords);
+object = hycom;
+[sub_object] = general_remove_duplicates(object);
 
 % general_section
 

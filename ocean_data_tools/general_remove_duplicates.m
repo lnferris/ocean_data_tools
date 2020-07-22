@@ -27,13 +27,12 @@ function [subobject] = general_remove_duplicates(object,var3)
 % 
 % source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7';
 % date = '28-Aug-2017 00:00:00'
-% region = [60.0, 70.0 ,-80, -60];  
-% depth = -0;    
-% model_simple_plot('hycom',source,date,'salinity',region,depth)
-% [xcoords,ycoords] = transect_select(100);
+% xcoords = -75:1/48:-74;
+% ycoords = 65:1/48:66;
 % variable_list = {'water_temp','salinity'}; 
 % [hycom] = model_build_profiles(source,date,variable_list,xcoords,ycoords);
-% [hycom] = remove_duplicate_profiles(hycom);
+% object = hycom;
+% [subobject] = general_remove_duplicates(object);
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
