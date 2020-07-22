@@ -3,10 +3,6 @@ function [data,lat,lon] = woa_simple_plot(variable,time,region,depth)
 % woa_simple_plot plots one depth level of World Ocean Atlas 2018 Statistical Mean 
 % for All Decades, Objectively Analyzed Mean Fields at Standard Depth Levels
 % 
-%% Dependencies
-%
-% nctoolbox
-% 
 %% Syntax
 % 
 % [data,lat,lon] = woa_simple_plot(variable,time,region,depth)

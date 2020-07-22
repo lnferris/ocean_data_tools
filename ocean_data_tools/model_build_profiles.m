@@ -3,10 +3,6 @@ function [model] =  model_build_profiles(source,date,variable_list,xcoords,ycoor
 % model_build_profiles builds a struct of profiles from HYCOM or Operational Mercator
 % GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 % 
-%% Dependencies
-%
-% nctoolbox
-% 
 %% Syntax
 % 
 % [model] = model_build_profiles(source,date,variable_list,xcoords,ycoords)

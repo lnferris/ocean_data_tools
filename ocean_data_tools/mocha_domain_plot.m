@@ -2,10 +2,6 @@
 function mocha_domain_plot(month,variable,region)
 % mocha_simple_plot plots all depth levels of MOCHA Mid-Atlantic Bight climatology
 % 
-%% Dependencies
-%
-% nctoolbox
-% 
 %% Syntax
 % 
 % mocha_domain_plot(month,variable,region)

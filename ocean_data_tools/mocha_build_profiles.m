@@ -2,10 +2,6 @@
 function [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid)
 % mocha_build_profiles builds a struct of profiles from the MOCHA Mid-Atlantic Bight climatology
 % 
-%% Dependencies
-%
-% nctoolbox
-% 
 %% Syntax
 % 
 % [mocha] = mocha_build_profiles(month,xcoords,ycoords)

@@ -3,10 +3,6 @@ function model_domain_plot(model,source,date,variable,region)
 % model_domain_plot plots all depth levels of HYCOM or Operational Mercator
 % GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 % 
-%% Dependencies
-%
-% nctoolbox
-% 
 %% Syntax
 % 
 % model_domain_plot(model,source,date,variable,region)

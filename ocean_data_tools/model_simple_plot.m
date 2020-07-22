@@ -3,10 +3,6 @@ function [data,lat,lon] = model_simple_plot(model,source,date,variable,region,de
 % model_simple_plot plots one depth level of HYCOM or Operational Mercator
 % GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 % 
-%% Dependencies
-%
-% nctoolbox
-% 
 %% Syntax
 % 
 % [data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth)

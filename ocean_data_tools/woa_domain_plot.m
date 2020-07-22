@@ -4,10 +4,6 @@ function woa_domain_plot(variable,time,region)
 % for All Decades, Objectively Analyzed Mean Fields at Standard Depth
 % Levels over the specified region
 % 
-%% Dependencies
-%
-% nctoolbox
-% 
 %% Syntax
 % 
 % woa_domain_plot(variable,time,region)

@@ -3,10 +3,6 @@ function [woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid)
 % woa_build_profiles builds a struct of profiles from World Ocean Atlas 2018 Statistical Mean 
 % for All Decades, Objectively Analyzed Mean Fields at Standard Depth Levels
 % 
-%% Dependencies
-%
-% nctoolbox
-% 
 %% Syntax
 % 
 % [woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords)
