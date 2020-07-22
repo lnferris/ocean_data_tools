@@ -1,20 +1,51 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 12-Jul-2020
-%  Distributed under the terms of the MIT License
-%  Dependencies: nctoolbox
 
+function [data,lat,lon] = woa_simple_plot(variable,time,region,depth)
+% woa_simple_plot plots one depth level of World Ocean Atlas 2018 Statistical Mean 
+% for All Decades, Objectively Analyzed Mean Fields at Standard Depth Levels
+% 
+%% Dependencies
+%
+% nctoolbox
+% 
+%% Syntax
+% 
+% [data,lat,lon] = woa_simple_plot(variable,time,region,depth)
+%
+%% Description 
+% 
+% [data,lat,lon] = woa_simple_plot(variable,time,region,depth) plots 
+% the nearest available depth-level to depth. variable specifies the parameter 
+% to be plotted and region is the rectangular region to be plotted. time
+% specifies monthly or annual climatology; time = '00' for annual climatology 
+% and '01' '10' etc. for monthly climatology. The function builds the url,
+% extracting the maximum resolution available (typically 0.25-deg or
+% 1.00-degree grid). data, lat, and lon from the plotted layer
+% are available outputs. Units are url codes of each variable are:
+%
 % 'temperature' (degrees Celsius)           't'
 % 'salinity' (psu)                          's'
-% 'oxygen' (umol/kg)              'o'
-% 'o2sat' (%)           'O'
-% 'AOU' (umol/kg)   'A'
+% 'oxygen' (umol/kg)                        'o'
+% 'o2sat' (%)                               'O'
+% 'AOU' (umol/kg)                           'A'
 % 'silicate' (umol/kg)                      'i'
 % 'phosphate' (umol/kg)                     'p'
 % 'nitrate' (umol/kg)                       'n'
+%
+%% Example 1
+% Plot surface nitrate from March climatology:
+% 
+% variable = 'nitrate'; % 'temperature' 'salinity' 'oxygen' 'o2sat' 'AOU' 'silicate' 'phosphate' 'nitrate'
+% time = '03'; % '00' for annual climatology '01' '10' etc. for monthly climatology
+% region = [-5.0, 45.0 ,-120, -150]; 
+% depth = -0; % meters -0 to -5500
+% woa_simple_plot(variable,time,region,depth)
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 12-Jul-2020
+% 
+% See also woa_build_profiles and woa_domain_plot.
 
-function [data,lat,lon] = woa_simple_plot(variable,time,region,depth)
 
 % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;

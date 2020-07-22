@@ -10,7 +10,7 @@ function netcdf_info(nc_dir)
 %% Description 
 % 
 % netcdf_info(nc_dir) gets and information about the first file in path nc_dir
-% and saves it to the working directory, overwriting file
+% and saves it to the working directory, creating or overwriting file
 % "netcdf_info-ocean_data_tools"
 % 
 %% Example 1

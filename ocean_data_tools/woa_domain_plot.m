@@ -1,20 +1,51 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 22-Jun-2020
-%  Distributed under the terms of the MIT License
-%  Dependencies: nctoolbox
 
+function woa_domain_plot(variable,time,region)
+% woa_domain_plot plots all depth levels of World Ocean Atlas 2018 Statistical Mean 
+% for All Decades, Objectively Analyzed Mean Fields at Standard Depth
+% Levels over the specified region
+% 
+%% Dependencies
+%
+% nctoolbox
+% 
+%% Syntax
+% 
+% woa_domain_plot(variable,time,region)
+%
+%% Description 
+% 
+% woa_domain_plot(variable,time,region) plots all depth levels of  World 
+% Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean
+% Fields at Standard Depth Levels over the specified region. variable specifies the parameter 
+% to be plotted and region is the rectangular region to be plotted. time
+% specifies monthly or annual climatology; time = '00' for annual climatology 
+% and '01' '10' etc. for monthly climatology. The function builds the url,
+% extracting the maximum resolution available (typically 0.25-deg or
+% 1.00-degree grid). Units are url codes of each variable are:
+%
 % 'temperature' (degrees Celsius)           't'
 % 'salinity' (psu)                          's'
-% 'oxygen' (umol/kg)              'o'
-% 'o2sat' (%)           'O'
-% 'AOU' (umol/kg)   'A'
+% 'oxygen' (umol/kg)                        'o'
+% 'o2sat' (%)                               'O'
+% 'AOU' (umol/kg)                           'A'
 % 'silicate' (umol/kg)                      'i'
 % 'phosphate' (umol/kg)                     'p'
 % 'nitrate' (umol/kg)                       'n'
+%
+%% Example 1
+% Plot full-depth nitrate from March climatology:
+% 
+% variable = 'nitrate'; % 'temperature' 'salinity' 'oxygen' 'o2sat' 'AOU' 'silicate' 'phosphate' 'nitrate'
+% time = '03'; % '00' for annual climatology '01' '10' etc. for monthly climatology
+% region = [-5.0, 45.0 ,-120, -150]; 
+% woa_domain_plot(variable,time,region)
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% un 2020; Last revision: 22-Jun-2020
+% 
+% See also woa_build_profiles and woa_simple_plot.
 
-function woa_domain_plot(variable,time,region)
 
 % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;
