@@ -1,10 +1,39 @@
-%  Author: Laur Ferris
-%  Email address: lnferris@alum.mit.edu
-%  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 14-Jul-2020
-%  Distributed under the terms of the MIT License
 
 function [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list)
+% whp_cruise_build searches paths ctdo_dir, uv_dir, wvke_dir for relevant profiles and loads them
+% into struct cruise
+% 
+%% Syntax
+% 
+%  [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list)
+% 
+%% Description 
+% 
+% [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list)
+% searches pathways ctdo_dir, uv_dir, wvke_dir for CTD+ data, horizontal LADCP data,
+% and vertical LACDP data respectively. Variable lists for LADCP are fixed,
+% while the CTD+ variable list is specified using variable_list (station,woce_date,longitude,
+% latitude, and pressure are included automatically.) Lat/lon information (metadata) is
+% pulled from the CTD+ files by default. If CTD+ is not found, metadata from LACDP
+% files are used instead.
+% 
+%% Example 1
+% Load some cuise data from S04P:
+%
+% ctdo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/ctd/*.nc';
+% uv_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/uv/*.nc';
+% wvke_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/wvke/';
+% 
+% netcdf_info(ctdo_dir) % Inspect netcdf to choose variable_list
+% variable_list = {'salinity','temperature','oxygen'};
+% [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list); % Use a dummy path (e.g. uv_dir ='null') if missing data. 
+%
+%% Citation Info 
+% github.com/lnferris/ocean_data_tools
+% Jun 2020; Last revision: 14-Jul-2020
+% 
+% See also general_section and general_profiles.
+
 
 % load data
 [ctdo] = whp_cruise_ctdo(ctdo_dir,variable_list);
