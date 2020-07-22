@@ -10,14 +10,10 @@ ocean_data_tools simplifies the process of extracting, formatting, and visualizi
 
 Find a bug? Open an issue or email lnferris@alum.mit.edu.
 
-## Dependencies
-
-nctoolbox (https://github.com/nctoolbox/nctoolbox)
-
 ## Getting Started
 
 1. Download bathymetry (see below).
-2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox). Remember to run the command ``setup_nctoolbox`` before use.
+2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox). This is a dependency. Remember to run the command ``setup_nctoolbox`` before use.
 3. Run each demonstration in **demos/demos.m**.
 
 Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function, as well as functions in the Gibbs-SeaWater (GSW) Oceanographic Toolbox (http://www.teos-10.org/software.htm#1).
@@ -59,5 +55,78 @@ Functions build the World Ocean Atlas url based on arguments, but coarser resolu
 
 Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html.
 
-## Contents
+# Contents
+
+## Getting information about raw data sources
+
+##### netcdf_info
+
+## Building uniform structs from raw data sources
+
+##### argo_build
+
+##### mocha_build_profiles
+
+##### model_build_profiles
+
+##### model_build_profiles
+
+##### whp_cruise_build
+
+##### woa_build_profiles
+
+##### wod_build
+
+## Cleaning and subsetting uniform structs
+
+##### general_depth_subset
+
+##### general_region_subset
+
+##### general_remove_duplicates
+
+## Plotting 2-D layers of gridded data
+
+##### mocha_simple_plot
+
+##### model_simple_plot
+
+##### woa_simple_plot
+
+## Plotting 3-D domains of gridded data
+
+##### mocha_domain_plot
+
+##### model_domain_plot
+
+##### woa_domain_plot
+
+## Plotting data sections
+
+##### general_section
+
+##### bathymetry_chord
+
+##### bathymetry_section
+
+## Plotting vertical profiles
+
+##### argo_profiles
+
+##### general_profiles
+
+## Plotting coordinate locations
+
+##### argo_platform_map
+
+##### argo_profiles_map
+
+##### general_map
+
+## Drawing coordinates with a mouse
+
+##### region_select
+
+##### transect_select
+ 
 
