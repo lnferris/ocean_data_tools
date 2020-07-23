@@ -155,7 +155,7 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 ![argo_platform_map](https://user-images.githubusercontent.com/24570061/88250439-a2099b80-cc75-11ea-9516-ad3d1f65fdf9.jpg)
 
-**argo_platform_subset** subsets a uniform struct of Argo data to one platform (individual Argo float)
+**[argo_platform_subset](docs/argo_platform_subset.md)** subsets a uniform struct of Argo data to one platform (individual Argo float)
 
 **argo_profiles_map** plots coordinate locations of Argo profiles in uniform struct argo, using colors corresponding to argo_profiles called on the same struct
 
