@@ -109,7 +109,7 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 **general_region_subset** subsets a uniform struct by polygon region
 
-![general_region_subset copy](https://user-images.githubusercontent.com/24570061/88250840-cf0a7e00-cc76-11ea-96d9-f86775d2e715.png)
+<img width="960" alt="Screen Shot 2020-07-22 at 23 54 52" src="https://user-images.githubusercontent.com/24570061/88250944-358f9c00-cc77-11ea-9b0d-2d582ad186dd.png">
 
 **general_remove_duplicates** removes spatially (or spatially and temporally) non-unique profiles from a uniform struct
 
