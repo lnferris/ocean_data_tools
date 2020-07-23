@@ -69,6 +69,8 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 ## Contents
 
+[a relative link](example00.md)
+
 #### [Building uniform structs from data sources](#building-uniform-structs-from-data-sources-1)
 
 #### [General functions for subsetting and plotting uniform structs](#general-functions-for-subsetting-and-plotting-uniform-structs-1)
