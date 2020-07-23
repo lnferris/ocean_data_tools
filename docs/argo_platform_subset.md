@@ -7,7 +7,7 @@
 ```
 #### Description
 
-``[subargo] = argo_platform_subset(argo,platform_id)`` subsets ``argo`` by Argo platform ID (PLATFORM_NUMBER) into struct ``subargo``; where ``argo`` is a struct created by ``argo_build`` and platform_id is the integer ID
+``[subargo] = argo_platform_subset(argo,platform_id)`` subsets ``argo`` by Argo platform ID into struct ``subargo``; where ``argo`` is a struct created by ``argo_build`` and platform_id is the integer ID
 
 
 #### Example 1
