@@ -127,9 +127,9 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 ### Miscellaneous utilities
 
-**netcdf_info**
+**netcdf_info** gets information about the first netcdf file in a path and saves it to a text file
 
-**region_select**
+**region_select** creates coordinate list (which represents vertices of a polygon) by clicking stations on a plot
 
-**transect_select**
+**transect_select** creates a coordinate list (which represents a transect) by clicking stations on a plot
 
