@@ -1,41 +1,57 @@
-### argo_build
+### mocha_build_profiles
 
 #### Syntax
 
 ```Matlab
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)
+[mocha] = mocha_build_profiles(month,xcoords,ycoords)
+[mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid)
 ```
 #### Description
 
-``[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)`` searches pathway ``argo_dir`` for profiles meeting the search criteria ``region``, ``start_date``, and ``end_date``. Profiles are loaded into the struct array ``argo`` with all variables specified in ``variable_list``. Variables PLATFORM_NUMBER, LONGITUDE, LATITUDE, JULD, and PRES_ADJUSTED are included automatically. Files containing matching profiles are listed in ``matching_files``.
+``[mocha] = mocha_build_profiles(month,xcoords,ycoords)`` builds a struct of profiles from the MOCHA Mid-Atlantic Bight climatology, pulling profiles nearest to coordinates specified by ``xcoords`` and ``ycoords``. The calendar month is specified by ``month``.
+
+``[mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid)`` depth-interpolates the profiles to a vertical grid of ``zgrid``, in meters. ``zgrid=2`` would produce profiles interpolated to 2 meter vertical grid.
 
 
 #### Example 1
 
+```Matlab
+
+% Setup nctoolbox:
+
+setup_nctoolbox
+
+% Plot surface temperature:
+
+month = 10; % Month (1 through 12).
+depth = 0;
+variable = 'temperature'; %  'temperature' 'salinity'
+region = [34 42  -80 -70]; % [30 48 -80 -58]
+mocha_simple_plot(month,depth,variable,region)
+
+% Click stations on the plot to create a coordinate list:
+
+[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+
+```
+
+<img src="https://user-images.githubusercontent.com/24570061/88334226-73d09e00-ccff-11ea-867d-860d64744dc0.png" width="600">
 
 ```Matlab
 
-% Get variable information:
+% Build a uniform struct of profiles:
 
-argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc';
-netcdf_info(argo_dir);
-
-% Load Argo data from west of New Zealand:
-
-region = [-60.0 -50.0 150.0 160.0]; %  Search region [-90 90 -180 180]
-start_date = '01-Nov-2015 00:00:00';
-end_date = '01-Jan-2017 00:00:00';
-variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
+zgrid = 1; % vertical grid for linear interpolation in meters
+[mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
 
 % Make plots:
 
-general_profiles(argo,variable,'depth')
-general_map(argo,bathymetry_dir,'2Dcontour')
-
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
+general_map(mocha,bathymetry_dir,'2Dcontour')
+general_section(mocha,'temperature','stn','depth',1,1)
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88301724-fd1dab80-ccd2-11ea-9ea7-7badf1424865.png" width="600">
-<img src="https://user-images.githubusercontent.com/24570061/88301788-11fa3f00-ccd3-11ea-9cdf-1622f701bfe9.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88334243-78955200-ccff-11ea-8196-4db6298cdec5.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88334248-79c67f00-ccff-11ea-926b-a713efbb94d0.png" width="600">
 
 [Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
 
