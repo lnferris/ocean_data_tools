@@ -30,13 +30,13 @@ end_date = '01-Jan-2017 00:00:00';
 variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
 [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
 
-% Plot profiles:
+% Plot profiles with annotations:
 
 variable = 'TEMP_ADJUSTED'; % See object for options.
 annotate = 1; 
 argo_profiles(argo,variable,annotate) % annotate optional,  1=on 0=off
 
-% Map profiles
+% Map profiles with annotations:
 
 annotate = 1; 
 argo_profiles_map(argo,annotate) % annotate optional,  1=on 0=off
