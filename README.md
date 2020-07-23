@@ -59,4 +59,77 @@ Functions build the World Ocean Atlas url based on arguments, but coarser resolu
 
 Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html.
 
+## Contents
+
+### Building uniform structs from data sources
+
+**argo_build** searches the local machine for Argo profiles matching a specified region and time period, and loads them into a uniform struct
+
+**mocha_build_profiles**
+
+**model_build_profiles**
+
+**whp_cruise_build**
+
+**woa_build_profiles**
+
+**wod_build**
+
+### General functions for subsetting and plotting uniform structs
+
+**general_depth_subset**
+
+**general_map**
+
+**general_profiles**
+
+**general_region_subset**
+
+**general_remove_duplicates**
+
+**general_section**
+
+### Plotting gridded data without building structs
+
+**mocha_domain_plot**
+
+**mocha_simple_plot**
+
+**model_domain_plot**
+
+**model_simple_plot**
+
+**woa_domain_plot**
+
+**woa_simple_plot**
+
+### Adding bathymetry to existing plots
+
+**bathymetry_chord**
+
+**bathymetry_extract**
+
+**bathymetry_plot**
+
+**bathymetry_region**
+
+**bathymetry_section**
+
+### Additional functions for inspecting Argo data
+
+**argo_platform_map**
+
+**argo_platform_subset**
+
+**argo_profiles_map**
+
+**argo_profiles**
+
+### Miscellaneous utilities
+
+**netcdf_info**
+
+**region_select**
+
+**transect_select**
 
