@@ -47,7 +47,7 @@ zref = 'pressure'; % See cruise for options.
 general_section(cruise,variable,xref,zref)
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88346894-7939e280-cd17-11ea-96a2-735db5a527d5.png" width="700">
+<img src="https://user-images.githubusercontent.com/24570061/88346894-7939e280-cd17-11ea-96a2-735db5a527d5.png" width="800">
 
 
 [Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
