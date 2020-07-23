@@ -64,7 +64,7 @@ Functions build the World Ocean Atlas url at maximum resolution based on argumen
 
 #### wod
 
-Search and select [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html).
+Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html) and select products.
 
 ## Contents
 
