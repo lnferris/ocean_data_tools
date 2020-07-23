@@ -63,17 +63,17 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 ### Building uniform structs from data sources
 
-**argo_build** searches the local machine for Argo profiles matching a specified region and time period, and loads them into a uniform struct
+**argo_build** searches the locally-stored Argo profiles matching the specified region & time period and builds a uniform struct
 
-**mocha_build_profiles**
+**mocha_build_profiles** builds a uniform struct of profiles from the MOCHA Mid-Atlantic Bight climatology
 
-**model_build_profiles**
+**model_build_profiles**  builds a uniform struct of profiles from HYCOM or Operational Mercator GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
-**whp_cruise_build**
+**whp_cruise_build** builds a uniform struct of profiles from GO-SHIP cruise data in WHP-Exchange Format
 
-**woa_build_profiles**
+**woa_build_profiles** builds a uniform struct of profiles from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
 
-**wod_build**
+**wod_build** builds a uniform struct of profiles from World Ocean Database data
 
 ### General functions for subsetting and plotting uniform structs
 
