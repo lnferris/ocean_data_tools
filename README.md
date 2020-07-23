@@ -90,13 +90,14 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 **model_build_profiles**  builds a uniform struct of profiles from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
+<img width="954" alt="demo1" src="https://user-images.githubusercontent.com/24570061/88250150-ac776580-cc74-11ea-8c72-cea7cc50b4d9.png">
+
 **whp_cruise_build** builds a uniform struct of profiles from GO-SHIP cruise data in WHP-Exchange Format
 
 **woa_build_profiles** builds a uniform struct of profiles from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
 
 **wod_build** builds a uniform struct of profiles from World Ocean Database data
 
-<img width="954" alt="demo1" src="https://user-images.githubusercontent.com/24570061/88250150-ac776580-cc74-11ea-8c72-cea7cc50b4d9.png">
 
 ### General functions for subsetting and plotting uniform structs
 
@@ -108,11 +109,12 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 **general_region_subset** subsets a uniform struct by polygon region
 
+![general_region_subset copy](https://user-images.githubusercontent.com/24570061/88250840-cf0a7e00-cc76-11ea-96d9-f86775d2e715.png)
+
 **general_remove_duplicates** removes spatially (or spatially and temporally) non-unique profiles from a uniform struct
 
 **general_section** plots a data section from a uniform struct
 
-![general_region_subset copy](https://user-images.githubusercontent.com/24570061/88250840-cf0a7e00-cc76-11ea-96d9-f86775d2e715.png)
 
 ### Plotting gridded data without building structs
 
@@ -124,11 +126,12 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 **model_simple_plot** plots a 2-D layer from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
+![model_simple_plot-hycom](https://user-images.githubusercontent.com/24570061/88250403-8900ea80-cc75-11ea-8a5d-8a474d2e5c3f.png)
+
 **woa_domain_plot** plots a 3-D domain from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
 
 **woa_simple_plot** plots a 2-D layer from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
 
-![model_simple_plot-hycom](https://user-images.githubusercontent.com/24570061/88250403-8900ea80-cc75-11ea-8a5d-8a474d2e5c3f.png)
 
 ### Adding bathymetry to existing plots
 
@@ -144,9 +147,12 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 ![bathymetry_section](https://user-images.githubusercontent.com/24570061/88250660-3d027580-cc76-11ea-808c-f51d5105e420.png)
 
+
 ### Additional functions for inspecting Argo data
 
 **argo_platform_map** plots locations of Argo profiles in a uniform struct, coloring markers by platform (individual Argo float)
+
+![argo_platform_map](https://user-images.githubusercontent.com/24570061/88250439-a2099b80-cc75-11ea-9516-ad3d1f65fdf9.jpg)
 
 **argo_platform_subset** subsets a uniform struct of Argo data to one platform (individual Argo float)
 
@@ -154,7 +160,6 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 **argo_profiles** plots vertical Argo profiles in uniform struct argo, using colors corresponding to argo_profiles_map called on the same struct
 
-![argo_platform_map](https://user-images.githubusercontent.com/24570061/88250439-a2099b80-cc75-11ea-9516-ad3d1f65fdf9.jpg)
 
 ### Miscellaneous utilities
 
