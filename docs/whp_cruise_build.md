@@ -35,7 +35,7 @@ variable_list = {'salinity','temperature','oxygen'};
 general_map(cruise,bathymetry_dir,'2Dcontour')
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88341972-89989000-cd0c-11ea-8961-70c76fc639d8.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88341972-89989000-cd0c-11ea-8961-70c76fc639d8.png" width="900">
 
 
 ```Matlab
