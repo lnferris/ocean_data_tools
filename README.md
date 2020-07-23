@@ -105,15 +105,15 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 ### Adding bathymetry to existing plots
 
-**bathymetry_chord**
+**bathymetry_chord** adds a slice of Smith & Sandwell Global Topography to a section plot
 
-**bathymetry_extract**
+**bathymetry_extract** extracts a region of Smith & Sandwell Global Topography and outputs as arrays
 
-**bathymetry_plot**
+**bathymetry_plot** adds bathymetry to 2-D (latitude vs. longitude) or 3-D (latitude vs. longitude vs. depth) data plots
 
-**bathymetry_region**
+**bathymetry_region** finds the rectangular region around a uniform struct to pass as an argument for other bathymetry functions
 
-**bathymetry_section**
+**bathymetry_section** adds Smith & Sandwell Global Topography to a section from plot using bathymetry data nearest to specified coordinates
 
 ### Additional functions for inspecting Argo data
 
