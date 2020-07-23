@@ -119,7 +119,7 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 **mocha_domain_plot** plots a 3-D domain from the MOCHA Mid-Atlantic Bight climatology
 
-**mocha_simple_plot** plots a 2-D layer from the MOCHA Mid-Atlantic Bight climatology
+**[mocha_simple_plot](docs/mocha_simple_plots.md)** plots a 2-D layer from the MOCHA Mid-Atlantic Bight climatology
 
 **model_domain_plot** plots a 3-D domain from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
