@@ -17,8 +17,8 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 ## Getting Started
 
 1. Download bathymetry (see below).
-2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox). Remember to run the command ``setup_nctoolbox`` before use.
-3. Run each demonstration in **demos/demos.m**.
+2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox). This is a dependency. Remember to run the command ``setup_nctoolbox`` before use.
+3. Run each demonstration in **demos/demos.m**. All test data (except for bathymetry) is included.
 
 Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function, as well as functions in the Gibbs-SeaWater (GSW) Oceanographic Toolbox (http://www.teos-10.org/software.htm#1).
 
@@ -58,3 +58,78 @@ Functions build the World Ocean Atlas url based on arguments, but coarser resolu
 ### wod_
 
 Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html.
+
+## Contents
+
+### Building uniform structs from data sources
+
+**argo_build** searches the locally-stored Argo profiles matching the specified region & time period and builds a uniform struct
+
+**mocha_build_profiles** builds a uniform struct of profiles from the MOCHA Mid-Atlantic Bight climatology
+
+**model_build_profiles**  builds a uniform struct of profiles from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
+
+**whp_cruise_build** builds a uniform struct of profiles from GO-SHIP cruise data in WHP-Exchange Format
+
+**woa_build_profiles** builds a uniform struct of profiles from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
+
+**wod_build** builds a uniform struct of profiles from World Ocean Database data
+
+### General functions for subsetting and plotting uniform structs
+
+**general_depth_subset** subsets a uniform struct by depth
+
+**general_map** plots coordinate locations in a uniform struct, with optional bathymetry contours
+
+**general_profiles** plots vertical profiles in a uniform struct
+
+**general_region_subset** subsets a uniform struct by polygon region
+
+**general_remove_duplicates** removes spatially (or spatially and temporally) non-unique profiles from a uniform struct
+
+**general_section** plots a data section from a uniform struct
+
+### Plotting gridded data without building structs
+
+**mocha_domain_plot** plots a 3-D domain from the MOCHA Mid-Atlantic Bight climatology
+
+**mocha_simple_plot** plots a 2-D layer from the MOCHA Mid-Atlantic Bight climatology
+
+**model_domain_plot** plots a 3-D domain from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
+
+**model_simple_plot** plots a 2-D layer from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
+
+**woa_domain_plot** plots a 3-D domain from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
+
+**woa_simple_plot** plots a 2-D layer from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
+
+### Adding bathymetry to existing plots
+
+**bathymetry_chord** adds a slice of Smith & Sandwell Global Topography to a section plot
+
+**bathymetry_extract** extracts a region of Smith & Sandwell Global Topography and outputs as arrays
+
+**bathymetry_plot** adds bathymetry to 2-D (latitude vs. longitude) or 3-D (latitude vs. longitude vs. depth) data plots
+
+**bathymetry_region** finds the rectangular region around a uniform struct to pass as an argument for other bathymetry functions
+
+**bathymetry_section** adds Smith & Sandwell Global Topography to a section from plot using bathymetry data nearest to specified coordinates
+
+### Additional functions for inspecting Argo data
+
+**argo_platform_map** plots locations of Argo profiles in a uniform struct, coloring markers by platform (individual Argo float)
+
+**argo_platform_subset** subsets a uniform struct of Argo data to one platform (individual Argo float)
+
+**argo_profiles_map** plots coordinate locations of Argo profiles in uniform struct argo, using colors corresponding to argo_profiles called on the same struct
+
+**argo_profiles** plots vertical Argo profiles in uniform struct argo, using colors corresponding to argo_profiles_map called on the same struct
+
+### Miscellaneous utilities
+
+**netcdf_info** gets information about the first netcdf file in a path and saves it to a text file
+
+**region_select** creates coordinate list (which represents vertices of a polygon region) by clicking stations on a plot
+
+**transect_select** creates a coordinate list (which represents a virtual transect) by clicking stations on a plot
+
