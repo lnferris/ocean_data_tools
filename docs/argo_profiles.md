@@ -1,14 +1,16 @@
-### argo_build
+### argo_profiles
 
 #### Syntax
 
 ```Matlab
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)
+argo_profiles(argo,variable) 
+argo_profiles(argo,variable,annotate)
 ```
 #### Description
 
-``[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)`` searches pathway ``argo_dir`` for profiles meeting the search criteria ``region``, ``start_date``, and ``end_date``. Profiles are loaded into the struct array ``argo`` with all variables specified in ``variable_list``. Variables PLATFORM_NUMBER, LONGITUDE, LATITUDE, JULD, and PRES_ADJUSTED are included automatically. Files containing matching profiles are listed in ``matching_files``.
-
+``argo_profiles(argo,variable)`` plots vertical profiles of the specified variable in struct ``argo`` as a function of depth (PRES_ADJUSTED); where ``argo`` is a struct created by ``argo_build`` and ``variable`` is a field name.
+ 
+``argo_profiles(argo,variable,annotate)`` adds number annotations to the markers by default ``annotate=0``. Set ``annotate=1`` to turn on annotation. The annotations of profiles correspond to those of ``argo_profiles_map`` called on the same struct.
 
 #### Example 1
 
@@ -23,19 +25,26 @@ netcdf_info(argo_dir);
 % Load Argo data from west of New Zealand:
 
 region = [-60.0 -50.0 150.0 160.0]; %  Search region [-90 90 -180 180]
-start_date = '01-Nov-2015 00:00:00';
+start_date = '28-Dec-2016 00:00:00';
 end_date = '01-Jan-2017 00:00:00';
 variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
 [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
 
-% Make plots:
+% Plot profiles:
 
-general_profiles(argo,variable,'depth')
-general_map(argo,bathymetry_dir,'2Dcontour')
+variable = 'TEMP_ADJUSTED'; % See object for options.
+annotate = 1; 
+argo_profiles(argo,variable,annotate) % annotate optional,  1=on 0=off
+
+% Map profiles
+
+annotate = 1; 
+argo_profiles_map(argo,annotate) % annotate optional,  1=on 0=off
+bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour') % add bathymetry contours
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88301724-fd1dab80-ccd2-11ea-9ea7-7badf1424865.png" width="600">
-<img src="https://user-images.githubusercontent.com/24570061/88301788-11fa3f00-ccd3-11ea-9cdf-1622f701bfe9.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88327048-b04acc80-ccf4-11ea-8e1d-4ae00634953c.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88327053-b2149000-ccf4-11ea-8d1d-c0493bf9ef43.png" width="600">
 
-[Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
+[Back](https://github.com/lnferris/ocean_data_tools#additional-functions-for-inspecting-argo-data-1)
 
