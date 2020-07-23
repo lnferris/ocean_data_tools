@@ -18,9 +18,6 @@ Find a bug, have a question, or wish to contribute? Open an issue or email lnfer
 
 ### [Contents](#contents-1)
 
-### [Examples](#examples-1)
-
-
 ## Dependencies
 
 nctoolbox (https://github.com/nctoolbox/nctoolbox)
@@ -156,9 +153,4 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 **region_select** creates coordinate list (which represents vertices of a polygon region) by clicking stations on a plot
 
 **transect_select** creates a coordinate list (which represents a virtual transect) by clicking stations on a plot
-
-## Examples
-
-
-
 
