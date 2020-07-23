@@ -20,7 +20,7 @@ Find a bug, have a question, or want to contribute? Open an issue or email lnfer
 
 ## Dependencies
 
-nctoolbox (https://github.com/nctoolbox/nctoolbox)
+[nctoolbox](https://github.com/nctoolbox/nctoolbox)
 
 ## Getting Started
 
@@ -28,44 +28,43 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 2. Download [nctoolbox](#dependencies-1). Run the command ``setup_nctoolbox`` at the beginning of a MATLAB session.
 3. Run each demonstration in **demos/demos.m**, which contains example usages for all functions. All required tests data is included in **data/**.
 
-Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function, as well as functions in the Gibbs-SeaWater (GSW) Oceanographic Toolbox (http://www.teos-10.org/software.htm#1).
+Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function, as well as functions in the [Gibbs-SeaWater (GSW) Oceanographic Toolbox](http://www.teos-10.org/software.htm#1).
 
-Main functions are located in **ocean_data_tools/**. Demonstrations are located in **demos/**. Test datas are located in **data/**. Shell scripts for batch downloading data are located in **shell_scripts/**. While shell scripts can be run directly in a macOS Terminal, running them in Windows requires Cygwin (https://www.cygwin.com/) or similar. Python syntax examples are located in **python/**, which may be grow to become a module in the future.
+Main functions are located in **ocean_data_tools/**. Demonstrations are located in **demos/**. Test datas are located in **data/**. Shell scripts for batch downloading data are located in **shell_scripts/**. While shell scripts can be run directly in a macOS Terminal, running them in Windows requires [Cygwin](https://www.cygwin.com/) or similar. Python syntax examples are located in **python/**, which may be grow to become a module in the future.
 
 ## Getting Data
 
 #### argo
 
-Download Argo (www.argo.ucsd.edu) data directly from GDAC FTP servers using either the Coriolis selection tool (http://www.argodatamgt.org/Access-to-data/Argo-data-selection), or the US GDAC (http://www.usgodae.org/cgi-bin/argo_select.pl). The Argo User's Manual is found at http://www.argodatamgt.org/Documentation.
+Download [Argo data](www.argo.ucsd.edu) directly from GDAC FTP servers using either the [Coriolis selection tool](http://www.argodatamgt.org/Access-to-data/Argo-data-selection), or the [US GDAC](http://www.usgodae.org/cgi-bin/argo_select.pl). See the [Argo User's Manual](http://www.argodatamgt.org/Documentation) for more information.
 
 Alternatively run **shell_scripts/download_argo** to download data via File Transfer Protocol.
 
 #### bathymetry
 
-To get bathymetry data (for ``bathymetry_dir``), download Smith & Sandwell under "Global Topography V19.1" (https://topex.ucsd.edu/marine_topo/) in netcdf form (topo_20.1.nc).
+To get bathymetry data (for ``bathymetry_dir``), download Smith & Sandwell under [Global Topography V19.1](https://topex.ucsd.edu/marine_topo/) in netcdf form (topo_20.1.nc).
 
 #### mocha
 
-The url for MOCHA Mid-Atlantic Bight climatology is embedded. See Rutgers Marine catalog (http://tds.marine.rutgers.edu/thredds/catalog.html).
+The url for MOCHA Mid-Atlantic Bight climatology is embedded. See [Rutgers Marine catalog](http://tds.marine.rutgers.edu/thredds/catalog.html).
 
 #### model
 
-For HYCOM, download subsetted data directly using NCSS. Get the data url by visiting https://www.hycom.org/dataserver/gofs-3pt1/analysis. For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Click on the NetcdfSubset link. Set constraints and copy the NCSS Request URL at the bottom of the page. Run **shell_scripts/download_hycom_lite**. To download multiple months or years, run **shell_scripts/download_hycom_bulk_daily** (partition files by day) or **shell_scripts/download_hycom_bulk_monthly** (partition files by month). Please use responsibly.
+For HYCOM, download subsetted data directly using NCSS. Get the data url by visiting the [HYCOM website](https://www.hycom.org/dataserver/gofs-3pt1/analysis). For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Click on the NetcdfSubset link. Set constraints and copy the NCSS Request URL at the bottom of the page. Run **shell_scripts/download_hycom_lite**. To download multiple months or years, run **shell_scripts/download_hycom_bulk_daily** (partition files by day) or **shell_scripts/download_hycom_bulk_monthly** (partition files by month). Please use responsibly.
 
-For Mercator, download Copernicus Marine data directly from FTP servers. Go to http://marine.copernicus.eu/services-portfolio/access-to-products/ and make a Copernicus account. Use the selection tool to download GLOBAL_ANALYSIS_FORECAST_PHY_001_024. Alternatively run **shell_scripts/download_mercator**. Before running the script, follow the instructions for modifying your ~/.netrc file in the comments of the script.
+For Mercator, download Copernicus Marine data directly from FTP servers. First make a [Copernicus account](http://marine.copernicus.eu/services-portfolio/access-to-products/). Use the selection tool to download GLOBAL_ANALYSIS_FORECAST_PHY_001_024. Alternatively run **shell_scripts/download_mercator**. Before running the script, follow the instructions for modifying your ~/.netrc file in the comments of the script.
 
 #### whp_cruise
 
-For GO-SHIP (https://usgoship.ucsd.edu/hydromap/) data, get CTD data (for ``ctdo_dir``) by choosing a GO-SHIP cruise (https://cchdo.ucsd.edu/search?q=GO-SHIP) and downloading the CTD data in whp_netcdf format. 
-Visit https://exchange-format.readthedocs.io/en/latest/index.html# for information about whp_netcdf parameters, specific to GO-SHIP. Get LADCP data (for ``uv_dir``, ``wke_dir``) at https://currents.soest.hawaii.edu/go-ship/ladcp/. There is information about LACDP processing at https://www.ldeo.columbia.edu/~ant/LADCP.html.
+For [GO-SHIP data](https://usgoship.ucsd.edu/hydromap/), get CTD data (for ``ctdo_dir``) by choosing a [GO-SHIP cruise](https://cchdo.ucsd.edu/search?q=GO-SHIP) and downloading the CTD data in whp_netcdf format. More information about whp_netcdf parameters is available [here](https://exchange-format.readthedocs.io/en/latest/index.html#). Get LADCP data (for ``uv_dir``, ``wke_dir``) [here](https://currents.soest.hawaii.edu/go-ship/ladcp/). There is information about LACDP processing [here](https://www.ldeo.columbia.edu/~ant/LADCP.html).
 
 #### woa
 
-Functions build the World Ocean Atlas url based on arguments, but coarser resolutions and seasonal climatologies are available at https://www.nodc.noaa.gov/OC5/woa18/woa18data.html. Note NCEI is scheduled to update data urls in the near future. Functions will be updated as such.
+Functions build the World Ocean Atlas url at maximum resolution based on arguments, but coarser resolutions and seasonal climatologies are available at the [NODC website](https://www.nodc.noaa.gov/OC5/woa18/woa18data.html). Note NCEI is scheduled to update data urls in the near future. Functions will be updated as such.
 
 #### wod
 
-Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html.
+Search and select [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html).
 
 ## Contents
 
