@@ -1,4 +1,4 @@
-### mocha_build_profiles
+### mocha_domain_plot
 
 #### Syntax
 
