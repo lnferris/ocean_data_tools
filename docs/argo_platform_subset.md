@@ -1,4 +1,4 @@
-### argo_build
+### argo_platform_subset
 
 #### Syntax
 
@@ -41,10 +41,8 @@ bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour')
 ```
 <img src="https://user-images.githubusercontent.com/24570061/88316847-6955da80-cce6-11ea-8bb0-d9d0523a3a29.png" width="700">
 
-
 <img src="https://user-images.githubusercontent.com/24570061/88324607-ec306280-ccf1-11ea-8f9a-81320046ccf4.png" width="700">
 
 
-
-[Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
+[Back](https://github.com/lnferris/ocean_data_tools#additional-functions-for-inspecting-argo-data-1)
 
