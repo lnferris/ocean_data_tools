@@ -24,8 +24,8 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 
 ## Getting Started
 
-1. Download bathymetry [(see below)](#bathymetry_).
-2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox). This is a dependency. Remember to run the command ``setup_nctoolbox`` before use.
+1. Download [bathymetry](#bathymetry_).
+2. Download [nctoolbox](#dependencies-1). This is a dependency. Remember to run the command ``setup_nctoolbox`` before use.
 3. Run each demonstration in **demos/demos.m**, which contains example usages for all functions. All required tests data is included in **data/**.
 
 Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function, as well as functions in the Gibbs-SeaWater (GSW) Oceanographic Toolbox (http://www.teos-10.org/software.htm#1).
