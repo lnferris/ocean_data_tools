@@ -61,6 +61,19 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 ## Contents
 
+#### Building uniform structs from data sources
+
+#### General functions for subsetting and plotting uniform structs
+
+#### Plotting gridded data without building structs
+
+#### Adding bathymetry to existing plots
+
+#### Additional functions for inspecting Argo data
+
+#### Miscellaneous utilities
+
+
 ### Building uniform structs from data sources
 
 **argo_build** searches the locally-stored Argo profiles matching the specified region & time period and builds a uniform struct
