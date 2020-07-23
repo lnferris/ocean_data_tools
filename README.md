@@ -18,7 +18,7 @@ nctoolbox (https://github.com/nctoolbox/nctoolbox)
 
 1. Download bathymetry (see below).
 2. Download the nctoolbox (https://github.com/nctoolbox/nctoolbox). This is a dependency. Remember to run the command ``setup_nctoolbox`` before use.
-3. Run each demonstration in **demos/demos.m**.
+3. Run each demonstration in **demos/demos.m**. All test data (except for bathymetry) is included.
 
 Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function, as well as functions in the Gibbs-SeaWater (GSW) Oceanographic Toolbox (http://www.teos-10.org/software.htm#1).
 
@@ -91,17 +91,17 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 ### Plotting gridded data without building structs
 
-**mocha_domain_plot**
+**mocha_domain_plot** plots a 3-D domain from the MOCHA Mid-Atlantic Bight climatology
 
-**mocha_simple_plot**
+**mocha_simple_plot** plots a 2-D layer from the MOCHA Mid-Atlantic Bight climatology
 
-**model_domain_plot**
+**model_domain_plot** plots a 3-D domain from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
-**model_simple_plot**
+**model_simple_plot** plots a 2-D layer from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
-**woa_domain_plot**
+**woa_domain_plot** plots a 3-D domain from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
 
-**woa_simple_plot**
+**woa_simple_plot** plots a 2-D layer from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
 
 ### Adding bathymetry to existing plots
 
