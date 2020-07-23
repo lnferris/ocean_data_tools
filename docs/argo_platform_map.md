@@ -37,7 +37,7 @@ argo_platform_map(argo,annotate) % annotate optional,  1=on 0=off
 bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour')
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88316339-abcae780-cce5-11ea-9358-48882a271620.png" width="700">
+<img src="https://user-images.githubusercontent.com/24570061/88316847-6955da80-cce6-11ea-8bb0-d9d0523a3a29.png" width="700">
 
 [Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
 
