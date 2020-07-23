@@ -117,13 +117,13 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 ### Additional functions for inspecting Argo data
 
-**argo_platform_map**
+**argo_platform_map** plots locations of Argo profiles in a uniform struct, coloring markers by platform (individual Argo float)
 
-**argo_platform_subset**
+**argo_platform_subset** subsets a uniform struct of Argo data to one platform (individual Argo float)
 
-**argo_profiles_map**
+**argo_profiles_map** plots coordinate locations of Argo profiles in uniform struct argo, using colors corresponding to argo_profiles called on the same struct
 
-**argo_profiles**
+**argo_profiles** plots vertical Argo profiles in uniform struct argo, using colors corresponding to argo_profiles_map called on the same struct
 
 ### Miscellaneous utilities
 
