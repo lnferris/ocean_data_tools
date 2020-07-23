@@ -68,8 +68,6 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 ## Contents
 
-[a relative link](docs/example00.md)
-
 #### [Building uniform structs from data sources](#building-uniform-structs-from-data-sources-1)
 
 #### [General functions for subsetting and plotting uniform structs](#general-functions-for-subsetting-and-plotting-uniform-structs-1)
@@ -85,7 +83,7 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 ### Building uniform structs from data sources
 
-**argo_build** searches the locally-stored Argo profiles matching the specified region & time period and builds a uniform struct
+**[argo_build](docs/argo_build.md)** searches the locally-stored Argo profiles matching the specified region & time period and builds a uniform struct
 
 **mocha_build_profiles** builds a uniform struct of profiles from the MOCHA Mid-Atlantic Bight climatology
 
