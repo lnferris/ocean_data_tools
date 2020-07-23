@@ -96,6 +96,8 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 **wod_build** builds a uniform struct of profiles from World Ocean Database data
 
+<img width="954" alt="demo1" src="https://user-images.githubusercontent.com/24570061/88250150-ac776580-cc74-11ea-8c72-cea7cc50b4d9.png">
+
 ### General functions for subsetting and plotting uniform structs
 
 **general_depth_subset** subsets a uniform struct by depth
@@ -109,6 +111,8 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 **general_remove_duplicates** removes spatially (or spatially and temporally) non-unique profiles from a uniform struct
 
 **general_section** plots a data section from a uniform struct
+
+![general_region_subset copy](https://user-images.githubusercontent.com/24570061/88250840-cf0a7e00-cc76-11ea-96d9-f86775d2e715.png)
 
 ### Plotting gridded data without building structs
 
@@ -124,6 +128,8 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 **woa_simple_plot** plots a 2-D layer from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
 
+![model_simple_plot-hycom](https://user-images.githubusercontent.com/24570061/88250403-8900ea80-cc75-11ea-8a5d-8a474d2e5c3f.png)
+
 ### Adding bathymetry to existing plots
 
 **bathymetry_chord** adds a slice of Smith & Sandwell Global Topography to a section plot
@@ -136,6 +142,8 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 **bathymetry_section** adds Smith & Sandwell Global Topography to a section from plot using bathymetry data nearest to specified coordinates
 
+![bathymetry_section](https://user-images.githubusercontent.com/24570061/88250660-3d027580-cc76-11ea-808c-f51d5105e420.png)
+
 ### Additional functions for inspecting Argo data
 
 **argo_platform_map** plots locations of Argo profiles in a uniform struct, coloring markers by platform (individual Argo float)
@@ -146,6 +154,8 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 **argo_profiles** plots vertical Argo profiles in uniform struct argo, using colors corresponding to argo_profiles_map called on the same struct
 
+![argo_platform_map](https://user-images.githubusercontent.com/24570061/88250439-a2099b80-cc75-11ea-9516-ad3d1f65fdf9.jpg)
+
 ### Miscellaneous utilities
 
 **netcdf_info** gets information about the first netcdf file in a path and saves it to a text file
@@ -153,4 +163,7 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 **region_select** creates coordinate list (which represents vertices of a polygon region) by clicking stations on a plot
 
 **transect_select** creates a coordinate list (which represents a virtual transect) by clicking stations on a plot
+
+<img width="777" alt="Screen Shot 2020-07-22 at 23 50 25" src="https://user-images.githubusercontent.com/24570061/88250639-2b20d280-cc76-11ea-9c94-3ce16300f735.png">
+
 
