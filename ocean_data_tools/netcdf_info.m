@@ -1,6 +1,6 @@
 
 function netcdf_info(nc_dir)
-% netcdf_info gets and information about the first file in path nc_dir
+% netcdf_info gets information about the first file in path nc_dir
 % and saves it to the working directory
 % 
 %% Syntax

@@ -14,7 +14,7 @@ function [wod] = wod_build(wod_dir,variable_list)
 % are included automatically.
 % 
 %% Example 1
-% Load World Ocean Atlas data:
+% Load World Ocean Database data:
 % 
 % wod_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/wod/*.nc'; % included
 % netcdf_info(wod_dir); % Get information to inform choice of variable_list.
