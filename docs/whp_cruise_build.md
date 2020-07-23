@@ -1,41 +1,54 @@
-### argo_build
+### whp_cruise_build
 
 #### Syntax
 
 ```Matlab
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)
+[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list)
 ```
 #### Description
 
-``[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)`` searches pathway ``argo_dir`` for profiles meeting the search criteria ``region``, ``start_date``, and ``end_date``. Profiles are loaded into the struct array ``argo`` with all variables specified in ``variable_list``. Variables PLATFORM_NUMBER, LONGITUDE, LATITUDE, JULD, and PRES_ADJUSTED are included automatically. Files containing matching profiles are listed in ``matching_files``.
-
+``[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list)`` searches pathways ``ctdo_dir``, ``uv_dir``, ``wvke_dir`` for CTD+ data, horizontal LADCP data, and vertical LACDP data respectively. Variable lists for LADCP are fixed, while the CTD+ variable list is specified using ``variable_list`` (station, woce_date,l ongitude, latitude, and pressure are included automatically.) Lat/lon information (metadata) is pulled from the CTD+ files by default. If CTD+ is not found, metadata from LACDP files are used instead.
 
 #### Example 1
 
 
 ```Matlab
 
-% Get variable information:
+% Paths to data:
 
-argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc';
-netcdf_info(argo_dir);
+ctdo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/ctd/*.nc'; % included
+uv_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/uv/*.nc'; % included
+wvke_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/wvke/'; % included
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
 
-% Load Argo data from west of New Zealand:
+% Get information about available CTD+ variables:
 
-region = [-60.0 -50.0 150.0 160.0]; %  Search region [-90 90 -180 180]
-start_date = '01-Nov-2015 00:00:00';
-end_date = '01-Jan-2017 00:00:00';
-variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
+netcdf_info(ctdo_dir) % Get cruise information.
+variable_list = {'salinity','temperature','oxygen'};
 
-% Make plots:
+% Build a uniform struct of cruise data:
 
-general_profiles(argo,variable,'depth')
-general_map(argo,bathymetry_dir,'2Dcontour')
+[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list); % Use a dummy path (e.g. uv_dir ='null') if missing data. 
+
+% Map cruise stations:
+
+general_map(cruise,bathymetry_dir,'2Dcontour')
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88301724-fd1dab80-ccd2-11ea-9ea7-7badf1424865.png" width="600">
-<img src="https://user-images.githubusercontent.com/24570061/88301788-11fa3f00-ccd3-11ea-9cdf-1622f701bfe9.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88341972-89989000-cd0c-11ea-8961-70c76fc639d8.png" width="600">
+
+
+```Matlab
+% Plot a salinity section:
+
+variable = 'salinity'; % See cruise for options.
+xref = 'lon'; % See cruise for options.
+zref = 'pressure'; % See cruise for options.
+general_section(cruise,variable,xref,zref) % interpolate, contours optional
+
+```
+<img src="https://user-images.githubusercontent.com/24570061/88341841-51914d00-cd0c-11ea-8b41-56e3319a8d69.png" width="600">
+
 
 [Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
 
