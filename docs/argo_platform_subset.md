@@ -26,7 +26,7 @@ bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour')
 platform_id = 5904421;
 [subargo] = argo_platform_subset(argo,platform_id);
 
-% Make a new ploat:
+% Make a new plot:
 
 argo_platform_map(subargo,1)
 bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour')
