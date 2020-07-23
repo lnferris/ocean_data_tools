@@ -151,7 +151,7 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 ### Additional functions for inspecting Argo data
 
-**argo_platform_map** plots locations of Argo profiles in a uniform struct, coloring markers by platform (individual Argo float)
+**[argo_platform_map](docs/argo_platform_map.md)** plots locations of Argo profiles in a uniform struct, coloring markers by platform (individual Argo float)
 
 ![argo_platform_map](https://user-images.githubusercontent.com/24570061/88250439-a2099b80-cc75-11ea-9516-ad3d1f65fdf9.jpg)
 
