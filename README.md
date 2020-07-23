@@ -68,17 +68,17 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 ## Contents
 
-#### [Building uniform structs from data sources](#building-uniform-structs-from-data-sources-1)
+### [Building uniform structs from data sources](#building-uniform-structs-from-data-sources-1)
 
-#### [General functions for subsetting and plotting uniform structs](#general-functions-for-subsetting-and-plotting-uniform-structs-1)
+### [General functions for subsetting and plotting uniform structs](#general-functions-for-subsetting-and-plotting-uniform-structs-1)
 
-#### [Plotting gridded data without building structs](#plotting-gridded-data-without-building-structs-1)
+### [Plotting gridded data without building structs](#plotting-gridded-data-without-building-structs-1)
 
-#### [Adding bathymetry to existing plots](#adding-bathymetry-to-existing-plots-1)
+### [Adding bathymetry to existing plots](#adding-bathymetry-to-existing-plots-1)
 
-#### [Additional functions for inspecting Argo data](#additional-functions-for-inspecting-argo-data-1)
+### [Additional functions for inspecting Argo data](#additional-functions-for-inspecting-argo-data-1)
 
-#### [Miscellaneous utilities](#miscellaneous-utilities-1)
+### [Miscellaneous utilities](#miscellaneous-utilities-1)
 
 
 ### Building uniform structs from data sources
