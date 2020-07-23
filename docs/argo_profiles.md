@@ -36,14 +36,17 @@ variable = 'TEMP_ADJUSTED'; % See object for options.
 annotate = 1; 
 argo_profiles(argo,variable,annotate) % annotate optional,  1=on 0=off
 
+```
+<img src="https://user-images.githubusercontent.com/24570061/88327048-b04acc80-ccf4-11ea-8e1d-4ae00634953c.png" width="600">
+
+```Matlab
 % Map profiles with annotations:
 
 annotate = 1; 
 argo_profiles_map(argo,annotate) % annotate optional,  1=on 0=off
 bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour') % add bathymetry contours
-
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88327048-b04acc80-ccf4-11ea-8e1d-4ae00634953c.png" width="600">
+
 <img src="https://user-images.githubusercontent.com/24570061/88327053-b2149000-ccf4-11ea-8d1d-c0493bf9ef43.png" width="600">
 
 [Back](https://github.com/lnferris/ocean_data_tools#additional-functions-for-inspecting-argo-data-1)
