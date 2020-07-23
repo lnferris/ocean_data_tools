@@ -10,6 +10,15 @@ ocean_data_tools simplifies the process of extracting, formatting, and visualizi
 
 Find a bug? Open an issue or email lnferris@alum.mit.edu.
 
+### [Dependencies](#dependencies-1)
+
+### [Getting Started](#getting-started-1)
+
+### [Getting Data](#getting-data-1)
+
+### [Contents](#contents-1)
+
+
 ## Dependencies
 
 nctoolbox (https://github.com/nctoolbox/nctoolbox)
