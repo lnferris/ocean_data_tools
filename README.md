@@ -67,7 +67,7 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 **mocha_build_profiles** builds a uniform struct of profiles from the MOCHA Mid-Atlantic Bight climatology
 
-**model_build_profiles**  builds a uniform struct of profiles from HYCOM or Operational Mercator GLOBAL_ANALYSIS_FORECAST_PHY_001_024
+**model_build_profiles**  builds a uniform struct of profiles from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
 **whp_cruise_build** builds a uniform struct of profiles from GO-SHIP cruise data in WHP-Exchange Format
 
@@ -77,17 +77,17 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 ### General functions for subsetting and plotting uniform structs
 
-**general_depth_subset**
+**general_depth_subset** subsets a uniform struct by depth
 
-**general_map**
+**general_map** plots coordinate locations in a uniform struct, with optional bathymetry contours
 
-**general_profiles**
+**general_profiles** plots vertical profiles in a uniform struct
 
-**general_region_subset**
+**general_region_subset** subsets a uniform struct by polygon region
 
-**general_remove_duplicates**
+**general_remove_duplicates** removes spatially (or spatially and temporally) non-unique profiles from a uniform struct
 
-**general_section**
+**general_section** plots a data section from a uniform struct
 
 ### Plotting gridded data without building structs
 
