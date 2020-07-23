@@ -44,10 +44,10 @@ general_map(cruise,bathymetry_dir,'2Dcontour')
 variable = 'salinity'; % See cruise for options.
 xref = 'lon'; % See cruise for options.
 zref = 'pressure'; % See cruise for options.
-general_section(cruise,variable,xref,zref) % interpolate, contours optional
+general_section(cruise,variable,xref,zref)
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88341841-51914d00-cd0c-11ea-8b41-56e3319a8d69.png" width="900">
+<img src="https://user-images.githubusercontent.com/24570061/88346894-7939e280-cd17-11ea-96a2-735db5a527d5.png" width="900">
 
 
 [Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
