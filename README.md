@@ -141,6 +141,8 @@ Search and select World Ocean Database data at https://www.nodc.noaa.gov/OC5/SEL
 
 **bathymetry_plot** adds bathymetry to 2-D (latitude vs. longitude) or 3-D (latitude vs. longitude vs. depth) data plots
 
+![Eby2o8-XsAASaSA](https://user-images.githubusercontent.com/24570061/88251161-ed24ae00-cc77-11ea-87d6-0e3b4484764d.jpg)
+
 **bathymetry_region** finds the rectangular region around a uniform struct to pass as an argument for other bathymetry functions
 
 **bathymetry_section** adds Smith & Sandwell Global Topography to a section from plot using bathymetry data nearest to specified coordinates
