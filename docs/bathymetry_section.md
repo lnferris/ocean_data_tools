@@ -26,6 +26,6 @@ filled = 1;
 bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)
 ```
 
-<img src="https://user-images.githubusercontent.com/24570061/88436173-b8c50500-cdd1-11ea-8270-22930d42843c.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88436173-b8c50500-cdd1-11ea-8270-22930d42843c.png" width="800">
 
 [Back](https://github.com/lnferris/ocean_data_tools#adding-bathymetry-to-existing-plots-1)
