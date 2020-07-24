@@ -9,7 +9,8 @@ function mocha_domain_plot(month,variable,region)
 %% Description 
 % 
 % mocha_domain_plot(month,variable,region) plots all depth-levels of variable
-% over the specified region
+% over the specified region. variable specifies the parameter to be plotted 
+% and region is the rectangular region to be plotted. the calendar month is specified by month.
 %
 %% Example 1
 % Plot full-depth temperature from MOCHA climatology for October:

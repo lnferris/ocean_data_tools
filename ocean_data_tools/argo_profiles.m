@@ -48,7 +48,7 @@ for prof = 1:length(argo.stn)
         scatter(cvar(:,prof),argo.depth(:,prof),'.');  
         
         if nargin == 3 && annotate ==1
-            text(cvar(1,prof),argo.depth(1,prof),string(argo.stn(prof)),'FontSize',8)
+            text(cvar(1,prof),argo.depth(1,prof),string(argo.stn(prof)),'FontSize',10)
         end
         
 end

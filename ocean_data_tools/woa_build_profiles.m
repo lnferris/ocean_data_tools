@@ -16,7 +16,7 @@ function [woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid)
 % specified by xcoords and ycoords. time specifies monthly or annual 
 % climatology; time = '00' for annual climatology and '01' '10' etc. for 
 % monthly climatology. Profiles are loaded into the struct
-% array model with all variables specified in variable_list. The function builds the url,
+% array woa with all variables specified in variable_list. The function builds the url,
 % extracting the maximum resolution available (typically 0.25-deg or
 % 1.00-degree grid). Resolution depends on the variable.
 % If the user requests only 0.25-degree variables in variable_list, data will

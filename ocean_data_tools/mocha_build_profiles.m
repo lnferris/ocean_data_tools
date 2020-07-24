@@ -22,7 +22,7 @@ function [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid)
 % Build a struct out of a transect through MOCHA climatology:
 % 
 % month = 10; % Month (1 through 12).
-% xcoords = [-71.2, -71.4, -71.5, -71.7, -71.9]
+% xcoords = [-71.2, -71.4, -71.5, -71.7, -71.9];
 % ycoords = [35.9, 36.2, 36.4, 36.6, 36.8];
 % zgrid = 1; % vertical grid for linear interpolation in meters
 % [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified

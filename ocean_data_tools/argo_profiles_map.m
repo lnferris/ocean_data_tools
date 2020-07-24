@@ -41,7 +41,7 @@ function argo_profiles_map(argo,annotate)
         % Plot lat/lon for all profiles.
         plot(argo.lon(prof),argo.lat(prof),'.','MarkerSize',14)
         if nargin == 2 && annotate ==1
-            text(argo.lon(prof),argo.lat(prof),string(argo.stn(prof)),'FontSize',6)
+            text(argo.lon(prof),argo.lat(prof),string(argo.stn(prof)),'FontSize',10)
         end
     end
 

@@ -10,7 +10,7 @@ function mocha_simple_plot(month,depth,variable,region)
 % 
 % mocha_simple_plot(month,depth,variable,region) plots the nearest available
 % depth-level to depth. variable specifies the parameter to be plotted and region
-% is the rectangular region to be plotted.
+% is the rectangular region to be plotted. the calendar month is specified by month.
 %
 %% Example 1
 % Plot surface temperature from MOCHA climatology for October:
