@@ -51,7 +51,7 @@ Mercator variables:
 
 setup_nctoolbox
 
-% Plot temperature at the depth level closes to 150m:
+% Plot temperature at the depth level closest to 150m:
 
 model = 'mercator'; % 'hycom' 'mercator'
 source = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/mercator/global-analysis-forecast-phy-001-024_1593408360353.nc'; 
