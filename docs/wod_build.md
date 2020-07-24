@@ -1,41 +1,37 @@
-### argo_build
+### wod_build
 
 #### Syntax
 
 ```Matlab
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)
+[wod] = wod_build(wod_dir,variable_list)
 ```
 #### Description
 
-``[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)`` searches pathway ``argo_dir`` for profiles meeting the search criteria ``region``, ``start_date``, and ``end_date``. Profiles are loaded into the struct array ``argo`` with all variables specified in ``variable_list``. Variables PLATFORM_NUMBER, LONGITUDE, LATITUDE, JULD, and PRES_ADJUSTED are included automatically. Files containing matching profiles are listed in ``matching_files``.
-
+``wod_build(wod_dir,variable_list)`` loads profiles in path ``wod_dir`` into the struct ``wod`` with all variables specified in ``variable_list``. Variables lon, lat, date, z are included automatically.
 
 #### Example 1
 
+
+% wod_build
 
 ```Matlab
 
 % Get variable information:
 
-argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc';
-netcdf_info(argo_dir);
+wod_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/wod/*.nc'; % included
+netcdf_info(wod_dir);
 
-% Load Argo data from west of New Zealand:
+% Load data in path:
 
-region = [-60.0 -50.0 150.0 160.0]; %  Search region [-90 90 -180 180]
-start_date = '01-Nov-2015 00:00:00';
-end_date = '01-Jan-2017 00:00:00';
-variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
+variable_list = {'Temperature','Salinity'}; % Variables to read (besides lon, lat, date, z).
+[wod] = wod_build(wod_dir,variable_list);
 
-% Make plots:
+% Plot profiles:
 
-general_profiles(argo,variable,'depth')
-general_map(argo,bathymetry_dir,'2Dcontour')
+general_profiles(wod,'Temperature','depth')
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88301724-fd1dab80-ccd2-11ea-9ea7-7badf1424865.png" width="600">
-<img src="https://user-images.githubusercontent.com/24570061/88301788-11fa3f00-ccd3-11ea-9cdf-1622f701bfe9.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88361566-748d2280-cd47-11ea-82a7-0458d6e2c8dc.png" width="600">
 
 [Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
 
