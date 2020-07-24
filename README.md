@@ -101,7 +101,7 @@ To take full advantage of ocean_data_tools, download [Gibbs-SeaWater (GSW) Ocean
 
 ### Adding bathymetry to existing plots
 
-**bathymetry_chord** adds a slice of Smith & Sandwell Global Topography to a section plot
+**[bathymetry_chord](docs/bathymetry_chord.md)** adds a slice of Smith & Sandwell Global Topography to a section plot
 
 **[bathymetry_extract](docs/bathymetry_extract.md)** extracts a region of Smith & Sandwell Global Topography and outputs as arrays
 
