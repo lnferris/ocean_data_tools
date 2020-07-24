@@ -17,7 +17,7 @@
 
 ```Matlab
 
-% Build a uniform struct from HYCOM, requesting 49 stations at a higher resolution than the model itself:
+% Build a uniform struct from HYCOM, requesting 49 profiles at a higher resolution than the model itself:
 
 source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7';
 date = '28-Aug-2017 00:00:00';
@@ -26,7 +26,7 @@ ycoords = 65:1/48:66;
 variable_list = {'water_temp','salinity'}; 
 [hycom] = model_build_profiles(source,date,variable_list,xcoords,ycoords);
 
-Remove duplicate profiles, resulting in 39 unique stations:
+% Remove duplicate profiles, resulting in 39 unique profiles:
 
 object = hycom;
 [subobject] = general_remove_duplicates(object);
@@ -34,5 +34,6 @@ object = hycom;
 ```
 <img src="https://user-images.githubusercontent.com/24570061/88433788-bd3aef00-cdcc-11ea-99c4-653bca43d1d0.png" width="600">
 
-[Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
+[Back](https://github.com/lnferris/ocean_data_tools#general-functions-for-subsetting-and-plotting-uniform-structs-1)
+
 
