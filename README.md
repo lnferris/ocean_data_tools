@@ -91,7 +91,7 @@ To take full advantage of ocean_data_tools, download [Gibbs-SeaWater (GSW) Ocean
 
 **model_domain_plot** plots a 3-D domain from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
-**model_simple_plot** plots a 2-D layer from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
+**[model_simple_plot](docs/model_simple_plot.md)** plots a 2-D layer from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
 <img src="https://user-images.githubusercontent.com/24570061/88250403-8900ea80-cc75-11ea-8a5d-8a474d2e5c3f.png" width="800">
 
