@@ -10,7 +10,7 @@ function model_domain_plot(model,source,date,variable,region)
 %% Description 
 % 
 % model_domain_plot(model,source,date,variable,region) plots all depth 
-% levels over a particuler rectangular region. variable specifies the parameter 
+% levels over a particular rectangular region. variable specifies the parameter 
 % to be plotted. model='hycom' or model='mercator' specifies the model used.
 % source is the url or local path of the relevant dataset
 %
