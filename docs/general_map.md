@@ -3,12 +3,14 @@
 #### Syntax
 
 ```Matlab
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)
+[subobject] = general_remove_duplicates(object)
+[subobject] = general_remove_duplicates(object,var3)
 ```
 #### Description
 
-``[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)`` searches pathway ``argo_dir`` for profiles meeting the search criteria ``region``, ``start_date``, and ``end_date``. Profiles are loaded into the struct array ``argo`` with all variables specified in ``variable_list``. Variables PLATFORM_NUMBER, LONGITUDE, LATITUDE, JULD, and PRES_ADJUSTED are included automatically. Files containing matching profiles are listed in ``matching_files``.
+``[subobject] = general_remove_duplicates(object)`` removes profiles without unique coordinate locations; where ``object`` is a struct created by any of the ``_build`` functions in ocean_data_tools (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``).  This function can be used to remove duplicates when the user accidentally built an ``object`` using a coordinate list (``xcoords``, ``ycoords``) that exceeded the spatial resolution of the model or other raw data source itself.
 
+``[subobject] = general_remove_duplicates(object,var3)`` uses a third field ``var3`` as a uniqueness criterion, usually date. This avoids removing profiles with the same coordinate location but unique dates. ``var3`` should be a fieldname e.g. ``var3='date'``.
 
 #### Example 1
 
@@ -28,14 +30,12 @@ end_date = '01-Jan-2017 00:00:00';
 variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
 [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
 
-% Make plots:
+% Make a map:
 
-general_profiles(argo,variable,'depth')
 general_map(argo,bathymetry_dir,'2Dcontour')
 
 ```
 <img src="https://user-images.githubusercontent.com/24570061/88301724-fd1dab80-ccd2-11ea-9ea7-7badf1424865.png" width="600">
-<img src="https://user-images.githubusercontent.com/24570061/88301788-11fa3f00-ccd3-11ea-9cdf-1622f701bfe9.png" width="600">
 
 [Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
 
