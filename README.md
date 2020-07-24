@@ -95,7 +95,7 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 **[woa_build_profiles](docs/woa_build_profiles.md)** builds a uniform struct of profiles from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
 
-**wod_build** builds a uniform struct of profiles from World Ocean Database data
+**[wod_build](docs/wod_build.md)** builds a uniform struct of profiles from World Ocean Database data
 
 
 ### General functions for subsetting and plotting uniform structs
