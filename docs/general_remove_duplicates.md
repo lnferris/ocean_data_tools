@@ -1,14 +1,16 @@
-### argo_build
+### general_remove_duplicates
 
 #### Syntax
 
 ```Matlab
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)
+[subobject] = general_remove_duplicates(object)
+[subobject] = general_remove_duplicates(object,var3)
 ```
 #### Description
 
-``[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)`` searches pathway ``argo_dir`` for profiles meeting the search criteria ``region``, ``start_date``, and ``end_date``. Profiles are loaded into the struct array ``argo`` with all variables specified in ``variable_list``. Variables PLATFORM_NUMBER, LONGITUDE, LATITUDE, JULD, and PRES_ADJUSTED are included automatically. Files containing matching profiles are listed in ``matching_files``.
+``[subobject] = general_remove_duplicates(object)`` removes profiles without unique coordinate locations; where ``object`` is a struct created by any of the ``_build`` functions in ocean_data_tools (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``).  This function can be used to remove duplicates when the user accidentally built an ``object`` using a coordinate list (``xcoords``, ``ycoords``) that exceeded the spatial resolution of the model or other raw data source itself.
 
+``[subobject] = general_remove_duplicates(object,var3)`` uses a third field ``var3`` as a uniqueness criterion, usually date. This avoids removing profiles with the same coordinate location but unique dates. ``var3`` should be a fieldname e.g. ``var3='date'``.
 
 #### Example 1
 
