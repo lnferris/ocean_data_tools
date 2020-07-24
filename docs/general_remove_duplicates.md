@@ -17,27 +17,22 @@
 
 ```Matlab
 
-% Get variable information:
+% Build a uniform struct from HYCOM, requesting stations at a higher resolution than the model itself:
 
-argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc';
-netcdf_info(argo_dir);
+source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7';
+date = '28-Aug-2017 00:00:00';
+xcoords = -75:1/48:-74;
+ycoords = 65:1/48:66;
+variable_list = {'water_temp','salinity'}; 
+[hycom] = model_build_profiles(source,date,variable_list,xcoords,ycoords);
 
-% Load Argo data from west of New Zealand:
+Remove duplicate profiles:
 
-region = [-60.0 -50.0 150.0 160.0]; %  Search region [-90 90 -180 180]
-start_date = '01-Nov-2015 00:00:00';
-end_date = '01-Jan-2017 00:00:00';
-variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
-
-% Make plots:
-
-general_profiles(argo,variable,'depth')
-general_map(argo,bathymetry_dir,'2Dcontour')
+object = hycom;
+[subobject] = general_remove_duplicates(object);
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88301724-fd1dab80-ccd2-11ea-9ea7-7badf1424865.png" width="600">
-<img src="https://user-images.githubusercontent.com/24570061/88301788-11fa3f00-ccd3-11ea-9cdf-1622f701bfe9.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88433788-bd3aef00-cdcc-11ea-99c4-653bca43d1d0.png" width="600">
 
 [Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
 
