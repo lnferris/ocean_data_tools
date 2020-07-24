@@ -1,41 +1,38 @@
-### argo_build
+### general_depth_subset
 
 #### Syntax
 
 ```Matlab
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)
+general_depth_subset(object,zrange)
+general_depth_subset(object,zrange,depth_list)
 ```
 #### Description
 
-``[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)`` searches pathway ``argo_dir`` for profiles meeting the search criteria ``region``, ``start_date``, and ``end_date``. Profiles are loaded into the struct array ``argo`` with all variables specified in ``variable_list``. Variables PLATFORM_NUMBER, LONGITUDE, LATITUDE, JULD, and PRES_ADJUSTED are included automatically. Files containing matching profiles are listed in ``matching_files``.
+``[subobject] =  general_depth_subset(object,zrange)`` subsets ``object`` by depth-range ``zrange``; where ``object`` is a struct created by any of the ``_build`` functions in ocean_data_tools (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). The default depth-variable used to subset is ``'depth'``. ``zrange`` is a 2-element vector e.g. ``zrange=[0 200]`` in meters or dbar. Order and sign of ``zrange`` does not matter.
 
+``[subobject] =  general_depth_subset(object,zrange,depth_list)`` enables the user to specify one or more depth variables (instead of using default ``'depth'``) e.g. ``depth_list = {'pressure'}`` or ``depth_list = {'pressure','z','depth','depth_vke'}``.
 
 #### Example 1
 
 
 ```Matlab
+% Build a uniform struct from HYCOM and plot a temperature section:
 
-% Get variable information:
-
-argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc';
-netcdf_info(argo_dir);
-
-% Load Argo data from west of New Zealand:
-
-region = [-60.0 -50.0 150.0 160.0]; %  Search region [-90 90 -180 180]
-start_date = '01-Nov-2015 00:00:00';
-end_date = '01-Jan-2017 00:00:00';
-variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
-
-% Make plots:
-
-general_profiles(argo,variable,'depth')
-general_map(argo,bathymetry_dir,'2Dcontour')
+[hycom] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid);
+general_section(hycom,'water_temp','lat','depth',1,1)
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88301724-fd1dab80-ccd2-11ea-9ea7-7badf1424865.png" width="600">
-<img src="https://user-images.githubusercontent.com/24570061/88301788-11fa3f00-ccd3-11ea-9cdf-1622f701bfe9.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88417509-0892d480-cdb0-11ea-9685-0da4b82f99f4.png" width="700">
 
-[Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
+```Matlab
+% Subset to upper 450 meters and replot the temperature section:
+
+[hycom] =  general_depth_subset(hycom,[0 450]);
+general_section(hycom,'water_temp','lat','depth',1,1)
+
+```
+<img src="https://user-images.githubusercontent.com/24570061/88417524-10527900-cdb0-11ea-8a5c-b8c6607a2386.png" width="700">
+
+
+[Back](https://github.com/lnferris/ocean_data_tools#general-functions-for-subsetting-and-plotting-uniform-structs-1)
 
