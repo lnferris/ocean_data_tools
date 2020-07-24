@@ -72,7 +72,7 @@ To take full advantage of ocean_data_tools, download [Gibbs-SeaWater (GSW) Ocean
 
 **[general_map](docs/general_map.md)** plots coordinate locations in a uniform struct, with optional bathymetry contours
 
-**general_profiles** plots vertical profiles in a uniform struct
+**[general_profiles](docs/general_profiles.md)** plots vertical profiles in a uniform struct
 
 **[general_region_subset](docs/general_region_subset.md)** subsets a uniform struct by polygon region
 
