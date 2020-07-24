@@ -80,7 +80,7 @@ To take full advantage of ocean_data_tools, download [Gibbs-SeaWater (GSW) Ocean
 
 **general_remove_duplicates** removes spatially (or spatially and temporally) non-unique profiles from a uniform struct
 
-**general_section** plots a data section from a uniform struct
+**[general_section](docs/general_section.md)** plots a data section from a uniform struct
 
 
 ### Plotting gridded data without building structs
