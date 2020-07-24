@@ -12,9 +12,34 @@
 
 ``[data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth,arrows)`` adds directional arrows if it is a velocity magnitude plot. ``arrows=1`` is on, ``arrows=0`` is off.
 
-hycom ``variables``: 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 'surf_el' 'water_u_bottom' 'water_v_bottom' 'water_temp_bottom' 'salinity_bottom'  
-
-mercator ``variables``: 'thetao' 'so' 'uo' 'vo' 'velocity' 'mlotst' 'siconc' 'usi' 'vsi' 'sithick' 'bottomT' 'zos'
+HYCOM variables: 
+```Matlab
+'water_u' 
+'water_v' 
+'water_temp' 
+'salinity' 
+'velocity' 
+'surf_el' 
+'water_u_bottom' 
+'water_v_bottom' 
+'water_temp_bottom' 
+'salinity_bottom'
+```
+```Matlab
+Mercator variables: 
+'thetao' 
+'so' 
+'uo' 
+'vo' 
+'velocity'
+'mlotst' 
+'siconc'
+'usi' 
+'vsi' 
+'sithick'
+'bottomT' 
+'zos'
+```
                      
 
 #### Example 1
