@@ -56,7 +56,7 @@ variable_list = {'temperature','salinity','oxygen'}; % 'temperature' 'salinity' 
 time = '00'; % '00' for annual climatology '01' '10' etc. for monthly climatology
 zgrid = 1; % vertical grid for linear interpolation in meters
 [woa] =  woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
-[woa] = general_remove_duplicates(woa); % thin struct to gridding of source
+[woa] = general_remove_duplicates(woa); % thin struct to gridding of source (optional)
 
 % Make a section plot:
 
