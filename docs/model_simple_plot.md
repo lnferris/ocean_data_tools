@@ -25,8 +25,8 @@ HYCOM variables:
 'water_temp_bottom' 
 'salinity_bottom'
 ```
-```Matlab
 Mercator variables: 
+```Matlab
 'thetao' 
 'so' 
 'uo' 
