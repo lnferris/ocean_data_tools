@@ -18,6 +18,8 @@
 
 #### Example 1
 
+<img src="https://user-images.githubusercontent.com/24570061/88437360-53264800-cdd4-11ea-8b5a-c01cb973768e.png" width="600">
+
 ```Matlab
 
 % Add bathymetry from 67S,160E to 66.5S,80W to a temperature section plot:
