@@ -18,7 +18,7 @@ general_section(hycom,'salinity','lat','depth',1,1)
 
 ```Matlab
 
-% Use GSW to append the struct with density:
+% Use GSW to append the struct with absolute salinity, conservative temperature, and density:
 
 [hycom.SA, ~] = gsw_SA_from_SP(hycom.salinity,-hycom.depth,hycom.lon,hycom.lat);
 hycom.CT = gsw_CT_from_t(hycom.SA,hycom.water_temp,-hycom.depth);
