@@ -93,7 +93,7 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 **[whp_cruise_build](docs/whp_cruise_build.md)** builds a uniform struct of profiles from GO-SHIP cruise data in WHP-Exchange Format
 
-**woa_build_profiles** builds a uniform struct of profiles from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
+**[woa_build_profiles](docs/woa_build_profiles.md)** builds a uniform struct of profiles from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
 
 **wod_build** builds a uniform struct of profiles from World Ocean Database data
 
