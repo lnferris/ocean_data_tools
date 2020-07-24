@@ -38,6 +38,6 @@ region = [-5.0, 45.0 ,-120, -150];
 woa_domain_plot(variable,time,region)
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88359635-5e7c6380-cd41-11ea-8f39-62beb8ecf912.png" width="800">
+<img src="https://user-images.githubusercontent.com/24570061/88359635-5e7c6380-cd41-11ea-8f39-62beb8ecf912.png" width="900">
 
 [Back](https://github.com/lnferris/ocean_data_tools#plotting-gridded-data-without-building-structs-1)
