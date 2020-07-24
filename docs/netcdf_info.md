@@ -12,8 +12,10 @@ netcdf_info(nc_dir)
 #### Example 1
 
 ```Matlab
-% argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc';
-% netcdf_info(argo_dir);
+% Get information about Argo netcdf files:
+
+argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc';
+netcdf_info(argo_dir);
 ```
 <img src="https://user-images.githubusercontent.com/24570061/88412188-2a3b8e00-cda7-11ea-921c-fa4c112adacf.png" width="800">
 
