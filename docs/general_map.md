@@ -3,14 +3,17 @@
 #### Syntax
 
 ```Matlab
-[subobject] = general_remove_duplicates(object)
-[subobject] = general_remove_duplicates(object,var3)
+general_map(object)
+general_map(object,bathymetry_dir)
+general_map(object,bathymetry_dir,ptype)
 ```
 #### Description
 
-``[subobject] = general_remove_duplicates(object)`` removes profiles without unique coordinate locations; where ``object`` is a struct created by any of the ``_build`` functions in ocean_data_tools (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``).  This function can be used to remove duplicates when the user accidentally built an ``object`` using a coordinate list (``xcoords``, ``ycoords``) that exceeded the spatial resolution of the model or other raw data source itself.
+``general_map(object)`` plots coordinate locations (``object.lon`` and ``object.lat``); where ``object`` is a struct created by any of the ``_build`` functions in ocean_data_tools (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). 
 
-``[subobject] = general_remove_duplicates(object,var3)`` uses a third field ``var3`` as a uniqueness criterion, usually date. This avoids removing profiles with the same coordinate location but unique dates. ``var3`` should be a fieldname e.g. ``var3='date'``.
+``general_map(object,bathymetry_dir)`` adds bathymetry contours from Smith & Sandwell Global Topography with path ``bathymetry_dir``.
+
+``general_map(object,bathymetry_dir,ptype)`` allows the user to modify plot type from the default contours e.g. ``ptype = '2Dscatter'`` or ``'2Dcontour'``
 
 #### Example 1
 
