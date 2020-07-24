@@ -34,5 +34,6 @@ caxis([0 1])
 
 ```
 <img src="https://user-images.githubusercontent.com/24570061/88409944-ab912180-cda3-11ea-84bc-f848a4f795bc.png" width="700">
+
 [Back](https://github.com/lnferris/ocean_data_tools#adding-bathymetry-to-existing-plots-1)
 
