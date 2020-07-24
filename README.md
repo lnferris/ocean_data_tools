@@ -68,7 +68,7 @@ To take full advantage of ocean_data_tools, download [Gibbs-SeaWater (GSW) Ocean
 
 ### General functions for subsetting and plotting uniform structs
 
-**general_depth_subset** subsets a uniform struct by depth
+**[general_depth_subset](docs/general_depth_subset.md)** subsets a uniform struct by depth
 
 **general_map** plots coordinate locations in a uniform struct, with optional bathymetry contours
 
