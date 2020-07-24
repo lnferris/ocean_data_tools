@@ -74,7 +74,7 @@ To take full advantage of ocean_data_tools, download [Gibbs-SeaWater (GSW) Ocean
 
 **general_profiles** plots vertical profiles in a uniform struct
 
-**general_region_subset** subsets a uniform struct by polygon region
+**[general_region_subset](docs/general_region_subset.md)** subsets a uniform struct by polygon region
 
 <img src="https://user-images.githubusercontent.com/24570061/88250944-358f9c00-cc77-11ea-9b0d-2d582ad186dd.png" width="700">
 
