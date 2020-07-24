@@ -109,7 +109,7 @@ To take full advantage of ocean_data_tools, download [Gibbs-SeaWater (GSW) Ocean
 
 <img src="https://user-images.githubusercontent.com/24570061/88251161-ed24ae00-cc77-11ea-87d6-0e3b4484764d.jpg" width="700">
 
-**bathymetry_region** finds the rectangular region around a uniform struct to pass as an argument for other bathymetry functions
+**[bathymetry_region](docs/bathymetry_region.md)** finds the rectangular region around a uniform struct to pass as an argument for other bathymetry functions
 
 **bathymetry_section** adds Smith & Sandwell Global Topography to a section from plot using bathymetry data nearest to specified coordinates
 
