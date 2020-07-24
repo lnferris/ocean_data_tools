@@ -36,9 +36,12 @@ general_map(argo,bathymetry_dir)
 <img src="https://user-images.githubusercontent.com/24570061/88415528-a684a000-cdac-11ea-8f79-189818c2351c.png" width="600">
 
 ```Matlab
-% Subset the struct:
+% Subset the struct and remap:
 
 [subargo] = general_region_subset(argo,xcoords,ycoords); 
+general_map(subargo,bathymetry_dir)
 
 ```
+<img src="https://user-images.githubusercontent.com/24570061/88416080-8e615080-cdad-11ea-8014-e245935da2cf.png" width="600">
+
 [Back](https://github.com/lnferris/ocean_data_tools#general-functions-for-subsetting-and-plotting-uniform-structs-1)
