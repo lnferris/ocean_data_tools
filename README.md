@@ -1,12 +1,12 @@
-![84697805-c6f34c00-af1c-11ea-8492-717a562113af](https://user-images.githubusercontent.com/24570061/85356569-4664ba80-b4dd-11ea-9ec7-8ec26df76dcf.png)
+# ocean_data_tools: A MATLAB toolbox for interacting with bulk freely-available oceanographic data.
 
-# ocean_data_tools 
+<img src="https://user-images.githubusercontent.com/24570061/85356569-4664ba80-b4dd-11ea-9ec7-8ec26df76dcf.png" width="600">
 
 [![GitHub license](https://img.shields.io/github/license/lnferris/ocean_data_tools)](https://github.com/lnferris/ocean_data_tools/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/lnferris/ocean_data_tools)](https://github.com/lnferris/ocean_data_tools/stargazers) [![GitHub forks](https://img.shields.io/github/forks/lnferris/ocean_data_tools)](https://github.com/lnferris/ocean_data_tools/network) [![GitHub issues](https://img.shields.io/github/issues/lnferris/ocean_data_tools)](https://github.com/lnferris/ocean_data_tools/issues)
 
 **Copyright (c) 2020 lnferris** 
 
-ocean_data_tools simplifies the process of extracting, formatting, and visualizing freely-available oceanographic data. While there is a wealth of oceanographic data accessible online, some end-users may be dissuaded from utilizing this data due to the overhead associated with batch downloading it and formatting it into usable data structures. ocean_data_tools solves this problem by allowing the user to transform common oceanographic data sources into uniform structs, call generalized functions on these structs, easily perform custom calculations, and make graphics.
+ocean_data_tools simplifies the process of extracting, formatting, and visualizing freely-available oceanographic data. While a wealth of oceanographic data is accessible online, some end-users may be dissuaded from utilizing this data due to the overhead associated with obtaining it and formatting it into usable data structures. ocean_data_tools solves this problem by allowing the user to transform common oceanographic data sources into uniform structs, call generalized functions on these structs, easily perform custom calculations, and make graphics.
 
 Find a bug, have a question, or want to contribute? Open an issue or email lnferris@alum.mit.edu.
 
@@ -89,7 +89,7 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 **model_build_profiles**  builds a uniform struct of profiles from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
-<img width="954" alt="demo1" src="https://user-images.githubusercontent.com/24570061/88250150-ac776580-cc74-11ea-8c72-cea7cc50b4d9.png">
+<img src="https://user-images.githubusercontent.com/24570061/88250150-ac776580-cc74-11ea-8c72-cea7cc50b4d9.png" width="800">
 
 **[whp_cruise_build](docs/whp_cruise_build.md)** builds a uniform struct of profiles from GO-SHIP cruise data in WHP-Exchange Format
 
@@ -108,7 +108,7 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 **general_region_subset** subsets a uniform struct by polygon region
 
-<img width="960" alt="Screen Shot 2020-07-22 at 23 54 52" src="https://user-images.githubusercontent.com/24570061/88250944-358f9c00-cc77-11ea-9b0d-2d582ad186dd.png">
+<img src="https://user-images.githubusercontent.com/24570061/88250944-358f9c00-cc77-11ea-9b0d-2d582ad186dd.png" width="800">
 
 **general_remove_duplicates** removes spatially (or spatially and temporally) non-unique profiles from a uniform struct
 
@@ -125,12 +125,11 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 **model_simple_plot** plots a 2-D layer from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
-![model_simple_plot-hycom](https://user-images.githubusercontent.com/24570061/88250403-8900ea80-cc75-11ea-8a5d-8a474d2e5c3f.png)
+<img src="https://user-images.githubusercontent.com/24570061/88250403-8900ea80-cc75-11ea-8a5d-8a474d2e5c3f.png" width="800">
 
 **[woa_domain_plot](docs/woa_domain_plot.md)** plots a 3-D domain from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
 
 **[woa_simple_plot](docs/woa_simple_plot.md)** plots a 2-D layer from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
-
 
 ### Adding bathymetry to existing plots
 
@@ -140,20 +139,19 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 **bathymetry_plot** adds bathymetry to 2-D (latitude vs. longitude) or 3-D (latitude vs. longitude vs. depth) data plots
 
-![Eby2o8-XsAASaSA](https://user-images.githubusercontent.com/24570061/88251161-ed24ae00-cc77-11ea-87d6-0e3b4484764d.jpg)
+<img src="https://user-images.githubusercontent.com/24570061/88251161-ed24ae00-cc77-11ea-87d6-0e3b4484764d.jpg" width="800">
 
 **bathymetry_region** finds the rectangular region around a uniform struct to pass as an argument for other bathymetry functions
 
 **bathymetry_section** adds Smith & Sandwell Global Topography to a section from plot using bathymetry data nearest to specified coordinates
 
-![bathymetry_section](https://user-images.githubusercontent.com/24570061/88250660-3d027580-cc76-11ea-808c-f51d5105e420.png)
-
+<img src="https://user-images.githubusercontent.com/24570061/88250660-3d027580-cc76-11ea-808c-f51d5105e420.png" width="800">
 
 ### Additional functions for inspecting Argo data
 
 **[argo_platform_map](docs/argo_platform_map.md)** plots locations of Argo profiles in a uniform struct, coloring markers by platform (individual Argo float)
 
-![argo_platform_map](https://user-images.githubusercontent.com/24570061/88250439-a2099b80-cc75-11ea-9516-ad3d1f65fdf9.jpg)
+<img src="https://user-images.githubusercontent.com/24570061/88250439-a2099b80-cc75-11ea-9516-ad3d1f65fdf9.jpg" width="800">
 
 **[argo_platform_subset](docs/argo_platform_subset.md)** subsets a uniform struct of Argo data to one platform (individual Argo float)
 
@@ -170,6 +168,4 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 **transect_select** creates a coordinate list (which represents a virtual transect) by clicking stations on a plot
 
-<img width="900" alt="Screen Shot 2020-07-22 at 23 50 25" src="https://user-images.githubusercontent.com/24570061/88250639-2b20d280-cc76-11ea-9c94-3ce16300f735.png">
-
-
+<img src="https://user-images.githubusercontent.com/24570061/88250639-2b20d280-cc76-11ea-9c94-3ce16300f735.png" width="800">
