@@ -78,7 +78,7 @@ To take full advantage of ocean_data_tools, download [Gibbs-SeaWater (GSW) Ocean
 
 <img src="https://user-images.githubusercontent.com/24570061/88250944-358f9c00-cc77-11ea-9b0d-2d582ad186dd.png" width="700">
 
-**general_remove_duplicates** removes spatially (or spatially and temporally) non-unique profiles from a uniform struct
+**[general_remove_duplicates](docs/general_remove_duplicates.md)** removes spatially (or spatially and temporally) non-unique profiles from a uniform struct
 
 **[general_section](docs/general_section.md)** plots a data section from a uniform struct
 
