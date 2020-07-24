@@ -17,7 +17,7 @@
 
 ```Matlab
 
-% Build a uniform struct from HYCOM, requesting stations at a higher resolution than the model itself:
+% Build a uniform struct from HYCOM, requesting 49 stations at a higher resolution than the model itself:
 
 source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7';
 date = '28-Aug-2017 00:00:00';
@@ -26,7 +26,7 @@ ycoords = 65:1/48:66;
 variable_list = {'water_temp','salinity'}; 
 [hycom] = model_build_profiles(source,date,variable_list,xcoords,ycoords);
 
-Remove duplicate profiles:
+Remove duplicate profiles, resulting in 39 unique stations:
 
 object = hycom;
 [subobject] = general_remove_duplicates(object);
