@@ -46,7 +46,7 @@ woa_simple_plot(variable,time,region,depth)
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88359631-5c1a0980-cd41-11ea-8e2b-c331e28e1e09.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88359631-5c1a0980-cd41-11ea-8e2b-c331e28e1e09.png" width="900">
 
 ```Matlab
 
@@ -63,7 +63,7 @@ zgrid = 1; % vertical grid for linear interpolation in meters
 general_section(woa,'salinity','lon','depth',1,1)
 ```
 
-<img src="https://user-images.githubusercontent.com/24570061/88359633-5d4b3680-cd41-11ea-84bd-ef62b5f42fbb.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88359633-5d4b3680-cd41-11ea-84bd-ef62b5f42fbb.png" width="900">
 
 [Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
 
