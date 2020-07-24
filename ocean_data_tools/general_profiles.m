@@ -9,7 +9,7 @@ function general_profiles(object,variable,zref)
 %% Description 
 % 
 % general_profiles(object,variable,zref) plots vertical profiles of the 
-% specified variable in struct object as a function of the depth fields
+% specified variable in struct object as a function of the depth field
 % specified by zref; where object is a struct created by any of 
 % the _build functions in ocean_data_tools (e.g. argo, cruise, hycom, mercator,
 % woa, wod) and variable is a field name.
