@@ -22,7 +22,7 @@ general_depth_subset(object,zrange,depth_list)
 general_section(hycom,'water_temp','lat','depth',1,1)
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88417509-0892d480-cdb0-11ea-9685-0da4b82f99f4.png" width="700">
+<img src="https://user-images.githubusercontent.com/24570061/88417509-0892d480-cdb0-11ea-9685-0da4b82f99f4.png" width="600">
 
 ```Matlab
 % Subset to upper 450 meters and replot the temperature section:
@@ -31,7 +31,7 @@ general_section(hycom,'water_temp','lat','depth',1,1)
 general_section(hycom,'water_temp','lat','depth',1,1)
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88417524-10527900-cdb0-11ea-8a5c-b8c6607a2386.png" width="700">
+<img src="https://user-images.githubusercontent.com/24570061/88417524-10527900-cdb0-11ea-8a5c-b8c6607a2386.png" width="600">
 
 
 [Back](https://github.com/lnferris/ocean_data_tools#general-functions-for-subsetting-and-plotting-uniform-structs-1)
