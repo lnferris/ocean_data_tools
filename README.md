@@ -6,7 +6,7 @@
 
 **Copyright (c) 2020 lnferris** 
 
-ocean_data_tools simplifies the process of extracting, formatting, and visualizing freely-available oceanographic data. While a wealth of oceanographic data is accessible online, some end-users may be dissuaded from utilizing this data due to the overhead associated with obtaining it and formatting it into usable data structures. ocean_data_tools solves this problem by allowing the user to transform common oceanographic data sources into uniform structs, call generalized functions on these structs, easily perform custom calculations, and make graphics.
+ocean_data_tools simplifies the process of extracting, formatting, and visualizing freely-available oceanographic data. While a wealth of oceanographic data is accessible online, some end-users may be dissuaded from utilizing this data due to the overhead associated with obtaining and formatting it into usable data structures. ocean_data_tools solves this problem by allowing the user to transform common oceanographic data sources into uniform structs, call generalized functions on these structs, easily perform custom calculations, and make graphics.
 
 Find a bug, have a question, or want to contribute? Open an issue or email lnferris@alum.mit.edu.
 
