@@ -13,8 +13,8 @@ general_section(hycom,'water_temp','lat','depth',1,1)
 general_section(hycom,'salinity','lat','depth',1,1)
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88403123-16d5f600-cd9a-11ea-9ca6-c1e0403a44da.png" width="600">
-<img src="https://user-images.githubusercontent.com/24570061/88403126-176e8c80-cd9a-11ea-846f-8e97e80f3805.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88403123-16d5f600-cd9a-11ea-9ca6-c1e0403a44da.png" width="700">
+<img src="https://user-images.githubusercontent.com/24570061/88403126-176e8c80-cd9a-11ea-846f-8e97e80f3805.png" width="700">
 
 ```Matlab
 
@@ -29,7 +29,7 @@ hycom.rho = gsw_rho(hycom.SA,hycom.CT,-hycom.depth);
 general_section(hycom,'rho','lat','depth',1,1)
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88403129-19d0e680-cd9a-11ea-9b4e-4e733cdb3c5b.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88403129-19d0e680-cd9a-11ea-9b4e-4e733cdb3c5b.png" width="700">
 
 [Back](https://github.com/lnferris/ocean_data_tools#dependencies-1)
 
