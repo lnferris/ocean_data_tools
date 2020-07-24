@@ -10,12 +10,13 @@
 
 ``[woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords)`` builds a struct of profiles from World Ocean Atlas 2018 Statistical Mean for All Decades Objectively Analyzed Mean Fields at Standard Depth Levels, pulling profiles nearest to coordinates specified by ``xcoords`` and ``ycoords``. ``time`` specifies monthly or annual climatology; ``time ='00'`` for annual climatology and ``'01'`` ``'10'`` etc. for monthly climatology. Profiles are loaded into the struct array ``woa`` with all variables specified in ``variable_list``. The function builds the url, extracting the maximum resolution available (typically 0.25-deg or 1.00-degree grid). Resolution depends on the variable. If the user requests only 0.25-degree variables in variable_list, data will be returned in  0.25-degree resolution. If any requested variable is coarser (1-degree) all variables will be returned in 1-degree resolution.
 
-Variables are:
+Available variables are:
 
 ``'temperature'`` (degrees Celsius)    
 ``'salinity'`` (psu)                    
 ``'oxygen'`` (umol/kg)                 
 ``'o2sat'`` (%)
+
 ``'AOU'`` (umol/kg)                
 ``'silicate'`` (umol/kg)          
 ``'phosphate'`` (umol/kg)   
