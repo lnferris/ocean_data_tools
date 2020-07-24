@@ -85,15 +85,15 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 **[argo_build](docs/argo_build.md)** searches the locally-stored Argo profiles matching the specified region & time period and builds a uniform struct
 
-**mocha_build_profiles** builds a uniform struct of profiles from the MOCHA Mid-Atlantic Bight climatology
+**[mocha_build_profiles](docs/mocha_build_profiles.md)** builds a uniform struct of profiles from the MOCHA Mid-Atlantic Bight climatology
 
 **model_build_profiles**  builds a uniform struct of profiles from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
 <img width="954" alt="demo1" src="https://user-images.githubusercontent.com/24570061/88250150-ac776580-cc74-11ea-8c72-cea7cc50b4d9.png">
 
-**whp_cruise_build** builds a uniform struct of profiles from GO-SHIP cruise data in WHP-Exchange Format
+**[whp_cruise_build](docs/whp_cruise_build.md)** builds a uniform struct of profiles from GO-SHIP cruise data in WHP-Exchange Format
 
-**woa_build_profiles** builds a uniform struct of profiles from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
+**[woa_build_profiles](docs/woa_build_profiles.md)** builds a uniform struct of profiles from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
 
 **wod_build** builds a uniform struct of profiles from World Ocean Database data
 
@@ -117,9 +117,9 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 ### Plotting gridded data without building structs
 
-**mocha_domain_plot** plots a 3-D domain from the MOCHA Mid-Atlantic Bight climatology
+**[mocha_domain_plot](docs/mocha_domain_plot.md)** plots a 3-D domain from the MOCHA Mid-Atlantic Bight climatology
 
-**mocha_simple_plot** plots a 2-D layer from the MOCHA Mid-Atlantic Bight climatology
+**[mocha_simple_plot](docs/mocha_simple_plot.md)** plots a 2-D layer from the MOCHA Mid-Atlantic Bight climatology
 
 **model_domain_plot** plots a 3-D domain from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
@@ -127,9 +127,9 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 ![model_simple_plot-hycom](https://user-images.githubusercontent.com/24570061/88250403-8900ea80-cc75-11ea-8a5d-8a474d2e5c3f.png)
 
-**woa_domain_plot** plots a 3-D domain from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
+**[woa_domain_plot](docs/woa_domain_plot.md)** plots a 3-D domain from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
 
-**woa_simple_plot** plots a 2-D layer from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
+**[woa_simple_plot](docs/woa_simple_plot.md)** plots a 2-D layer from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields
 
 
 ### Adding bathymetry to existing plots
@@ -151,15 +151,15 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 ### Additional functions for inspecting Argo data
 
-**argo_platform_map** plots locations of Argo profiles in a uniform struct, coloring markers by platform (individual Argo float)
+**[argo_platform_map](docs/argo_platform_map.md)** plots locations of Argo profiles in a uniform struct, coloring markers by platform (individual Argo float)
 
 ![argo_platform_map](https://user-images.githubusercontent.com/24570061/88250439-a2099b80-cc75-11ea-9516-ad3d1f65fdf9.jpg)
 
-**argo_platform_subset** subsets a uniform struct of Argo data to one platform (individual Argo float)
+**[argo_platform_subset](docs/argo_platform_subset.md)** subsets a uniform struct of Argo data to one platform (individual Argo float)
 
-**argo_profiles_map** plots coordinate locations of Argo profiles in uniform struct argo, using colors corresponding to argo_profiles called on the same struct
+**[argo_profiles_map](docs/argo_profiles_map.md)** plots coordinate locations of Argo profiles in uniform struct argo, using colors corresponding to argo_profiles called on the same struct
 
-**argo_profiles** plots vertical Argo profiles in uniform struct argo, using colors corresponding to argo_profiles_map called on the same struct
+**[argo_profiles](docs/argo_profiles.md)** plots vertical Argo profiles in uniform struct argo, using colors corresponding to argo_profiles_map called on the same struct
 
 
 ### Miscellaneous utilities

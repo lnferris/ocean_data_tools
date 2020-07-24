@@ -1,17 +1,19 @@
-### argo_build
+### argo_platform_map
 
 #### Syntax
 
 ```Matlab
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)
+argo_platform_map(argo)
+argo_platform_map(argo,annotate)
 ```
 #### Description
 
-``[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)`` searches pathway ``argo_dir`` for profiles meeting the search criteria ``region``, ``start_date``, and ``end_date``. Profiles are loaded into the struct array ``argo`` with all variables specified in ``variable_list``. Variables PLATFORM_NUMBER, LONGITUDE, LATITUDE, JULD, and PRES_ADJUSTED are included automatically. Files containing matching profiles are listed in ``matching_files``.
+``argo_platform_map(argo)`` plots locations of Argo profiles in ``argo``, coloring markers by the specific Argo platform which made the measurements; where ``argo`` is a struct created by ``argo_build``.
+
+``argo_platform_map(argo,annotate)`` adds number annotations to the markers which correspond to a longer Argo platform ID in the legend. By default ``annotate=0``. Set ``annotate=1`` to turn on annotation.
 
 
 #### Example 1
-
 
 ```Matlab
 
@@ -28,14 +30,14 @@ end_date = '01-Jan-2017 00:00:00';
 variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
 [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
 
-% Make plots:
+% Plot locations of Argo profiles, coloring by unique platform:
 
-general_profiles(argo,variable,'depth')
-general_map(argo,bathymetry_dir,'2Dcontour')
+annotate = 1; 
+argo_platform_map(argo,annotate) % annotate optional,  1=on 0=off
+bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour')
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88301724-fd1dab80-ccd2-11ea-9ea7-7badf1424865.png" width="600">
-<img src="https://user-images.githubusercontent.com/24570061/88301788-11fa3f00-ccd3-11ea-9cdf-1622f701bfe9.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88316847-6955da80-cce6-11ea-8bb0-d9d0523a3a29.png" width="700">
 
-[Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
+[Back](https://github.com/lnferris/ocean_data_tools#additional-functions-for-inspecting-argo-data-1)
 

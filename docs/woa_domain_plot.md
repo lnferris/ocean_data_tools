@@ -1,41 +1,43 @@
-### argo_build
+### woa_domain_plot
 
 #### Syntax
 
 ```Matlab
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)
+woa_domain_plot(variable,time,region)
 ```
 #### Description
 
-``[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)`` searches pathway ``argo_dir`` for profiles meeting the search criteria ``region``, ``start_date``, and ``end_date``. Profiles are loaded into the struct array ``argo`` with all variables specified in ``variable_list``. Variables PLATFORM_NUMBER, LONGITUDE, LATITUDE, JULD, and PRES_ADJUSTED are included automatically. Files containing matching profiles are listed in ``matching_files``.
+``woa_domain_plot(variable,time,region)`` plots all depth levels of  World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields at Standard Depth Levels over the specified ``region``. ``variable`` specifies the parameter to be plotted and ``region`` is the rectangular region to be plotted. ``time`` specifies monthly or annual climatology; ``time = '00'`` for annual climatology and ``'01'`` ``'10'`` etc. for monthly climatology. The function builds the url, extracting the maximum resolution available (typically 0.25-deg or 1.00-degree grid). 
 
+Available variables are:
+
+``'temperature'`` (degrees Celsius)    
+``'salinity'`` (psu)                    
+``'oxygen'`` (umol/kg)                 
+``'o2sat'`` (%)
+
+``'AOU'`` (umol/kg)                
+``'silicate'`` (umol/kg)          
+``'phosphate'`` (umol/kg)   
+``'nitrate'`` (umol/kg)                      
 
 #### Example 1
 
 
 ```Matlab
 
-% Get variable information:
+% Setup nctoolbox:
 
-argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc';
-netcdf_info(argo_dir);
+setup_nctoolbox
 
-% Load Argo data from west of New Zealand:
+% Plot a 3-D nitrate domain:
 
-region = [-60.0 -50.0 150.0 160.0]; %  Search region [-90 90 -180 180]
-start_date = '01-Nov-2015 00:00:00';
-end_date = '01-Jan-2017 00:00:00';
-variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
-[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
-
-% Make plots:
-
-general_profiles(argo,variable,'depth')
-general_map(argo,bathymetry_dir,'2Dcontour')
+variable = 'nitrate';
+time = '03';
+region = [-5.0, 45.0 ,-120, -150]; 
+woa_domain_plot(variable,time,region)
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88301724-fd1dab80-ccd2-11ea-9ea7-7badf1424865.png" width="600">
-<img src="https://user-images.githubusercontent.com/24570061/88301788-11fa3f00-ccd3-11ea-9cdf-1622f701bfe9.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88359635-5e7c6380-cd41-11ea-8f39-62beb8ecf912.png" width="900">
 
-[Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
-
+[Back](https://github.com/lnferris/ocean_data_tools#plotting-gridded-data-without-building-structs-1)

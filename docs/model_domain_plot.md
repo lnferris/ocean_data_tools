@@ -1,4 +1,4 @@
-### argo_build
+### model_domain_plot
 
 #### Syntax
 
