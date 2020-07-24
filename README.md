@@ -16,7 +16,7 @@ Find a bug, have a question, or want to contribute? Open an issue or email lnfer
 
 ### [Contents](#contents-1)
 
-### [Getting Data](#getting-data-1)
+### [Finding Data](#finding-data-1)
 
 ## Dependencies
 
@@ -137,7 +137,7 @@ Main functions are located in **ocean_data_tools/**. Demonstrations are located 
 <img src="https://user-images.githubusercontent.com/24570061/88250639-2b20d280-cc76-11ea-9c94-3ce16300f735.png" width="800">
 
 
-## Getting Data
+## Finding Data
 
 #### argo
 
