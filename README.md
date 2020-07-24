@@ -134,7 +134,7 @@ To take full advantage of ocean_data_tools, download [Gibbs-SeaWater (GSW) Ocean
 
 **region_select** creates coordinate list (which represents vertices of a polygon region) by clicking stations on a plot
 
-**transect_select** creates a coordinate list (which represents a virtual transect) by clicking stations on a plot
+**[transect_select](docs/transect_select.md)** creates a coordinate list (which represents a virtual transect) by clicking stations on a plot
 
 <img src="https://user-images.githubusercontent.com/24570061/88250639-2b20d280-cc76-11ea-9c94-3ce16300f735.png" width="800">
 
