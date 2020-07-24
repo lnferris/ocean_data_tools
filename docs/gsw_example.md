@@ -1,37 +1,41 @@
-### wod_build
+### GSW Example
 
 #### Syntax
 
-```Matlab
-[wod] = wod_build(wod_dir,variable_list)
-```
-#### Description
-
-``wod_build(wod_dir,variable_list)`` loads profiles in path ``wod_dir`` into the struct ``wod`` with all variables specified in ``variable_list``. Variables lon, lat, date, z are included automatically.
-
-#### Example 1
 
 
 % wod_build
 
 ```Matlab
 
-% Get variable information:
+% Build a uniform struct from HYCOM and subset to upper 450 meters:
 
-wod_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/wod/*.nc'; % included
-netcdf_info(wod_dir);
+[hycom] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid);
+[hycom] =  general_depth_subset(hycom,[0 450]);
 
-% Load data in path:
+% Plot temperature and salinity sections:
 
-variable_list = {'Temperature','Salinity'}; % Variables to read (besides lon, lat, date, z).
-[wod] = wod_build(wod_dir,variable_list);
-
-% Plot profiles:
-
-general_profiles(wod,'Temperature','depth')
+general_section(hycom,'water_temp','lat','depth',1,1)
+general_section(hycom,'salinity','lat','depth',1,1)
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88361566-748d2280-cd47-11ea-82a7-0458d6e2c8dc.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88403123-16d5f600-cd9a-11ea-9ca6-c1e0403a44da.png" width="600">
+<img src="https://user-images.githubusercontent.com/24570061/88403126-176e8c80-cd9a-11ea-846f-8e97e80f3805.png" width="600">
 
-[Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
+```Matlab
+
+% Use GSW to append the struct with density:
+
+[hycom.SA, ~] = gsw_SA_from_SP(hycom.salinity,-hycom.depth,hycom.lon,hycom.lat);
+hycom.CT = gsw_CT_from_t(hycom.SA,hycom.water_temp,-hycom.depth);
+hycom.rho = gsw_rho(hycom.SA,hycom.CT,-hycom.depth);
+
+% Plot density:
+
+general_section(hycom,'rho','lat','depth',1,1)
+
+```
+<img src="https://user-images.githubusercontent.com/24570061/88403129-19d0e680-cd9a-11ea-9b4e-4e733cdb3c5b.png" width="600">
+
+[Back](https://github.com/lnferris/ocean_data_tools#dependencies-1)
 
