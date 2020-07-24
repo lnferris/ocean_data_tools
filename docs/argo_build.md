@@ -30,7 +30,7 @@ variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
 
 % Make plots:
 
-general_profiles(argo,variable,'depth')
+general_profiles(argo,'TEMP_ADJUSTED','depth')
 general_map(argo,bathymetry_dir,'2Dcontour')
 
 ```
