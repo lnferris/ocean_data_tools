@@ -24,9 +24,9 @@ variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
 
 % Plot profiles:
 
-object = argo;
-variable = 'TEMP_ADJUSTED';
-zref = 'depth';
+object = argo;  % argo, cruise, hycom, mercator, woa, wod
+variable = 'TEMP_ADJUSTED'; % see particular struct for options
+zref = 'depth'; % see particular struct for options
 general_profiles(object,variable,zref)
 
 ```
