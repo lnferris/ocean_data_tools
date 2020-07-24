@@ -35,7 +35,9 @@ variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
 
 % Make a map:
 
-general_map(argo,bathymetry_dir,'2Dcontour')
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
+ptype = '2Dcontour'; % '2Dscatter' '2Dcontour'
+general_map(argo,bathymetry_dir,ptype)
 
 ```
 <img src="https://user-images.githubusercontent.com/24570061/88301724-fd1dab80-ccd2-11ea-9ea7-7badf1424865.png" width="600">
