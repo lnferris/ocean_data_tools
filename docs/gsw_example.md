@@ -1,11 +1,5 @@
 ### GSW Example
 
-#### Syntax
-
-
-
-% wod_build
-
 ```Matlab
 
 % Build a uniform struct from HYCOM and subset to upper 450 meters:
