@@ -2,7 +2,7 @@
 function [bath_chord,lon_chord,lat_chord] = bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,filled,width)
 % bathymetry_chord adds global seafloor topography (Smith & Sandwell, 1997) to an existing section
 % plot from a bathymetry chord of 1/60-degree width. It is less exact than
-% bathymetry-section; a practical application is to capture seamounts that
+% bathymetry_section; a practical application is to capture seamounts that
 % might have been nearby but not exactly beneath in a transect.
 % 
 %% Syntax
@@ -17,7 +17,7 @@ function [bath_chord,lon_chord,lat_chord] = bathymetry_chord(bathymetry_dir,lon1
 % Smith & Sandwell Global Topography in path bathymetry_dir for use with a
 % section plot. Points lying within a narrow chord-like region of width 1/60-degrees 
 % are extracted, with lon1 and lat1 marking the beginning of the chord and
-% lon 2 and lat 2 marking the end of the chord. The bathymetry section is
+% lon2 and lat2 marking the end of the chord. The bathymetry section is
 % plotted with xref = 'lon' or xref = 'lat' as the x-axis variable. The
 % extracted data is output bath_chord, lon_chord, and lat_chord. 
 %  
