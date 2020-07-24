@@ -33,7 +33,7 @@ lat2 = -66.5;
 bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref)
 
 ```
-<img src="https://user-images.githubusercontent.com/24570061/88437270-2114e600-cdd4-11ea-9ace-0fb0898cf7fc.png" width="900">
+<img src="https://user-images.githubusercontent.com/24570061/88437270-2114e600-cdd4-11ea-9ace-0fb0898cf7fc.png" width="800">
 
-[Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
+[Back](https://github.com/lnferris/ocean_data_tools#adding-bathymetry-to-existing-plots-1)
 
