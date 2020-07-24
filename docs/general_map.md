@@ -42,5 +42,5 @@ general_map(argo,bathymetry_dir,ptype)
 ```
 <img src="https://user-images.githubusercontent.com/24570061/88301724-fd1dab80-ccd2-11ea-9ea7-7badf1424865.png" width="600">
 
-[Back](https://github.com/lnferris/ocean_data_tools#building-uniform-structs-from-data-sources-1)
+[Back](https://github.com/lnferris/ocean_data_tools#general-functions-for-subsetting-and-plotting-uniform-structs-1)
 
