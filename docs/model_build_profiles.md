@@ -4,7 +4,7 @@
 
 ```Matlab
 [model] = model_build_profiles(source,date,variable_list,xcoords,ycoords)
-[model] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid)
+[model] = model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid)
 ```
 #### Description
 
