@@ -8,7 +8,7 @@
 ```
 #### Description
 
-``[data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth)`` plots one ``depth`` level of HYCOM or Operational Mercator GLOBAL_ANALYSIS_FORECAST_PHY_001_024. ``variable`` specifies the parameter to be plotted and ``region`` is the rectangular region to be plotted. ``model='hycom'`` or ``model='mercator'`` specifies the model used. ``source`` is the url or local path of the relevant dataset. ``data``, ``lat``, and ``lon`` from the plotted layer are available outputs.
+``[data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth)`` plots one ``depth`` level of HYCOM or Operational Mercator GLOBAL_ANALYSIS_FORECAST_PHY_001_024. ``variable`` specifies the parameter to be plotted and ``region`` is the rectangular region to be plotted. In addition to innate variables, each model has the additional derived variable ``variable='velocity'``. ``model='hycom'`` or ``model='mercator'`` specifies the model used. ``source`` is the url or local path of the relevant dataset. ``data``, ``lat``, and ``lon`` from the plotted layer are available outputs.
 
 ``[data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth,arrows)`` adds directional arrows if it is a velocity magnitude plot. ``arrows=1`` is on, ``arrows=0`` is off.
 
