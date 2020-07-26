@@ -74,7 +74,7 @@ bathymetry_plot(bathymetry_dir,region,ptype)
 
 % bathymetry_section
 
-xref = 'lon'; % 'lon' 'lat'
+xref = 'lon'; % 'lon' 'lat' or a time vector of length(xcoords)
 general_section(cruise,'temperature',xref,'pressure')
 xcoords = cruise.lon; % could alternatively use transect_select() to select coordinates
 ycoords = cruise.lat;
