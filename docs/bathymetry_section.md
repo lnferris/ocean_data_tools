@@ -8,7 +8,7 @@
 ```
 #### Description
 
-``[bath_section,lon_section,lat_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)`` extracts Smith & Sandwell Global Topography in path ``bathymetry_dir`` for use with a section plot. Points are extracted nearest to each coordinate specified by ``xcoords`` (longitude) and ``ycoords`` (latitude). The bathymetry section is plotted against ``xref``; where ``xref = 'lon'``, ``'lat'``, or a time vector of length(xcoords). The extracted data is output ``bath_section``, ``lon_section``, ``lat_section`` and ``time_section``; output vectors are sorted by the selected reference axis (longitude, latitude, or time).
+``[bath_section,lon_section,lat_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)`` extracts Smith & Sandwell Global Topography in path ``bathymetry_dir`` for use with a section plot. Points are extracted nearest to each coordinate specified by ``xcoords`` (longitude) and ``ycoords`` (latitude). The bathymetry section is plotted against ``xref``; where ``xref = 'lon'``, ``'lat'``, or a time vector of length(xcoords). The extracted data is output as ``bath_section``, ``lon_section``, ``lat_section`` and ``time_section``; output vectors are sorted by the selected reference axis (longitude, latitude, or time).
  
 ``[bath_section,lon_section,lat_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)`` allows the bathymetry to be filled in black down to the x-axis (instead of a simple line). Set ``filled=1`` to turn on, ``filled=0`` to turn off.
 
