@@ -15,8 +15,8 @@ function [bath_section,lon_section,lat_section,time_section] = bathymetry_sectio
 % Smith & Sandwell Global Topography in path bathymetry_dir for use with a
 % section plot. Points are extracted nearest to each coordinate specified
 % by xcoords (longitude) and ycoords (latitude). The bathymetry section is
-% plotted with xref; where xref = 'lon', 'lat', or a time vector of length(xcoords). The
-% extracted data is output bath_section, lon_section, and lat_section; 
+% plotted against xref; where xref = 'lon', 'lat', or a time vector of length(xcoords). The
+% extracted data is output bath_section, lon_section, lat_section, and time_section; 
 % output vectors are sorted by the selected reference axis (longitude,
 % latitude, or time).
 %  
