@@ -29,8 +29,8 @@ function [bath_section,lon_section,lat_section,time_section] = bathymetry_sectio
 % [bath_section,lon_section,lat_section] =
 % bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled,maxdistance)
 % does not pull values where xcoords and ycoords are not within maxdistance (degrees) of a Global Topography
-% value. maxdistance=0.05 would pull no bathymetry at times/places not within
-% 0.05 diagonal degrees of an available Global Topography value.
+% value. maxdistance=0.05 would pull no bathymetry at times/places further than
+% 0.05 diagonal degrees from an available Global Topography value.
 %
 %% Example 1
 % Add bathymetry to a temperature section plot from the list of coordinates
