@@ -1,4 +1,4 @@
-# ocean_data_tools: a MATLAB toolbox for interacting with bulk freely-available oceanographic data.
+# ocean_data_tools: a MATLAB toolbox for interacting with bulk freely-available oceanographic data
 
 <img src="https://user-images.githubusercontent.com/24570061/85356569-4664ba80-b4dd-11ea-9ec7-8ec26df76dcf.png" width="500">
 
