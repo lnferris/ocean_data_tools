@@ -65,7 +65,7 @@ To take full advantage of ocean_data_tools, download [Gibbs-SeaWater (GSW) Ocean
 
 **[wod_build](docs/wod_build.md)** builds a uniform struct of profiles from World Ocean Database data
 
-*Don't yet see a function for your preferred data source? Email lnferris@alum.mit.edu to request or contribute.*
+*Don't see a function yet for your preferred data source? Email lnferris@alum.mit.edu to request or contribute.*
 
 ### General functions for subsetting and plotting uniform structs
 
