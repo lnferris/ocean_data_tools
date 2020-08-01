@@ -7,7 +7,7 @@
 ```
 #### Description
 
-``[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list)`` searches pathways ``ctdo_dir``, ``uv_dir``, ``wvke_dir`` for CTD data in whp_netcdf format, horizontal LADCP data in netcdf format, and vertical LACDP data in netcdf format respectively. Variable lists for LADCP are fixed, while the CTD+ variable list is specified using ``variable_list`` (station, woce_date, longitude, latitude, and pressure are included automatically.) Lat/lon information (metadata) is pulled from the CTD+ files by default. If CTD+ is not found, metadata from LACDP files are used instead.
+``[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list)`` searches pathways ``ctdo_dir``, ``uv_dir``, ``wvke_dir`` for CTD data in whp_netcdf format, horizontal LADCP data in netcdf format, and vertical LACDP data in netcdf format respectively. Variable lists for LADCP are fixed, while the CTD variable list is specified using ``variable_list`` (station, woce_date, longitude, latitude, and pressure are included automatically.) Lat/lon information (metadata) is pulled from the CTD files by default. If CTD is not found, metadata from LACDP files are used instead.
 
 #### Example 1
 
