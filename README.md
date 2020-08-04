@@ -20,7 +20,7 @@ Find a bug, have a question, or want to contribute? Open an issue or email lnfer
 
 ## Getting Started
 
-1. Download [bathymetry](#bathymetry_).
+1. Download [bathymetry](#bathymetry).
 2. Download [nctoolbox](https://github.com/nctoolbox/nctoolbox). Run the command ``setup_nctoolbox`` at the beginning of a MATLAB session.
 3. Run each demonstration in **demos/demos.m**, which contains example usages for all functions. All required tests data is included in **data/**.
 
