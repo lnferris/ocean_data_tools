@@ -23,7 +23,9 @@ bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % nee
 
 % Get information about available CTD+ variables:
 
-netcdf_info(ctdo_dir) % Get cruise information.
+listing = dir(ctdo_dir);
+ncdisp([listing(1).folder '/' listing(1).name]) % Peek at netCDF header info to inform choice of variable_list.
+
 variable_list = {'salinity','temperature','oxygen'};
 
 % Build a uniform struct of cruise data:
