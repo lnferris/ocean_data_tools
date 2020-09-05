@@ -17,7 +17,8 @@ function [wod] = wod_build(wod_dir,variable_list)
 % Load World Ocean Database data:
 % 
 % wod_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/wod/*.nc'; % included
-% netcdf_info(wod_dir); % Get information to inform choice of variable_list.
+% listing = dir(wod_dir); % Peek at netCDF header info to inform choice of variable_list.
+ %ncdisp([listing(1).folder '/' listing(1).name])
 % variable_list = {'Temperature','Salinity'}; % Variables to read (besides lon, lat, date, z).
 % [wod] = wod_build(wod_dir,variable_list);
 %

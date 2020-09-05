@@ -1,5 +1,5 @@
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 22-Jul-2020
+%  Jun 2020; Last revision: 05-Sep-2020
 %  Dependencies: nctoolbox
 
 %  These are demonstrations of each function in ocean_data_tools. 
@@ -13,8 +13,8 @@ argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profile
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
 
 % argo_build
-
-netcdf_info(argo_dir);
+listing = dir(argo_dir); % Peek at netCDF header info to inform choice of variable_list.
+ncdisp([listing(1).folder '/' listing(1).name])
 region = [-60.0 -50.0 150.0 160.0]; %  Search region [-90 90 -180 180]
 start_date = '01-Nov-2015 00:00:00';
 end_date = '01-Jan-2017 00:00:00';
@@ -245,8 +245,8 @@ wvke_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/wv
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
 
 % whp_cruise_build
-
-netcdf_info(ctdo_dir) % Get cruise information.
+listing = dir(ctdo_dir); % Peek at netCDF header info to inform choice of variable_list.
+ncdisp([listing(1).folder '/' listing(1).name])
 variable_list = {'salinity','temperature','oxygen'};
 [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list); % Use a dummy path (e.g. uv_dir ='null') if missing data. 
 general_map(cruise,bathymetry_dir,'2Dcontour')
@@ -300,7 +300,8 @@ bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % nee
 
 % wod_build
 
-netcdf_info(wod_dir); % Get information to inform choice of variable_list.
+listing = dir(wod_dir); % Peek at netCDF header info to inform choice of variable_list.
+ncdisp([listing(1).folder '/' listing(1).name])
 variable_list = {'Temperature','Salinity'}; % Variables to read (besides lon, lat, date, z).
 [wod] = wod_build(wod_dir,variable_list);
 general_map(wod,bathymetry_dir)
