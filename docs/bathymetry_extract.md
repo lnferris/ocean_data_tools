@@ -25,7 +25,7 @@ region = [-60.0 -50.0 150.0 160.0];
 % Extract relevant bathymetry around struct argo:
 
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
-region = bathymetry_region(argo);
+region = bounding_region(argo);
 [bath,lat,lon] = bathymetry_extract(bathymetry_dir,region);
 
 ```
