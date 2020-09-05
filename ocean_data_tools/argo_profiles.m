@@ -33,9 +33,9 @@ function argo_profiles(argo,variable,annotate)
 
 cvar = eval(['argo.',variable]);
 
-if nanmean(argo.depth,'all') > 0
+if nanmean(argo.PRES_ADJUSTED,'all') > 0
     
-    argo.depth = -argo.depth;
+    argo.PRES_ADJUSTED = -argo.PRES_ADJUSTED;
 end
 
 figure
@@ -43,10 +43,10 @@ hold on
 
 for prof = 1:length(argo.stn) 
     
-        scatter(cvar(:,prof),argo.depth(:,prof),'.');  
+        scatter(cvar(:,prof),argo.PRES_ADJUSTED(:,prof),'.');  
         
         if nargin == 3 && annotate ==1
-            text(cvar(1,prof),argo.depth(1,prof),string(argo.stn(prof)),'FontSize',10)
+            text(cvar(1,prof),argo.PRES_ADJUSTED(1,prof),string(argo.stn(prof)),'FontSize',10)
         end
         
 end
@@ -56,5 +56,6 @@ end
     end
 
     title([variable,' by profile'], 'Interpreter', 'none')
+    ylabel('PRES_ADJUSTED')
 
 end

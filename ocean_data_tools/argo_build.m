@@ -128,12 +128,11 @@ function [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,
     end
 
     % rename the depth variable depth
-    argo.depth = argo.PRES_ADJUSTED;
     argo.lon = argo.LONGITUDE;
     argo.lat = argo.LATITUDE;
     argo.date = argo.JULD;
     argo.id = argo.PLATFORM_NUMBER;
-    fields = {'LONGITUDE','LATITUDE','JULD','PRES_ADJUSTED','PLATFORM_NUMBER'};
+    fields = {'LONGITUDE','LATITUDE','JULD','PLATFORM_NUMBER'};
     argo = rmfield(argo,fields);
 
     % if working near dateline wrap to 0/360
