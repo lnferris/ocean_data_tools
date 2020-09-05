@@ -15,7 +15,7 @@
 ```Matlab
 % Plot locations of Argo profiles:
 argo_platform_map(argo,1)
-bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour')
+bathymetry_plot(bathymetry_dir,bounding_region(argo),'2Dcontour')
 ```
 
 <img src="https://user-images.githubusercontent.com/24570061/88316847-6955da80-cce6-11ea-8bb0-d9d0523a3a29.png" width="700">
@@ -29,7 +29,7 @@ platform_id = 5904421;
 % Make a new plot:
 
 argo_platform_map(subargo,1)
-bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour')
+bathymetry_plot(bathymetry_dir,bounding_region(argo),'2Dcontour')
 
 ```
 
