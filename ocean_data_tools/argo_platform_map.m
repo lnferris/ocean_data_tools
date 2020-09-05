@@ -28,9 +28,6 @@ function argo_platform_map(argo,annotate)
 % 
 % See also argo_build and argo_platform_subset.
 
-
-    more_colors()
-
     figure
     hold on
 

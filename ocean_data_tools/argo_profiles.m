@@ -31,8 +31,6 @@ function argo_profiles(argo,variable,annotate)
 % 
 % See also argo_build and argo_profiles_map.
 
-more_colors()
-
 cvar = eval(['argo.',variable]);
 
 if nanmean(argo.depth,'all') > 0

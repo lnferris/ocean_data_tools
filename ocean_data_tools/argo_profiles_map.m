@@ -31,8 +31,6 @@ function argo_profiles_map(argo,annotate)
 % 
 % See also argo_build and argo_profiles.
 
-    more_colors()
-
     figure
     hold on
 
