@@ -131,8 +131,6 @@ To take full advantage of ocean_data_tools, download [Gibbs-SeaWater (GSW) Ocean
 
 ### Miscellaneous utilities
 
-**[netcdf_info](docs/netcdf_info.md)** gets information about the first netcdf file in a path and saves it to a text file
-
 **[region_select](docs/region_select.md)** creates coordinate list (which represents vertices of a polygon region) by clicking stations on a plot
 
 **[transect_select](docs/transect_select.md)** creates a coordinate list (which represents a virtual transect) by clicking stations on a plot
