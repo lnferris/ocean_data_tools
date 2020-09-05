@@ -20,7 +20,8 @@ argo_profiles_map(argo,annotate)
 % Get variable information:
 
 argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc';
-netcdf_info(argo_dir);
+listing = dir(argo_dir); 
+ncdisp([listing(1).folder '/' listing(1).name]) % Peek at netCDF header info to inform choice of variable_list.
 
 % Load Argo data from west of New Zealand:
 
