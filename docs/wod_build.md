@@ -19,7 +19,8 @@
 % Get variable information:
 
 wod_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/wod/*.nc'; % included
-netcdf_info(wod_dir);
+listing = dir(wod_dir));
+ncdisp([listing(1).folder '/' listing(1).name]) % Peek at netCDF header info to inform choice of variable_list.
 
 % Load data in path:
 
