@@ -30,7 +30,7 @@ platform_id = 1900980;
 
 annotate = 1; 
 argo_platform_map(argo,annotate) % annotate optional,  1=on 0=off
-bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour')
+bathymetry_plot(bathymetry_dir,bounding_region(argo),'2Dcontour')
 
 % argo_profiles
 
@@ -42,7 +42,7 @@ argo_profiles(argo,variable,annotate) % annotate optional,  1=on 0=off
 
 annotate = 1; 
 argo_profiles_map(argo,annotate) % annotate optional,  1=on 0=off
-bathymetry_plot(bathymetry_dir,bathymetry_region(argo),'2Dcontour') % add bathymetry contours
+bathymetry_plot(bathymetry_dir,bounding_region(argo),'2Dcontour') % add bathymetry contours
 
 
 %%                  bathymetry demonstration

@@ -1,13 +1,13 @@
-function [region] = bathymetry_region(object)
-% bathymetry_region finds the rectangular region around struct object
+function [region] = bounding_region(object)
+% bounding_region finds the rectangular region around struct object
 %
 %% Syntax
 % 
-% [region] = bathymetry_region(object)
+% [region] = bounding_region(object)
 % 
 %% Description 
 % 
-% [region] = bathymetry_region(object) finds a rectangular region = [S N W E] 
+% [region] = bounding_region(object) finds a rectangular region = [S N W E] 
 % around a struct object; where object is a struct created by any of 
 % the _build functions in ocean_data_tools (e.g. argo, cruise, hycom, mercator,
 % woa, wod). 
@@ -15,7 +15,7 @@ function [region] = bathymetry_region(object)
 %% Example 1
 % Find a the bathymetry region around struct argo:
 %
-% region = bathymetry_region(argo);
+% region = bounding_region(argo);
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools

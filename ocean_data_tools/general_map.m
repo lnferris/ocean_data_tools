@@ -50,7 +50,7 @@ function general_map(object,bathymetry_dir,ptype)
             default_type = ptype;
         end
 
-        bathymetry_plot(bathymetry_dir,bathymetry_region(object),default_type)
+        bathymetry_plot(bathymetry_dir,bounding_region(object),default_type)
 
      end
 
