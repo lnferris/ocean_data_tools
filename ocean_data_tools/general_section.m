@@ -35,7 +35,7 @@ function  general_section(object,variable,xref,zref,interpolate,contours)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 02-Jul-2020
+% Jun 2020; Last revision: 06-Sep-2020
 % 
 % See also shading and general_profiles.
 
@@ -46,10 +46,10 @@ function  general_section(object,variable,xref,zref,interpolate,contours)
         end
     end
 
-    cvar = eval(['object.',variable]);
-    xvar = eval(['object.',xref]);
-    zvar = eval(['object.',zref]);
-    
+    cvar = object.(variable); 
+    xvar = object.(xref); 
+    zvar = object.(zref);
+
     if nanmean(zvar,'all') > 0
         zvar = -zvar;
     end
@@ -98,8 +98,8 @@ function  general_section(object,variable,xref,zref,interpolate,contours)
     
     colorbar
     title(variable, 'Interpreter', 'none')
-    xlabel(xref)
-    ylabel(zref)
+    xlabel(xref, 'Interpreter', 'none')
+    ylabel(zref, 'Interpreter', 'none')
     
     % handle logarithmic whp_cruise variables
     if strcmp(variable,'eps_VKE')

@@ -129,7 +129,7 @@ object = hycom;
 object = argo; % argo, cruise, hycom, mercator, woa, wod
 variable = 'TEMP_ADJUSTED'; % see particular struct for options
 xref = 'lat'; % 'lat' 'lon' 'stn';
-zref = 'depth'; % See particular struct for options
+zref = 'PRES_ADJUSTED'; % See particular struct for options
 interpolate = 0; % 1=on 0=off
 contours = 0; % 1=on 0=off
 general_section(object,variable,xref,zref,interpolate,contours) % interpolate, contours optional

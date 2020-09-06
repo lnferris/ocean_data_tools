@@ -24,12 +24,12 @@ function general_profiles(object,variable,zref)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 02-Jul-2020
+% Jun 2020; Last revision: 06-Sep-2020
 % 
 % See also argo_profiles and general_section.
 
-cvar = eval(['object.',variable]);
-zvar = eval(['object.',zref]);
+cvar = object.(variable);
+zvar = object.(zref);
 
 if nanmean(zvar,'all') > 0
     zvar = -zvar;
@@ -54,7 +54,7 @@ end
 hold off
 
 title(variable, 'Interpreter', 'none')
-ylabel(zref)
+ylabel(zref, 'Interpreter', 'none')
 
 
 % handle logarithmic whp_cruise variables

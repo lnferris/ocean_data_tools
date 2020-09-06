@@ -27,11 +27,11 @@ function argo_profiles(argo,variable,annotate)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 16-Jun-2020
+% Jun 2020; Last revision: 06-Sep-2020
 % 
 % See also argo_build and argo_profiles_map.
 
-cvar = eval(['argo.',variable]);
+cvar = argo.(variable);
 
 if nanmean(argo.PRES_ADJUSTED,'all') > 0
     

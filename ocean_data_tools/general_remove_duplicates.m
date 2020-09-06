@@ -36,7 +36,7 @@ function [subobject] = general_remove_duplicates(object,var3)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jul 2020; Last revision: 06-Jul-2020
+% Jul 2020; Last revision: 06-Sep-2020
 % 
 % See also transect_select, general_region_subset, and general_depth_subset.
 
@@ -45,8 +45,8 @@ function [subobject] = general_remove_duplicates(object,var3)
 [~,inds_lat,~] = unique(object.lat);
 good_inds = union(inds_lon,inds_lat); 
 
-if nargin > 1 
-    var3 = eval(['object.',var3]);
+if nargin > 1   
+    var3 = object.(var3);
     [~,inds_var3,~] = unique(var3);    
     good_inds = union(good_inds,inds_var3); 
 end

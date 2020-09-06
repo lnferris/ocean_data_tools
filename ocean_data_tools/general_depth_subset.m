@@ -48,7 +48,7 @@ function [subobject] =  general_depth_subset(object,zrange,depth_list)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jul 2020; Last revision: 22-Jul-2020
+% Jul 2020; Last revision: 06-Sep-2020
 % 
 % See also general_region_subset and general_remove_duplicates.
 
@@ -71,7 +71,7 @@ names = fieldnames(subobject);
 % for each depth variable
 
 for var = 1:length(depth_list)
-    zvar = eval(['object.',depth_list{var}]);
+    zvar = object.(depth_list{var});
     sz = size(zvar);
     z_dim = sz(sz~=1&sz~=prof_dim);
 
