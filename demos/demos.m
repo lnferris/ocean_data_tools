@@ -1,16 +1,38 @@
+
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 05-Sep-2020
+%  Jun 2020; Last revision: 06-Sep-2020
 %  Dependencies: nctoolbox
 
 %  These are demonstrations of each function in ocean_data_tools. 
 %  Please download nctoolbox and bathymetry (see README/Getting Started)
-%  before running the demonstrations.
+%  before running the demonstrations. Do not skip the initial setup.
+
+
+%%                   initial setup
+
+% Set up the nctoolbox dependency.
+setup_nctoolbox
+
+% Specify path to downloaded bathymetry. 
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % YOU MUST MODIFY LINE 15!
+
+% Automatically generate paths to included test data. 
+data_path = [fileparts(fileparts(matlab.desktop.editor.getActiveFilename)),'/','data/']; % DO NOT MODIFY LINES 18-23!
+argo_dir = [data_path,'argo/*profiles*.nc']; 
+ctdo_dir = [data_path,'whp_cruise/ctd/*.nc']; 
+uv_dir = [data_path,'whp_cruise/uv/*.nc'];
+wvke_dir = [data_path,'whp_cruise/wvke/'];
+wod_dir = [data_path,'wod/*.nc']; 
+
+% Uncomment any of the following to hard-code paths.
+%argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc'; % uncomment to hard-code path
+%ctdo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/ctd/*.nc'; % uncomment to hard-code path
+%uv_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/uv/*.nc'; % uncomment to hard-code path
+%wvke_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/wvke/'; % uncomment to hard-code path
+%wod_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/wod/*.nc'; % uncomment to hard-code path
 
 
 %%                  argo demonstration
-
-argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc'; % included
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
 
 % argo_build
 listing = dir(argo_dir); % Peek at netCDF header info to inform choice of variable_list.
@@ -47,11 +69,6 @@ bathymetry_plot(bathymetry_dir,bounding_region(argo),'2Dcontour') % add bathymet
 
 %%                  bathymetry demonstration
 
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
-ctdo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/ctd/*.nc'; % included
-uv_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/uv/*.nc'; % included
-wvke_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/wvke/'; % included
-
 %  bathymetry_chord
 
 lon1 = 160; % Starting point of linear slice. If you want to do something exceptionally weird e.g. 240:210 just use bathymetry_section.
@@ -83,13 +100,6 @@ bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled) % filled optional
 
 
 %%                  general demonstration
-
-
-argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc'; % included
-ctdo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/ctd/*.nc'; % included
-uv_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/uv/*.nc'; % included
-wvke_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/wvke/'; % included
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
 
 % general_map
 [argo,matching_files] = argo_build(argo_dir,[-60.0 -50.0 150.0 160.0],'01-Nov-2015 00:00:00','01-Jan-2017 00:00:00',{'TEMP_ADJUSTED'});
@@ -143,10 +153,6 @@ general_profiles(object,variable,zref)
 
 %%                  mocha demonstration
 
-setup_nctoolbox
-
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
-
 % mocha_simple_plot
 
 month = 10; % Month (1 through 12).
@@ -170,10 +176,6 @@ mocha_domain_plot(month,variable,region)
  
 
 %%                  model (hycom) demonstration
-
-setup_nctoolbox
-
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
 
 % model_simple_plot - HYCOM EXAMPLE
 
@@ -203,10 +205,6 @@ model_domain_plot(model,source,date,variable,region)
 
 
 %%                  model (mercator) demonstration
-
-setup_nctoolbox
-
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
 
 % model_simple_plot - MERCATOR EXAMPLE
 
@@ -239,11 +237,6 @@ caxis([0 1])
 
 %%                  whp cruise demonstration
 
-ctdo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/ctd/*.nc'; % included
-uv_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/uv/*.nc'; % included
-wvke_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/wvke/'; % included
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
-
 % whp_cruise_build
 listing = dir(ctdo_dir); % Peek at netCDF header info to inform choice of variable_list.
 ncdisp([listing(1).folder '/' listing(1).name])
@@ -262,10 +255,6 @@ general_profiles(cruise,variable,zref)
 
 
 %%                  woa demonstration
-
-setup_nctoolbox
-
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
 
 % woa_simple_plot
 
@@ -294,9 +283,6 @@ woa_domain_plot(variable,time,region)
 
 
 %%                  wod demonstration
-
-wod_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/wod/*.nc'; % included
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % need to download
 
 % wod_build
 
