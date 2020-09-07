@@ -3,17 +3,17 @@
 #### Syntax
 
 ```Matlab
-[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)
-[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)
-[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled,maxdistance)
+[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry,xcoords,ycoords,xref)
+[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry,xcoords,ycoords,xref,filled)
+[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry,xcoords,ycoords,xref,filled,maxdistance)
 ```
 #### Description
 
-``[bath_section,lon_section,lat_section,time_section]  = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)`` extracts Smith & Sandwell Global Topography in path ``bathymetry_dir`` for use with a section plot. Points are extracted nearest to each coordinate specified by ``xcoords`` (longitude) and ``ycoords`` (latitude). The bathymetry section is plotted against ``xref``; where ``xref = 'lon'``, ``'lat'``, or a time vector of length(xcoords). The extracted data is output as ``bath_section``, ``lon_section``, ``lat_section`` and ``time_section``; output vectors are sorted by the selected reference axis (longitude, latitude, or time).
+``[bath_section,lon_section,lat_section] = bathymetry_section(bathy,xcoords,ycoords,xref)`` makes a section plot from ``bathy``, where ``bathy`` is a struct of Smith & Sandwell Global Topography created using ``bathymetry_extract``.  Points are extracted nearest to each coordinate specified by ``xcoords`` (longitude) and ``ycoords`` (latitude). The bathymetry section is plotted against ``xref``; where ``xref = 'lon'``, ``'lat'``, or a time vector of length(xcoords). The extracted data is output ``bath_section``, ``lon_section``, ``lat_section``, and ``time_section``; output vectors are sorted by the selected reference axis (longitude, latitude, or time).
  
-``[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)`` allows the bathymetry to be filled in black down to the x-axis (instead of a simple line). Set ``filled=1`` to turn on, ``filled=0`` to turn off.
+``[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref,filled)`` allows the bathymetry to be filled in black down to the x-axis (instead of a simple line). Set ``filled=1`` to turn on, ``filled=0`` to turn off.
 
-``[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled,maxdistance)`` does not pull values where ``xcoords`` and ``ycoords`` are not within ``maxdistance`` (degrees) of a Global Topography value. ``maxdistance=0.05`` would pull no bathymetry at times/places further than 0.05 diagonal degrees from an available Global Topography value.
+``[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref,filled,maxdistance)`` does not pull values where ``xcoords`` and ``ycoords`` are not within ``maxdistance`` (degrees) of a Global Topography value. ``maxdistance=0.05`` would pull no bathymetry at times/places further than 0.05 diagonal degrees from an available Global Topography value.
 
 #### Example 1
 
@@ -26,7 +26,8 @@ general_section(cruise,'temperature',xref,'pressure') % plot temperature section
 xcoords = cruise.lon; 
 ycoords = cruise.lat;
 filled = 1;
-bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)
+[bathy] = bathymetry_extract(bathymetry_dir,bounding_region(cruise));
+bathymetry_section(bathy,xcoords,ycoords,xref,filled)
 ```
 <img src="https://user-images.githubusercontent.com/24570061/88436173-b8c50500-cdd1-11ea-8270-22930d42843c.png" width="800">
 
@@ -37,8 +38,9 @@ bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)
 xref = 'lat'; 
 xcoords = [60 60.1 60.4 60.2 59.9]; 
 ycoords = [10 20.1 15.0 16.1 13.7]; 
+[bathy] = bathymetry_extract(bathymetry_dir,bounding_region([],xcoords,ycoords));
 figure
-bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)
+bathymetry_section(bathy,xcoords,ycoords,xref)
 ```
 #### Example 3
 ```Matlab
@@ -47,8 +49,9 @@ bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)
 xref = [737009 737010 737011 737012 737013]; 
 xcoords = [60 60.1 60.4 60.2 59.9]; 
 ycoords = [10 20.1 15.0 16.1 13.7]; 
+[bathy] = bathymetry_extract(bathymetry_dir,bounding_region([],xcoords,ycoords));
 figure
-bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)
+bathymetry_section(bathy,xcoords,ycoords,xref)
 ```
 #### Example 4
 ```Matlab
@@ -57,10 +60,11 @@ bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)
 xref = [737009 737010 737011 737012 737013]; 
 xcoords = [60 60.1 60.4 60.2 59.9]; 
 ycoords = [10 20.1 15.0 16.1 13.7]; 
+[bathy] = bathymetry_extract(bathymetry_dir,bounding_region([],xcoords,ycoords));
 filled = 1;
 maxdistance = 0.007;
 figure
-bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled,maxdistance)
+bathymetry_section(bathy,xcoords,ycoords,xref,filled,maxdistance)
 ```
 
 [Back](https://github.com/lnferris/ocean_data_tools#adding-bathymetry-to-existing-plots-1)
