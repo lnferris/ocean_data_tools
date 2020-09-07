@@ -102,15 +102,13 @@ To take full advantage of ocean_data_tools, download [Gibbs-SeaWater (GSW) Ocean
 
 ### Adding bathymetry to existing plots
 
-**[bathymetry_chord](docs/bathymetry_chord.md)** adds a slice of Smith & Sandwell Global Topography to a section plot
-
 **[bathymetry_extract](docs/bathymetry_extract.md)** extracts a region of Smith & Sandwell Global Topography and outputs as arrays
 
 **[bathymetry_plot](docs/bathymetry_plot.md)** adds bathymetry to 2-D (latitude vs. longitude) or 3-D (latitude vs. longitude vs. depth) data plots
 
 <img src="https://user-images.githubusercontent.com/24570061/88251161-ed24ae00-cc77-11ea-87d6-0e3b4484764d.jpg" width="700">
 
-**[bounding_region](docs/bounding_region.md)** finds the rectangular region around a uniform struct to pass as an argument for other bathymetry functions
+**[bounding_region](docs/bounding_region.md)** finds the rectangular region around a uniform struct and/or list of coordinates to pass as an argument for other bathymetry functions
 
 **[bathymetry_section](docs/bathymetry_section.md)** adds Smith & Sandwell Global Topography to a section from plot using bathymetry data nearest to specified coordinates
 
