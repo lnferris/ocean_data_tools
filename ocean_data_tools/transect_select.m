@@ -38,7 +38,7 @@ function [xcoords,ycoords] = transect_select(densify)
 
 if nargin >= 1
 
-waitfor(msgbox(['Click to create stations. Double click to end. Note ',num2str(densify),' stations will be interspersed for every 1 selected.']));
+waitfor(msgbox(['Click points to draw a transect. Double-click to end the transect. The selected points will be interpolated such that ',num2str(densify),' interspersed stations will be created for every 1 point selected.']));
 else
     waitfor(msgbox('Click to create stations. Double click to end.'));
 end

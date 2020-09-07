@@ -26,7 +26,7 @@ function [xcoords,ycoords] = region_select()
 % See also transect_select and general_region_subset.
 
 
-waitfor(msgbox('Click to select region. Double click to close selection.'));
+waitfor(msgbox('Draw a polygon region, clicking to select each vertex of the polygon. Double-click the starting point to close the polygon.'));
 roi = drawpolygon;
 xcoords = roi.Position(:,1);
 ycoords = roi.Position(:,2);
