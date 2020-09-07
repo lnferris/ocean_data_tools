@@ -3,9 +3,9 @@
 #### Syntax
 
 ```Matlab
-[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry,xcoords,ycoords,xref)
-[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry,xcoords,ycoords,xref,filled)
-[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry,xcoords,ycoords,xref,filled,maxdistance)
+[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref)
+[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref,filled)
+[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref,filled,maxdistance)
 ```
 #### Description
 
