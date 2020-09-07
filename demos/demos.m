@@ -17,7 +17,7 @@ setup_nctoolbox
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % YOU MUST MODIFY LINE 15!
 
 % Automatically generate paths to included test data. 
-data_path = [fileparts(fileparts(matlab.desktop.editor.getActiveFilename)),'/','data/']; % DO NOT MODIFY LINES 18-23!
+data_path = [fileparts(fileparts(matlab.desktop.editor.getActiveFilename)),'/','data/']; % DO NOT MODIFY LINES 20-25!
 argo_dir = [data_path,'argo/*profiles*.nc']; 
 ctdo_dir = [data_path,'whp_cruise/ctd/*.nc']; 
 uv_dir = [data_path,'whp_cruise/uv/*.nc'];

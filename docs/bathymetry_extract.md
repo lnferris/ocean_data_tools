@@ -3,11 +3,11 @@
 #### Syntax
 
 ```Matlab
-[bath,lat,lon]=  bathymetry_extract(bathymetry_dir,region)
+[bathy] =  bathymetry_extract(bathymetry_dir,region)
 ```
 #### Description
 
-``[bath,lat,lon]=  bathymetry_extract(bathymetry_dir,region)`` extracts Smith & Sandwell Global Topography in path ``bathymetry_dir`` over the specified rectangular ``region``. This function is called by functions ``bathymetry_section``, ``bathymetry_chord``, and ``bathymetry_plot``.
+``[bathy] =  bathymetry_extract(bathymetry_dir,region)`` extracts Smith & Sandwell Global Topography in path ``bathymetry_dir`` over the specified rectangular ``region``. Struct ``bathy`` has fields ``z``, ``lat``, and ``lon``.
 
 #### Example 1
 
@@ -16,7 +16,7 @@
 
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 region = [-60.0 -50.0 150.0 160.0];
-[bath,lat,lon] = bathymetry_extract(bathymetry_dir,region);
+[bathy] = bathymetry_extract(bathymetry_dir,region);
 ```
 
 #### Example 2
@@ -26,7 +26,7 @@ region = [-60.0 -50.0 150.0 160.0];
 
 bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 region = bounding_region(argo);
-[bath,lat,lon] = bathymetry_extract(bathymetry_dir,region);
+[bathy] = bathymetry_extract(bathymetry_dir,region);
 
 ```
 
