@@ -3,11 +3,11 @@
 #### Syntax
 
 ```Matlab
-bathymetry_plot(bathymetry_dir,region,ptype)
+bathymetry_plot(bathy,ptype)
 ```
 #### Description
 
-``bathymetry_plot(bathymetry_dir,region,ptype)`` extracts Smith & Sandwell Global Topography in path ``bathymetry_dir`` for use with a 2D (latitude vs. longitude) or 3D (latitude vs. longitude vs. depth) plot. The region extracted is given by ``region``, maximum latitudes and longitudes are [-80.738 80.738 -180 180], and should be in order [S N W E]. ``type = '2Dscatter'`` or ``'2Dcontour'`` or ``'3Dsurf'`` specifies the plot type.
+``bathymetry_plot(bathy,ptype)`` makes a 2D (latitude vs. longitude) or 3D (latitude vs. longitude vs. depth) plot from ``bathy``, where ``bathy`` is a struct of Smith & Sandwell Global Topography created using ``bathymetry_extract``. ``type = '2Dscatter'`` or ``'2Dcontour'`` or ``'3Dsurf'`` specifies the plot type.
                      
 #### Example 1
 
@@ -29,7 +29,8 @@ model_domain_plot(model,source,date,variable,region)
 
 % Add bathymetry:
 
-bathymetry_plot(bathymetry_dir,region,'3Dsurf')
+[bathy] = bathymetry_extract(bathymetry_dir,region);
+bathymetry_plot(bathy,'3Dsurf')
 caxis([0 1])
 
 ```
