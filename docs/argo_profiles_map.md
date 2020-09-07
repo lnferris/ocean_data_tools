@@ -45,7 +45,7 @@ argo_profiles(argo,variable,annotate) % annotate optional,  1=on 0=off
 
 annotate = 1; 
 argo_profiles_map(argo,annotate) % annotate optional,  1=on 0=off
-bathymetry_plot(bathymetry_dir,bounding_region(argo),'2Dcontour') % add bathymetry contours
+bathymetry_plot(bathymetry_extract(bathymetry_dir,bounding_region(argo)),'2Dcontour') % add bathymetry contours
 ```
 
 <img src="https://user-images.githubusercontent.com/24570061/88327053-b2149000-ccf4-11ea-8d1d-c0493bf9ef43.png" width="600">
