@@ -7,7 +7,7 @@
 ```
 #### Description
 
-``[bathy] =  bathymetry_extract(bathymetry_dir,region)`` extracts Smith & Sandwell Global Topography in path ``bathymetry_dir`` over the specified rectangular ``region``. Struct ``bathy`` has fields ``z``, ``lat``, and ``lon``. This function is called by functions ``bathymetry_section`` and ``bathymetry_plot``.
+``[bathy] =  bathymetry_extract(bathymetry_dir,region)`` extracts Smith & Sandwell Global Topography in path ``bathymetry_dir`` over the specified rectangular ``region``. Struct ``bathy`` has fields ``z``, ``lat``, and ``lon``.
 
 #### Example 1
 
