@@ -52,7 +52,7 @@ platform_id = 1900980;
 
 annotate = 1; 
 argo_platform_map(argo,annotate) % annotate optional,  1=on 0=off
-bathymetry_plot(bathymetry_dir,bounding_region(argo),'2Dcontour')
+bathymetry_plot(bathymetry_extract(bathymetry_dir,bounding_region(argo)),'2Dcontour')
 
 % argo_profiles
 
@@ -64,39 +64,33 @@ argo_profiles(argo,variable,annotate) % annotate optional,  1=on 0=off
 
 annotate = 1; 
 argo_profiles_map(argo,annotate) % annotate optional,  1=on 0=off
-bathymetry_plot(bathymetry_dir,bounding_region(argo),'2Dcontour') % add bathymetry contours
+bathymetry_plot(bathymetry_extract(bathymetry_dir,bounding_region(argo)),'2Dcontour') % add bathymetry contours
 
 
 %%                  bathymetry demonstration
 
-%  bathymetry_chord
+% bathymetry_extract
 
-lon1 = 160; % Starting point of linear slice. If you want to do something exceptionally weird e.g. 240:210 just use bathymetry_section.
-lat1 = -67;
-lon2 = 280; % Ending point of linear slice.
-lat2 = -66.5;
-xref = 'lon'; % 'lon' 'lat'
-width = 1/60; % Approximate width of chord in degrees
-[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,{'temperature'}); 
-general_section(cruise,'temperature',xref,'pressure') 
-filled = 0;
-bathymetry_chord(bathymetry_dir,lon1,lat1,lon2,lat2,xref,filled,width) % filled, width optional
+region = [-5.0, 45.0 ,120, -150];      % [-90 90 -180 180];
+[bathy] = bathymetry_extract(bathymetry_dir,region);
 
 % bathymetry_plot
 
-region = [-5.0, 45.0 ,120, -150];      % [-90 90 -180 180]
 ptype = '2Dcontour'; % '2Dscatter' '2Dcontour' '3Dsurf'
 figure
-bathymetry_plot(bathymetry_dir,region,ptype)
+bathymetry_plot(bathy,ptype)
 
 % bathymetry_section
 
+[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,{'temperature'}); 
 xref = 'lon'; % 'lon' 'lat' or a time vector of length(xcoords)
 general_section(cruise,'temperature',xref,'pressure')
 xcoords = cruise.lon; % could alternatively use transect_select() to select coordinates
 ycoords = cruise.lat;
 filled = 1;  % 1=on 0=off
-bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled) % filled optional
+region = bounding_region([],xcoords,ycoords);
+[bathy] = bathymetry_extract(bathymetry_dir,region);
+bathymetry_section(bathy,xcoords,ycoords,xref,filled) % filled optional
 
 
 %%                  general demonstration
@@ -231,7 +225,7 @@ general_profiles(mercator,'so','depth')
 
 variable = 'velocity';  % thetao' 'so' 'uo' 'vo' 'velocity'
 model_domain_plot(model,source,date,variable,region)
-bathymetry_plot(bathymetry_dir,region,'3Dsurf')
+bathymetry_plot(bathymetry_extract(bathymetry_dir,region),'3Dsurf')
 caxis([0 1])
 
 
@@ -274,7 +268,8 @@ zgrid = 1; % vertical grid for linear interpolation in meters
 [woa] = general_remove_duplicates(woa); % thin struct to gridding of source (optional)
 general_map(woa,bathymetry_dir,'2Dcontour')
 general_section(woa,'salinity','lon','depth')
-bathymetry_section(bathymetry_dir,xcoords,ycoords,'lon',1) % filled optional
+[bathy] = bathymetry_extract(bathymetry_dir,bounding_region([],xcoords,ycoords));
+bathymetry_section(bathy,xcoords,ycoords,'lon',1) % filled optional
 general_profiles(woa,'oxygen','depth')
 
 % woa_domain_plot

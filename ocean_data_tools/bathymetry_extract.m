@@ -1,38 +1,37 @@
 
-function [bath,lat,lon] = bathymetry_extract(bathymetry_dir,region)
+function [bathy] = bathymetry_extract(bathymetry_dir,region)
 % bathymetry_extract extracts global seafloor topography (Smith & Sandwell,
 % 1997) for a specified region
 % 
 %% Syntax
 % 
-% [bath,lat,lon]=  bathymetry_extract(bathymetry_dir,region)
+% [bathy] =  bathymetry_extract(bathymetry_dir,region)
 % 
 %% Description 
 % 
-% [bath,lat,lon]=  bathymetry_extract(bathymetry_dir,region) extracts
+% [bathy] =  bathymetry_extract(bathymetry_dir,region) extracts
 % Smith & Sandwell Global Topography in path bathymetry_dir over the specified
-% rectangular region. This function is called by functions
-% bathymetry_section, bathymetry_chord, and bathymetry_plot.
+% rectangular region. Struct bathy has fields z, lat, and lon.
 %
 %% Example 1
 % Extract relevant bathymetry over a region:
 % 
 % bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 % region = [-60.0 -50.0 150.0 160.0];
-% [bath,lat,lon] = bathymetry_extract(bathymetry_dir,region);
+% [bathy] = bathymetry_extract(bathymetry_dir,region);
 % 
 %% Example 2
 % Extract relevant bathymetry around struct argo:
 %
 % bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc';
 % region = bounding_region(argo);
-% [bath,lat,lon] = bathymetry_extract(bathymetry_dir,region);
+% [bathy] = bathymetry_extract(bathymetry_dir,region);
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 30-Jun-2020
+% Jun 2020; Last revision: 07-Sep-2020
 % 
-% See also bounding_region, bathymetry_section, bathymetry_chord, and bathymetry_plot.
+% See also bounding_region, bathymetry_section, and bathymetry_plot.
 
 % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;
@@ -67,6 +66,10 @@ end
 
 [lon,lon_inds] = sort(lon);
 bath = bath(lon_inds,:);
+
+bathy.z = bath;
+bathy.lon = lon;
+bathy.lat = lat;
  
 end
 

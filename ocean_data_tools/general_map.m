@@ -31,7 +31,7 @@ function general_map(object,bathymetry_dir,ptype)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% un 2020; Last revision: 15-Jun-2020
+% un 2020; Last revision: 07-Sep-2020
 % 
 % See also bathymetry_plot and general_region_subset.
 
@@ -49,8 +49,8 @@ function general_map(object,bathymetry_dir,ptype)
         if nargin >= 3
             default_type = ptype;
         end
-
-        bathymetry_plot(bathymetry_dir,bounding_region(object),default_type)
+        [bathy] = bathymetry_extract(bathymetry_dir,bounding_region(object));
+        bathymetry_plot(bathy,default_type)
 
      end
 

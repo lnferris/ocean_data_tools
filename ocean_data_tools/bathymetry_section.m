@@ -1,20 +1,20 @@
 
-function [bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled,maxdistance)
+function [bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref,filled,maxdistance)
 % bathymetry_section adds global seafloor topography (Smith & Sandwell, 1997) to an existing section
 % plot from points nearest to specified coordinates
 % 
 %% Syntax
 % 
-%  [bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)
-%  [bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)
-%  [bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled,maxdistance)
+%  [bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref)
+%  [bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref,filled)
+%  [bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref,filled,maxdistance)
 % 
 %% Description 
 % 
 % [bath_section,lon_section,lat_section] =
-% bathymetry_section(bathymetry_dir,xcoords,ycoords,xref) extracts
-% Smith & Sandwell Global Topography in path bathymetry_dir for use with a
-% section plot. Points are extracted nearest to each coordinate specified
+% bathymetry_section(bathy,xcoords,ycoords,xref) makes a section plot from 
+% bathy, where bathy is a struct of Smith & Sandwell Global Topography created
+% using bathymetry_extract.  Points are extracted nearest to each coordinate specified
 % by xcoords (longitude) and ycoords (latitude). The bathymetry section is
 % plotted against xref; where xref = 'lon', 'lat', or a time vector of length(xcoords). The
 % extracted data is output bath_section, lon_section, lat_section, and time_section; 
@@ -22,12 +22,12 @@ function [bath_section,lon_section,lat_section,time_section] = bathymetry_sectio
 % latitude, or time).
 %  
 % [bath_section,lon_section,lat_section] =
-% bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled) allows the
+% bathymetry_section(bathy,xcoords,ycoords,xref,filled) allows the
 % bathymetry to be filled in black down to the x-axis (instead of a simple line).
 % Set filled=1 to turn on, filled=0 to turn off.
 %
 % [bath_section,lon_section,lat_section] =
-% bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled,maxdistance)
+% bathymetry_section(bathy,xcoords,ycoords,xref,filled,maxdistance)
 % does not pull values where xcoords and ycoords are not within maxdistance (degrees) of a Global Topography
 % value. maxdistance=0.05 would pull no bathymetry at times/places further than
 % 0.05 diagonal degrees from an available Global Topography value.
@@ -41,7 +41,8 @@ function [bath_section,lon_section,lat_section,time_section] = bathymetry_sectio
 % xcoords = cruise.lon; 
 % ycoords = cruise.lat;
 % filled = 1;
-% bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled)
+% [bathy] = bathymetry_extract(bathymetry_dir,bounding_region(cruise));
+% bathymetry_section(bathy,xcoords,ycoords,xref,filled)
 %
 %% Example 2
 % Plot bathymetry nearest to a list of coordinates. Use latitude as the x-axis:
@@ -49,8 +50,9 @@ function [bath_section,lon_section,lat_section,time_section] = bathymetry_sectio
 % xref = 'lat'; 
 % xcoords = [60 60.1 60.4 60.2 59.9]; 
 % ycoords = [10 20.1 15.0 16.1 13.7]; 
+% [bathy] = bathymetry_extract(bathymetry_dir,bounding_region([],xcoords,ycoords));
 % figure
-% bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)
+% bathymetry_section(bathy,xcoords,ycoords,xref)
 %
 %% Example 3
 % Plot bathymetry nearest to a list of coordinates. Use a time as the x-axis:
@@ -58,8 +60,9 @@ function [bath_section,lon_section,lat_section,time_section] = bathymetry_sectio
 % xref = [737009 737010 737011 737012 737013]; 
 % xcoords = [60 60.1 60.4 60.2 59.9]; 
 % ycoords = [10 20.1 15.0 16.1 13.7]; 
+% [bathy] = bathymetry_extract(bathymetry_dir,bounding_region([],xcoords,ycoords));
 % figure
-% bathymetry_section(bathymetry_dir,xcoords,ycoords,xref)
+% bathymetry_section(bathy,xcoords,ycoords,xref)
 %
 %% Example 4
 % Plot bathymetry nearest to a list of coordinates, using time as the
@@ -69,24 +72,29 @@ function [bath_section,lon_section,lat_section,time_section] = bathymetry_sectio
 % xref = [737009 737010 737011 737012 737013]; 
 % xcoords = [60 60.1 60.4 60.2 59.9]; 
 % ycoords = [10 20.1 15.0 16.1 13.7]; 
+% [bathy] = bathymetry_extract(bathymetry_dir,bounding_region([],xcoords,ycoords));
 % filled = 1;
 % maxdistance = 0.007;
 % figure
-% bathymetry_section(bathymetry_dir,xcoords,ycoords,xref,filled,maxdistance)
+% bathymetry_section(bathy,xcoords,ycoords,xref,filled,maxdistance)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 26-Jul-2020
+% Jun 2020; Last revision: 07-Sep-2020
 % 
-% See also general_section and bathymetry_chord.
+% See also general_section, bathymetry_extract, and bounding_region.
 
 if nargin < 5
     filled = 0;
 end
 
-% Auto-select region and load bathymetry data.
+% Load bathymetry data.
+bath = bathy.z;
+lat = bathy.lat;
+lon = bathy.lon;
+
+% % Auto-select region and load bathymetry data.
 region = [min(ycoords)-1 max(ycoords)+1 min(xcoords)-1 max(xcoords)+1];
-[bath,lat,lon] = bathymetry_extract(bathymetry_dir,region);
 
 % Deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;
