@@ -12,9 +12,10 @@ function [subobject] =  general_depth_subset(object,zrange,depth_list)
 % [subobject] =  general_depth_subset(object,zrange) subsets
 % object by depth-range zrange; where object is a struct 
 % created by any of the _build functions in ocean_data_tools (e.g. argo, cruise,
-% hycom, mercator, woa, wod). Th default depth-variable 'depth' is used to
+% hycom, mercator, woa, wod). The default depth-variable 'depth' is used to
 % subset. zrange is a 2-element vector e.g. zrange=[0 200] in meters or
-% dbar. Order and sign of zrange does not matter.
+% dbar. Order does not matter, but the sign convention should be the same
+% as the depth variable in object.
 %
 % [subobject] =  general_depth_subset(object,zrange,depth_list) enables the
 % user to specify one or more depth variables (instead of using default 'depth')
@@ -33,7 +34,7 @@ function [subobject] =  general_depth_subset(object,zrange,depth_list)
 % variable_list = {'water_temp','salinity'}; 
 % [hycom] = model_build_profiles(source,date,variable_list,xcoords,ycoords);
 % object = hycom;
-% zrange = [350 150];
+% zrange = [-350 -150];
 % [subobject] =  general_depth_subset(object,zrange);
 %
 %% Example 2
@@ -59,8 +60,8 @@ if nargin < 3
 end
 
         
-zmin = min(abs(zrange));
-zmax = max(abs(zrange));
+zmin = min(zrange);
+zmax = max(zrange);
 prof_dim = length(object.stn);         
 
 % copy struct before overwriting variables of interest
@@ -79,7 +80,7 @@ for var = 1:length(depth_list)
 
         % process uniform depth grid objects (hycom ,mercator, mocha, woa)
 
-        good_row = find(abs(zvar) >= zmin & abs(zvar) <= zmax);   
+        good_row = find(zvar >= zmin & zvar <= zmax);   
         for i = 1:length(names) 
             if isvector(subobject.(names{i}))
                 if length(subobject.(names{i}))==z_dim 
@@ -96,7 +97,7 @@ for var = 1:length(depth_list)
 
         % process non-uniform depth grid objects (argo, cruise, wod)
 
-        [good_row,~] = find((abs(zvar) >= zmin & abs(zvar) <= zmax));  
+        [good_row,~] = find((zvar >= zmin & zvar <= zmax));  
         for i = 1:length(names)  
             if size(subobject.(names{i}))==size(zvar)
                 subobject.(names{i}) = subobject.(names{i})(min(good_row):max(good_row),:); % truncate

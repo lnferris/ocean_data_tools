@@ -107,7 +107,7 @@ variable_list = {'salinity','temperature','oxygen'};
 [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list); % Use a dummy path (e.g. uv_dir ='null') if missing data. 
 depth_list = {'pressure','z','depth','depth_vke'}; % list of depth fields to subset
 object = cruise;
-zrange = [350 150]; % order and sign don't matter
+zrange = [350 150]; % zrange should have the same sign convention as depth variable but order doesn't matter
 [subobject] =  general_depth_subset(object,zrange,depth_list); % depth_list option, default 'depth'
 
 % general_region_subset
@@ -244,7 +244,6 @@ zref = 'pressure'; % See cruise for options.
 interpolate = 1; % 1=on 0=off
 contours = 0; % 1=on 0=off
 general_section(cruise,variable,xref,zref,interpolate,contours) % interpolate, contours optional
-
 general_profiles(cruise,variable,zref)
 
 
