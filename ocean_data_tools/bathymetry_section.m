@@ -1,21 +1,20 @@
 
-function [bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref,filled,maxdistance)
+function [bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref,filled)
 % bathymetry_section adds global seafloor topography (Smith & Sandwell, 1997) to an existing section
-% plot from points nearest to specified coordinates
+% plot using specified coordinates
 % 
 %% Syntax
 % 
 %  [bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref)
 %  [bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref,filled)
-%  [bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref,filled,maxdistance)
 % 
 %% Description 
 % 
 % [bath_section,lon_section,lat_section] =
 % bathymetry_section(bathy,xcoords,ycoords,xref) makes a section plot from 
 % bathy, where bathy is a struct of Smith & Sandwell Global Topography created
-% using bathymetry_extract.  Points are extracted nearest to each coordinate specified
-% by xcoords (longitude) and ycoords (latitude). The bathymetry section is
+% using bathymetry_extract. xcoords (longitude) and ycoords (latitude) are
+% densified to a 1/60-deg grid before bathymetry is interpolated. The bathymetry section is
 % plotted against xref; where xref = 'lon', 'lat', or a time vector of length(xcoords). The
 % extracted data is output bath_section, lon_section, lat_section, and time_section; 
 % output vectors are sorted by the selected reference axis (longitude,
@@ -26,11 +25,6 @@ function [bath_section,lon_section,lat_section,time_section] = bathymetry_sectio
 % bathymetry to be filled in black down to the x-axis (instead of a simple line).
 % Set filled=1 to turn on, filled=0 to turn off.
 %
-% [bath_section,lon_section,lat_section] =
-% bathymetry_section(bathy,xcoords,ycoords,xref,filled,maxdistance)
-% does not pull values where xcoords and ycoords are not within maxdistance (degrees) of a Global Topography
-% value. maxdistance=0.05 would pull no bathymetry at times/places further than
-% 0.05 diagonal degrees from an available Global Topography value.
 %
 %% Example 1
 % Add bathymetry to a temperature section plot from the list of coordinates
@@ -64,23 +58,9 @@ function [bath_section,lon_section,lat_section,time_section] = bathymetry_sectio
 % figure
 % bathymetry_section(bathy,xcoords,ycoords,xref)
 %
-%% Example 4
-% Plot bathymetry nearest to a list of coordinates, using time as the
-% x-axis and shading bathymetry. Only return bathymetry values for timesteps within 0.007 degrees
-% of a bathymetry node:
-% 
-% xref = [737009 737010 737011 737012 737013]; 
-% xcoords = [60 60.1 60.4 60.2 59.9]; 
-% ycoords = [10 20.1 15.0 16.1 13.7]; 
-% [bathy] = bathymetry_extract(bathymetry_dir,bounding_region([],xcoords,ycoords));
-% filled = 1;
-% maxdistance = 0.007;
-% figure
-% bathymetry_section(bathy,xcoords,ycoords,xref,filled,maxdistance)
-%
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 07-Sep-2020
+% Jun 2020; Last revision: 08-Sep-2020
 % 
 % See also general_section, bathymetry_extract, and bounding_region.
 
@@ -107,33 +87,17 @@ if region(3) > region(4) && region(3) < 0 && region(4)+360>180
     bath = bath(lon_inds,:);  
 end
 
-% Get nearest bathymetry values.
+% Get interpolated bathymetry values.
 N = length(xcoords);
 if length(xref)==N 
     time_section = xref;
 else
-    time_section = NaN(1,N);
+    time_section = NaN(N,1);
 end
-bath_section = NaN(1,N);
-lon_section = NaN(1,N);
-lat_section = NaN(1,N);
-for i = 1:N
-    [lon_ind,xdist] = near(lon,xcoords(i));
-    [lat_ind,ydist] = near(lat,ycoords(i));
-    if nargin < 6
-        bath_section(i) = bath(lon_ind,lat_ind); % accept value if maxdistance not specified
-        lon_section(i) = lon(lon_ind);
-        lat_section(i) = lat(lat_ind);
-    elseif sqrt(xdist^2+ydist^2) <= maxdistance % accept value if within maxdistance of available topography
-        bath_section(i) = bath(lon_ind,lat_ind);
-        lon_section(i) = lon(lon_ind);
-        lat_section(i) = lat(lat_ind);
-    else
-        bath_section(i) = NaN; % reject if not within maxdistance of available topography
-        lon_section(i) = NaN;
-        lat_section(i) = NaN;
-    end
-end
+[lat_section, lon_section] = interpm(ycoords, xcoords, 1/60);
+bath_section = interp2(lon,lat,bath',lon_section,lat_section, 'nearest');
+F = scatteredInterpolant(xcoords,ycoords,time_section);
+time_section = F(lon_section,lat_section);
 
 % Create reference variable.
 if strcmp(xref,'lon')
@@ -147,7 +111,7 @@ else
     return
 end
 
-% Order bathymetry data by reference variable and plot.
+% Order bathymetry_section by xref.
 [xvar,xvar_inds] = sort(xvar);
 bath_section = bath_section(xvar_inds);
 lon_section = lon_section(xvar_inds);
