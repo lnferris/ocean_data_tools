@@ -88,27 +88,24 @@ if region(3) > region(4) && region(3) < 0 && region(4)+360>180
 end
 
 % Get interpolated bathymetry values.
-N = length(xcoords);
-if length(xref)==N 
-    time_section = xref;
-else
-    time_section = NaN(N,1);
-end
 [lat_section, lon_section] = interpm(ycoords, xcoords, 1/60);
 bath_section = interp2(lon,lat,bath',lon_section,lat_section, 'nearest');
-F = scatteredInterpolant(xcoords,ycoords,time_section);
-time_section = F(lon_section,lat_section);
 
-% Create reference variable.
-if strcmp(xref,'lon')
-    xvar = lon_section;   
-elseif strcmp(xref,'lat')
-    xvar = lat_section;   
-elseif any(~isnan(time_section))
+% Interpolate times if provided, or else just set lat/lon to be xvar.
+if length(xref)== length(xcoords)
+    F = scatteredInterpolant(xcoords,ycoords,xref);
+    time_section = F(lon_section,lat_section);
     xvar = time_section;
 else
-    disp(['xref should be ''lon'' ''lat'' or a time vector of length ',num2str(N)]);  
-    return
+    time_section = NaN(length(bath_section),1);
+    if strcmp(xref,'lon')
+        xvar = lon_section;   
+    elseif strcmp(xref,'lat')
+        xvar = lat_section;   
+    else
+        disp(['xref should be ''lon'', ''lat'', or a time vector of length ',num2str(length(xcoords))]);  
+        return
+    end
 end
 
 % Order bathymetry_section by xref.
