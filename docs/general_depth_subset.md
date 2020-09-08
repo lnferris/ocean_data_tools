@@ -8,7 +8,7 @@ general_depth_subset(object,zrange,depth_list)
 ```
 #### Description
 
-``[subobject] =  general_depth_subset(object,zrange)`` subsets ``object`` by depth-range ``zrange``; where ``object`` is a struct created by any of the ``_build`` functions in ocean_data_tools (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). The default depth-variable used to subset is ``'depth'``. ``zrange`` is a 2-element vector e.g. ``zrange=[0 200]`` in meters or dbar. Order and sign of ``zrange`` does not matter.
+``[subobject] =  general_depth_subset(object,zrange)`` subsets ``object`` by depth-range ``zrange``; where ``object`` is a struct created by any of the ``_build`` functions in ocean_data_tools (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). The default depth-variable used to subset is ``'depth'``. ``zrange`` is a 2-element vector e.g. ``zrange=[0 200]`` in meters or dbar. Order does not matter, but the sign convention should be the same as the depth variable in ``object``.
 
 ``[subobject] =  general_depth_subset(object,zrange,depth_list)`` enables the user to specify one or more depth variables (instead of using default ``'depth'``) e.g. ``depth_list = {'pressure'}`` or ``depth_list = {'pressure','z','depth','depth_vke'}``.
 
@@ -27,7 +27,7 @@ general_section(hycom,'water_temp','lat','depth',1,1)
 ```Matlab
 % Subset to upper 450 meters and replot the temperature section:
 
-[hycom] =  general_depth_subset(hycom,[0 450]);
+[hycom] =  general_depth_subset(hycom,[-450 0]);
 general_section(hycom,'water_temp','lat','depth',1,1)
 
 ```
