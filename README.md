@@ -10,9 +10,9 @@ ocean_data_tools simplifies the process of extracting, formatting, and visualizi
 
 Find a bug, have a question, or want to contribute? Open an issue or email lnferris@alum.mit.edu.
 
-Cite as:
+*Cite as:*
 
-Ferris, L., (2020): ocean_data_tools: A MATLAB toolbox for interacting with bulk freely-available oceanographic data. July. Zenodo. doi:10.5281/zenodo.3353610.
+*Ferris, L., (2020): ocean_data_tools: A MATLAB toolbox for interacting with bulk freely-available oceanographic data. July. Zenodo. doi:10.5281/zenodo.3353610.*
 
 ### [Getting Started](#getting-started-1)
 
