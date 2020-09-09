@@ -76,22 +76,26 @@ svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates 
 
 [lats,~] = near(svg.lat,region(1)); % Find lat index near southern boundary [-90 90] of region.
 [latn,~] = near(svg.lat,region(2));
+[lonw] = near(svg.lon,region(3));% Find lon indexes in standard manner.
+[lone] = near(svg.lon,region(4));   
+if lonw == lone
+    lone = lone-1;
+end
 
-if region(3) > region(4) && region(4) < 0 % If data spans the dateline...
+need2merge = 0;
+if lonw > lone
+    need2merge = 1;
     [lonw_A] = near(svg.lon,region(3));% Find lon indexes of lefthand chunk.
     [lone_A] = near(svg.lon,180);
     [lonw_B] = near(svg.lon,-180);% Find lon indexes of righthand chunk.
-    [lone_B] = near(svg.lon,region(4)); 
-else
-    [lonw] = near(svg.lon,region(3));% Find lon indexes in standard manner.
-    [lone] = near(svg.lon,region(4));   
+    [lone_B] = near(svg.lon,region(4));    
 end
 
 % Make Plot
 
 figure 
     
-if region(3) > region(4) && region(4) < 0 % If data spans the dateline...
+if need2merge == 1
     
     dataA = reshape(permute(squeeze(double(sv.data(1,:,lats:latn,lonw_A:lone_A))),[2,3,1]),[],1); % permute array to be lon x lat x dep
     [lon_mesh,lat_mesh,dep_mesh] = meshgrid(svg.lon(lonw_A:lone_A),svg.lat(lats:latn),svg.z(:)); 

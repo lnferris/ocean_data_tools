@@ -2,7 +2,7 @@
 function model_domain_plot_velocity(model,nc,date,region)
 % This is the velocity portion of model_domain_plot
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 30-Jun-2020
+% Jun 2020; Last revision: 09-Sep-2020
 % See also model_domain_plot.
 
 if strcmp(model,'hycom')  
@@ -39,6 +39,9 @@ end
 [latn,~] = near(svg.lat,region(2));
 [lonw] = near(svg.lon,region(3));% Find lon indexes in standard manner.
 [lone] = near(svg.lon,region(4));   
+if lonw == lone
+    lone = lone-1;
+end
 
 need2merge = 0;
 if lonw > lone 

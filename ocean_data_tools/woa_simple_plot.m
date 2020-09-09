@@ -38,7 +38,7 @@ function [data,lat,lon] = woa_simple_plot(variable,time,region,depth)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 12-Jul-2020
+% Jun 2020; Last revision: 09-Sep-2020
 % 
 % See also woa_build_profiles and woa_domain_plot.
 
@@ -79,6 +79,9 @@ svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates 
 [latn,~] = near(svg.lat,region(2));
 [lonw] = near(svg.lon,region(3));% Find lon indexes in standard manner.
 [lone] = near(svg.lon,region(4));   
+if lonw == lone
+    lone = lone-1;
+end
 
 need2merge = 0;
 if lonw > lone

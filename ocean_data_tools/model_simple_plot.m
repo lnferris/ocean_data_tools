@@ -47,7 +47,7 @@ function [data,lat,lon] = model_simple_plot(model,source,date,variable,region,de
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 13-Jul-2020
+% Jun 2020; Last revision: 09-Sep-2020
 % 
 % See also model_build_profiles and model_domain_plot.
 
@@ -111,7 +111,10 @@ end
 [lats,~] = near(svg.lat,region(1)); % Find lat index near southern boundary [-90 90] of region.
 [latn,~] = near(svg.lat,region(2));
 [lonw] = near(svg.lon,region(3));% Find lon indexes in standard manner.
-[lone] = near(svg.lon,region(4));   
+[lone] = near(svg.lon,region(4));  
+if lonw == lone
+    lone = lone-1;
+end
 
 need2merge = 0;
 if lonw > lone 

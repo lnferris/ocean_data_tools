@@ -29,10 +29,10 @@ function [bathy] = bathymetry_extract(bathymetry_dir,region)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 07-Sep-2020
+% Jun 2020; Last revision: 09-Sep-2020
 % 
 % See also bounding_region, bathymetry_section, and bathymetry_plot.
-
+% 
 % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;
 region(region<-180) = region(region<-180)+360;
@@ -49,6 +49,9 @@ netcdf.close(nc); % close the file.
 [ni,~] = near(lat,region(2));
 [wi,~] = near(lon,region(3));
 [ei,~] = near(lon,region(4));
+if wi == ei
+    ei = ei-1;
+end
 
 lat = lat(si:ni);   
 if wi > ei % if data spans the dateline...

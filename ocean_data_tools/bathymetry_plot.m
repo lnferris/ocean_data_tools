@@ -32,7 +32,7 @@ function bathymetry_plot(bathy,ptype)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 07-Sep-2020
+% Jun 2020; Last revision: 09-Sep-2020
 % 
 % See also general_map and bathymetry_section.
 
@@ -40,18 +40,6 @@ function bathymetry_plot(bathy,ptype)
 bath = bathy.z;
 lat = bathy.lat;
 lon = bathy.lon;
-
-region = bounding_region(bathy);
-
-% deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
-region(region>180) = region(region>180)- 360;
-region(region<-180) = region(region<-180)+360;
-
-if region(3) > region(4) && region(3) < 0 && region(4)+360>180    
-    lon(lon>360) = lon(lon>360)-360;
-    [lon,lon_inds] = sort(lon);
-    bath = bath(lon_inds,:);  
-end
 
 hold on
 

@@ -36,7 +36,7 @@ function model_domain_plot(model,source,date,variable,region)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 30-Jun-2020
+% Jun 2020; Last revision: 09-Sep-2020
 % 
 % See also model_build_profiles and model_simple_plot.
 
@@ -91,6 +91,9 @@ end
 [latn,~] = near(svg.lat,region(2));
 [lonw] = near(svg.lon,region(3));% Find lon indexes in standard manner.
 [lone] = near(svg.lon,region(4));   
+if lonw == lone
+    lone = lone-1;
+end
 
 need2merge = 0;
 if lonw > lone 

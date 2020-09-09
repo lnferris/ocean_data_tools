@@ -29,6 +29,9 @@ end
 [latn,~] = near(svg.lat,region(2));
 [lonw] = near(svg.lon,region(3));% Find lon indexes in standard manner.
 [lone] = near(svg.lon,region(4));   
+if lonw == lone
+    lone = lone-1;
+end
 
 need2merge = 0;
 if lonw > lone 
