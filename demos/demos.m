@@ -90,7 +90,7 @@ ycoords = cruise.lat;
 filled = 1;  % 1=on 0=off
 region = bounding_region([],xcoords,ycoords);
 [bathy] = bathymetry_extract(bathymetry_dir,region);
-bathymetry_section(bathy,xcoords,ycoords,xref,filled) % filled optional
+bathymetry_section(bathy,xcoords,ycoords,xref,filled); % filled optional
 
 
 %%                  general demonstration
@@ -209,7 +209,7 @@ variable = 'thetao'; % 'thetao' 'so' 'uo' 'vo' 'velocity' 'mlotst' 'siconc' 'usi
 region = [60.0, 70.0 ,-80, -60];      % [-90 90 -180 180]
 depth = -150;                          % Depth level between 0 and -5728m
 arrows = 0;  
-model_simple_plot(model,source,date,variable,region,depth,arrows)
+model_simple_plot(model,source,date,variable,region,depth,arrows);
 
 % model_build_profiles  - MERCATOR EXAMPLE
 
@@ -255,7 +255,7 @@ variable = 'nitrate'; % 'temperature' 'salinity' 'oxygen' 'o2sat' 'AOU' 'silicat
 time = '03'; % '00' for annual climatology '01' '10' etc. for monthly climatology
 region = [-5.0, 45.0 ,-120, -150]; 
 depth = -0; % meters -0 to -5500
-woa_simple_plot(variable,time,region,depth)
+woa_simple_plot(variable,time,region,depth);
 
 % woa_build_profiles   
 

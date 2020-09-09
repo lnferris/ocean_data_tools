@@ -41,6 +41,7 @@ ncoords = length(xcoords);
 
 url = 'http://tds.marine.rutgers.edu/thredds/dodsC/other/climatology/mocha/MOCHA_v3.nc';
 nc = ncgeodataset(url); % Assign a ncgeodataset handle.
+disp([ newline 'List of available variables:'])
 nc.variables % Print list of available variables. 
 
 
@@ -48,6 +49,7 @@ for i = 1
     
     variable = variable_list{i};
     sv = nc{variable}; % Assign ncgeovariable handle: 'climatology_bounds' 'temperature' 'salinity' 'time' 'latitude' 'longitude' 'depth'
+    disp([ newline 'List of variable attributes:'])
     sv.attributes % Print ncgeovariable attributes. % Print ncgeovariable attributes.
     svg = sv.grid_interop(:,:,:,:); % Get standardized (lat,lon,dep,time) coordinates for the ncgeovariable.
     data = squeeze(double(sv.data(month,:,:,:)));

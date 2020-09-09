@@ -16,7 +16,9 @@ else
     return
 end
 
+disp([ newline 'List of variable attributes:'])
 sv.attributes % Print ncgeovariable attributes.
+disp([ newline 'Available date range:'])
 datestr(sv.timeextent(),29) % Print date range of the ncgeovariable.
 svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
 

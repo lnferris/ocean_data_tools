@@ -43,13 +43,16 @@ ncoords = length(xcoords);
 
 n = length(variable_list);
 nc = ncgeodataset(source); % Assign a ncgeodataset handle.
+disp([ newline 'List of available variables:'])
 nc.variables            % Print list of available variables.
 
 for i = 1
 
     variable = variable_list{i};
     sv = nc{variable}; % Assign ncgeovariable handle
+    disp([ newline 'List of variable attributes:'])
     sv.attributes % Print ncgeovariable attributes.
+    disp([ newline 'Available date range:'])
     datestr(sv.timeextent(),29) % Print date range of the ncgeovariable.
     svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
     

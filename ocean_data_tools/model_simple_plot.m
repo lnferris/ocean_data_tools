@@ -71,6 +71,7 @@ region(region>180) = region(region>180)- 360;
 region(region<-180) = region(region<-180)+360;
 
 nc = ncgeodataset(source); % Assign a ncgeodataset handle.
+disp([ newline 'List of available variables:'])
 nc.variables            % Print list of available variables. 
 
 if ~any(strcmp(standard_vars,variable))   
@@ -88,7 +89,9 @@ if ~any(strcmp(standard_vars,variable))
 end
 
 sv = nc{variable}; % Assign ncgeovariable handle: 'water_u' 'water_v' 'water_temp' 'salinity'
+disp([ newline 'List of variable attributes:'])
 sv.attributes % Print ncgeovariable attributes.
+disp([ newline 'Available date range:'])
 datestr(sv.timeextent(),29) % Print date range of the ncgeovariable.
 svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
 

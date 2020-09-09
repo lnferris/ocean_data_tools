@@ -6,7 +6,9 @@ function [data,lat,lon] = model_simple_plot_layer(nc,date,variable,region)
 % See also model_simple_plot and model_simple_plot_velocity.
 
 sv = nc{variable}; % Assign ncgeovariable handle.
+disp([ newline 'List of variable attributes:'])
 sv.attributes % Print ncgeovariable attributes.
+disp([ newline 'Available date range:'])
 datestr(sv.timeextent(),29) % Print date range of the ncgeovariable.
 svg = sv.grid_interop(:,:,:,:); % Get standardized (time,z,lat,lon) coordinates for the ncgeovariable.
 
