@@ -51,20 +51,25 @@ platform_id = 1900980;
 % argo_platform_map 
 
 annotate = 1; 
-argo_platform_map(argo,annotate) % annotate optional,  1=on 0=off
+figure
 bathymetry_plot(bathymetry_extract(bathymetry_dir,bounding_region(argo)),'2Dcontour')
+argo_platform_map(argo,annotate) % annotate optional,  1=on 0=off
+
 
 % argo_profiles
 
 variable = 'TEMP_ADJUSTED'; % See object for options.
 annotate = 1; 
+figure
 argo_profiles(argo,variable,annotate) % annotate optional,  1=on 0=off
 
 % argo_profiles_map
 
 annotate = 1; 
-argo_profiles_map(argo,annotate) % annotate optional,  1=on 0=off
+figure
 bathymetry_plot(bathymetry_extract(bathymetry_dir,bounding_region(argo)),'2Dcontour') % add bathymetry contours
+argo_profiles_map(argo,annotate) % annotate optional,  1=on 0=off
+
 
 
 %%                  bathymetry demonstration
@@ -84,6 +89,7 @@ bathymetry_plot(bathy,ptype)
 
 [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,{'temperature'}); 
 xref = 'lon'; % 'lon' 'lat' or a time vector of length(xcoords)
+figure
 general_section(cruise,'temperature',xref,'pressure')
 xcoords = cruise.lon; % could alternatively use transect_select() to select coordinates
 ycoords = cruise.lat;
@@ -93,12 +99,14 @@ region = bounding_region([],xcoords,ycoords);
 bathymetry_section(bathy,xcoords,ycoords,xref,filled); % filled optional
 
 
+
 %%                  general demonstration
 
 % general_map
 [argo,matching_files] = argo_build(argo_dir,[-60.0 -50.0 150.0 160.0],'01-Nov-2015 00:00:00','01-Jan-2017 00:00:00',{'TEMP_ADJUSTED'});
 ptype = '2Dcontour'; % '2Dscatter' '2Dcontour'
 object = argo; % argo, cruise, hycom, mercator, woa, wod
+figure
 general_map(object,bathymetry_dir,ptype) % bathymetry_dir, ptype optional
 
 % general_depth_subset
@@ -113,6 +121,7 @@ zrange = [350 150]; % zrange should have the same sign convention as depth varia
 % general_region_subset
 
 object = argo; % % argo, cruise, hycom, mercator, woa, wod
+figure
 general_map(object)
 [xcoords,ycoords] = region_select(); % click desired  region on the figure
 [object_sub] = general_region_subset(object,xcoords,ycoords); 
@@ -136,12 +145,14 @@ xref = 'lat'; % 'lat' 'lon' 'stn';
 zref = 'PRES_ADJUSTED'; % See particular struct for options
 interpolate = 0; % 1=on 0=off
 contours = 0; % 1=on 0=off
+figure
 general_section(object,variable,xref,zref,interpolate,contours) % interpolate, contours optional
 
 % general_profiles
 
 object = argo; % argo, cruise, hycom, mercator, woa, wod
 variable = 'TEMP_ADJUSTED'; % see particular struct for options
+figure
 general_profiles(object,variable,zref)
 
 
@@ -153,6 +164,7 @@ month = 10; % Month (1 through 12).
 depth = 0;
 variable = 'temperature'; %  'temperature' 'salinity'
 region = [34 42  -80 -70]; % [30 48 -80 -58]
+figure
 mocha_simple_plot(month,depth,variable,region)
 
 % mocha_build_profiles
@@ -160,12 +172,16 @@ mocha_simple_plot(month,depth,variable,region)
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
 zgrid = 1; % vertical grid for linear interpolation in meters
 [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
+figure
 general_map(mocha,bathymetry_dir,'2Dcontour')
+figure
 general_section(mocha,'temperature','stn','depth',1,1)
+figure
 general_profiles(mocha,'salinity','depth')
 
 % mocha_domain_plot
 
+figure
 mocha_domain_plot(month,variable,region)
  
 
@@ -180,6 +196,7 @@ variable = 'velocity';                 % 'water_u' 'water_v' 'water_temp' 'salin
 region = [-5.0, 45.0 ,160,-150 ];      % [-90 90 -180 180]
 depth = -150;                          % Depth level between 0 and -5000m
 arrows = 0;                            % Velocity direction arrows 1=on 0=off
+figure
 [data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth,arrows); % optionally output the plotted data layer
 
 % model_build_profiles  - HYCOM EXAMPLE
@@ -188,13 +205,17 @@ arrows = 0;                            % Velocity direction arrows 1=on 0=off
 variable_list = {'water_temp','salinity'}; % 'water_u' 'water_v' 'water_temp' 'salinity'
 zgrid = 1; % vertical grid for linear interpolation in meters
 [hycom] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
+figure
 general_map(hycom,bathymetry_dir,'2Dcontour')
+figure
 general_section(hycom,'water_temp','stn','depth',1,1)
+figure
 general_profiles(hycom,'salinity','depth')
 
 % model_domain_plot - HYCOM EXAMPLE
 
 variable = 'salinity'; % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 
+figure
 model_domain_plot(model,source,date,variable,region)
 
 
@@ -209,6 +230,7 @@ variable = 'thetao'; % 'thetao' 'so' 'uo' 'vo' 'velocity' 'mlotst' 'siconc' 'usi
 region = [60.0, 70.0 ,-80, -60];      % [-90 90 -180 180]
 depth = -150;                          % Depth level between 0 and -5728m
 arrows = 0;  
+figure
 model_simple_plot(model,source,date,variable,region,depth,arrows);
 
 % model_build_profiles  - MERCATOR EXAMPLE
@@ -217,13 +239,17 @@ variable_list = {'thetao','so','uo'}; % thetao' 'so' 'uo' 'vo'
 [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
 zgrid = 1; % vertical grid for linear interpolation in meters
 [mercator] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
+figure
 general_map(mercator,bathymetry_dir,'2Dcontour')
+figure
 general_section(mercator,'thetao','stn','depth')
+figure
 general_profiles(mercator,'so','depth')
 
 % model_domain_plot - MERCATOR EXAMPLE
 
 variable = 'velocity';  % thetao' 'so' 'uo' 'vo' 'velocity'
+figure
 model_domain_plot(model,source,date,variable,region)
 bathymetry_plot(bathymetry_extract(bathymetry_dir,region),'3Dsurf')
 caxis([0 1])
@@ -236,6 +262,7 @@ listing = dir(ctdo_dir); % Peek at netCDF header info to inform choice of variab
 ncdisp([listing(1).folder '/' listing(1).name])
 variable_list = {'salinity','temperature','oxygen'};
 [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list); % Use a dummy path (e.g. uv_dir ='null') if missing data. 
+figure
 general_map(cruise,bathymetry_dir,'2Dcontour')
 
 variable = 'temperature'; % See cruise for options.
@@ -243,7 +270,9 @@ xref = 'lon'; % See cruise for options.
 zref = 'pressure'; % See cruise for options.
 interpolate = 1; % 1=on 0=off
 contours = 0; % 1=on 0=off
+figure
 general_section(cruise,variable,xref,zref,interpolate,contours) % interpolate, contours optional
+figure
 general_profiles(cruise,variable,zref)
 
 
@@ -255,6 +284,7 @@ variable = 'nitrate'; % 'temperature' 'salinity' 'oxygen' 'o2sat' 'AOU' 'silicat
 time = '03'; % '00' for annual climatology '01' '10' etc. for monthly climatology
 region = [-5.0, 45.0 ,-120, -150]; 
 depth = -0; % meters -0 to -5500
+figure
 woa_simple_plot(variable,time,region,depth);
 
 % woa_build_profiles   
@@ -265,14 +295,18 @@ time = '00'; % '00' for annual climatology '01' '10' etc. for monthly climatolog
 zgrid = 1; % vertical grid for linear interpolation in meters
 [woa] =  woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
 [woa] = general_remove_duplicates(woa); % thin struct to gridding of source (optional)
+figure
 general_map(woa,bathymetry_dir,'2Dcontour')
+figure
 general_section(woa,'salinity','lon','depth')
 [bathy] = bathymetry_extract(bathymetry_dir,bounding_region([],xcoords,ycoords));
 bathymetry_section(bathy,xcoords,ycoords,'lon',1) % filled optional
+figure
 general_profiles(woa,'oxygen','depth')
 
 % woa_domain_plot
 
+figure
 woa_domain_plot(variable,time,region)
 
 
@@ -284,5 +318,7 @@ listing = dir(wod_dir); % Peek at netCDF header info to inform choice of variabl
 ncdisp([listing(1).folder '/' listing(1).name])
 variable_list = {'Temperature','Salinity'}; % Variables to read (besides lon, lat, date, z).
 [wod] = wod_build(wod_dir,variable_list);
+figure
 general_map(wod,bathymetry_dir)
+figure
 general_profiles(wod,'Temperature','depth')

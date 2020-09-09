@@ -54,7 +54,6 @@ function  general_section(object,variable,xref,zref,interpolate,contours)
         zvar = -zvar;
     end
     
-    figure
     hold on
 
     if interpolate==0
@@ -110,5 +109,7 @@ function  general_section(object,variable,xref,zref,interpolate,contours)
         set(gca,'ColorScale','log')    
     end
 
+    hold off
+    
 end
     

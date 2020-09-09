@@ -38,12 +38,11 @@ if nanmean(argo.PRES_ADJUSTED,'all') > 0
     argo.PRES_ADJUSTED = -argo.PRES_ADJUSTED;
 end
 
-figure
 hold on
 
 for prof = 1:length(argo.stn) 
     
-        scatter(cvar(:,prof),argo.PRES_ADJUSTED(:,prof),'.');  
+        h(prof) = scatter(cvar(:,prof),argo.PRES_ADJUSTED(:,prof),'.');  
         
         if nargin == 3 && annotate ==1
             text(cvar(1,prof),argo.PRES_ADJUSTED(1,prof),string(argo.stn(prof)),'FontSize',10)
@@ -52,10 +51,12 @@ for prof = 1:length(argo.stn)
 end
 
     if nargin == 3 && annotate ==1
-        legend(strcat(cellstr(num2str(argo.stn(:))),' (',cellstr(num2str(argo.id(:))),')')) % Make legend.
+        legend(h,strcat(cellstr(num2str(argo.stn(:))),' (',cellstr(num2str(argo.id(:))),')'))
     end
 
     title([variable,' by profile'], 'Interpreter', 'none')
     ylabel('PRES_ADJUSTED')
+    
+hold off
 
 end

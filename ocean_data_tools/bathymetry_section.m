@@ -131,6 +131,5 @@ if filled ==1
     area(xvar,bath_section,basevalue,'FaceColor','k')
     ylim([min(bath_section) 10])
 end
-set(gca, 'Children',flipud(get(gca, 'Children'))) % send bathymetry to back
 hold off
 end

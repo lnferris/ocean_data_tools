@@ -66,7 +66,6 @@ data = data(:,lon_inds);
 
 % Plot
 
-figure; 
 pcolor(lon,lat,data); 
 shading flat
 title({sprintf('%s %.0fm',sv.attribute('standard_name'));datestr(svg.time(tin))},'interpreter','none');

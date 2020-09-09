@@ -92,8 +92,6 @@ if lonw > lone
 end
 
 % Make Plot
-
-figure 
     
 if need2merge == 1
     

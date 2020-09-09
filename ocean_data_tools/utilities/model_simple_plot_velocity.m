@@ -81,7 +81,6 @@ data = sqrt(u.^2+v.^2); % calculate velocity
 
 % Plot
 
-figure; 
 pcolor(lon,lat,data); 
 shading flat
 title({sprintf('velocity magnitude %.0fm',svg.z(din));datestr(svg.time(tin))},'interpreter','none');
@@ -90,6 +89,7 @@ hcb = colorbar; title(hcb,sv.attribute('units'));
 if arrows==1
     hold on
     quiver(lon,lat,u,v,'w')
+    hold off
 end
 
 end

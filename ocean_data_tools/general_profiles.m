@@ -35,7 +35,6 @@ if nanmean(zvar,'all') > 0
     zvar = -zvar;
 end
 
-figure
 hold on
 
 for prof = 1:length(object.stn) 

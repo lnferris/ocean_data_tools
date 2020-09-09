@@ -54,7 +54,6 @@ if strcmp(ptype,'2Dscatter')
     %c1 = colorbar;
     %ylabel(c1,'Depth [m]')
     colormap jet
-    set(gca, 'Children',flipud(get(gca, 'Children'))) % send bathymetry to back
     
 elseif strcmp(ptype,'2Dcontour')
 

@@ -22,7 +22,7 @@ function mocha_domain_plot(month,variable,region)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 28-Jun-2020
+% Jun 2020; Last revision: 09-Sep-2020
 % 
 % See also mocha_build_profiles and mocha_simple_plot.
 
@@ -45,7 +45,6 @@ lat = reshape(svg.lat,[],1);
 
 inds = find(lat >= region(1) & lat <= region(2) & lon >= region(3) & lon <= region(4));
 
-figure 
 hold on
 
 for zind = 1:length(svg.z)
@@ -59,5 +58,7 @@ hcb = colorbar; title(hcb,sv.attribute('units'));
 end    
 
 view([-5 -2 5]);
+
+hold off
 
 end

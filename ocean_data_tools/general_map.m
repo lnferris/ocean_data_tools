@@ -35,12 +35,7 @@ function general_map(object,bathymetry_dir,ptype)
 % 
 % See also bathymetry_plot and general_region_subset.
 
-
-    figure
-    grid on; grid minor
-    plot(object.lon, object.lat,'.','MarkerSize',14)
-    axis([min(object.lon)-5 max(object.lon)+5 min(object.lat)-5 max(object.lat)+5])
-    
+hold on
 
     if nargin >= 2
 
@@ -52,6 +47,15 @@ function general_map(object,bathymetry_dir,ptype)
         [bathy] = bathymetry_extract(bathymetry_dir,bounding_region(object));
         bathymetry_plot(bathy,default_type)
 
-     end
+    end
+     
+hold on
+    
+    grid on; grid minor
+    plot(object.lon, object.lat,'.','MarkerSize',14)
+    axis([min(object.lon)-5 max(object.lon)+5 min(object.lat)-5 max(object.lat)+5])
+    
+hold off
+
 
 end   

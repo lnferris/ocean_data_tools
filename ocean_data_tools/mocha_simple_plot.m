@@ -23,7 +23,7 @@ function mocha_simple_plot(month,depth,variable,region)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 25-Jun-2020
+% Jun 2020; Last revision: 09-Sep-2020
 % 
 % See also mocha_build_profiles and mocha_domain_plot.
 
@@ -49,9 +49,12 @@ data = reshape(squeeze(double(sv.data(month,din,:,:))),[],1);
 
 inds = find(lat >= region(1) & lat <= region(2) & lon >= region(3) & lon <= region(4));
 
-figure 
+hold on
+
 scatter(lon(inds),lat(inds),[],data(inds),'.')
 title({url;sprintf('%s   month: %s   depth: %.0fm',sv.attribute('standard_name'),datestr(svg.time(month),'mmm'),svg.z(din))},'interpreter','none');
 hcb = colorbar; title(hcb,sv.attribute('units'));
+
+hold off
 
 end

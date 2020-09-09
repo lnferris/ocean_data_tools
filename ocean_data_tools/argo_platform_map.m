@@ -28,7 +28,6 @@ function argo_platform_map(argo,annotate)
 % 
 % See also argo_build and argo_platform_subset.
 
-    figure
     hold on
 
     platformids = unique(argo.id); % Get ids of the platforms.
@@ -38,7 +37,7 @@ function argo_platform_map(argo,annotate)
     for i = 1:length(unique(argo.id)) 
 
         % Plot lat/lon for all profiles.
-        plot(argo.lon(argo.id==platformids(i)),argo.lat(argo.id==platformids(i)),'.','MarkerSize',14)
+        h(i) = plot(argo.lon(argo.id==platformids(i)),argo.lat(argo.id==platformids(i)),'.','MarkerSize',14);
 
         if nargin == 2 && annotate ==1
             text(argo.lon(argo.id==platformids(i)),argo.lat(argo.id==platformids(i)),string(x(i)),'FontSize',10)
@@ -50,7 +49,8 @@ function argo_platform_map(argo,annotate)
     grid on; grid minor
     title('By platform')
     if nargin == 2 && annotate ==1
-        legend(strcat(cellstr(num2str(x(:))),' (',cellstr(num2str(platformids(:))),')')) % Make legend.
+        legend(h,strcat(cellstr(num2str(x(:))),' (',cellstr(num2str(platformids(:))),')'))
     end
     
+    hold off
 end

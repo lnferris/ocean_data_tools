@@ -116,8 +116,6 @@ end
 
 % Make Plot
 
-figure
-
 if need2merge == 1
     
     dataA = reshape(permute(squeeze(double(sv.data(tin,:,lats:latn,lonw_A:lone_A))),[2,3,1]),[],1); % permute array to be lon x lat x dep
