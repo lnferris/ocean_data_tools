@@ -27,6 +27,9 @@ function mocha_simple_plot(month,depth,variable,region)
 % 
 % See also mocha_build_profiles and mocha_domain_plot.
 
+% deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
+region(region>180) = region(region>180)- 360;
+region(region<-180) = region(region<-180)+360;
 
 url = 'http://tds.marine.rutgers.edu/thredds/dodsC/other/climatology/mocha/MOCHA_v3.nc';
 nc = ncgeodataset(url); % Assign a ncgeodataset handle.

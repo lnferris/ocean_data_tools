@@ -28,10 +28,13 @@ function [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 27-Jun-2020
+% Jun 2020; Last revision: 08-Sep-2020
 % 
 % See also argo_platform_subset and general_region_subset.
 
+    % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
+    region(region>180) = region(region>180)- 360;
+    region(region<-180) = region(region<-180)+360;
 
     FillValue = 99999; % From Argo manual.
     start_date = datenum(start_date,'dd-mmm-yyyy HH:MM:SS');
