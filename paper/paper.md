@@ -36,7 +36,7 @@ virtual cruise selection using ``transect_select``, and ``model_build_profiles``
 plotted using ``general_section`` with ``bathymetry_section``. Three of the 
 subplots use colormaps from cmocean [@Thyng:2016]. \label{fig:1}](figure.png)
 
-Structure arrays are more user-friendly than many of the native data storage of underlying datasets because they allow the user to neatly group related data of any type or size into containers called fields. Both the structure array and its fields are mutable, and data is directly visible and accessible in the Matlab workspace (unlike NetCDF which requires a function call to read variables).
+Structure arrays are more user-friendly than the native data storage underlying many of the datasets because they allow the user to neatly group related data of any type or size into containers called fields. Both the structure array and its fields are mutable, and data is directly visible and accessible in the Matlab workspace (unlike NetCDF which requires a function call to read variables).
 Matlab was chosen as the languange of choice for this toolbox because it is already extensively used within the oceanographic community.
 It is also often a first languange for the community, which is important because this toolbox aims to lower the barrier to entry for using the ever-growing variety of freely-available field- and model-derived oceanographic datasets.
 
