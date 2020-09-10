@@ -36,12 +36,12 @@ virtual cruise selection using ``transect_select``, and ``model_build_profiles``
 plotted using ``general_section`` with ``bathymetry_section``. Three of the 
 subplots use colormaps from cmocean [@Thyng:2016]. \label{fig:1}](figure.png)
 
+Structure arrays are more user-friendly than many of the native data storage of underlying datasets because they allow the user to neatly group related data of any type or size into containers called fields. Both the structure array and its fields are mutable, and data is directly visible and accessible in the Matlab workspace (unlike NetCDF which requires a function call to read variables).
+Matlab was chosen as the languange of choice for this toolbox because it is already extensively used within the oceanographic community.
+
 The workflow of ``ocean_data_tools`` is to build uniform structure arrays (e.g. ``argo``,
 ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``) from raw datasets and 
-call general functions on these structure arrays to map, subset, or plot. Structure arrays are more user-friendly than many of the native data storage of underlying datasets because they allow the user to neatly group related data of any type or size into containers called fields. Both the structure array and its fields are mutable, and data is directly visible and accessible in the Matlab workspace (unlike NetCDF which requires a function call to read variables).
-Matlab was chosen as the languange of choice for this toolbox because it is already extensively used within the oceanographic community, and is often a first programming language for this community.
-
-Functions with 
+call general functions on these structure arrays to map, subset, or plot. Functions with 
 the ``\_build`` suffix load raw data into uniform structure arrays. Structure arrays are 
 compatible with all ``general_`` functions, as well as functions in the commonly-used
 Gibbs-SeaWater (GSW) Oceanographic Toolbox [@McDougall:2011]. One application of the ``\_build`` 
