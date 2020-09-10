@@ -25,21 +25,24 @@ with large datasets) can be dissuaded from utilizing this data because of the
 overhead associated with determining how to batch download data and 
 format it into easily-manipulable data structures. ``ocean_data_tools``
 solves this problem by allowing the user to transform common oceanographic 
-data sources into uniform structs, call general functions on these structs, 
+data sources into uniform structure arrays, call general functions on these structure arrays, 
 perform custom calculations, and make graphics.
+
+
+
 
 ![Building a virtual cruise from the Operational Mercator global ocean
 analysis and forecast system at 1/12 degree with 3D bathymetry [@Smith:1997]. 
 Showing (a) a 3D velocity plot created using ``model_domain_plot``, (b) 
 virtual cruise selection using ``transect_select``, and ``model_build_profiles``, 
-(c) coordinates of the resulting uniform struct, and (d) a temperature section 
+(c) coordinates of the resulting uniform structure array, and (d) a temperature section 
 plotted using ``general_section`` with ``bathymetry_section``. Three of the 
 subplots use colormaps from cmocean [@Thyng:2016]. \label{fig:1}](figure.png)
 
-The workflow of ``ocean_data_tools`` is to build uniform structs (e.g. ``argo``,
+The workflow of ``ocean_data_tools`` is to build uniform structure arrays (e.g. ``argo``,
 ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``) from raw datasets and 
-call general functions on these structs to map, subset, or plot. Functions with 
-the ``\_build`` suffix load raw data into uniform structs. Structs are 
+call general functions on these structure arrays to map, subset, or plot. Functions with 
+the ``\_build`` suffix load raw data into uniform structure arrays. Structure arrays are 
 compatible with all ``general_`` functions, as well as functions in the commonly-used
 Gibbs-SeaWater (GSW) Oceanographic Toolbox [@McDougall:2011]. One application of the ``\_build`` 
 feature is to create virtual cruises from model output \autoref{fig:1}. The user
