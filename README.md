@@ -28,7 +28,7 @@ Find a bug, have a question, or want to contribute? Open an issue or email lnfer
 2. Download [nctoolbox](https://github.com/nctoolbox/nctoolbox). Run the command ``setup_nctoolbox`` at the beginning of a MATLAB session.
 3. Run each demonstration in **demos/demos.m**, which contains example usages for all functions. All required test data is included in **data/**.
 
-Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function, as well as functions in the [Gibbs-SeaWater (GSW) Oceanographic Toolbox](http://www.teos-10.org/software.htm#1).
+Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function.
 
 Main functions are located in **ocean_data_tools/**. Demonstrations are located in **demos/**. Test datas are located in **data/**. Shell scripts for batch downloading data are located in **shell_scripts/**. While shell scripts can be run directly in a macOS Terminal, running them in Windows requires [Cygwin](https://www.cygwin.com/) (and perhaps slight modification of commands). Python syntax examples are located in **python/**, which may be grow to become a module in the future.
 
@@ -36,7 +36,7 @@ Main functions are located in **ocean_data_tools/**. Demonstrations are located 
 
 The only true dependency is [nctoolbox](https://github.com/nctoolbox/nctoolbox).
 
-To take full advantage of ocean_data_tools, download [Gibbs-SeaWater (GSW) Oceanographic Toolbox](http://www.teos-10.org/software.htm#1). Uniform structs created by ocean_data_tools are compatable with GSW functions. See an [example](docs/gsw_example.md).
+It is recommended to also download [Gibbs-SeaWater (GSW) Oceanographic Toolbox](http://www.teos-10.org/software.htm#1). Uniform structs created by ocean_data_tools neatly contain the data for use with custom user-defined calculations or other toolboxes such as GSW. See one such [example](docs/gsw_example.md).
 
 ## Contents
 
