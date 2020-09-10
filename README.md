@@ -25,8 +25,15 @@ Find a bug, have a question, or want to contribute? Open an issue or email lnfer
 ## Getting Started
 
 1. Download [bathymetry](#bathymetry).
-2. Download [nctoolbox](https://github.com/nctoolbox/nctoolbox). Run the command ``setup_nctoolbox`` at the beginning of a MATLAB session.
-3. Run each demonstration in **demos/demos.m**, which contains example usages for all functions. All required test data is included in **data/**.
+2. Download [nctoolbox](https://github.com/nctoolbox/nctoolbox). You will need to run the command ``setup_nctoolbox`` at the beginning of a MATLAB session.
+3. Add ocean_data_tools and nctoolbox to the path. Specifically, the following folders must be added to the [path](https://www.mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html):
+
+- ocean_data_tools/ocean_data_tools
+- ocean_data_tools/ocean_data_tools/utilities
+- nctoolbox/
+
+
+4. Run each demonstration in **demos/demos.m**, which contains example usages for all functions. All required test data is included in **data/**.
 
 Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function.
 
