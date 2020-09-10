@@ -149,7 +149,7 @@ It is recommended to also download [Gibbs-SeaWater (GSW) Oceanographic Toolbox](
 
 ## Finding Data
 
-There two types of datasets: those that need to be downloaded manually<sup>1</sup> and those that can be accessed remotely<sup>2</sup> through OpenDAP (e.g. you do not need to download the data manually, the data can be accessed directly on the the internet using a url). 
+There two types of datasets: those that need to be downloaded manually<sup>1</sup> and those that can be accessed remotely<sup>2</sup> through OpenDAP (e.g. the data can be accessed directly on the the internet using a url). 
 
 #### argo<sup>1</sup>
 
