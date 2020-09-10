@@ -151,7 +151,7 @@ It is recommended to also download [Gibbs-SeaWater (GSW) Oceanographic Toolbox](
 
 #### argo
 
-Download [Argo data](https://argo.ucsd.edu/) directly from GDAC FTP servers using either the [Coriolis selection tool](http://www.argodatamgt.org/Access-to-data/Argo-data-selection), or the [US GDAC](http://www.usgodae.org/cgi-bin/argo_select.pl). See the [Argo User's Manual](http://www.argodatamgt.org/Documentation) for more information.
+Download [Argo data](https://argo.ucsd.edu/) directly from GDAC FTP servers using either the [Coriolis selection tool](http://www.argodatamgt.org/Access-to-data/Argo-data-selection), or the [US GDAC](https://nrlgodae1.nrlmry.navy.mil/cgi-bin/argo_select.pl). See the [Argo User's Manual](http://www.argodatamgt.org/Documentation) for more information.
 
 Alternatively run **shell_scripts/download_argo** to download data via File Transfer Protocol.
 
