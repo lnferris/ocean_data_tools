@@ -14,7 +14,7 @@ date: 03 July 2020
 bibliography: paper.bib
 ---
 
-# Summary
+# Statement of Need
 
 ``ocean_data_tools`` simplifies the process of extracting, formatting, and 
 visualizing freely-available oceanographic data. A wealth of oceanographic 
@@ -35,6 +35,8 @@ virtual cruise selection using ``transect_select``, and ``model_build_profiles``
 (c) coordinates of the resulting uniform structure array, and (d) a temperature section 
 plotted using ``general_section`` with ``bathymetry_section``. Three of the 
 subplots use colormaps from cmocean [@Thyng:2016]. \label{fig:1}](figure.png)
+
+# Summary
 
 Structure arrays are more user-friendly than the native data storage underlying many of the datasets because they allow the user to neatly group related data of any type or size into containers called fields. Both the structure array and its fields are mutable, and data is directly visible and accessible in the Matlab workspace (unlike NetCDF which requires a function call to read variables).
 Matlab was chosen as the languange of choice for this toolbox because it is already extensively used within the oceanographic community.
