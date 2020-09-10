@@ -62,6 +62,7 @@ I am grateful to Donglai Gong for ongoing mentorship. I thank the many organizat
 data to the oceanography community including (but not limited to) Argo, the HYCOM 
 consortium, the Copernicus Programme, the International Global Ship-based Hydrographic
 Investigations Program (GO-SHIP), and the National Oceanic and Atmospheric 
-Administration (NOAA). This paper is VIMS Contribution No.xxxx.
+Administration (NOAA). I would also like to thank the two reviewers for helpful feedback, especially 
+Kelly Kearney for her insightful suggestions. This paper is VIMS Contribution No.xxxx.
 
 # References
