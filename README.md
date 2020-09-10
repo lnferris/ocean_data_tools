@@ -36,7 +36,7 @@ Main functions are located in **ocean_data_tools/**. Demonstrations are located 
 
 The only true dependency is [nctoolbox](https://github.com/nctoolbox/nctoolbox).
 
-It is recommended to also download [Gibbs-SeaWater (GSW) Oceanographic Toolbox](http://www.teos-10.org/software.htm#1). A benefit of ocean_data_tools is that neatly packs data into structs, allowing the user to then apply user-defined calculations or call functions from other toolboxes such as GSW. One such example is [here](docs/gsw_example.md).
+It is recommended to also download [Gibbs-SeaWater (GSW) Oceanographic Toolbox](http://www.teos-10.org/software.htm#1). A benefit of ocean_data_tools is that neatly packs data into uniform structs, allowing the user to then apply custom user-defined calculations to these structs (or invoke functions from other toolboxes such as GSW). One such example is [here](docs/gsw_example.md).
 
 ## Contents
 
