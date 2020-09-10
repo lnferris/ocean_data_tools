@@ -42,13 +42,13 @@ function [region] = bounding_region(object,xcoords,ycoords)
 % See also bathymetry_extract and bathymetry_plot.
 
 if isstruct(object)
-    region = [min(object.lat)-1 max(object.lat)+1 min(object.lon)-1 max(object.lon)+1];
+    region = [min(object.lat) max(object.lat) min(object.lon) max(object.lon)];
 else
     region = NaN(1,4);
 end
 
 if nargin > 1
-    xyreg = [min(ycoords)-1 max(ycoords)+1 min(xcoords)-1 max(xcoords)+1];
+    xyreg = [min(ycoords) max(ycoords) min(xcoords) max(xcoords)];
     region = [min([region(1) xyreg(1)]) max([region(2) xyreg(2)]) min([region(3) xyreg(3)]) max([region(4) xyreg(4)])];
 end
 
