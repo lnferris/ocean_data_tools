@@ -26,10 +26,13 @@ overhead associated with determining how to batch download data and
 format it into easily-manipulable data structures. ``ocean_data_tools``
 solves this problem by allowing the user to transform common oceanographic 
 data sources into uniform structure arrays, call general functions on these structure arrays, 
-perform custom calculations, and make graphics.
+perform custom calculations, and make graphics. 
 
-
-
+Structure arrays are more user-friendly than many of the native data storage of underlying datasets 
+because they allow the user to neatly group related data of any type or size into containers called fields. Fields
+are indexed in the same manner as numeric arrays. Both the structure array and its fields are mutable, 
+and data is directly visible and accessible in the Matlab workspace (unlike NetCDF which requires a function call to read variables).
+Matlab was chosen as the languange of choice for this toolbox because it is already extensively used within the oceanographic community and is often a first (or only) programming language for much of the ocean and earth science community.
 
 ![Building a virtual cruise from the Operational Mercator global ocean
 analysis and forecast system at 1/12 degree with 3D bathymetry [@Smith:1997]. 
