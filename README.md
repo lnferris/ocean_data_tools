@@ -149,35 +149,37 @@ It is recommended to also download [Gibbs-SeaWater (GSW) Oceanographic Toolbox](
 
 ## Finding Data
 
-#### argo
+There two types of datasets: those that need to be downloaded manually<sup>1</sup> and those that can be accessed remotely<sup>2</sup> through OpenDAP (e.g. you do not need to download the data manually, the data can be accessed directly on the the internet using a url). 
+
+#### argo<sup>1</sup>
 
 Download [Argo data](https://argo.ucsd.edu/) directly from GDAC FTP servers using either the [Coriolis selection tool](http://www.argodatamgt.org/Access-to-data/Argo-data-selection), or the [US GDAC](https://nrlgodae1.nrlmry.navy.mil/cgi-bin/argo_select.pl). See the [Argo User's Manual](http://www.argodatamgt.org/Documentation) for more information.
 
 Alternatively run **shell_scripts/download_argo** to download data via File Transfer Protocol.
 
-#### bathymetry
+#### bathymetry<sup>1</sup>
 
 To get bathymetry data (for ``bathymetry_dir``), download Smith & Sandwell under [Global Topography V19.1](https://topex.ucsd.edu/marine_topo/) in netcdf form (topo_20.1.nc).
 
-#### mocha
+#### mocha<sup>2</sup>
 
 The url for MOCHA Mid-Atlantic Bight climatology is embedded. See [Rutgers Marine catalog](http://tds.marine.rutgers.edu/thredds/catalog.html).
 
-#### model
+#### model<sup>1,2</sup>
 
 For HYCOM, download subsetted data directly using NCSS. Get the data url by visiting the [HYCOM website](https://www.hycom.org/dataserver/gofs-3pt1/analysis). For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Click on the NetcdfSubset link. Set constraints and copy the NCSS Request URL at the bottom of the page. Run **shell_scripts/download_hycom_lite**. To download multiple months or years, run **shell_scripts/download_hycom_bulk_daily** (partition files by day) or **shell_scripts/download_hycom_bulk_monthly** (partition files by month). Please use responsibly.
 
 For Mercator, download Copernicus Marine data directly from FTP servers. First make a [Copernicus account](http://marine.copernicus.eu/services-portfolio/access-to-products/). Use the selection tool to download GLOBAL_ANALYSIS_FORECAST_PHY_001_024. Alternatively run **shell_scripts/download_mercator**. Before running the script, follow the instructions for modifying your ~/.netrc file in the comments of the script.
 
-#### whp_cruise
+#### whp_cruise<sup>1</sup>
 
 For [GO-SHIP data](https://usgoship.ucsd.edu/hydromap/), get CTD data (for ``ctdo_dir``) by choosing a [GO-SHIP cruise](https://cchdo.ucsd.edu/search?q=GO-SHIP) and downloading the CTD data in whp_netcdf format. More information about whp_netcdf parameters is available [here](https://exchange-format.readthedocs.io/en/latest/index.html#). Get LADCP data (for ``uv_dir``, ``wke_dir``) [here](https://currents.soest.hawaii.edu/go-ship/ladcp/). There is information about LACDP processing [here](https://www.ldeo.columbia.edu/~ant/LADCP.html).
 
-#### woa
+#### woa<sup>2</sup>
 
 Functions build the World Ocean Atlas url at maximum resolution based on arguments, but coarser resolutions and seasonal climatologies are available at the [NODC website](https://www.nodc.noaa.gov/OC5/woa18/woa18data.html). Note NCEI is scheduled to update data urls in the near future. Functions will be updated as such.
 
-#### wod
+#### wod<sup>1</sup>
 
 Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html) and select products.
 
