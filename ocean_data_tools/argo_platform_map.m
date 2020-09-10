@@ -45,8 +45,8 @@ function argo_platform_map(argo,annotate)
 
     end
 
-    axis([min(argo.lon)-5 max(argo.lon)+5 min(argo.lat)-5 max(argo.lat)+5])
-    grid on; grid minor
+    %axis([min(argo.lon)-5 max(argo.lon)+5 min(argo.lat)-5 max(argo.lat)+5])
+    %grid on; grid minor
     title('By platform')
     if nargin == 2 && annotate ==1
         legend(h,strcat(cellstr(num2str(x(:))),' (',cellstr(num2str(platformids(:))),')'))

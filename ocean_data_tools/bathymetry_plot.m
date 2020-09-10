@@ -50,25 +50,28 @@ if strcmp(ptype,'2Dscatter')
     nlat = length(lat);
     lon = lon.*ones(1,nlat);
     lat = (ones(1,nlon).*lat).';
-    scatter(reshape(lon,[],1),reshape(lat,[],1),[],reshape(bath,[],1))
+    scatter(reshape(lon,[],1),reshape(lat,[],1),[],reshape(bath,[],1));
     %c1 = colorbar;
     %ylabel(c1,'Depth [m]')
-    colormap jet
+    %colormap gray
+    colorbar
     
 elseif strcmp(ptype,'2Dcontour')
 
     % 2D Contour plot
-    contour(lon,lat,bath.')
+    contour(lon,lat,bath.');
     %c1 = colorbar;
     %ylabel(c1,'Depth [m]')
-    colormap jet
+    %colormap gray
+    colorbar
 
 elseif strcmp(ptype,'3Dsurf')
     
     % 3D Surface plot
-    surf(lon,lat,bath.','LineStyle','none','FaceColor',[0.5 0.5 0.5])
+    surf(lon,lat,bath.','LineStyle','none','FaceColor',[0.5 0.5 0.5]);
     %ylabel(c1,'Depth [m]')
     light('Position',[-1 0 0],'Style','local')
+    
     
 else 
     disp('Check spelling of plot type');

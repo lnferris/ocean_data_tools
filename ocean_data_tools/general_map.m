@@ -51,9 +51,9 @@ hold on
      
 hold on
     
-    grid on; grid minor
+    %grid on; grid minor
     plot(object.lon, object.lat,'.','MarkerSize',14)
-    axis([min(object.lon)-5 max(object.lon)+5 min(object.lat)-5 max(object.lat)+5])
+    %axis([min(object.lon)-5 max(object.lon)+5 min(object.lat)-5 max(object.lat)+5])
     
 hold off
 

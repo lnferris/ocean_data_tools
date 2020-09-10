@@ -37,18 +37,18 @@ function [region] = bounding_region(object,xcoords,ycoords)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: -Jun-2020
+% Jun 2020; Last revision: 09-Sep-2020
 % 
 % See also bathymetry_extract and bathymetry_plot.
 
 if isstruct(object)
-    region = [min(object.lat)-5 max(object.lat)+5 min(object.lon)-5 max(object.lon)+5];
+    region = [min(object.lat)-1 max(object.lat)+1 min(object.lon)-1 max(object.lon)+1];
 else
     region = NaN(1,4);
 end
 
 if nargin > 1
-    xyreg = [min(ycoords)-5 max(ycoords)+5 min(xcoords)-5 max(xcoords)+5];
+    xyreg = [min(ycoords)-1 max(ycoords)+1 min(xcoords)-1 max(xcoords)+1];
     region = [min([region(1) xyreg(1)]) max([region(2) xyreg(2)]) min([region(3) xyreg(3)]) max([region(4) xyreg(4)])];
 end
 

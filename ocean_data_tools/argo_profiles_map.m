@@ -42,8 +42,8 @@ function argo_profiles_map(argo,annotate)
         end
     end
 
-    axis([min(argo.lon)-5 max(argo.lon)+5 min(argo.lat)-5 max(argo.lat)+5])
-    grid on; grid minor
+    %axis([min(argo.lon)-5 max(argo.lon)+5 min(argo.lat)-5 max(argo.lat)+5])
+    %grid on; grid minor
 
     title('By Profile');
     if nargin == 2 && annotate ==1

@@ -55,7 +55,7 @@ end
     end
 
     title([variable,' by profile'], 'Interpreter', 'none')
-    ylabel('PRES_ADJUSTED')
+    ylabel('PRES_ADJUSTED', 'Interpreter', 'none')
     
 hold off
 
