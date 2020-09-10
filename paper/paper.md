@@ -48,8 +48,8 @@ from model data. This may be used as a cruise planning tool or to facilitate
 comparison of observations (such as those from underwater glider surveys) with 
 model output. Some ``ocean_data_tools`` functions employ ``nctoolbox`` [@nctoolbox].
 
-``ocean_data_tools`` has already been used in scientific publications [@Bemis:2020] 
-and [@Crear:2020]. This toolbox is built for extensibility; the plan 
+``ocean_data_tools`` has already been used in scientific publication [@Bemis:2020] 
+and for data exploration in support of [@Crear:2020]. This toolbox is built for extensibility; the plan 
 is to continuously add support for additional datasets such as Remote Sensing 
 Systems (http://www.remss.com/) products and European Centre for Medium-Range 
 Weather Forecasts (ECMWF) products. The source code for ``ocean_data_tools`` has
