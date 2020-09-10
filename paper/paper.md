@@ -38,7 +38,7 @@ subplots use colormaps from cmocean [@Thyng:2016]. \label{fig:1}](figure.png)
 
 Structure arrays are more user-friendly than many of the native data storage of underlying datasets because they allow the user to neatly group related data of any type or size into containers called fields. Both the structure array and its fields are mutable, and data is directly visible and accessible in the Matlab workspace (unlike NetCDF which requires a function call to read variables).
 Matlab was chosen as the languange of choice for this toolbox because it is already extensively used within the oceanographic community.
-It is also often a first languange for the community, which is important because this toolbox aims to lower the barrier to entry for users who might be intimidated by incorporating the variety of pubicaly-available field- and model-derived oceanographic datasets into their analyses.
+It is also often a first languange for the community, which is important because this toolbox aims to lower the barrier to entry for using pubic field- and model-derived oceanographic datasets.
 
 The workflow of ``ocean_data_tools`` is to build uniform structure arrays (e.g. ``argo``,
 ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``) from raw datasets and 
