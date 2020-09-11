@@ -14,7 +14,7 @@
 
 ``xcoords`` and ``ycoords`` are vectors of coordinates. Rows or columns are fine, and both -180/180 or 0/360 notation are fine.
 
-When ``xref`` is a time vector, it must be of ``length(xcoords)`` and elements of the vector must be datenums. Otherwise just set ``xref = 'lon'`` or  ``xref = 'lat'``. 
+When ``xref`` is a time vector, it must be of ``length(xcoords)`` and elements of the vector must be datenums. Otherwise set ``xref = 'lon'`` or  ``xref = 'lat'``. 
 
 #### Example 1
 
