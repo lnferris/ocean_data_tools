@@ -15,6 +15,12 @@ general_section(object,variable,xref,zref,interpolate,contours)
 
 ``general_section(object,variable,xref,zref,interpolate,contours)`` adds contours to the section plot. ``contours=1`` for on, ``contours=0`` for off.
 
+``variable`` is the string name of the field (of ``object``) to be plotted as the color variable of the section plot
+
+``zref`` is the string name of the field (of ``object``) to be plotted as the depth variable of the section plot
+
+``xref`` is the string name of the field (of ``object``) to be plotted as the horizontal variable of the section plot
+
 
 #### Example 1
 
