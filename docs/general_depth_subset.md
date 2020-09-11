@@ -3,14 +3,16 @@
 #### Syntax
 
 ```Matlab
-general_depth_subset(object,zrange)
-general_depth_subset(object,zrange,depth_list)
+[subobject] = general_depth_subset(object,zrange)
+[subobject] = general_depth_subset(object,zrange,depth_list)
 ```
 #### Description
 
 ``[subobject] =  general_depth_subset(object,zrange)`` subsets ``object`` by depth-range ``zrange``; where ``object`` is a struct created by any of the ``_build`` functions in ocean_data_tools (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). The default depth-variable used to subset is ``'depth'``. ``zrange`` is a 2-element vector e.g. ``zrange=[0 200]`` in meters or dbar. Order does not matter, but the sign convention should be the same as the depth variable in ``object``.
 
 ``[subobject] =  general_depth_subset(object,zrange,depth_list)`` enables the user to specify one or more depth variables (instead of using default ``'depth'``) e.g. ``depth_list = {'pressure'}`` or ``depth_list = {'pressure','z','depth','depth_vke'}``.
+
+``subobject`` is a struct which is structurally identical to ``object`` but contains only data within the specified depth range. In other words, profiles within ``object`` have been truncated.
 
 #### Example 1
 
