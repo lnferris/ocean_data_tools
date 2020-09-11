@@ -3,11 +3,19 @@
 #### Syntax
 
 ```Matlab
-model_domain_plot(model,source,date,variable,region)
+model_domain_plot(model_type,source,date,variable,region)
 ```
 #### Description
 
-``model_domain_plot(model,source,date,variable,region)`` plots all depth levels of HYCOM or Operational Mercator GLOBAL_ANALYSIS_FORECAST_PHY_001_024 over a particular rectangular ``region``. ``variable`` specifies the parameter to be plotted.  In addition to innate variables, each model has the additional derived variable ``variable='velocity'``. ``model='hycom'`` or ``model='mercator'`` specifies the model used. ``source`` is the url or local path of the relevant dataset.
+``model_domain_plot(model,source,date,variable,region)`` plots all depth levels of HYCOM or Operational Mercator GLOBAL_ANALYSIS_FORECAST_PHY_001_024 over a particular rectangular ``region``. ``variable`` specifies the parameter to be plotted.  In addition to innate variables, each model has the additional derived variable ``variable='velocity'``. ``model_type ='hycom'`` or ``model_type ='mercator'`` specifies the model used. ``source`` is the url or local path of the relevant dataset.
+
+``source`` (a character array) is the path to either a local netcdf file or an OpenDAP url.
+
+``date`` is a date string in format 'dd-mmm-yyyy HH:MM:SS'. 
+
+``variable`` is a string or character array and is the name of the parameter to be plotted.
+
+``region`` is a vector containing the bounds [S N W E] of the region to be plotted, -180/180 or 0/360 longtitude format is fine.  Limits may cross the dateline e.g. [35 45 170 -130].
 
 HYCOM variables: 
 ```Matlab
@@ -37,7 +45,7 @@ setup_nctoolbox
 
 % Plot a 3-D velocity domain from Operational Mercator:
 
-model = 'mercator'; % 'hycom' 'mercator'
+model_type = 'mercator'; % 'hycom' 'mercator'
 source = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/mercator/global-analysis-forecast-phy-001-024_1593408360353.nc'; 
 date = '18-Mar-2020 00:00:00';   
 variable = 'thetao'; 
