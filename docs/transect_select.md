@@ -12,6 +12,9 @@
 
 ``[xcoords,ycoords] = transect_select(densify)`` auto-generates additional stations with the multiplier ``densify``. ``densify=10`` would fill in 10 stations for every station clicked using linear interpolation of complex coordinates.
 
+``densify`` should be an integer. If it is not an integer it will be rounded to an integer.
+
+``xcoords`` and ``ycoords`` are vectors of coordinates representing a polygonal chain. -180/180 or 0/360 notation will match that of the existing plot.
 
 #### Example 1
 
