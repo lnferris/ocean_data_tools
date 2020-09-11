@@ -26,7 +26,7 @@ function [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,
 %
 % argo is a uniform struct containing data from the profiles matching the
 % region and date criteria. Some data is included automatically while some 
-% must be specificed. The variables PLATFORM_NUMBER, LONGITUDE, LATITUDE, JULD, 
+% must be specified. The variables PLATFORM_NUMBER, LONGITUDE, LATITUDE, JULD, 
 % and PRES_ADJUSTED are included automatically. Additional variables must
 % be specified in variable_list, a cell array where each element is the
 % string name of a variable.

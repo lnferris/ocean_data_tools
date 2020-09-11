@@ -12,6 +12,11 @@ function [subargo] = argo_platform_subset(argo,platform_id)
 % platform id (PLATFORM_NUMBER) into struct subargo; where argo is a struct
 % created by argo_build and platform_id is the integer ID
 % 
+% platform_id must be an integer corresponding to the ID of an Argo float.
+%
+% subargo is a struct which is structurally identical to argo but contains
+% data only from the chosen Argo float
+%
 %% Example 1
 % Subset argo to contain only profiles collected by float 1900980: 
 % 
