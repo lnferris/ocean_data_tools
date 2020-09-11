@@ -3,8 +3,8 @@
 #### Syntax
 
 ```Matlab
-[data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth)
-[data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth,arrows)
+[data,lat,lon] = model_simple_plot(model_type,source,date,variable,region,depth)
+[data,lat,lon] = model_simple_plot(model_type,source,date,variable,region,depth,arrows)
 ```
 #### Description
 
