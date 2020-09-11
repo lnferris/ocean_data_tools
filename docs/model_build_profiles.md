@@ -12,6 +12,14 @@
 
 ``[model] = model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid)`` depth-interpolates the profiles to a vertical grid of ``zgrid``, in meters. ``zgrid=2`` would produce profiles interpolated to 2 meter vertical grid.
 
+``source`` (a character array) is the path to either a local netcdf file or an OpenDAP url.
+
+``date`` is a date string in format 'dd-mmm-yyyy HH:MM:SS'. 
+
+``variable_list`` is a cell array where each element is the string name of a variable to be read and included in struct ``model``.
+
+``xcoords`` and ``ycoords`` are vectors of coordinates. Rows or columns are fine, and both -180/180 or 0/360 notation are fine.
+
 HYCOM variables: 
 ```Matlab
 'water_u' 
