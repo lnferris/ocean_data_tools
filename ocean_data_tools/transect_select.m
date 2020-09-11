@@ -20,13 +20,13 @@ function [xcoords,ycoords] = transect_select(densify)
 %% Example 1
 % Generate a list of coordinates by clicking a HYCOM velocity plot: 
 % 
-% model = 'hycom'; 
+% model_type = 'hycom'; 
 % source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7';
 % date = '28-Aug-2017 00:00:00';  
 % variable = 'velocity';                
 % region = [-5.0, 45.0 ,160,-150 ];      
 % depth = -150;                                                   
-% model_simple_plot(model,source,date,variable,region,depth);
+% model_simple_plot(model_type,source,date,variable,region,depth);
 % [xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
 %
 %% Citation Info 

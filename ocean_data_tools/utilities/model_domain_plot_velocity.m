@@ -1,14 +1,14 @@
 
-function model_domain_plot_velocity(model,nc,date,region)
+function model_domain_plot_velocity(model_type,nc,date,region)
 % This is the velocity portion of model_domain_plot
 % github.com/lnferris/ocean_data_tools
 % Jun 2020; Last revision: 09-Sep-2020
 % See also model_domain_plot.
 
-if strcmp(model,'hycom')  
+if strcmp(model_type,'hycom')  
     sv = nc{'water_u'};     % Assign ncgeovariable handle.
     sv_v = nc{'water_v'};     
-elseif strcmp(model,'mercator') 
+elseif strcmp(model_type,'mercator') 
     sv = nc{'uo'};     % Assign ncgeovariable handle.
     sv_v = nc{'vo'};        
 else

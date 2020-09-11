@@ -1,14 +1,14 @@
 
-function [data,lat,lon] = model_simple_plot_velocity(model,nc,date,region,depth,arrows)
+function [data,lat,lon] = model_simple_plot_velocity(model_type,nc,date,region,depth,arrows)
 % This is the velocity portion of model_simple_plot
 % github.com/lnferris/ocean_data_tools
 % Jun 2020; Last revision: 13-Jul-2020
 % See also model_simple_plot and model_simple_plot_layer.
 
-    if strcmp(model,'hycom')  
+    if strcmp(model_type,'hycom')  
         sv = nc{'water_u'};     % Assign ncgeovariable handle.
         sv_v = nc{'water_v'};     
-    elseif strcmp(model,'mercator') 
+    elseif strcmp(model_type,'mercator') 
         sv = nc{'uo'};     % Assign ncgeovariable handle.
         sv_v = nc{'vo'};        
     else

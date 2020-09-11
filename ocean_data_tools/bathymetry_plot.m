@@ -27,7 +27,7 @@ function bathymetry_plot(bathy,ptype)
 % Add a bathymetry surface to a 3D plot of model data:
 %
 % variable = 'velocity';  % thetao' 'so' 'uo' 'vo' 'velocity'
-% model_domain_plot(model,source,date,variable,region) % 3D plot of model data
+% model_domain_plot(model_type,source,date,variable,region) % 3D plot of model data
 % bathymetry_plot(bathy,'3Dsurf')
 %
 %% Citation Info 
