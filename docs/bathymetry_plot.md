@@ -19,13 +19,13 @@ setup_nctoolbox
 
 % Plot a 3-D velocity domain from Operational Mercator:
 
-model = 'mercator'; % 'hycom' 'mercator'
+model_type = 'mercator'; % 'hycom' 'mercator'
 source = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/mercator/global-analysis-forecast-phy-001-024_1593408360353.nc'; 
 date = '18-Mar-2020 00:00:00';   
 variable = 'thetao'; 
 region = [60.0, 70.0 ,-80, -60];      % [-90 90 -180 180]
 variable = 'velocity'; 
-model_domain_plot(model,source,date,variable,region)
+model_domain_plot(model_type,source,date,variable,region)
 
 % Add bathymetry:
 
