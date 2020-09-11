@@ -12,6 +12,15 @@ function mocha_domain_plot(month,variable,region)
 % over the specified region. variable specifies the parameter to be plotted 
 % and region is the rectangular region to be plotted. the calendar month is specified by month.
 %
+% month is an integer between 1 (January) and 12 (December).
+%
+% variable is a string or character array and is the name of the parameter to be plotted 
+%
+% region is a vector containing the bounds [S N W E] of the region to be 
+% plotted, -180/180 or 0/360 longtitude format is fine.  Limits may cross 
+% the dateline e.g. [35 45 170 -130] but this is a Mid-Atlantic product so 
+% there is no reason to try that.
+%
 %% Example 1
 % Plot full-depth temperature from MOCHA climatology for October:
 % 

@@ -4,8 +4,8 @@ function [subobject] =  general_depth_subset(object,zrange,depth_list)
 % 
 %% Syntax
 % 
-% general_depth_subset(object,zrange)
-% general_depth_subset(object,zrange,depth_list)
+% [subobject] = general_depth_subset(object,zrange)
+% [subobject] = general_depth_subset(object,zrange,depth_list)
 % 
 %% Description 
 % 
@@ -20,6 +20,10 @@ function [subobject] =  general_depth_subset(object,zrange,depth_list)
 % [subobject] =  general_depth_subset(object,zrange,depth_list) enables the
 % user to specify one or more depth variables (instead of using default 'depth')
 % e.g. depth_list = {'pressure'} or depth_list = {'pressure','z','depth','depth_vke'};
+%
+% subobject is a struct which is structurally identical to object but
+% contains only data within the specified depth range. In other words,
+% profiles have within object have been truncated.
 % 
 %% Example 1
 % Build a struct out of a transect through HYCOM, including temperature and

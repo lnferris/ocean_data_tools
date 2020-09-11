@@ -13,6 +13,12 @@ function [subobject] = general_region_subset(object,xcoords,ycoords)
 % of the polygon); where object is a struct created by any of 
 % the _build functions in ocean_data_tools (e.g. argo, cruise, hycom, mercator,
 % woa, wod). 
+%
+% xcoords and ycoords are vectors of coordinates. Rows or columns are
+% fine. -180/180 or 0/360 notation should match that of object
+%
+% subobject is a struct which is structurally identical to object but
+% contains only data within the polygon region
 % 
 %% Example 1
 % Spatially subset the profiles in argo:

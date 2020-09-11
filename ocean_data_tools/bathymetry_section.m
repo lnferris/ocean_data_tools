@@ -25,6 +25,12 @@ function [bath_section,lon_section,lat_section,time_section] = bathymetry_sectio
 % bathymetry to be filled in black down to the x-axis (instead of a simple line).
 % Set filled=1 to turn on, filled=0 to turn off.
 %
+% xcoords and ycoords are vectors of coordinates. Rows or columns are
+% fine, and both -180/180 or 0/360 notation are fine.
+%
+% When xref is a time vector, it must be of length(xcoords) and elements of
+% the vector must be datenums. Otherwise set xref = 'lon' or  xref = 'lat'. 
+%
 %
 %% Example 1
 % Add bathymetry to a temperature section plot from the list of coordinates

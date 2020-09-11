@@ -23,6 +23,10 @@ function [region] = bounding_region(object,xcoords,ycoords)
 % region  = [S N W E] around the points specified  by xcoords 
 % (longitude) and ycoords (latitude).
 %
+% xcoords and ycoords are vectors of coordinates. Rows or columns are
+% fine, and both -180/180 or 0/360 notation are fine when using this function
+% with bathymetry_extract.
+%
 %% Example 1
 % Find a the region around struct argo (to be later used with bathymetry_plot):
 %

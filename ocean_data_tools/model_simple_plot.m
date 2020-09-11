@@ -1,49 +1,68 @@
 
-function [data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth,arrows)
+function [data,lat,lon] = model_simple_plot(model_type,source,date,variable,region,depth,arrows)
 % model_simple_plot plots one depth level of HYCOM or Operational Mercator
 % GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 % 
 %% Syntax
 % 
-% [data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth)
-% [data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth,arrows)
+% [data,lat,lon] = model_simple_plot(model_type,source,date,variable,region,depth)
+% [data,lat,lon] = model_simple_plot(model_type,source,date,variable,region,depth,arrows)
 %
 %% Description 
 % 
-% [data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth) plots 
-% the nearest available depth-level to depth. variable specifies the parameter 
-% to be plotted and region is the rectangular region to be plotted. model='hycom' or
-% model='mercator' specifies the model used. source is the url or local
+% [data,lat,lon] = model_simple_plot(model_type,source,date,variable,region,depth) plots 
+% the nearest available depth-level of HYCOM or Operational Mercator
+% GLOBAL_ANALYSIS_FORECAST_PHY_001_024. variable specifies the parameter 
+% to be plotted and region is the rectangular region to be plotted. model_type ='hycom' or
+% model_type ='mercator' specifies the model used. source is the url or local
 % path of the relevant dataset. data, lat, and lon from the plotted layer
 % are available outputs.
 %
 % [data,lat,lon] =
-% model_simple_plot(model,source,date,variable,region,depth,arrows) adds
+% model_simple_plot(model_type,source,date,variable,region,depth,arrows) adds
 % directional arrows if it is a velocity magnitude plot. arrows=1 is on,
 % arrows=0 is off.
+%
+% source (a character array) is the path to either a local netcdf file or an
+% OpenDAP url.
+%
+% date is a date string in format 'dd-mmm-yyyy HH:MM:SS'. 
+%
+% variable is a string or character array and is the name of the parameter
+% to be plotted.
+%
+% depth is (a single, double, integer) indicates negative meters below the surface.
+%
+% region is a vector containing the bounds [S N W E] of the region to be 
+% plotted, -180/180 or 0/360 longtitude format is fine.  Limits may cross 
+% the dateline e.g. [35 45 170 -130].
+%
+% data, lon, and lat are double arrays containing the plotted data layer.
+% As such, this function can be used to extract data layers from HYCOM or 
+% Operational Mercator GLOBAL_ANALYSIS_FORECAST_PHY_001_024.
 %
 %% Example 1
 % Plot surface velocity from HYCOM:
 % 
-% model = 'hycom'; % 'hycom' 'mercator'
+% model_type = 'hycom'; % 'hycom' 'mercator'
 % source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % url or local .nc 
 % date = '28-Aug-2017 00:00:00';  
 % variable = 'velocity';                 % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 'surf_el' 'water_u_bottom' 'water_v_bottom' 'water_temp_bottom' 'salinity_bottom' 
 % region = [-5.0, 45.0 ,160,-150 ];      % [-90 90 -180 180]
 % depth = -150;                          % Depth level between 0 and -5000m
 % arrows = 0;                            % Velocity direction arrows 1=on 0=off
-% [data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth,arrows); % optionally output the plotted data layer
+% [data,lat,lon] = model_simple_plot(model_type,source,date,variable,region,depth,arrows); % optionally output the plotted data layer
 %
 %% Example 2
 % Plot temperature at ~150m depth from Mercator:
 % 
-% model = 'mercator'; % 'hycom' 'mercator'
+% model_type = 'mercator'; % 'hycom' 'mercator'
 % source = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/mercator/global-analysis-forecast-phy-001-024_1593408360353.nc'; % included
 % date = '18-Mar-2020 00:00:00';   
 % variable = 'thetao'; % 'thetao' 'so' 'uo' 'vo' 'velocity' 'mlotst' 'siconc' 'usi' 'vsi' 'sithick' 'bottomT' 'zos'
 % region = [60.0, 70.0 ,-80, -60];      % [-90 90 -180 180]
 % depth = -150;                          % Depth level between 0 and -5728m 
-% model_simple_plot(model,source,date,variable,region,depth)
+% model_simple_plot(model_type,source,date,variable,region,depth)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
@@ -55,10 +74,10 @@ if nargin < 7
     arrows = 0;
 end
 
-if strcmp(model,'hycom')  
+if strcmp(model_type,'hycom')  
     standard_vars = {'water_u','water_v','water_temp','salinity'};
     slab_vars = {'water_u_bottom','water_v_bottom','water_temp_bottom','salinity_bottom','surf_el'};    
-elseif strcmp(model,'mercator')  
+elseif strcmp(model_type,'mercator')  
     standard_vars = {'thetao','so','uo','vo'};
     slab_vars = {'mlotst','siconc','usi','vsi','sithick','bottomT','zos'};          
 else
@@ -80,7 +99,7 @@ if ~any(strcmp(standard_vars,variable))
         return
         
     elseif strcmp(variable,'velocity') 
-        [data,lat,lon] = model_simple_plot_velocity(model,nc,date,region,depth,arrows);
+        [data,lat,lon] = model_simple_plot_velocity(model_type,nc,date,region,depth,arrows);
         return   
     else    
         disp('Check spelling of variable variable');    

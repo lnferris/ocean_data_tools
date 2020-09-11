@@ -20,6 +20,9 @@ function general_map(object,bathymetry_dir,ptype)
 %
 % general_map(object,bathymetry_dir,ptype) allows the user to modify plot
 % type from the default contours e.g. ptype = '2Dscatter' or '2Dcontour'
+%
+% bathymetry_dir is the character array path to the Smith & Sandwell Global Topography
+% file "topo_20.1.nc"
 % 
 %% Example 1
 % Plot locations of Argo profiles in struct argo over bathmetry contours:

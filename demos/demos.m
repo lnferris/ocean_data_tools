@@ -189,7 +189,7 @@ mocha_domain_plot(month,variable,region)
 
 % model_simple_plot - HYCOM EXAMPLE
 
-model = 'hycom'; % 'hycom' 'mercator'
+model_type = 'hycom'; % 'hycom' 'mercator'
 source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % url or local .nc 
 date = '28-Aug-2017 00:00:00';  
 variable = 'velocity';                 % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 'surf_el' 'water_u_bottom' 'water_v_bottom' 'water_temp_bottom' 'salinity_bottom' 
@@ -197,7 +197,7 @@ region = [-5.0, 45.0 ,160,-150 ];      % [-90 90 -180 180]
 depth = -150;                          % Depth level between 0 and -5000m
 arrows = 0;                            % Velocity direction arrows 1=on 0=off
 figure
-[data,lat,lon] = model_simple_plot(model,source,date,variable,region,depth,arrows); % optionally output the plotted data layer
+[data,lat,lon] = model_simple_plot(model_type,source,date,variable,region,depth,arrows); % optionally output the plotted data layer
 
 % model_build_profiles  - HYCOM EXAMPLE
 
@@ -216,14 +216,14 @@ general_profiles(hycom,'salinity','depth')
 
 variable = 'salinity'; % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 
 figure
-model_domain_plot(model,source,date,variable,region)
+model_domain_plot(model_type,source,date,variable,region)
 
 
 %%                  model (mercator) demonstration
 
 % model_simple_plot - MERCATOR EXAMPLE
 
-model = 'mercator'; % 'hycom' 'mercator'
+model_type = 'mercator'; % 'hycom' 'mercator'
 source = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/mercator/global-analysis-forecast-phy-001-024_1593408360353.nc'; % included
 date = '18-Mar-2020 00:00:00';   
 variable = 'thetao'; % 'thetao' 'so' 'uo' 'vo' 'velocity' 'mlotst' 'siconc' 'usi' 'vsi' 'sithick' 'bottomT' 'zos'
@@ -231,7 +231,7 @@ region = [60.0, 70.0 ,-80, -60];      % [-90 90 -180 180]
 depth = -150;                          % Depth level between 0 and -5728m
 arrows = 0;  
 figure
-model_simple_plot(model,source,date,variable,region,depth,arrows);
+model_simple_plot(model_type,source,date,variable,region,depth,arrows);
 
 % model_build_profiles  - MERCATOR EXAMPLE
 
@@ -250,7 +250,7 @@ general_profiles(mercator,'so','depth')
 
 variable = 'velocity';  % thetao' 'so' 'uo' 'vo' 'velocity'
 figure
-model_domain_plot(model,source,date,variable,region)
+model_domain_plot(model_type,source,date,variable,region)
 bathymetry_plot(bathymetry_extract(bathymetry_dir,region),'3Dsurf')
 caxis([0 1])
 

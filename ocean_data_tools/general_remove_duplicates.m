@@ -18,9 +18,12 @@ function [subobject] = general_remove_duplicates(object,var3)
 %
 % [subobject] = general_remove_duplicates(object,var3) uses a third field
 % var3 as a uniqueness criterion, usually date. This avoids removing profiles
-% with the same coordinate location but unique dates. var3 should be a fieldname
-% e.g. var3='date'
+% with the same coordinate location but unique dates. var3 should be the fieldname
+% used to filter the data e.g. var3='date'
 % 
+% subobject is a struct which is structurally identical to object but contains
+% data only spatially-unique (or also var3-unique) profiles
+
 %% Example 1
 % Build a struct out of a transect through HYCOM, including temperature and
 % salinity. Remove duplicate profiles.

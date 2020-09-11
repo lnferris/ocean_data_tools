@@ -9,14 +9,19 @@ function [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid)
 %
 %% Description 
 % 
-% [mocha] = mocha_build_profiles(month,xcoords,ycoords) builds a struct
-% of profiles from the MOCHA Mid-Atlantic Bight climatology, pulling
+% [mocha] = mocha_build_profiles(month,xcoords,ycoords) builds a uniform
+% struct, mocha, of profiles from the MOCHA Mid-Atlantic Bight climatology, pulling
 % profiles nearest to coordinates specified by xcoords and ycoords. The
 % calendar month is specified by month.
 %
 % [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid) depth-interpolates
 % the profiles to a vertical grid of zgrid, in meters. zgrid=2 would
 % produce profiles interpolated to 2 meter vertical grid.
+%
+% xcoords and ycoords are vectors of coordinates. Rows or columns are
+% fine, and both -180/180 or 0/360 notation are fine 
+%
+% month is an integer between 1 (January) and 12 (December).
 %
 %% Example 1
 % Build a struct out of a transect through MOCHA climatology:
@@ -34,6 +39,8 @@ function [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid)
 % 
 % See also mocha_simple_plot and mocha_domain_plot.
 
+xcoords(xcoords>180) = xcoords(xcoords>180)- 360;
+xcoords(xcoords<-180) = xcoords(xcoords<-180)+360;
 
 variable_list = {'temperature','salinity'};
 n = length(variable_list);

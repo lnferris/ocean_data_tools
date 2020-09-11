@@ -1,38 +1,50 @@
 
-function model_domain_plot(model,source,date,variable,region)
+function model_domain_plot(model_type,source,date,variable,region)
 % model_domain_plot plots all depth levels of HYCOM or Operational Mercator
 % GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 % 
 %% Syntax
 % 
-% model_domain_plot(model,source,date,variable,region)
+% model_domain_plot(model_type,source,date,variable,region)
 %
 %% Description 
 % 
-% model_domain_plot(model,source,date,variable,region) plots all depth 
+% model_domain_plot(model_type,source,date,variable,region) plots all depth 
 % levels over a particular rectangular region. variable specifies the parameter 
-% to be plotted. model='hycom' or model='mercator' specifies the model used.
+% to be plotted. model_type ='hycom' or model_type ='mercator' specifies the model used.
 % source is the url or local path of the relevant dataset
+%
+% source (a character array) is the path to either a local netcdf file or an
+% OpenDAP url.
+%
+% date is a date string in format 'dd-mmm-yyyy HH:MM:SS'. 
+%
+% variable is a string or character array and is the name of the parameter
+% to be plotted.
+%
+% region is a vector containing the bounds [S N W E] of the region to be 
+% plotted, -180/180 or 0/360 longtitude format is fine.  Limits may cross 
+% the dateline e.g. [35 45 170 -130].
 %
 %% Example 1
 % Plot a salinity domain from HYCOM:
 % 
-% model = 'hycom'; % 'hycom' 'mercator'
+% model_type = 'hycom'; % 'hycom' 'mercator'
 % source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % url or local .nc 
 % date = '28-Aug-2017 00:00:00';   
 % region = [-5.0, 45.0 ,160,-150 ];      % [-90 90 -180 180]
 % variable = 'salinity'; % 'water_u' 'water_v' 'water_temp' 'salinity' 'velocity' 
-% model_domain_plot(model,source,date,variable,region)
+% model_domain_plot(model_type,source,date,variable,region)
 %
 %% Example 2
 % Plot a temperature domain from Mercator:
 % 
-% model = 'mercator'; % 'hycom' 'mercator'
+% model_type = 'mercator'; % 'hycom' 'mercator'
 % source = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/mercator/global-analysis-forecast-phy-001-024_1593408360353.nc'; % included
 % date = '18-Mar-2020 00:00:00';   
 % region = [60.0, 70.0 ,-80, -60];      % [-90 90 -180 180]
 % variable = 'velocity';  % thetao' 'so' 'uo' 'vo' 'velocity'
-% model_domain_plot(model,source,date,variable,region)
+% model_domain_plot(model_type,source,date,variable,region)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
@@ -45,9 +57,9 @@ function model_domain_plot(model,source,date,variable,region)
 region(region>180) = region(region>180)- 360;
 region(region<-180) = region(region<-180)+360;
 
-if strcmp(model,'hycom')  
+if strcmp(model_type,'hycom')  
     standard_vars = {'water_u','water_v','water_temp','salinity'}; 
-elseif strcmp(model,'mercator') 
+elseif strcmp(model_type,'mercator') 
     standard_vars = {'thetao','so','uo','vo'};    
 else
     disp('Check spelling of model.');
@@ -61,7 +73,7 @@ nc.variables            % Print list of available variables.
 
 if ~any(strcmp(standard_vars,variable))    
     if strcmp(variable,'velocity') 
-        model_domain_plot_velocity(model,nc,date,region)
+        model_domain_plot_velocity(model_type,nc,date,region)
         return 
     else    
         disp('Check spelling of variable variable');    

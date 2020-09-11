@@ -20,10 +20,24 @@ function [model] =  model_build_profiles(source,date,variable_list,xcoords,ycoor
 % depth-interpolates the profiles to a vertical grid of zgrid, in meters. zgrid=2 would
 % produce profiles interpolated to 2 meter vertical grid.
 %
+% source (a character array) is the path to either a local netcdf file or an
+% OpenDAP url.
+%
+% date is a date string in format 'dd-mmm-yyyy HH:MM:SS'. 
+%
+% variable_list is a cell array where each element is the string name of a variable
+% to be read and included in struct model.
+%
+% xcoords and ycoords are vectors of coordinates. Rows or columns are
+% fine, and both -180/180 or 0/360 notation are fine.
+%
+% HYCOM variable menu: 'water_u' 'water_v' 'water_temp' 'salinity' 
+%
+% Mercator variables menu: 'thetao' 'so' 'uo' 'vo' 
+%
 %% Example 1
 % Build a struct out of a transect through HYCOM, including temperature and salinity:
 % 
-% model = 'hycom'; % 'hycom' 'mercator'
 % source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7'; % url or local .nc 
 % date = '28-Aug-2017 00:00:00';  
 % xcoords = [-71.2, -71.4, -71.5, -71.7, -71.9]
