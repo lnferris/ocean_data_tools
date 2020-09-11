@@ -15,6 +15,9 @@
 
 ``[region] = bounding_region([],xcoords,ycoords)`` finds a rectangular ``region``  = [S N W E] around the points specified  by ``xcoords`` (longitude) and ``ycoords`` (latitude).
 
+``region`` is a vector containing the bounds [S N W E] of the rectangular region
+
+``xcoords`` and ``ycoords`` are vectors of coordinates. Rows or columns are fine, and both -180/180 or 0/360 notation are fine when using this function with ``bathymetry_extract``.
 
 #### Example 1
 
