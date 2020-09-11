@@ -46,14 +46,14 @@ setup_nctoolbox
 
 % Plot temperature at the depth level closest to 150m:
 
-model = 'mercator'; % 'hycom' 'mercator'
+model_type = 'mercator'; % 'hycom' 'mercator'
 source = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/mercator/global-analysis-forecast-phy-001-024_1593408360353.nc'; 
 date = '18-Mar-2020 00:00:00';   
 variable = 'thetao'; 
 region = [60.0, 70.0 ,-80, -60];      % [-90 90 -180 180]
 depth = -150;                
 arrows = 0;  
-model_simple_plot(model,source,date,variable,region,depth,arrows)
+model_simple_plot(model_type,source,date,variable,region,depth,arrows)
 
 % Click stations on the plot to create a coordinate list:
 
