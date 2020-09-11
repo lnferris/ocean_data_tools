@@ -12,6 +12,8 @@ argo_profiles(argo,variable,annotate)
  
 ``argo_profiles(argo,variable,annotate)`` adds number annotations to the markers by default ``annotate=0``. Set ``annotate=1`` to turn on annotation. The annotations of profiles correspond to those of ``argo_profiles_map`` called on the same struct.
 
+``variable`` is the string name of the field (of ``argo``) to be plotted as a vertical profile
+
 #### Example 1
 
 
