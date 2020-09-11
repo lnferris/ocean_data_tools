@@ -41,7 +41,7 @@ region = [-60.0 -50.0 150.0 160.0]; %  Search region [-90 90 -180 180]
 start_date = '01-Nov-2015 00:00:00';
 end_date = '01-Jan-2017 00:00:00';
 variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'}; % Variables to read (besides id, lon, lat, date, z).
-[argo,~] = argo_build(argo_dir,region,start_date,end_date,variable_list);
+[argo,matching_profiles] = argo_build(argo_dir,region,start_date,end_date,variable_list);
 
 % argo_platform_subset
 

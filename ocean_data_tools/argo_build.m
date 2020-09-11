@@ -12,10 +12,29 @@ function [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,
 % [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)
 % searches pathway argo_dir for profiles meeting the search criteria
 % region, start_date, and end_date. Profiles are loaded into the struct
-% array argo with all variables specified in variable_list. Variables PLATFORM_NUMBER, 
-% LONGITUDE, LATITUDE, JULD, and PRES_ADJUSTED are included automatically.
+% array argo with all variables specified in variable_list. 
 % Files containing matching profiles are listed in matching_files.
-% 
+%
+% argo_dir is a character array search path with wildcards. The search path
+% should be the path to the netcdf files themselves, not their directory. 
+%
+% region is a vector containing the bounds [S N W E] of the search region, 
+% with limits [-90 90 -180 180]. Limits may cross the dateline e.g. [35 45
+% 170 -130].
+%
+% start_date and end_date are date strings in format 'dd-mmm-yyyy HH:MM:SS'.
+%
+% argo is a uniform struct containing data from the profiles matching the
+% region and date criteria. Some data is included automatically while some 
+% must be specificed. The variables PLATFORM_NUMBER, LONGITUDE, LATITUDE, JULD, 
+% and PRES_ADJUSTED are included automatically. Additional variables must
+% be specified in variable_list, a cell array where each element is the
+% string name of a variable.
+%
+% matching_files is a string array where each string is the full path to a
+% file which contained a profile matching the region and date criteria.
+%
+%
 %% Example 1
 % Load Argo data from west of New Zealand:
 % 
@@ -28,19 +47,27 @@ function [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 08-Sep-2020
+% Jun 2020; Last revision: 11-Sep-2020
 % 
 % See also argo_platform_subset and general_region_subset.
 
-    % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
+     % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
     region(region>180) = region(region>180)- 360;
     region(region<-180) = region(region<-180)+360;
 
     FillValue = 99999; % From Argo manual.
     start_date = datenum(start_date,'dd-mmm-yyyy HH:MM:SS');
     end_date = datenum(end_date,'dd-mmm-yyyy HH:MM:SS');
-    slim = region(1); nlim = region(2);  % Unpack SearchLimits.
-    wlim = region(3); elim = region(4);
+    slim = region(1); 
+    nlim = region(2);  
+    wlim = region(3); 
+    elim = region(4);
+    if wlim > elim
+        [wlim_left] = wlim;
+        [elim_left] = 180;
+        [wlim_right] = -180; 
+        [elim_right] = elim;           
+    end
 
     base_list = {'PLATFORM_NUMBER','LONGITUDE','LATITUDE','JULD','PRES_ADJUSTED'}; % Variables automatically included.
     variable_list(ismember(variable_list, base_list )) = []; % remove redundant vars
@@ -51,6 +78,10 @@ function [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,
     matching_files = []; % Make an empty list to hold filenames.
     argo_cell = cell(0,nvar); % Make an empty table to hold profile data.
     full_path = dir(argo_dir);
+    if isempty(full_path)
+        disp([newline, 'No matching Argo files in path ',argo_dir, newline])
+        return
+    end
     
     for i = 1:length(full_path) % For each file in full_path...
         filename = [full_path(i).folder '/' full_path(i).name];
@@ -66,8 +97,14 @@ function [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,
             VAR5 = netcdf.getVar(nc,netcdf.inqVarID(nc,'PRES_ADJUSTED'));
             
             % See which profiles have the correct lat,lon,date.
-            good_inds = find(VAR3 >= slim & VAR3 <= nlim & VAR2 >= wlim & VAR2 <= elim & VAR4 >= start_date & VAR4 < (end_date +1));
-             
+            if wlim > elim
+                inds_left = find(VAR3 >= slim & VAR3 <= nlim & VAR2 >= wlim_left & VAR2 <= elim_left & VAR4 >= start_date & VAR4 < (end_date +1));
+                inds_right = find(VAR3 >= slim & VAR3 <= nlim & VAR2 >= wlim_right & VAR2 <= elim_right & VAR4 >= start_date & VAR4 < (end_date +1));
+                good_inds = union(inds_left,inds_right);
+            else
+                good_inds = find(VAR3 >= slim & VAR3 <= nlim & VAR2 >= wlim & VAR2 <= elim & VAR4 >= start_date & VAR4 < (end_date +1));
+            end 
+            
             if any(good_inds) % If there is at least one good profile in this file...
                 for cast = 1:length(good_inds) % Write each good profile into temporary cell array...
                     
