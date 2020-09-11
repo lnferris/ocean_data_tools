@@ -98,11 +98,11 @@ function [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,
             
             % See which profiles have the correct lat,lon,date.
             if wlim > elim
-                inds_left = find(VAR3 >= slim & VAR3 <= nlim & VAR2 >= wlim_left & VAR2 <= elim_left & VAR4 >= start_date & VAR4 < (end_date +1));
-                inds_right = find(VAR3 >= slim & VAR3 <= nlim & VAR2 >= wlim_right & VAR2 <= elim_right & VAR4 >= start_date & VAR4 < (end_date +1));
+                inds_left = find(VAR3 >= slim & VAR3 <= nlim & VAR2 >= wlim_left & VAR2 <= elim_left & VAR4 >= start_date & VAR4 < (end_date));
+                inds_right = find(VAR3 >= slim & VAR3 <= nlim & VAR2 >= wlim_right & VAR2 <= elim_right & VAR4 >= start_date & VAR4 < (end_date));
                 good_inds = union(inds_left,inds_right);
             else
-                good_inds = find(VAR3 >= slim & VAR3 <= nlim & VAR2 >= wlim & VAR2 <= elim & VAR4 >= start_date & VAR4 < (end_date +1));
+                good_inds = find(VAR3 >= slim & VAR3 <= nlim & VAR2 >= wlim & VAR2 <= elim & VAR4 >= start_date & VAR4 < (end_date));
             end 
             
             if any(good_inds) % If there is at least one good profile in this file...
