@@ -5,6 +5,9 @@ function [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,
 % 
 %% Syntax
 % 
+%  [argo,matching_files] = argo_build(argo_dir,region)
+%  [argo,matching_files] = argo_build(argo_dir,region,start_date)
+%  [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date)
 %  [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)
 % 
 %% Description 
@@ -14,6 +17,10 @@ function [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,
 % region, start_date, and end_date. Profiles are loaded into the struct
 % array argo with all variables specified in variable_list. 
 % Files containing matching profiles are listed in matching_files.
+%
+% The only required argument is argo_dir. The default state is to load
+% all profiles in path argo_dir, writing variables TEMP_ADJUSTED and 
+% PSAL_ADJUSTED into the uniform struct argo.
 %
 % argo_dir is a character array search path with wildcards. The search path
 % should be the path to the netcdf files themselves, not their directory. 
@@ -50,6 +57,22 @@ function [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,
 % Jun 2020; Last revision: 11-Sep-2020
 % 
 % See also argo_platform_subset and general_region_subset.
+
+
+if nargin < 5
+    variable_list = {'TEMP_ADJUSTED','PSAL_ADJUSTED'};
+end
+
+if nargin < 4   
+    end_date = '01-Jan-9999 00:00:00';  
+    if nargin < 3
+        start_date = '01-Jan-0000 00:00:00';
+    end
+end
+
+if nargin < 2
+    region = [-90 90 -180 180];
+end
 
      % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
     region(region>180) = region(region>180)- 360;
