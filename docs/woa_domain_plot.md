@@ -19,7 +19,13 @@ Available variables are:
 ``'AOU'`` (umol/kg)                
 ``'silicate'`` (umol/kg)          
 ``'phosphate'`` (umol/kg)   
-``'nitrate'`` (umol/kg)                      
+``'nitrate'`` (umol/kg)     
+
+``time`` is a string or character array. ``'00'`` is annual climatology, while other codes e.g. ``'02'`` (February) or ``'11'`` (November) indicate monthly climatology.
+
+``variable`` is a string or character array and is the name of the parameter to be plotted.
+
+``region`` is a vector containing the bounds [S N W E] of the region to be plotted, -180/180 or 0/360 longtitude format is fine.  Limits may cross the dateline e.g. [35 45 170 -130].
 
 #### Example 1
 
