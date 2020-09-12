@@ -13,6 +13,15 @@ function [wod] = wod_build(wod_dir,variable_list)
 % wod with all variables specified in variable_list. Variables lon, lat, date, z
 % are included automatically.
 % 
+% wod_dir is a character array search path with wildcards. The search path
+% should be the path to the netcdf files themselves, not their directory. 
+%
+% wod is a uniform struct containing data from profiles in the path.
+% Some data is included automatically while some 
+% must be specified. The variables lon, lat, date, and z are included 
+% automatically. Additional variables must be specified in variable_list, 
+% a cell array where each element is the string name of a variable.
+%
 %% Example 1
 % Load World Ocean Database data:
 % 

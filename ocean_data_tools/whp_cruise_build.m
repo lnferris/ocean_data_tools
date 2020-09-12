@@ -16,6 +16,27 @@ function [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list)
 % latitude, and pressure are included automatically.) Lat/lon information (metadata) is
 % pulled from the CTD+ files by default. If CTD+ is not found, metadata from LACDP
 % files are used instead.
+%
+% The paths used as arguments should point to data from the
+% *same oceanographic cruise*.
+%
+% ctdo_dir is a character array search path with wildcards. The search path
+% should be the path to the CTD netcdf files (in whp_netcdf format) themselves,
+% not their directory.
+%
+% variable_list is a cell array where each element is the
+% string name of a variable to be included from CTD files.
+%
+% uv_dir is a character array search path with wildcards. The search path
+% should be the path to the horizontal LADCP data netcdf files themselves, not their directory.
+%
+% wvke_dir is a character array path to all files in the directory. 
+%
+% Example paths: 
+% ctdo_dir = '/Users/lnferris/Documents/S14/ctd/*.nc'; 
+% uv_dir = '/Users/lnferris/Documents/S14/whp_cruise/uv/*.nc';
+% wvke_dir = '/Users/lnferris/Documents/S14/whp_cruise/wvke/';
+%
 % 
 %% Example 1
 % Load some cuise data from S04P:

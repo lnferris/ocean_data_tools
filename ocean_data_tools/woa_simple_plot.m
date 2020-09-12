@@ -27,6 +27,22 @@ function [data,lat,lon] = woa_simple_plot(variable,time,region,depth)
 % 'phosphate' (umol/kg)                     'p'
 % 'nitrate' (umol/kg)                       'n'
 %
+% time is a string or character array. '00' is annual climatology, while other
+% codes e.g. '02' (February) or '11' (November) indicate monthly climatology.
+%
+% variable is a string or character array and is the name of the parameter
+% to be plotted.
+%
+% depth is (a single, double, integer) indicates negative meters below the surface.
+%
+% region is a vector containing the bounds [S N W E] of the region to be 
+% plotted, -180/180 or 0/360 longtitude format is fine.  Limits may cross 
+% the dateline e.g. [35 45 170 -130].
+%
+% data, lon, and lat are double arrays containing the plotted data layer.
+% As such, this function can be used to extract data layers from World
+% Ocean Atlas 2018.
+%
 %% Example 1
 % Plot surface nitrate from March climatology:
 % 

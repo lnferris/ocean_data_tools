@@ -37,6 +37,15 @@ function [woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid)
 % depth-interpolates the profiles to a vertical grid of zgrid, in meters. zgrid=2 would
 % produce profiles interpolated to 2 meter vertical grid.
 %
+% time is a string or character array. '00' is annual climatology, while other
+% codes e.g. '02' (February) or '11' (November) indicate monthly climatology.
+%
+% variable_list is a cell array where each element is the string name of a variable
+% to be read and included in struct woa.
+%
+% xcoords and ycoords are vectors of coordinates. Rows or columns are
+% fine, and both -180/180 or 0/360 notation are fine.
+%
 %% Example 1
 % Build a struct out of a transect through WOA 18, including temperature, 
 % salinity, and oxygen:

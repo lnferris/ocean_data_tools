@@ -11,6 +11,9 @@ function [xcoords,ycoords] = region_select()
 % 
 % [xcoords,ycoords] = region_select() creates a list of x and y coordinates selected by
 % clicking stations on an existing (latitude vs. longitude) plot, returning them as xcoords and ycoords.
+%
+% xcoords and ycoords are vectors of coordinates representing vertices of a polygon.
+% -180/180 or 0/360 notation will match that of the existing plot.
 % 
 %% Example 1
 % Choose a polygon region around some Argo profiles and subset to this region:
