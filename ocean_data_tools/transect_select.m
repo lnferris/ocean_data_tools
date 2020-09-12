@@ -43,6 +43,8 @@ function [xcoords,ycoords] = transect_select(densify)
 
 
 if nargin >= 1
+    
+assert(isnumeric(densify) & length(densify)==1,'Error: densify must be an integer.');
 
 waitfor(msgbox(['Click points to draw a transect. Double-click to end the transect. The selected points will be interpolated such that ',num2str(densify),' interspersed stations will be created for every 1 point selected.']));
 else

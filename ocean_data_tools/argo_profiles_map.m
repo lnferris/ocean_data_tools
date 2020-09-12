@@ -31,6 +31,8 @@ function argo_profiles_map(argo,annotate)
 % 
 % See also argo_build and argo_profiles.
 
+assert(isstruct(argo),'Error: argo must be a structure array created by argo_build.');
+
     hold on
 
     % For each unique platform:
@@ -46,8 +48,11 @@ function argo_profiles_map(argo,annotate)
     %grid on; grid minor
 
     title('By Profile');
-    if nargin == 2 && annotate ==1
-        legend(h,strcat(cellstr(num2str(argo.stn(:))),' (',cellstr(num2str(argo.id(:))),')')) % Make legend.
+    if nargin == 2 
+        assert(annotate == 1 | annotate == 0,'Error: annotate=1 (on) or annotate=0 (off)');
+        if annotate ==1
+            legend(h,strcat(cellstr(num2str(argo.stn(:))),' (',cellstr(num2str(argo.id(:))),')')) % Make legend.
+        end
     end
     
     hold off

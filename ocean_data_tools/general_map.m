@@ -38,6 +38,8 @@ function general_map(object,bathymetry_dir,ptype)
 % 
 % See also bathymetry_plot and general_region_subset.
 
+assert(isstruct(object),'Error: object must be a structure array created by an ocean_data_tools _build function.');
+
 hold on
 
     if nargin >= 2

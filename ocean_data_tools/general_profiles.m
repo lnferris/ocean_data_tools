@@ -34,6 +34,10 @@ function general_profiles(object,variable,zref)
 % 
 % See also argo_profiles and general_section.
 
+assert(isstruct(object),'Error: object must be a structure array created by an ocean_data_tools _build function.');
+assert(isa(variable,'char'),'Error: variable must be a field name (string or character array)');
+assert(isa(zref,'char'),'Error: zref must be a field name (string or character array)');
+
 cvar = object.(variable);
 zvar = object.(zref);
 

@@ -70,6 +70,10 @@ function [data,lat,lon] = model_simple_plot(model_type,source,date,variable,regi
 % 
 % See also model_build_profiles and model_domain_plot.
 
+assert(isa(date,'char'),'Error: date must be format ''dd-mmm-yyyy HH:MM:SS''');
+assert(length(region)==4,'Error: Region must be format [-90 90 -180 180].');
+assert(strcmp(model_type,'hycom')| strcmp(model_type,'mercator'),'Error: model_type =''hycom'' or model_type =''mercator''.');
+
 if nargin < 7
     arrows = 0;
 end

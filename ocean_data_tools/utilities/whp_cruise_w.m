@@ -11,6 +11,10 @@ function [w,w_meta] = whp_cruise_w(wvke_dir)
     nmeta = length(meta_list);
 
     full_path = dir([wvke_dir '*wprof.nc']);
+    if isempty(full_path)
+        disp([newline, 'Warning: No matching LADCP W files in path ',wvke_dir, newline])
+    end
+
     w = cell2table(cell(0,nvar)); % Make an empty table to hold profile data.
     w_meta = cell2table(cell(0,nmeta)); % Make an empty table to hold profile data.
     w.Properties.VariableNames = base_list; 

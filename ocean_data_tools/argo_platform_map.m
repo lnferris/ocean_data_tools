@@ -28,6 +28,8 @@ function argo_platform_map(argo,annotate)
 % 
 % See also argo_build and argo_platform_subset.
 
+assert(isstruct(argo),'Error: argo must be a structure array created by argo_build.');
+
     hold on
 
     platformids = unique(argo.id); % Get ids of the platforms.
@@ -39,8 +41,11 @@ function argo_platform_map(argo,annotate)
         % Plot lat/lon for all profiles.
         h(i) = plot(argo.lon(argo.id==platformids(i)),argo.lat(argo.id==platformids(i)),'.','MarkerSize',14);
 
-        if nargin == 2 && annotate ==1
-            text(argo.lon(argo.id==platformids(i)),argo.lat(argo.id==platformids(i)),string(x(i)),'FontSize',10)
+        if nargin == 2 
+            assert(annotate == 1 | annotate == 0,'Error: annotate=1 (on) or annotate=0 (off)');
+            if annotate ==1
+                text(argo.lon(argo.id==platformids(i)),argo.lat(argo.id==platformids(i)),string(x(i)),'FontSize',10)
+            end
         end
 
     end

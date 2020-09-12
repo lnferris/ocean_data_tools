@@ -99,7 +99,6 @@ region = bounding_region([],xcoords,ycoords);
 bathymetry_section(bathy,xcoords,ycoords,xref,filled); % filled optional
 
 
-
 %%                  general demonstration
 
 % general_map

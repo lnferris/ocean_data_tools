@@ -40,7 +40,9 @@ function [bathy] = bathymetry_extract(bathymetry_dir,region)
 % Jun 2020; Last revision: 09-Sep-2020
 % 
 % See also bounding_region, bathymetry_section, and bathymetry_plot.
-% 
+
+assert(length(region)==4,'Error: Region must be format [-90 90 -180 180].');
+
 % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;
 region(region<-180) = region(region<-180)+360;

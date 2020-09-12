@@ -39,6 +39,9 @@ function [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid)
 % 
 % See also mocha_simple_plot and mocha_domain_plot.
 
+assert(isnumeric(month) & length(month)==1,'Error: month must be an integer corresponding to calendar month.');
+assert(length(xcoords)==length(ycoords),'Error: xcoords and ycoords must be the same length.');
+
 xcoords(xcoords>180) = xcoords(xcoords>180)- 360;
 xcoords(xcoords<-180) = xcoords(xcoords<-180)+360;
 

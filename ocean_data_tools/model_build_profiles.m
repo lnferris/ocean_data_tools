@@ -52,6 +52,9 @@ function [model] =  model_build_profiles(source,date,variable_list,xcoords,ycoor
 % 
 % See also model_simple_plot and model_domain_plot.
 
+assert(isa(date,'char'),'Error: date must be format ''dd-mmm-yyyy HH:MM:SS''');
+assert(length(xcoords)==length(ycoords),'Error: xcoords and ycoords must be the same length.');
+assert(iscell(variable_list),'Error: variable_list must be a cell array where each element is the string name of a variable.');
 
 ncoords = length(xcoords);
 

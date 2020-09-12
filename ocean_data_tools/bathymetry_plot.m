@@ -36,6 +36,9 @@ function bathymetry_plot(bathy,ptype)
 % 
 % See also general_map and bathymetry_section.
 
+
+assert(isstruct(bathy),'Error: bathy must be a structure array created using bathymetry_extract.');
+
 % Load bathymetry data.
 bath = bathy.z;
 lat = bathy.lat;
@@ -74,7 +77,7 @@ elseif strcmp(ptype,'3Dsurf')
     
     
 else 
-    disp('Check spelling of plot type');
+    disp('Check spelling of plot type: ''2Dscatter'', ''2Dcontour'', or ''3Dsurf''');
 end
 
 hold off

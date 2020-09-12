@@ -37,6 +37,8 @@ function [wod] = wod_build(wod_dir,variable_list)
 % 
 % See also general_profiles and general_region_subset.
 
+assert(iscell(variable_list),'Error: variable_list must be a cell array where each element is the string name of a variable.');
+
     base_list = {'lon','lat','date','z'}; % Variables automatically included.
     variable_list(ismember(variable_list, base_list )) = []; % remove redundant vars
     variable_list = [base_list variable_list];
@@ -44,6 +46,10 @@ function [wod] = wod_build(wod_dir,variable_list)
     
     wod_cell = cell(0,nvar); % Make an empty table to hold profile data.
     full_path = dir(wod_dir);
+    if isempty(full_path)
+        disp([newline, 'No matching WOD files in path ',wod_dir, newline])
+        return
+    end
     
     for i = 1:length(full_path) % For each file in full_path...
         filename = [full_path(i).folder '/' full_path(i).name];

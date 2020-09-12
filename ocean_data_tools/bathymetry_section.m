@@ -74,6 +74,9 @@ if nargin < 5
     filled = 0;
 end
 
+assert(isstruct(bathy),'Error: bathy must be a structure array created using bathymetry_extract.');
+
+
 % Load bathymetry data.
 bath = bathy.z;
 lat = bathy.lat;

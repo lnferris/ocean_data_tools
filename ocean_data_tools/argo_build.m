@@ -74,6 +74,10 @@ if nargin < 2
     region = [-90 90 -180 180];
 end
 
+assert(length(region)==4,'Error: Region must be format [-90 90 -180 180].');
+assert(isa(start_date,'char'),'Error: start_date must be format ''dd-mmm-yyyy HH:MM:SS''');
+assert(isa(end_date,'char'),'Error: end_date must be format ''dd-mmm-yyyy HH:MM:SS''');
+
      % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
     region(region>180) = region(region>180)- 360;
     region(region<-180) = region(region<-180)+360;

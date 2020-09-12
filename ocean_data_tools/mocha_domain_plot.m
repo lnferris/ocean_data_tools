@@ -35,6 +35,9 @@ function mocha_domain_plot(month,variable,region)
 % 
 % See also mocha_build_profiles and mocha_simple_plot.
 
+assert(length(region)==4,'Error: Region must be format [-90 90 -180 180].');
+assert(isnumeric(month) & length(month)==1,'Error: month must be an integer corresponding to calendar month.');
+
 % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;
 region(region<-180) = region(region<-180)+360;

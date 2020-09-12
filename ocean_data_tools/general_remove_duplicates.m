@@ -43,6 +43,7 @@ function [subobject] = general_remove_duplicates(object,var3)
 % 
 % See also transect_select, general_region_subset, and general_depth_subset.
 
+assert(isstruct(object),'Error: object must be a structure array created by an ocean_data_tools _build function.');
 
 [~,inds_lon,~] = unique(object.lon);
 [~,inds_lat,~] = unique(object.lat);

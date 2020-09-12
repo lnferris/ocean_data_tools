@@ -57,6 +57,9 @@ function [subobject] =  general_depth_subset(object,zrange,depth_list)
 % 
 % See also general_region_subset and general_remove_duplicates.
 
+assert(isstruct(object),'Error: object must be a structure array created by an ocean_data_tools _build function.');
+assert(length(zrange)==2,'Error: zrange must be a vector of two numbers e.g. [0 200].');
+
 if nargin < 3
     
     depth_list = {'depth'}; % if none, use default depth variable

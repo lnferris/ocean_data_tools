@@ -52,6 +52,9 @@ function model_domain_plot(model_type,source,date,variable,region)
 % 
 % See also model_build_profiles and model_simple_plot.
 
+assert(isa(date,'char'),'Error: date must be format ''dd-mmm-yyyy HH:MM:SS''');
+assert(length(region)==4,'Error: Region must be format [-90 90 -180 180].');
+assert(strcmp(model_type,'hycom')| strcmp(model_type,'mercator'),'Error: model_type =''hycom'' or model_type =''mercator''.');
 
 % deal with inputs other than [-90 90 -180 180] e.g  [-90 90 20 200] 
 region(region>180) = region(region>180)- 360;

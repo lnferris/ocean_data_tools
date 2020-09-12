@@ -54,6 +54,13 @@ function  general_section(object,variable,xref,zref,interpolate,contours)
             interpolate = 0;
         end
     end
+    
+    assert(isstruct(object),'Error: object must be a structure array created by an ocean_data_tools _build function.');
+    assert(interpolate == 1 | interpolate == 0,'Error: interpolate=1 (on) or interpolate=0 (off)');
+    assert(contours == 1 | contours == 0,'Error: contours=1 (on) or contours=0 (off)');
+    assert(isa(variable,'char'),'Error: variable must be a field name (string or character array)');
+    assert(isa(xref,'char'),'Error: xref must be a field name (string or character array)');
+    assert(isa(zref,'char'),'Error: zref must be a field name (string or character array)');
 
     cvar = object.(variable); 
     xvar = object.(xref); 

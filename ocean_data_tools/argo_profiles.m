@@ -34,6 +34,8 @@ function argo_profiles(argo,variable,annotate)
 % 
 % See also argo_build and argo_profiles_map.
 
+assert(isstruct(argo),'Error: argo must be a structure array created by argo_build.');
+
 cvar = argo.(variable);
 
 if nanmean(argo.PRES_ADJUSTED,'all') > 0
@@ -47,8 +49,11 @@ for prof = 1:length(argo.stn)
     
         h(prof) = scatter(cvar(:,prof),argo.PRES_ADJUSTED(:,prof),'.');  
         
-        if nargin == 3 && annotate ==1
-            text(cvar(1,prof),argo.PRES_ADJUSTED(1,prof),string(argo.stn(prof)),'FontSize',10)
+        if nargin == 3 
+            assert(annotate == 1 | annotate == 0,'Error: annotate=1 (on) or annotate=0 (off)');
+            if annotate ==1
+                text(cvar(1,prof),argo.PRES_ADJUSTED(1,prof),string(argo.stn(prof)),'FontSize',10)
+            end
         end
         
 end

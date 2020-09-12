@@ -34,6 +34,7 @@ function [subobject] = general_region_subset(object,xcoords,ycoords)
 % 
 % See also region_select and general_remove_duplicates.
 
+assert(isstruct(object),'Error: object must be a structure array created by an ocean_data_tools _build function.');
 
 figure
 plot(object.lon,object.lat,'.','MarkerSize',14)

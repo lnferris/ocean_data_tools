@@ -9,6 +9,9 @@ function [vke] = whp_cruise_vke(wvke_dir)
     nvar = length(base_list);
 
     full_path = dir([wvke_dir '*VKEprof.nc']);
+    if isempty(full_path)
+        disp([newline, 'Warning: No matching LADCP VKE files in path ',wvke_dir, newline])
+    end
     vke = cell2table(cell(0,nvar)); % Make an empty table to hold profile data.
     vke.Properties.VariableNames = base_list; 
     for i = 1:length(full_path) % For each file in full_path...

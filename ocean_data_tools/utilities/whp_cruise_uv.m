@@ -11,6 +11,9 @@ function [uv,uv_meta] = whp_cruise_uv(uv_dir)
     nmeta = length(meta_list);
 
     full_path = dir(uv_dir);
+    if isempty(full_path)
+        disp([newline, 'Warning: No matching LADCP UV files in path ',uv_dir, newline])
+    end
     
     uv = cell2table(cell(0,nvar)); % Make an empty table to hold profile data.
     uv_meta = cell2table(cell(0,nmeta)); % Make an empty table to hold profile data.

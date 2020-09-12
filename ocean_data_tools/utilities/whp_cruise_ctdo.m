@@ -11,6 +11,10 @@ function [ctdo] = whp_cruise_ctdo(ctdo_dir,variable_list)
     nvar = length(variable_list);
 
     full_path = dir(ctdo_dir);
+    if isempty(full_path)
+        disp([newline, 'Warning: No matching CTD+ files in path ',ctdo_dir, newline])
+    end
+    
     ctdo = cell2table(cell(0,nvar)); % Make an empty table to hold profile data.
     ctdo.Properties.VariableNames = variable_list;  
 

@@ -30,6 +30,9 @@ function [subargo] = argo_platform_subset(argo,platform_id)
 % 
 % See also argo_build and argo_platform_map.
 
+assert(isstruct(argo),'Error: argo must be a structure array created by argo_build.');
+assert(isnumeric(platform_id) & length(platform_id)==1,'Error: platform_id must be an integer corresponding to the ID of an Argo float.');
+
 
     in = find(argo.id==platform_id);
     

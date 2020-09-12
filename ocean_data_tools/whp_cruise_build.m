@@ -56,6 +56,10 @@ function [cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list)
 % 
 % See also general_section and general_profiles.
 
+assert(isa(ctdo_dir,'char'),'Error: ctdo_dir must be a path (string or character array) or ''null''.');
+assert(isa(uv_dir,'char'),'Error: uv_dir must be a path (string or character array) or ''null''.');
+assert(isa(wvke_dir,'char'),'Error: wvke_dir must be a path (string or character array) or ''null''.');
+assert(iscell(variable_list),'Error: variable_list must be a cell array where each element is the string name of a variable.');
 
 % load data
 [ctdo] = whp_cruise_ctdo(ctdo_dir,variable_list);
