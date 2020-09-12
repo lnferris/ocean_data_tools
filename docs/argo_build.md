@@ -9,6 +9,8 @@
 
 ``[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)`` searches pathway ``argo_dir`` for profiles meeting the search criteria ``region``, ``start_date``, and ``end_date``. Profiles are loaded into the struct array ``argo`` with all variables specified in ``variable_list``. Files containing matching profiles are listed in ``matching_files``.
 
+The only required argument is ``argo_dir``. The default state is to load all profiles in path ``argo_dir``, writing variables TEMP_ADJUSTED and PSAL_ADJUSTED into the uniform struct ``argo``.
+
 ``argo_dir`` is a character array search path with wildcards. The search path should be the path to the netcdf files themselves, not their directory. 
 
 ``region`` is a vector containing the bounds [S N W E] of the search region, with limits [-90 90 -180 180]. Limits may cross the dateline e.g. [35 45 170 -130].
