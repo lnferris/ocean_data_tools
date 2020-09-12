@@ -22,8 +22,8 @@ The paths used as arguments should point to data from the *same oceanographic cr
 Example paths: 
 
 ```Matlab
-ctdo_dir = '/Users/lnferris/Documents/S14/ctd/\*.nc'; 
-uv_dir = '/Users/lnferris/Documents/S14/whp_cruise/uv/\*.nc';
+ctdo_dir = '/Users/lnferris/Documents/S14/ctd/*.nc'; 
+uv_dir = '/Users/lnferris/Documents/S14/whp_cruise/uv/*.nc';
 wvke_dir = '/Users/lnferris/Documents/S14/whp_cruise/wvke/';
 ```
 
