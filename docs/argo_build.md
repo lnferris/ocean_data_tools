@@ -3,6 +3,10 @@
 #### Syntax
 
 ```Matlab
+[argo,matching_files] = argo_build(argo_dir)
+[argo,matching_files] = argo_build(argo_dir,region)
+[argo,matching_files] = argo_build(argo_dir,region,start_date)
+[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date)
 [argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list)
 ```
 #### Description
