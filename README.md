@@ -25,7 +25,7 @@ Find a bug, have a question, or want to contribute? Open an issue or email lnfer
 ## Getting Started
 
 1. Download [bathymetry](#bathymetry).
-2. Download [nctoolbox](https://github.com/nctoolbox/nctoolbox). You will need to run the command ``setup_nctoolbox`` at the beginning of a MATLAB session.
+2. Download [nctoolbox](https://github.com/nctoolbox/nctoolbox). You will need to run the command ``setup_nctoolbox`` at the beginning of each MATLAB session.
 3. Add ocean_data_tools and nctoolbox to the path. Specifically, the following folders must be added to the [path](https://www.mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html):
 
 - ocean_data_tools/ocean_data_tools
