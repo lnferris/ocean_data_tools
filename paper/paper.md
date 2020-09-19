@@ -43,9 +43,11 @@ custom user-defined calculations or other toolboxes such as the commonly-used
 Gibbs-SeaWater (GSW) Oceanographic Toolbox [@McDougall:2011]. One application of the ``\_build`` 
 feature is to create virtual cruises from model output \autoref{fig:1}. The user
 draws transects on a map (or passes coordinates as an argument) to build vertical profiles 
-from model data. This may be used as a cruise planning tool or to facilitate 
-comparison of observations (such as those from underwater glider surveys) with 
-model output. Some ``ocean_data_tools`` functions employ ``nctoolbox`` [@nctoolbox].
+from model data. This may be used as a cruise planning tool, to facilitate 
+comparison of observations with model output, or to support rapid decision-making in underwater glider 
+piloting (using model forecasts to anticipate ocean currents, such as with 
+GOFS 3.1: 41-layer HYCOM + NCODA Global 1/12° Analysis).  Some ``ocean_data_tools`` functions
+employ ``nctoolbox`` [@nctoolbox].
 
 ![Building a virtual cruise from the Operational Mercator global ocean
 analysis and forecast system at 1/12 degree with 3D bathymetry [@Smith:1997]. 
