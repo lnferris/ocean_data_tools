@@ -44,9 +44,8 @@ Gibbs-SeaWater (GSW) Oceanographic Toolbox [@McDougall:2011]. One application of
 feature is to create virtual cruises from model output \autoref{fig:1}. The user
 draws transects on a map (or passes coordinates as an argument) to build vertical profiles 
 from model data. This may be used as a cruise planning tool, to facilitate 
-comparison of observations with model output, or to support rapid decision-making in underwater glider 
-piloting (using model forecasts to anticipate ocean currents, such as with 
-GOFS 3.1: 41-layer HYCOM + NCODA Global 1/12° Analysis).  Some ``ocean_data_tools`` functions
+comparison of observations with model output, or to support decision-making in underwater glider 
+piloting (e.g. use model forecasts to inform ballasting or adjust flight for ocean currents).  Some ``ocean_data_tools`` functions
 employ ``nctoolbox`` [@nctoolbox].
 
 ![Building a virtual cruise from the Operational Mercator global ocean
