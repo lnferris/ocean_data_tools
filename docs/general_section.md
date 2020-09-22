@@ -9,7 +9,7 @@ general_section(object,variable,xref,zref,interpolate,contours)
 ```
 #### Description
 
-``general_section(object,variable,xref,zref)`` creates a section plot from ``object``; where ``object`` is a struct created by any of the ``_build`` functions in ocean_data_tools (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). The color field is specified by ``variable``. ``xref`` and ``zref`` specify fields to use for the x-axis and z-axis.
+``general_section(object,variable,xref,zref)`` creates a section plot from ``object``; where ``object`` is a struct created by any of the ``_build`` functions in ocean_data_tools (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). The color field is specified by ``variable``. ``xref`` and ``zref`` specify fields to use for the x-axis and z-axis. Alteratively pass ``xref = 'km'`` to plot in along-track distance, assuming spherical earth.
 
 ``general_section(object,variable,xref,zref,interpolate)`` interpolates the plot using the MATLAB ``shading`` function. ``interpolate=1`` for on, ``interpolate=0`` for off.
 
