@@ -29,7 +29,9 @@ function  general_section(object,variable,xref,zref,interpolate,contours)
 % depth variable of the section plot
 %
 % xref is the string name of the field (of object) to be plotted as the 
-% horizontal variable of the section plot
+% horizontal variable of the section plot, usually 'stn', 'lat', or 'lon'.
+% Alteratively pass xref = 'km' to plot stations in along-track distance,
+% calculated along ascending station number. Assumes spherical earth.
 %
 %% Example 1
 % Plot a temperature section from a hycom struct:
@@ -44,7 +46,7 @@ function  general_section(object,variable,xref,zref,interpolate,contours)
 %
 %% Citation Info 
 % github.com/lnferris/ocean_data_tools
-% Jun 2020; Last revision: 06-Sep-2020
+% Jun 2020; Last revision: 22-Sep-2020
 % 
 % See also shading and general_profiles.
 
@@ -62,9 +64,35 @@ function  general_section(object,variable,xref,zref,interpolate,contours)
     assert(isa(xref,'char'),'Error: xref must be a field name (string or character array)');
     assert(isa(zref,'char'),'Error: zref must be a field name (string or character array)');
 
+   
     cvar = object.(variable); 
-    xvar = object.(xref); 
     zvar = object.(zref);
+
+    if strcmp(xref,'km') && ~isfield(object,'km')
+        
+        % displacements between stations in degrees
+        ddeg = zeros(size(object.stn));
+        for prof = 1:length(object.stn)-1
+            [ddeg(prof+1),~] = distance(object.lat(prof),object.lon(prof),object.lat(prof+1),object.lon(prof+1));
+        end
+        
+        % convert degrees to kilometers
+        dkm = deg2km(ddeg);
+        
+        % sum previous displacements at each station
+        object.km = NaN(size(object.stn));
+        for prof = 1:length(object.stn)
+            object.km(prof) = sum(dkm(1:prof));
+        end
+        xvar = object.km;   
+        
+    else
+         xvar = object.(xref);       
+    end
+
+    if nanmean(zvar,'all') > 0
+        zvar = -zvar;
+    end
 
     if nanmean(zvar,'all') > 0
         zvar = -zvar;
