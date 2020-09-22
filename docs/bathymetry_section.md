@@ -8,13 +8,13 @@
 ```
 #### Description
 
-``[bath_section,lon_section,lat_section] = bathymetry_section(bathy,xcoords,ycoords,xref)`` makes a section plot from ``bathy``, where ``bathy`` is a struct of Smith & Sandwell Global Topography created using ``bathymetry_extract``. ``xcoords`` (longitude) and ``ycoords`` (latitude) are densified to a 1/60-deg grid before bathymetry is interpolated. The bathymetry section is plotted against ``xref``; where ``xref = 'lon'``, ``'lat'``, or a time vector of length(xcoords). The extracted data is output ``bath_section``, ``lon_section``, ``lat_section``, and ``time_section``; output vectors are sorted by the selected reference axis (longitude, latitude, or time).
+``[bath_section,lon_section,lat_section] = bathymetry_section(bathy,xcoords,ycoords,xref)`` makes a section plot from ``bathy``, where ``bathy`` is a struct of Smith & Sandwell Global Topography created using ``bathymetry_extract``. ``xcoords`` (longitude) and ``ycoords`` (latitude) are densified to a 1/60-deg grid before bathymetry is interpolated. The bathymetry section is plotted against ``xref``; where ``xref = 'lon'``, ``'lat'``,``'km'``, or a time vector of length(xcoords). The extracted data is output ``bath_section``, ``lon_section``, ``lat_section``, and ``time_section``; output vectors are sorted by the selected reference axis (longitude, latitude, or time).
  
 ``[bath_section,lon_section,lat_section,time_section] = bathymetry_section(bathy,xcoords,ycoords,xref,filled)`` allows the bathymetry to be filled in black down to the x-axis (instead of a simple line). Set ``filled=1`` to turn on, ``filled=0`` to turn off.
 
 ``xcoords`` and ``ycoords`` are vectors of coordinates. Rows or columns are fine, and both -180/180 or 0/360 notation are fine.
 
-When ``xref`` is a time vector, it must be of ``length(xcoords)`` and elements of the vector must be datenums. Otherwise set ``xref = 'lon'`` or  ``xref = 'lat'``. 
+When ``xref`` is a time vector, it must be of ``length(xcoords)`` and elements of the vector must be datenums. Otherwise set ``xref = 'lon'`` or  ``xref = 'lat'``. Alteratively pass ``xref = 'km'`` to plot in along-track distance, assuming spherical earth.  
 
 #### Example 1
 
