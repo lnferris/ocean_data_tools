@@ -19,7 +19,7 @@ general_section(object,variable,xref,zref,interpolate,contours)
 
 ``zref`` is the string name of the field (of ``object``) to be plotted as the depth variable of the section plot
 
-``xref`` is the string name of the field (of ``object``) to be plotted as the horizontal variable of the section plot
+``xref`` is the string name of the field (of ``object``) to be plotted as the horizontal variable of the section plot, usually ``'stn'``, ``'lat'``, or ``'lon'``. Alteratively pass ``xref = 'km'`` to plot in along-track distance, assuming spherical earth.
 
 
 #### Example 1
