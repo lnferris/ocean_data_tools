@@ -15,7 +15,7 @@ function [bath_section,lon_section,lat_section,time_section] = bathymetry_sectio
 % bathy, where bathy is a struct of Smith & Sandwell Global Topography created
 % using bathymetry_extract. xcoords (longitude) and ycoords (latitude) are
 % densified to a 1/60-deg grid before bathymetry is interpolated. The bathymetry section is
-% plotted against xref; where xref = 'lon', 'lat', or a time vector of length(xcoords). The
+% plotted against xref; where xref = 'lon', 'lat','km', or a time vector of length(xcoords). The
 % extracted data is output bath_section, lon_section, lat_section, and time_section; 
 % output vectors are sorted by the selected reference axis (longitude,
 % latitude, or time).
@@ -29,8 +29,9 @@ function [bath_section,lon_section,lat_section,time_section] = bathymetry_sectio
 % fine, and both -180/180 or 0/360 notation are fine.
 %
 % When xref is a time vector, it must be of length(xcoords) and elements of
-% the vector must be datenums. Otherwise set xref = 'lon' or  xref = 'lat'. 
-%
+% the vector must be datenums. Otherwise set xref = 'lon' or  xref = 'lat'.
+% Alteratively pass xref = 'km' to plot in along-track distance, assuming 
+% spherical earth. 
 %
 %% Example 1
 % Add bathymetry to a temperature section plot from the list of coordinates
@@ -110,9 +111,27 @@ else
     if strcmp(xref,'lon')
         xvar = lon_section;   
     elseif strcmp(xref,'lat')
-        xvar = lat_section;   
+        xvar = lat_section;  
+    elseif strcmp(xref,'km')
+        
+         % displacements between stations in degrees
+        ddeg = zeros(size(lon_section));
+        for prof = 1:length(lon_section)-1
+            [ddeg(prof+1),~] = distance(lat_section(prof),lon_section(prof),lat_section(prof+1),lon_section(prof+1));
+        end
+        
+        % convert degrees to kilometers
+        dkm = deg2km(ddeg);
+        
+        % sum previous displacements at each station
+        km = NaN(size(lon_section));
+        for prof = 1:length(lon_section)
+            km(prof) = sum(dkm(1:prof));
+        end
+        xvar = km;    
+        
     else
-        disp(['xref should be ''lon'', ''lat'', or a time vector of length ',num2str(length(xcoords))]);  
+        disp(['xref should be ''lon'', ''lat'',''km'', or a time vector of length ',num2str(length(xcoords))]);  
         return
     end
 end
