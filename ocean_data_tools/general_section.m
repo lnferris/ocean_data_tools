@@ -30,8 +30,8 @@ function  general_section(object,variable,xref,zref,interpolate,contours)
 %
 % xref is the string name of the field (of object) to be plotted as the 
 % horizontal variable of the section plot, usually 'stn', 'lat', or 'lon'.
-% Alteratively pass xref = 'km' to plot stations in along-track distance,
-% calculated along ascending station number. Assumes spherical earth.
+% Alteratively pass xref = 'km' to plot in along-track distance, assuming 
+% spherical earth.
 %
 %% Example 1
 % Plot a temperature section from a hycom struct:
