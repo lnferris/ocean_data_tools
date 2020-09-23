@@ -159,6 +159,14 @@ Download [Argo data](https://argo.ucsd.edu/) directly from GDAC FTP servers usin
 
 Alternatively run **shell_scripts/download_argo** to download data via File Transfer Protocol.
 
+#### glider<sup>1</sup>
+
+Vist [gliders.ioos.us/erddap](https://gliders.ioos.us/erddap/index.html). Click "View a List of All 779 Datasets" or use the "Advanced Search". After choosing a dataset, navigate to the [Data Access Form](https://gliders.ioos.us/erddap/tabledap/ce_311-20170725T1930-delayed.html). To get started, select these variables:
+
+<img src="https://user-images.githubusercontent.com/24570061/94058620-419af580-fdaf-11ea-859a-616c8b5b1433.png" width="700">
+
+Scroll to "File type:". In the drop-down menu, select ".nc". Click "Submit".
+
 #### bathymetry<sup>1</sup>
 
 To get bathymetry data (for ``bathymetry_dir``), download Smith & Sandwell under [Global Topography V19.1](https://topex.ucsd.edu/marine_topo/) in netcdf form (topo_20.1.nc).
