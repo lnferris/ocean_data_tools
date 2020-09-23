@@ -168,7 +168,7 @@ mocha_simple_plot(month,depth,variable,region)
 
 % mocha_build_profiles
 
-[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+[xcoords,ycoords] = transect_select('densify',10); % click desired transect on the figure, densify selection by 10x 
 zgrid = 1; % vertical grid for linear interpolation in meters
 [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
 figure
@@ -200,7 +200,7 @@ figure
 
 % model_build_profiles  - HYCOM EXAMPLE
 
-[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+[xcoords,ycoords] = transect_select('densify',10); % click desired transect on the figure, densify selection by 10x 
 variable_list = {'water_temp','salinity'}; % 'water_u' 'water_v' 'water_temp' 'salinity'
 zgrid = 1; % vertical grid for linear interpolation in meters
 [hycom] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
@@ -235,7 +235,7 @@ model_simple_plot(model_type,source,date,variable,region,depth,arrows);
 % model_build_profiles  - MERCATOR EXAMPLE
 
 variable_list = {'thetao','so','uo'}; % thetao' 'so' 'uo' 'vo'
-[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+[xcoords,ycoords] = transect_select('densify',10); % click desired transect on the figure, densify selection by 10x 
 zgrid = 1; % vertical grid for linear interpolation in meters
 [mercator] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
 figure
@@ -290,16 +290,17 @@ woa_simple_plot(variable,time,region,depth);
 
 variable_list = {'temperature','salinity','oxygen'}; % 'temperature' 'salinity' 'oxygen' 'o2sat' 'AOU' 'silicate' 'phosphate' 'nitrate'
 time = '00'; % '00' for annual climatology '01' '10' etc. for monthly climatology
-[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+[xcoords,ycoords] = transect_select('densify',10); % click desired transect on the figure, densify selection by 10x 
 zgrid = 1; % vertical grid for linear interpolation in meters
 [woa] =  woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
 [woa] = general_remove_duplicates(woa); % thin struct to gridding of source (optional)
 figure
 general_map(woa,bathymetry_dir,'2Dcontour')
 figure
-general_section(woa,'salinity','lon','depth')
 [bathy] = bathymetry_extract(bathymetry_dir,bounding_region([],xcoords,ycoords));
 bathymetry_section(bathy,xcoords,ycoords,'lon',1) % filled optional
+hold on
+general_section(woa,'salinity','lon','depth')
 figure
 general_profiles(woa,'oxygen','depth')
 

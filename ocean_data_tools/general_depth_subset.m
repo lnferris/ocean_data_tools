@@ -34,7 +34,7 @@ function [subobject] =  general_depth_subset(object,zrange,depth_list)
 % region = [60.0, 70.0 ,-80, -60];  
 % depth = -0;    
 % model_simple_plot('hycom',source,date,'salinity',region,depth)
-% [xcoords,ycoords] = transect_select(100);
+% [xcoords,ycoords] = transect_select('densify',100);
 % variable_list = {'water_temp','salinity'}; 
 % [hycom] = model_build_profiles(source,date,variable_list,xcoords,ycoords);
 % object = hycom;
