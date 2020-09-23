@@ -10,7 +10,7 @@
 
 ``[xcoords,ycoords] = transect_select()`` creates a list of x and y coordinates selected by clicking stations on an existing (latitude vs. longitude) plot, returning them as ``xcoords`` and ``ycoords``
 
-``[xcoords,ycoords] = transect_select(scheme, value)`` auto-generates additional stations with based on the scheme chosen. ``scheme = 'densify'`` auto-generates additional stations with the multiplier ``value``; ``value=10`` would fill in 10 stations for every station clicked using linear interpolation of complex coordinates. ``scheme = 'spacing'`` auto-generates additional stations with the specified spacing ``value``, where ``value`` is the longitude or latitude spacing in degrees; ``value=0.5`` would fill in stations such that stations are 0.5 degrees apart. 
+``[xcoords,ycoords] = transect_select(scheme,value)`` auto-generates additional stations with based on the scheme chosen. ``scheme = 'densify'`` auto-generates additional stations with the multiplier ``value``; ``value=10`` would fill in 10 stations for every station clicked using linear interpolation of complex coordinates. ``scheme = 'spacing'`` auto-generates additional stations with the specified spacing ``value``, where ``value`` is the longitude or latitude spacing in degrees; ``value=0.5`` would fill in stations such that stations are 0.5 degrees apart. 
 
 If ``scheme = 'densify'``, ``value`` (no units) should be an integer. If it is not an integer it will be rounded to an integer.
 
