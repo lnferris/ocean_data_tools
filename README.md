@@ -64,6 +64,8 @@ It is recommended to also download [Gibbs-SeaWater (GSW) Oceanographic Toolbox](
 
 **[argo_build](docs/argo_build.md)** searches the locally-stored Argo profiles matching the specified region & time period and builds a uniform struct
 
+**[glider_build](docs/glider_build.md)** loads a glider survey (downloaded from gliders.ioos.us/erddap) and builds a uniform struct
+
 **[mocha_build_profiles](docs/mocha_build_profiles.md)** builds a uniform struct of profiles from the MOCHA Mid-Atlantic Bight climatology
 
 **[model_build_profiles](docs/model_build_profiles.md)**  builds a uniform struct of profiles from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
