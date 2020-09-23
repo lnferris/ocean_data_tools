@@ -35,7 +35,7 @@ model_simple_plot(model_type,source,date,variable,region,depth);
 
 % Click stations on the plot to create a coordinate list:
 
-[xcoords,ycoords] = transect_select( 'densify',10); % click desired transect on the figure, densify selection by 10x
+[xcoords,ycoords] = transect_select('densify',10); % click desired transect on the figure, densify selection by 10x
 
 ```
 <img src="https://user-images.githubusercontent.com/24570061/88406388-9f569580-cd9e-11ea-9871-e4d55941d7c4.png" width="500">
