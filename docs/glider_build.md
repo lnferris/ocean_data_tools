@@ -56,7 +56,7 @@ figure
 general_map(glider,bathymetry_dir)
 
 figure
-general_section(glider,'salinity','km','depth')
+general_section(glider,'salinity','km','pressure')
 
 ```
 <img src="https://user-images.githubusercontent.com/24570061/94057510-b66d3000-fdad-11ea-8261-c2dddbf72439.png" width="600">
