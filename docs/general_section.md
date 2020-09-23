@@ -38,7 +38,7 @@ depth = 0;
 variable = 'temperature'; %  'temperature' 'salinity'
 region = [34 42  -80 -70]; % [30 48 -80 -58]
 mocha_simple_plot(month,depth,variable,region)
-[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+[xcoords,ycoords] = transect_select('densify',10); % click desired transect on the figure, densify selection by 10x 
 zgrid = 1; % vertical grid for linear interpolation in meters
 [mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid); % zgrid optional, no interpolation if unspecified
 ```
