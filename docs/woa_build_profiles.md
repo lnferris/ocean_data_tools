@@ -49,7 +49,7 @@ woa_simple_plot(variable,time,region,depth)
 
 % Click stations on the plot to create a coordinate list:
 
-[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+[xcoords,ycoords] = transect_select('densify',10); % click desired transect on the figure, densify selection by 10x 
 
 ```
 <img src="https://user-images.githubusercontent.com/24570061/88359631-5c1a0980-cd41-11ea-8e2b-c331e28e1e09.png" width="900">
