@@ -28,7 +28,7 @@ If ``scheme = 'spacing'``, ``value`` (in degrees) should be single, double, or i
 model_type = 'hycom'; 
 source = 'http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7';
 date = '28-Aug-2017 00:00:00';  
-variable = 'salinity;                
+variable = 'salinity';                
 region = [-5.0, 45.0 ,160,-150 ];      
 depth = -150;                                                   
 model_simple_plot(model_type,source,date,variable,region,depth);
