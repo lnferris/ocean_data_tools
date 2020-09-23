@@ -1,6 +1,6 @@
 
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 06-Sep-2020
+%  Jun 2020; Last revision: 23-Sep-2020
 %  Dependencies: nctoolbox
 
 %  These are demonstrations of each function in ocean_data_tools. 
@@ -167,6 +167,9 @@ figure
 general_map(glider,bathymetry_dir)
 figure
 general_section(glider,'salinity','km','depth')
+hold on
+[bathy] = bathymetry_extract(bathymetry_dir,bounding_region(glider));
+bathymetry_section(bathy,glider.lon,glider.lat,'km',1); % filled optional
 
 
 %%                  mocha demonstration
