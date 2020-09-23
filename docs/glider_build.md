@@ -10,7 +10,7 @@
 
 ``[glider] = glider_build(glider_dir,variable_list)`` loads data from ``glider_dir`` into struct array ``glider``. Glider profiles are loaded into the struct with all variables specified in ``variable_list``. 
 
-The only required argument is ``glider_dir``. The default state is to load the following science variables:
+The only required argument is ``glider_dir``. By default, the following variables are loaded:
 ```
 'profile_id'
 'time'
