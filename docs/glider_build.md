@@ -8,7 +8,7 @@
 ```
 #### Description
 
-``[glider] = glider_build(glider_dir,variable_list)`` loads data (a single netcdf file downloaded from [gliders.ioos.us/erddap](https://gliders.ioos.us/erddap/index.html)) from ``glider_dir`` into struct array ``glider``. Glider profiles are loaded into the struct with all variables specified in ``variable_list``. 
+``[glider] = glider_build(glider_dir,variable_list)`` loads data (a single netcdf file downloaded from [gliders.ioos.us/erddap](https://gliders.ioos.us/erddap/index.html)) from ``glider_dir`` into struct array ``glider``. Glider profiles are loaded with all variables specified in ``variable_list``. 
 
 The only required argument is ``glider_dir``. By default, the following variables are loaded:
 ```
