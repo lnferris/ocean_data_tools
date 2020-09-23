@@ -194,7 +194,7 @@ assert(isa(end_date,'char'),'Error: end_date must be format ''dd-mmm-yyyy HH:MM:
         argo.(fns{i})(field==FillValue) = NaN;
     end
 
-    % rename the depth variable depth
+    % rename variables
     argo.lon = argo.LONGITUDE;
     argo.lat = argo.LATITUDE;
     argo.date = argo.JULD;

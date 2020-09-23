@@ -14,15 +14,16 @@
 setup_nctoolbox
 
 % Specify path to downloaded bathymetry. 
-bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % YOU MUST MODIFY LINE 15!
+bathymetry_dir = '/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc'; % YOU MUST MODIFY LINE 17!
 
 % Automatically generate paths to included test data. 
-data_path = [fileparts(fileparts(matlab.desktop.editor.getActiveFilename)),'/','data/']; % DO NOT MODIFY LINES 20-25!
+data_path = [fileparts(fileparts(matlab.desktop.editor.getActiveFilename)),'/','data/']; % DO NOT MODIFY LINES 20-26!
 argo_dir = [data_path,'argo/*profiles*.nc']; 
 ctdo_dir = [data_path,'whp_cruise/ctd/*.nc']; 
 uv_dir = [data_path,'whp_cruise/uv/*.nc'];
 wvke_dir = [data_path,'whp_cruise/wvke/'];
 wod_dir = [data_path,'wod/*.nc']; 
+glider_dir = [data_path,'glider/ce_311-20170725T1930.nc'];
 
 % Uncomment any of the following to hard-code paths.
 %argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc'; % uncomment to hard-code path
@@ -30,6 +31,7 @@ wod_dir = [data_path,'wod/*.nc'];
 %uv_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/uv/*.nc'; % uncomment to hard-code path
 %wvke_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/wvke/'; % uncomment to hard-code path
 %wod_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/wod/*.nc'; % uncomment to hard-code path
+%glider_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/glider/ce_311-20170725T1930.nc'; % uncomment to hard-code path
 
 
 %%                  argo demonstration
@@ -153,6 +155,18 @@ object = argo; % argo, cruise, hycom, mercator, woa, wod
 variable = 'TEMP_ADJUSTED'; % see particular struct for options
 figure
 general_profiles(object,variable,zref)
+
+
+%%                  glider demonstration
+
+% glider_build
+
+ncdisp(glider_dir) % Peek at header info.
+[glider] = glider_build(glider_dir);    
+figure
+general_map(glider,bathymetry_dir)
+figure
+general_section(glider,'salinity','km','depth')
 
 
 %%                  mocha demonstration
