@@ -34,7 +34,7 @@ mocha_simple_plot(month,depth,variable,region)
 
 % Click stations on the plot to create a coordinate list:
 
-[xcoords,ycoords] = transect_select(10); % click desired transect on the figure, densify selection by 10x 
+[xcoords,ycoords] = transect_select('densify',10); % click desired transect on the figure, densify selection by 10x 
 
 ```
 
