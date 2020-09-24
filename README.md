@@ -18,7 +18,7 @@ Find a bug, have a question, or want to contribute? Open an issue or email lnfer
 
 ### [Finding Data](#finding-data-1)
 
-### [Citing ocean_data_tools](#citing-ocean_data_tools-1)
+### [How to Cite](#how-to-cite-1)
 
 ## Getting Started
 
@@ -193,7 +193,7 @@ Functions build the World Ocean Atlas url at maximum resolution based on argumen
 
 Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html) and select products.
 
-## Citing ocean_data_tools
+## How to Cite
 
 Cite as:
 
