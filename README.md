@@ -195,7 +195,7 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 ## Citing ODT
 
-Consider citing as:
+Please consider citing as:
 
 *Ferris, L., (2020): ocean_data_tools: A MATLAB toolbox for interacting with bulk freely-available oceanographic data. July. Zenodo. doi:10.5281/zenodo.3353610.*
 
