@@ -47,7 +47,7 @@ It is recommended to also download [Gibbs-SeaWater (GSW) Oceanographic Toolbox](
 
 ## Accessing Help
 
-To access documentation, run the command ``doc ocean_data_tools``.
+To access help, run the command ``doc ocean_data_tools``.
 
 ## Contents
 
