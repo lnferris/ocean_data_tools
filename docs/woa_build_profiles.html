@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>woa_build_profiles.md - Grip</title>
+  <link rel="icon" href="/__/grip/static/favicon.ico" />
+  <link rel="stylesheet" href="/__/grip/asset/github-ff8802b1c626720c9ee3a0a4cb7cf3b2.css" />
+  <link rel="stylesheet" href="/__/grip/asset/site-fb6f4a56fa12a642004cb7c08bdc8f02.css" />
+  <link rel="stylesheet" href="/__/grip/asset/frameworks-c4d3a737ed86a598505e48f9c81adb77.css" />
+  <link rel="stylesheet" href="/__/grip/static/octicons/octicons.css" />
+  <style>
+    /* Page tweaks */
+    .preview-page {
+      margin-top: 64px;
+    }
+    /* User-content tweaks */
+    .timeline-comment-wrapper > .timeline-comment:after,
+    .timeline-comment-wrapper > .timeline-comment:before {
+      content: none;
+    }
+    /* User-content overrides */
+    .discussion-timeline.wide {
+      width: 920px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div id="preview-page" class="preview-page" data-autorefresh-url="/__/grip/refresh/">
+
+
+
+      <div role="main" class="main-content">
+        <div class="container new-discussion-timeline experiment-repo-nav">
+          <div class="repository-content">
+            <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
+
+                <h3>
+                  <span class="octicon octicon-book"></span>
+                </h3>
+
+              <article class="markdown-body entry-content" itemprop="text" id="grip-content">
+                <h3>
+<a id="user-content-woa_build_profiles" class="anchor" href="#woa_build_profiles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>woa_build_profiles</h3>
+<h4>
+<a id="user-content-syntax" class="anchor" href="#syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Syntax</h4>
+<div class="highlight highlight-source-matlab"><pre>[woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords)
+[woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid)</pre></div>
+<h4>
+<a id="user-content-description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h4>
+<p><code>[woa] =   woa_build_profiles(variable_list,time,xcoords,ycoords)</code> builds a struct of profiles from World Ocean Atlas 2018 Statistical Mean for All Decades Objectively Analyzed Mean Fields at Standard Depth Levels, pulling profiles nearest to coordinates specified by <code>xcoords</code> and <code>ycoords</code>. <code>time</code> specifies monthly or annual climatology; <code>time ='00'</code> for annual climatology and <code>'01'</code> <code>'10'</code> etc. for monthly climatology. Profiles are loaded into the struct array <code>woa</code> with all variables specified in <code>variable_list</code>. The function builds the url, extracting the maximum resolution available (typically 0.25-deg or 1.00-degree grid). Resolution depends on the variable. If the user requests only 0.25-degree variables in variable_list, data will be returned in  0.25-degree resolution. If any requested variable is coarser (1-degree) all variables will be returned in 1-degree resolution.</p>
+<p><code>[woa] =  woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid)</code> depth-interpolates the profiles to a vertical grid of <code>zgrid</code>, in meters. <code>zgrid=2</code> would produce profiles interpolated to 2 meter vertical grid.</p>
+<p><code>time</code> is a string or character array. <code>'00'</code> is annual climatology, while other codes e.g. <code>'02'</code> (February) or <code>'11'</code> (November) indicate monthly climatology.</p>
+<p><code>variable_list</code> is a cell array where each element is the string name of a variable to be read and included in struct <code>woa</code>.</p>
+<p><code>xcoords</code> and <code>ycoords</code> are vectors of coordinates. Rows or columns are fine, and both -180/180 or 0/360 notation are fine.</p>
+<p>Available variables are:</p>
+<p><code>'temperature'</code> (degrees Celsius)<br>
+<code>'salinity'</code> (psu)<br>
+<code>'oxygen'</code> (umol/kg)<br>
+<code>'o2sat'</code> (%)</p>
+<p><code>'AOU'</code> (umol/kg)<br>
+<code>'silicate'</code> (umol/kg)<br>
+<code>'phosphate'</code> (umol/kg)<br>
+<code>'nitrate'</code> (umol/kg)</p>
+<h4>
+<a id="user-content-example-1" class="anchor" href="#example-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 1</h4>
+<div class="highlight highlight-source-matlab"><pre>
+<span class="pl-c"><span class="pl-c">%</span> Setup nctoolbox:</span>
+
+setup_nctoolbox
+
+<span class="pl-c"><span class="pl-c">%</span> Plot surface nitrate:</span>
+
+variable = <span class="pl-s"><span class="pl-pds">'</span>nitrate<span class="pl-pds">'</span></span>;
+time = <span class="pl-s"><span class="pl-pds">'</span>03<span class="pl-pds">'</span></span>;
+region = [-<span class="pl-c1">5.0</span>, <span class="pl-c1">45.0</span> ,-<span class="pl-c1">120</span>, -<span class="pl-c1">150</span>];
+depth = -<span class="pl-c1">0</span>;
+woa_simple_plot(variable,time,region,depth)
+
+<span class="pl-c"><span class="pl-c">%</span> Click stations on the plot to create a coordinate list:</span>
+
+[xcoords,ycoords] = transect_select(<span class="pl-s"><span class="pl-pds">'</span>densify<span class="pl-pds">'</span></span>,<span class="pl-c1">10</span>); <span class="pl-c"><span class="pl-c">%</span> click desired transect on the figure, densify selection by 10x </span>
+</pre></div>
+<p><a href="https://user-images.githubusercontent.com/24570061/88359631-5c1a0980-cd41-11ea-8e2b-c331e28e1e09.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88359631-5c1a0980-cd41-11ea-8e2b-c331e28e1e09.png" width="900" style="max-width:100%;"></a></p>
+<div class="highlight highlight-source-matlab"><pre>
+<span class="pl-c"><span class="pl-c">%</span> Build a uniform struct of profiles:</span>
+
+variable_list = {<span class="pl-s"><span class="pl-pds">'</span>temperature<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>salinity<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>oxygen<span class="pl-pds">'</span></span>}; <span class="pl-c"><span class="pl-c">%</span> 'temperature' 'salinity' 'oxygen' 'o2sat' 'AOU' 'silicate' 'phosphate' 'nitrate'</span>
+time = <span class="pl-s"><span class="pl-pds">'</span>00<span class="pl-pds">'</span></span>; <span class="pl-c"><span class="pl-c">%</span> '00' for annual climatology '01' '10' etc. for monthly climatology</span>
+zgrid = <span class="pl-c1">1</span>; <span class="pl-c"><span class="pl-c">%</span> vertical grid for linear interpolation in meters</span>
+[woa] =  woa_build_profiles(variable_list,time,xcoords,ycoords,zgrid); <span class="pl-c"><span class="pl-c">%</span> zgrid optional, no interpolation if unspecified</span>
+[woa] = general_remove_duplicates(woa); <span class="pl-c"><span class="pl-c">%</span> thin struct to gridding of source (optional)</span>
+
+<span class="pl-c"><span class="pl-c">%</span> Make a section plot:</span>
+
+general_section(woa,<span class="pl-s"><span class="pl-pds">'</span>salinity<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>lon<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>depth<span class="pl-pds">'</span></span>,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>)</pre></div>
+<p><a href="https://user-images.githubusercontent.com/24570061/88359633-5d4b3680-cd41-11ea-84bd-ef62b5f42fbb.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88359633-5d4b3680-cd41-11ea-84bd-ef62b5f42fbb.png" width="900" style="max-width:100%;"></a></p>
+
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+  </div>
+  <div>&nbsp;</div>
+  </div><script>
+    function showCanonicalImages() {
+      var images = document.getElementsByTagName('img');
+      if (!images) {
+        return;
+      }
+      for (var index = 0; index < images.length; index++) {
+        var image = images[index];
+        if (image.getAttribute('data-canonical-src') && image.src !== image.getAttribute('data-canonical-src')) {
+          image.src = image.getAttribute('data-canonical-src');
+        }
+      }
+    }
+
+    function scrollToHash() {
+      if (location.hash && !document.querySelector(':target')) {
+        var element = document.getElementById('user-content-' + location.hash.slice(1));
+        if (element) {
+           element.scrollIntoView();
+        }
+      }
+    }
+
+    function autorefreshContent(eventSourceUrl) {
+      var initialTitle = document.title;
+      var contentElement = document.getElementById('grip-content');
+      var source = new EventSource(eventSourceUrl);
+      var isRendering = false;
+
+      source.onmessage = function(ev) {
+        var msg = JSON.parse(ev.data);
+        if (msg.updating) {
+          isRendering = true;
+          document.title = '(Rendering) ' + document.title;
+        } else {
+          isRendering = false;
+          document.title = initialTitle;
+          contentElement.innerHTML = msg.content;
+          showCanonicalImages();
+        }
+      }
+
+      source.onerror = function(e) {
+        if (e.readyState === EventSource.CLOSED && isRendering) {
+          isRendering = false;
+          document.title = initialTitle;
+        }
+      }
+    }
+
+    window.onhashchange = function() {
+      scrollToHash();
+    }
+
+    window.onload = function() {
+      scrollToHash();
+    }
+
+    showCanonicalImages();
+
+    var autorefreshUrl = document.getElementById('preview-page').getAttribute('data-autorefresh-url');
+    if (autorefreshUrl) {
+      autorefreshContent(autorefreshUrl);
+    }
+  </script>
+</body>
+</html>

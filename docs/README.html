@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>README.md - Grip</title>
+  <link rel="icon" href="/__/grip/static/favicon.ico" />
+  <link rel="stylesheet" href="/__/grip/asset/github-ff8802b1c626720c9ee3a0a4cb7cf3b2.css" />
+  <link rel="stylesheet" href="/__/grip/asset/site-fb6f4a56fa12a642004cb7c08bdc8f02.css" />
+  <link rel="stylesheet" href="/__/grip/asset/frameworks-c4d3a737ed86a598505e48f9c81adb77.css" />
+  <link rel="stylesheet" href="/__/grip/static/octicons/octicons.css" />
+  <style>
+    /* Page tweaks */
+    .preview-page {
+      margin-top: 64px;
+    }
+    /* User-content tweaks */
+    .timeline-comment-wrapper > .timeline-comment:after,
+    .timeline-comment-wrapper > .timeline-comment:before {
+      content: none;
+    }
+    /* User-content overrides */
+    .discussion-timeline.wide {
+      width: 920px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div id="preview-page" class="preview-page" data-autorefresh-url="/__/grip/refresh/">
+
+
+
+      <div role="main" class="main-content">
+        <div class="container new-discussion-timeline experiment-repo-nav">
+          <div class="repository-content">
+            <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
+
+                <h3>
+                  <span class="octicon octicon-book"></span>
+                </h3>
+
+              <article class="markdown-body entry-content" itemprop="text" id="grip-content">
+                <h1>
+<a id="user-content-ocean_data_tools-a-matlab-toolbox-for-interacting-with-bulk-freely-available-oceanographic-data" class="anchor" href="#ocean_data_tools-a-matlab-toolbox-for-interacting-with-bulk-freely-available-oceanographic-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ocean_data_tools: a MATLAB toolbox for interacting with bulk freely-available oceanographic data</h1>
+<p><a href="https://user-images.githubusercontent.com/24570061/85356569-4664ba80-b4dd-11ea-9ec7-8ec26df76dcf.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/85356569-4664ba80-b4dd-11ea-9ec7-8ec26df76dcf.png" width="500" style="max-width:100%;"></a></p>
+<p><a href="https://github.com/lnferris/ocean_data_tools/blob/master/LICENSE"><img src="https://camo.githubusercontent.com/0bf58beb387f93fda4866d9508b601abed0c366a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6c6e6665727269732f6f6365616e5f646174615f746f6f6c73" alt="GitHub license" data-canonical-src="https://img.shields.io/github/license/lnferris/ocean_data_tools" style="max-width:100%;"></a> <a href="https://github.com/lnferris/ocean_data_tools/stargazers"><img src="https://camo.githubusercontent.com/597a3519b3662b1767b309d2ea6a83a5dc79d7e9/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6c6e6665727269732f6f6365616e5f646174615f746f6f6c73" alt="GitHub stars" data-canonical-src="https://img.shields.io/github/stars/lnferris/ocean_data_tools" style="max-width:100%;"></a> <a href="https://github.com/lnferris/ocean_data_tools/network"><img src="https://camo.githubusercontent.com/a8a5793b3237f5aae3bc3611ed5ca5fb0d8e2ca4/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f666f726b732f6c6e6665727269732f6f6365616e5f646174615f746f6f6c73" alt="GitHub forks" data-canonical-src="https://img.shields.io/github/forks/lnferris/ocean_data_tools" style="max-width:100%;"></a> <a href="https://github.com/lnferris/ocean_data_tools/issues"><img src="https://camo.githubusercontent.com/0045c3dbcad8a4de378b88bc927c1c09986b4b18/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6973737565732f6c6e6665727269732f6f6365616e5f646174615f746f6f6c73" alt="GitHub issues" data-canonical-src="https://img.shields.io/github/issues/lnferris/ocean_data_tools" style="max-width:100%;"></a></p>
+<p><strong>Copyright (c) 2020 lnferris</strong></p>
+<p>ocean_data_tools simplifies the process of extracting, formatting, and visualizing freely-available oceanographic data. While a wealth of oceanographic data is accessible online, some end-users may be dissuaded from utilizing this data due to the overhead associated with obtaining and formatting it into usable data structures. ocean_data_tools solves this problem by allowing the user to transform common oceanographic data sources into uniform structs, call generalized functions on these structs, easily perform custom calculations, and make graphics.</p>
+<h3>
+<a id="user-content-getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="#getting-started-1">Getting Started</a>
+</h3>
+<h3>
+<a id="user-content-dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="#dependencies-1">Dependencies</a>
+</h3>
+<h3>
+<a id="user-content-contents" class="anchor" href="#contents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="#contents-1">Contents</a>
+</h3>
+<h3>
+<a id="user-content-finding-data" class="anchor" href="#finding-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="#finding-data-1">Finding Data</a>
+</h3>
+<h3>
+<a id="user-content-citing-odt" class="anchor" href="#citing-odt" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="#citing-odt-1">Citing ODT</a>
+</h3>
+<h2>
+<a id="user-content-getting-started-1" class="anchor" href="#getting-started-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting Started</h2>
+<ol>
+<li>Download <a href="#finding-data-1">bathymetry</a>.</li>
+<li>Download <a href="https://github.com/nctoolbox/nctoolbox">nctoolbox</a>. You will need to run the command <code>setup_nctoolbox</code> at the beginning of each MATLAB session.</li>
+<li>Add ocean_data_tools and nctoolbox to the path. Specifically, the following folders must be added to the <a href="https://www.mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html" rel="nofollow">path</a>:</li>
+</ol>
+<ul>
+<li>ocean_data_tools/ocean_data_tools</li>
+<li>ocean_data_tools/ocean_data_tools/utilities</li>
+<li>nctoolbox/</li>
+</ul>
+<ol start="4">
+<li>Run each demonstration in <strong>demos/demos.m</strong>, which contains example usages for all functions. All required test data is included in <strong>data/</strong>.</li>
+</ol>
+<p>Functions are named using a two-part system. The prefix (<code>argo_</code>, <code>bathymetry_</code>, <code>general_</code>, etc.) indicates the appropriate data source, while the suffix (<code>\_build</code>, <code>\_profiles</code>, <code>\_section</code>, etc.) indicates the action performed. Functions with the <code>\_build</code> suffix load raw data into uniform structs (e.g. <code>argo</code>, <code>cruise</code>, <code>hycom</code>, <code>mercator</code>, <code>woa</code>, <code>wod</code>). Uniform structs created by <code>\_build</code> functions are compatable with any <code>general_</code> function.</p>
+<p>Main functions are located in <strong>ocean_data_tools/</strong>. Demonstrations are located in <strong>demos/</strong>. Test datas are located in <strong>data/</strong>. Shell scripts for batch downloading data are located in <strong>shell_scripts/</strong>. While shell scripts can be run directly in a macOS Terminal, running them in Windows requires <a href="https://www.cygwin.com/" rel="nofollow">Cygwin</a> (and perhaps slight modification of commands). Python syntax examples are located in <strong>python/</strong>, which may be grow to become a module in the future.</p>
+<h2>
+<a id="user-content-dependencies-1" class="anchor" href="#dependencies-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies</h2>
+<p>The only true dependency is <a href="https://github.com/nctoolbox/nctoolbox">nctoolbox</a>.</p>
+<p>It is recommended to also download <a href="http://www.teos-10.org/software.htm#1" rel="nofollow">Gibbs-SeaWater (GSW) Oceanographic Toolbox</a>. A benefit of ocean_data_tools is that neatly packs data into uniform structs; at which point a user can easily apply custom calculations or functions from other toolboxes such as GSW. See an <a href="gsw_example.html">example</a>.</p>
+<h2>
+<a id="user-content-contents-1" class="anchor" href="#contents-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contents</h2>
+<h4>
+<a id="user-content-building-uniform-structs-from-data-sources" class="anchor" href="#building-uniform-structs-from-data-sources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="#building-uniform-structs-from-data-sources-1">Building uniform structs from data sources</a>
+</h4>
+<h4>
+<a id="user-content-general-functions-for-subsetting-and-plotting-uniform-structs" class="anchor" href="#general-functions-for-subsetting-and-plotting-uniform-structs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="#general-functions-for-subsetting-and-plotting-uniform-structs-1">General functions for subsetting and plotting uniform structs</a>
+</h4>
+<h4>
+<a id="user-content-plotting-gridded-data-without-building-structs" class="anchor" href="#plotting-gridded-data-without-building-structs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="#plotting-gridded-data-without-building-structs-1">Plotting gridded data without building structs</a>
+</h4>
+<h4>
+<a id="user-content-adding-bathymetry-to-existing-plots" class="anchor" href="#adding-bathymetry-to-existing-plots" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="#adding-bathymetry-to-existing-plots-1">Adding bathymetry to existing plots</a>
+</h4>
+<h4>
+<a id="user-content-additional-functions-for-inspecting-argo-data" class="anchor" href="#additional-functions-for-inspecting-argo-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="#additional-functions-for-inspecting-argo-data-1">Additional functions for inspecting Argo data</a>
+</h4>
+<h4>
+<a id="user-content-miscellaneous-utilities" class="anchor" href="#miscellaneous-utilities" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="#miscellaneous-utilities-1">Miscellaneous utilities</a>
+</h4>
+<h3>
+<a id="user-content-building-uniform-structs-from-data-sources-1" class="anchor" href="#building-uniform-structs-from-data-sources-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Building uniform structs from data sources</h3>
+<p><strong><a href="argo_build.html">argo_build</a></strong> searches the locally-stored Argo profiles matching the specified region &amp; time period and builds a uniform struct</p>
+<p><strong><a href="glider_build.html">glider_build</a></strong> loads an archived glider survey (downloaded from gliders.ioos.us/erddap) and builds a uniform struct</p>
+<p><strong><a href="mocha_build_profiles.html">mocha_build_profiles</a></strong> builds a uniform struct of profiles from the MOCHA Mid-Atlantic Bight climatology</p>
+<p><strong><a href="model_build_profiles.html">model_build_profiles</a></strong>  builds a uniform struct of profiles from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024</p>
+<p><a href="https://user-images.githubusercontent.com/24570061/88250150-ac776580-cc74-11ea-8c72-cea7cc50b4d9.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88250150-ac776580-cc74-11ea-8c72-cea7cc50b4d9.png" width="700" style="max-width:100%;"></a></p>
+<p><strong><a href="whp_cruise_build.html">whp_cruise_build</a></strong> builds a uniform struct of profiles from GO-SHIP cruise data in WHP-Exchange Format</p>
+<p><strong><a href="woa_build_profiles.html">woa_build_profiles</a></strong> builds a uniform struct of profiles from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields</p>
+<p><strong><a href="wod_build.html">wod_build</a></strong> builds a uniform struct of profiles from World Ocean Database data</p>
+<h3>
+<a id="user-content-general-functions-for-subsetting-and-plotting-uniform-structs-1" class="anchor" href="#general-functions-for-subsetting-and-plotting-uniform-structs-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>General functions for subsetting and plotting uniform structs</h3>
+<p><strong><a href="general_depth_subset.html">general_depth_subset</a></strong> subsets a uniform struct by depth</p>
+<p><strong><a href="general_map.html">general_map</a></strong> plots coordinate locations in a uniform struct, with optional bathymetry contours</p>
+<p><strong><a href="general_profiles.html">general_profiles</a></strong> plots vertical profiles in a uniform struct</p>
+<p><strong><a href="general_region_subset.html">general_region_subset</a></strong> subsets a uniform struct by polygon region</p>
+<p><a href="https://user-images.githubusercontent.com/24570061/88250944-358f9c00-cc77-11ea-9b0d-2d582ad186dd.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88250944-358f9c00-cc77-11ea-9b0d-2d582ad186dd.png" width="700" style="max-width:100%;"></a></p>
+<p><strong><a href="general_remove_duplicates.html">general_remove_duplicates</a></strong> removes spatially (or spatially and temporally) non-unique profiles from a uniform struct</p>
+<p><strong><a href="general_section.html">general_section</a></strong> plots a data section from a uniform struct</p>
+<h3>
+<a id="user-content-plotting-gridded-data-without-building-structs-1" class="anchor" href="#plotting-gridded-data-without-building-structs-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Plotting gridded data without building structs</h3>
+<p><strong><a href="mocha_domain_plot.html">mocha_domain_plot</a></strong> plots a 3-D domain from the MOCHA Mid-Atlantic Bight climatology</p>
+<p><strong><a href="mocha_simple_plot.html">mocha_simple_plot</a></strong> plots a 2-D layer from the MOCHA Mid-Atlantic Bight climatology</p>
+<p><strong><a href="model_domain_plot.html">model_domain_plot</a></strong> plots a 3-D domain from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024</p>
+<p><strong><a href="model_simple_plot.html">model_simple_plot</a></strong> plots a 2-D layer from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024</p>
+<p><a href="https://user-images.githubusercontent.com/24570061/88250403-8900ea80-cc75-11ea-8a5d-8a474d2e5c3f.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88250403-8900ea80-cc75-11ea-8a5d-8a474d2e5c3f.png" width="700" style="max-width:100%;"></a></p>
+<p><strong><a href="woa_domain_plot.html">woa_domain_plot</a></strong> plots a 3-D domain from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields</p>
+<p><strong><a href="woa_simple_plot.html">woa_simple_plot</a></strong> plots a 2-D layer from World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields</p>
+<h3>
+<a id="user-content-adding-bathymetry-to-existing-plots-1" class="anchor" href="#adding-bathymetry-to-existing-plots-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding bathymetry to existing plots</h3>
+<p><strong><a href="bathymetry_extract.html">bathymetry_extract</a></strong> extracts a region of Smith &amp; Sandwell Global Topography and outputs as arrays</p>
+<p><strong><a href="bathymetry_plot.html">bathymetry_plot</a></strong> adds bathymetry to 2-D (latitude vs. longitude) or 3-D (latitude vs. longitude vs. depth) data plots</p>
+<p><a href="https://user-images.githubusercontent.com/24570061/88251161-ed24ae00-cc77-11ea-87d6-0e3b4484764d.jpg" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88251161-ed24ae00-cc77-11ea-87d6-0e3b4484764d.jpg" width="700" style="max-width:100%;"></a></p>
+<p><strong><a href="bounding_region.html">bounding_region</a></strong> finds the rectangular region around a uniform struct and/or list of coordinates to pass as an argument for other bathymetry functions</p>
+<p><strong><a href="bathymetry_section.html">bathymetry_section</a></strong> adds Smith &amp; Sandwell Global Topography to a section from plot using bathymetry data nearest to specified coordinates</p>
+<p><a href="https://user-images.githubusercontent.com/24570061/88250660-3d027580-cc76-11ea-808c-f51d5105e420.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88250660-3d027580-cc76-11ea-808c-f51d5105e420.png" width="700" style="max-width:100%;"></a></p>
+<h3>
+<a id="user-content-additional-functions-for-inspecting-argo-data-1" class="anchor" href="#additional-functions-for-inspecting-argo-data-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Additional functions for inspecting Argo data</h3>
+<p><strong><a href="argo_platform_map.html">argo_platform_map</a></strong> plots locations of Argo profiles in a uniform struct, coloring markers by platform (individual Argo float)</p>
+<p><a href="https://user-images.githubusercontent.com/24570061/88250439-a2099b80-cc75-11ea-9516-ad3d1f65fdf9.jpg" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88250439-a2099b80-cc75-11ea-9516-ad3d1f65fdf9.jpg" width="700" style="max-width:100%;"></a></p>
+<p><strong><a href="argo_platform_subset.html">argo_platform_subset</a></strong> subsets a uniform struct of Argo data to one platform (individual Argo float)</p>
+<p><strong><a href="argo_profiles_map.html">argo_profiles_map</a></strong> plots coordinate locations of Argo profiles in uniform struct argo, using colors corresponding to argo_profiles called on the same struct</p>
+<p><strong><a href="argo_profiles.html">argo_profiles</a></strong> plots vertical Argo profiles in uniform struct argo, using colors corresponding to argo_profiles_map called on the same struct</p>
+<h3>
+<a id="user-content-miscellaneous-utilities-1" class="anchor" href="#miscellaneous-utilities-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Miscellaneous utilities</h3>
+<p><strong><a href="region_select.html">region_select</a></strong> creates coordinate list (which represents vertices of a polygon region) by clicking stations on a plot</p>
+<p><strong><a href="transect_select.html">transect_select</a></strong> creates a coordinate list (which represents a virtual transect) by clicking stations on a plot</p>
+<p><a href="https://user-images.githubusercontent.com/24570061/88250639-2b20d280-cc76-11ea-9c94-3ce16300f735.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88250639-2b20d280-cc76-11ea-9c94-3ce16300f735.png" width="700" style="max-width:100%;"></a></p>
+<h2>
+<a id="user-content-finding-data-1" class="anchor" href="#finding-data-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Finding Data</h2>
+<p>There two types of datasets: those that need to be downloaded manually<sup>1</sup> and those that can be accessed remotely<sup>2</sup> through OpenDAP (e.g. the data can be accessed directly on the the internet using a url).</p>
+<h4>
+<a id="user-content-argo1" class="anchor" href="#argo1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>argo<sup>1</sup>
+</h4>
+<p>Download <a href="https://argo.ucsd.edu/" rel="nofollow">Argo data</a> directly from GDAC FTP servers using either the <a href="http://www.argodatamgt.org/Access-to-data/Argo-data-selection" rel="nofollow">Coriolis selection tool</a>, or the <a href="https://nrlgodae1.nrlmry.navy.mil/cgi-bin/argo_select.pl" rel="nofollow">US GDAC</a>. See the <a href="http://www.argodatamgt.org/Documentation" rel="nofollow">Argo User's Manual</a> for more information.</p>
+<p>Alternatively run <strong>shell_scripts/download_argo</strong> to download data via File Transfer Protocol.</p>
+<h4>
+<a id="user-content-bathymetry1" class="anchor" href="#bathymetry1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>bathymetry<sup>1</sup>
+</h4>
+<p>To get bathymetry data (for <code>bathymetry_dir</code>), download Smith &amp; Sandwell under <a href="https://topex.ucsd.edu/marine_topo/" rel="nofollow">Global Topography V19.1</a> in netcdf form (topo_20.1.nc).</p>
+<h4>
+<a id="user-content-glider1" class="anchor" href="#glider1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>glider<sup>1</sup>
+</h4>
+<p>Vist <a href="https://gliders.ioos.us/erddap/index.html" rel="nofollow">gliders.ioos.us/erddap</a>. Click "View a List of All 779 Datasets" or use the "Advanced Search". After choosing a dataset, navigate to the <a href="https://gliders.ioos.us/erddap/tabledap/ce_311-20170725T1930-delayed.html" rel="nofollow">Data Access Form</a>. To get started, select these variables:</p>
+<p><a href="https://user-images.githubusercontent.com/24570061/94058620-419af580-fdaf-11ea-859a-616c8b5b1433.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/94058620-419af580-fdaf-11ea-859a-616c8b5b1433.png" width="700" style="max-width:100%;"></a></p>
+<p>Scroll to "File type:". In the drop-down menu, select ".nc". Click "Submit".</p>
+<h4>
+<a id="user-content-mocha2" class="anchor" href="#mocha2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>mocha<sup>2</sup>
+</h4>
+<p>The url for MOCHA Mid-Atlantic Bight climatology is embedded. See <a href="http://tds.marine.rutgers.edu/thredds/catalog.html" rel="nofollow">Rutgers Marine catalog</a>.</p>
+<h4>
+<a id="user-content-model12" class="anchor" href="#model12" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>model<sup>1,2</sup>
+</h4>
+<p>HYCOM data may be accessed remotely using OpenDAP. Get the data url by visiting the <a href="https://www.hycom.org/dataserver/gofs-3pt1/analysis" rel="nofollow">HYCOM website</a>. For example, click Access Data Here -&gt; GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -&gt; Hindcast Data: Jun-01-2017 to Sep-30-2017. Click on the OpenDAP link. Copy the url as and use this as the <code>source</code> in <code>model_build_profiles</code>.</p>
+<p>Alteratively, download subsetted HYCOM data using NCSS. Get the data url by visiting the <a href="https://www.hycom.org/dataserver/gofs-3pt1/analysis" rel="nofollow">HYCOM website</a>. For example, click Access Data Here -&gt; GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -&gt; Hindcast Data: Jun-01-2017 to Sep-30-2017. Click on the NetcdfSubset link. Set constraints and copy the NCSS Request URL at the bottom of the page. Run <strong>shell_scripts/download_hycom_lite</strong>. To download multiple months or years, run <strong>shell_scripts/download_hycom_bulk_daily</strong> (partition files by day) or <strong>shell_scripts/download_hycom_bulk_monthly</strong> (partition files by month). Please use responsibly.</p>
+<p>For Mercator, download Copernicus Marine data directly from FTP servers. First make a <a href="http://marine.copernicus.eu/services-portfolio/access-to-products/" rel="nofollow">Copernicus account</a>. Use the selection tool to download GLOBAL_ANALYSIS_FORECAST_PHY_001_024. Alternatively run <strong>shell_scripts/download_mercator</strong>. Before running the script, follow the instructions for modifying your ~/.netrc file in the comments of the script.</p>
+<h4>
+<a id="user-content-whp_cruise1" class="anchor" href="#whp_cruise1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>whp_cruise<sup>1</sup>
+</h4>
+<p>For <a href="https://usgoship.ucsd.edu/hydromap/" rel="nofollow">GO-SHIP data</a>, get CTD data (for <code>ctdo_dir</code>) by choosing a <a href="https://cchdo.ucsd.edu/search?q=GO-SHIP" rel="nofollow">GO-SHIP cruise</a> and downloading the CTD data in whp_netcdf format. More information about whp_netcdf parameters is available <a href="https://exchange-format.readthedocs.io/en/latest/index.html#" rel="nofollow">here</a>. Get LADCP data (for <code>uv_dir</code>, <code>wke_dir</code>) <a href="https://currents.soest.hawaii.edu/go-ship/ladcp/" rel="nofollow">here</a>. There is information about LACDP processing <a href="https://www.ldeo.columbia.edu/~ant/LADCP.html" rel="nofollow">here</a>.</p>
+<h4>
+<a id="user-content-woa2" class="anchor" href="#woa2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>woa<sup>2</sup>
+</h4>
+<p>Functions build the World Ocean Atlas url at maximum resolution based on arguments, but coarser resolutions and seasonal climatologies are available at the <a href="https://www.nodc.noaa.gov/OC5/woa18/woa18data.html" rel="nofollow">NODC website</a>. Note NCEI is scheduled to update data urls in the near future. Functions will be updated as such.</p>
+<h4>
+<a id="user-content-wod1" class="anchor" href="#wod1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>wod<sup>1</sup>
+</h4>
+<p>Search the <a href="https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html" rel="nofollow">World Ocean Database</a> and select products.</p>
+<h2>
+<a id="user-content-citing-odt-1" class="anchor" href="#citing-odt-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Citing ODT</h2>
+<p><a href="https://github.com/lnferris/ocean_data_tools#citing-odt-1" rel="nofollow">View citation information on GitHub.</a></p>
+
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+  <div>&nbsp;</div>
+  </div><script>
+    function showCanonicalImages() {
+      var images = document.getElementsByTagName('img');
+      if (!images) {
+        return;
+      }
+      for (var index = 0; index < images.length; index++) {
+        var image = images[index];
+        if (image.getAttribute('data-canonical-src') && image.src !== image.getAttribute('data-canonical-src')) {
+          image.src = image.getAttribute('data-canonical-src');
+        }
+      }
+    }
+
+    function scrollToHash() {
+      if (location.hash && !document.querySelector(':target')) {
+        var element = document.getElementById('user-content-' + location.hash.slice(1));
+        if (element) {
+           element.scrollIntoView();
+        }
+      }
+    }
+
+    function autorefreshContent(eventSourceUrl) {
+      var initialTitle = document.title;
+      var contentElement = document.getElementById('grip-content');
+      var source = new EventSource(eventSourceUrl);
+      var isRendering = false;
+
+      source.onmessage = function(ev) {
+        var msg = JSON.parse(ev.data);
+        if (msg.updating) {
+          isRendering = true;
+          document.title = '(Rendering) ' + document.title;
+        } else {
+          isRendering = false;
+          document.title = initialTitle;
+          contentElement.innerHTML = msg.content;
+          showCanonicalImages();
+        }
+      }
+
+      source.onerror = function(e) {
+        if (e.readyState === EventSource.CLOSED && isRendering) {
+          isRendering = false;
+          document.title = initialTitle;
+        }
+      }
+    }
+
+    window.onhashchange = function() {
+      scrollToHash();
+    }
+
+    window.onload = function() {
+      scrollToHash();
+    }
+
+    showCanonicalImages();
+
+    var autorefreshUrl = document.getElementById('preview-page').getAttribute('data-autorefresh-url');
+    if (autorefreshUrl) {
+      autorefreshContent(autorefreshUrl);
+    }
+  </script>
+</body>
+</html>

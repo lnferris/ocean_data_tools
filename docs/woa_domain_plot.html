@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>woa_domain_plot.md - Grip</title>
+  <link rel="icon" href="/__/grip/static/favicon.ico" />
+  <link rel="stylesheet" href="/__/grip/asset/github-ff8802b1c626720c9ee3a0a4cb7cf3b2.css" />
+  <link rel="stylesheet" href="/__/grip/asset/site-fb6f4a56fa12a642004cb7c08bdc8f02.css" />
+  <link rel="stylesheet" href="/__/grip/asset/frameworks-c4d3a737ed86a598505e48f9c81adb77.css" />
+  <link rel="stylesheet" href="/__/grip/static/octicons/octicons.css" />
+  <style>
+    /* Page tweaks */
+    .preview-page {
+      margin-top: 64px;
+    }
+    /* User-content tweaks */
+    .timeline-comment-wrapper > .timeline-comment:after,
+    .timeline-comment-wrapper > .timeline-comment:before {
+      content: none;
+    }
+    /* User-content overrides */
+    .discussion-timeline.wide {
+      width: 920px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div id="preview-page" class="preview-page" data-autorefresh-url="/__/grip/refresh/">
+
+
+
+      <div role="main" class="main-content">
+        <div class="container new-discussion-timeline experiment-repo-nav">
+          <div class="repository-content">
+            <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
+
+                <h3>
+                  <span class="octicon octicon-book"></span>
+                </h3>
+
+              <article class="markdown-body entry-content" itemprop="text" id="grip-content">
+                <h3>
+<a id="user-content-woa_domain_plot" class="anchor" href="#woa_domain_plot" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>woa_domain_plot</h3>
+<h4>
+<a id="user-content-syntax" class="anchor" href="#syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Syntax</h4>
+<div class="highlight highlight-source-matlab"><pre>woa_domain_plot(variable,time,region)</pre></div>
+<h4>
+<a id="user-content-description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h4>
+<p><code>woa_domain_plot(variable,time,region)</code> plots all depth levels of  World Ocean Atlas 2018 Statistical Mean for All Decades, Objectively Analyzed Mean Fields at Standard Depth Levels over the specified <code>region</code>. <code>variable</code> specifies the parameter to be plotted and <code>region</code> is the rectangular region to be plotted. <code>time</code> specifies monthly or annual climatology; <code>time = '00'</code> for annual climatology and <code>'01'</code> <code>'10'</code> etc. for monthly climatology. The function builds the url, extracting the maximum resolution available (typically 0.25-deg or 1.00-degree grid).</p>
+<p>Available variables are:</p>
+<p><code>'temperature'</code> (degrees Celsius)<br>
+<code>'salinity'</code> (psu)<br>
+<code>'oxygen'</code> (umol/kg)<br>
+<code>'o2sat'</code> (%)</p>
+<p><code>'AOU'</code> (umol/kg)<br>
+<code>'silicate'</code> (umol/kg)<br>
+<code>'phosphate'</code> (umol/kg)<br>
+<code>'nitrate'</code> (umol/kg)</p>
+<p><code>time</code> is a string or character array. <code>'00'</code> is annual climatology, while other codes e.g. <code>'02'</code> (February) or <code>'11'</code> (November) indicate monthly climatology.</p>
+<p><code>variable</code> is a string or character array and is the name of the parameter to be plotted.</p>
+<p><code>region</code> is a vector containing the bounds [S N W E] of the region to be plotted, -180/180 or 0/360 longtitude format is fine.  Limits may cross the dateline e.g. [35 45 170 -130].</p>
+<h4>
+<a id="user-content-example-1" class="anchor" href="#example-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 1</h4>
+<div class="highlight highlight-source-matlab"><pre>
+<span class="pl-c"><span class="pl-c">%</span> Setup nctoolbox:</span>
+
+setup_nctoolbox
+
+<span class="pl-c"><span class="pl-c">%</span> Plot a 3-D nitrate domain:</span>
+
+variable = <span class="pl-s"><span class="pl-pds">'</span>nitrate<span class="pl-pds">'</span></span>;
+time = <span class="pl-s"><span class="pl-pds">'</span>03<span class="pl-pds">'</span></span>;
+region = [-<span class="pl-c1">5.0</span>, <span class="pl-c1">45.0</span> ,-<span class="pl-c1">120</span>, -<span class="pl-c1">150</span>];
+woa_domain_plot(variable,time,region)
+</pre></div>
+<p><a href="https://user-images.githubusercontent.com/24570061/88359635-5e7c6380-cd41-11ea-8f39-62beb8ecf912.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88359635-5e7c6380-cd41-11ea-8f39-62beb8ecf912.png" width="900" style="max-width:100%;"></a></p>
+
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+  </div>
+  <div>&nbsp;</div>
+  </div><script>
+    function showCanonicalImages() {
+      var images = document.getElementsByTagName('img');
+      if (!images) {
+        return;
+      }
+      for (var index = 0; index < images.length; index++) {
+        var image = images[index];
+        if (image.getAttribute('data-canonical-src') && image.src !== image.getAttribute('data-canonical-src')) {
+          image.src = image.getAttribute('data-canonical-src');
+        }
+      }
+    }
+
+    function scrollToHash() {
+      if (location.hash && !document.querySelector(':target')) {
+        var element = document.getElementById('user-content-' + location.hash.slice(1));
+        if (element) {
+           element.scrollIntoView();
+        }
+      }
+    }
+
+    function autorefreshContent(eventSourceUrl) {
+      var initialTitle = document.title;
+      var contentElement = document.getElementById('grip-content');
+      var source = new EventSource(eventSourceUrl);
+      var isRendering = false;
+
+      source.onmessage = function(ev) {
+        var msg = JSON.parse(ev.data);
+        if (msg.updating) {
+          isRendering = true;
+          document.title = '(Rendering) ' + document.title;
+        } else {
+          isRendering = false;
+          document.title = initialTitle;
+          contentElement.innerHTML = msg.content;
+          showCanonicalImages();
+        }
+      }
+
+      source.onerror = function(e) {
+        if (e.readyState === EventSource.CLOSED && isRendering) {
+          isRendering = false;
+          document.title = initialTitle;
+        }
+      }
+    }
+
+    window.onhashchange = function() {
+      scrollToHash();
+    }
+
+    window.onload = function() {
+      scrollToHash();
+    }
+
+    showCanonicalImages();
+
+    var autorefreshUrl = document.getElementById('preview-page').getAttribute('data-autorefresh-url');
+    if (autorefreshUrl) {
+      autorefreshContent(autorefreshUrl);
+    }
+  </script>
+</body>
+</html>

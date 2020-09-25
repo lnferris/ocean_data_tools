@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>mocha_build_profiles.md - Grip</title>
+  <link rel="icon" href="/__/grip/static/favicon.ico" />
+  <link rel="stylesheet" href="/__/grip/asset/github-ff8802b1c626720c9ee3a0a4cb7cf3b2.css" />
+  <link rel="stylesheet" href="/__/grip/asset/site-fb6f4a56fa12a642004cb7c08bdc8f02.css" />
+  <link rel="stylesheet" href="/__/grip/asset/frameworks-c4d3a737ed86a598505e48f9c81adb77.css" />
+  <link rel="stylesheet" href="/__/grip/static/octicons/octicons.css" />
+  <style>
+    /* Page tweaks */
+    .preview-page {
+      margin-top: 64px;
+    }
+    /* User-content tweaks */
+    .timeline-comment-wrapper > .timeline-comment:after,
+    .timeline-comment-wrapper > .timeline-comment:before {
+      content: none;
+    }
+    /* User-content overrides */
+    .discussion-timeline.wide {
+      width: 920px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div id="preview-page" class="preview-page" data-autorefresh-url="/__/grip/refresh/">
+
+
+
+      <div role="main" class="main-content">
+        <div class="container new-discussion-timeline experiment-repo-nav">
+          <div class="repository-content">
+            <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
+
+                <h3>
+                  <span class="octicon octicon-book"></span>
+                </h3>
+
+              <article class="markdown-body entry-content" itemprop="text" id="grip-content">
+                <h3>
+<a id="user-content-mocha_build_profiles" class="anchor" href="#mocha_build_profiles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>mocha_build_profiles</h3>
+<h4>
+<a id="user-content-syntax" class="anchor" href="#syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Syntax</h4>
+<div class="highlight highlight-source-matlab"><pre>[mocha] = mocha_build_profiles(month,xcoords,ycoords)
+[mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid)</pre></div>
+<h4>
+<a id="user-content-description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h4>
+<p><code>[mocha] = mocha_build_profiles(month,xcoords,ycoords)</code> builds a unform struct, <code>mocha</code> of profiles from the MOCHA Mid-Atlantic Bight climatology, pulling profiles nearest to coordinates specified by <code>xcoords</code> and <code>ycoords</code>. The calendar month is specified by <code>month</code>.</p>
+<p><code>[mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid)</code> depth-interpolates the profiles to a vertical grid of <code>zgrid</code>, in meters. <code>zgrid=2</code> would produce profiles interpolated to 2 meter vertical grid.</p>
+<p><code>xcoords</code> and <code>ycoords</code> are vectors of coordinates. Rows or columns are fine, and both -180/180 or 0/360 notation are fine.</p>
+<p><code>month</code> is an integer between 1 (January) and 12 (December).</p>
+<h4>
+<a id="user-content-example-1" class="anchor" href="#example-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 1</h4>
+<div class="highlight highlight-source-matlab"><pre>
+<span class="pl-c"><span class="pl-c">%</span> Setup nctoolbox:</span>
+
+setup_nctoolbox
+
+<span class="pl-c"><span class="pl-c">%</span> Plot surface temperature:</span>
+
+month = <span class="pl-c1">10</span>; <span class="pl-c"><span class="pl-c">%</span> Month (1 through 12).</span>
+depth = <span class="pl-c1">0</span>;
+variable = <span class="pl-s"><span class="pl-pds">'</span>temperature<span class="pl-pds">'</span></span>; <span class="pl-c"><span class="pl-c">%</span>  'temperature' 'salinity'</span>
+region = [<span class="pl-c1">34</span> <span class="pl-c1">42</span>  -<span class="pl-c1">80</span> -<span class="pl-c1">70</span>]; <span class="pl-c"><span class="pl-c">%</span> [30 48 -80 -58]</span>
+mocha_simple_plot(month,depth,variable,region)
+
+<span class="pl-c"><span class="pl-c">%</span> Click stations on the plot to create a coordinate list:</span>
+
+[xcoords,ycoords] = transect_select(<span class="pl-s"><span class="pl-pds">'</span>densify<span class="pl-pds">'</span></span>,<span class="pl-c1">10</span>); <span class="pl-c"><span class="pl-c">%</span> click desired transect on the figure, densify selection by 10x </span>
+</pre></div>
+<p><a href="https://user-images.githubusercontent.com/24570061/88334226-73d09e00-ccff-11ea-867d-860d64744dc0.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88334226-73d09e00-ccff-11ea-867d-860d64744dc0.png" width="600" style="max-width:100%;"></a></p>
+<div class="highlight highlight-source-matlab"><pre>
+<span class="pl-c"><span class="pl-c">%</span> Build a uniform struct of profiles:</span>
+
+zgrid = <span class="pl-c1">1</span>; <span class="pl-c"><span class="pl-c">%</span> vertical grid for linear interpolation in meters</span>
+[mocha] = mocha_build_profiles(month,xcoords,ycoords,zgrid); <span class="pl-c"><span class="pl-c">%</span> zgrid optional, no interpolation if unspecified</span>
+
+<span class="pl-c"><span class="pl-c">%</span> Make plots:</span>
+
+bathymetry_dir = <span class="pl-s"><span class="pl-pds">'</span>/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc<span class="pl-pds">'</span></span>;
+general_map(mocha,bathymetry_dir,<span class="pl-s"><span class="pl-pds">'</span>2Dcontour<span class="pl-pds">'</span></span>)
+general_section(mocha,<span class="pl-s"><span class="pl-pds">'</span>temperature<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>stn<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>depth<span class="pl-pds">'</span></span>,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>)</pre></div>
+<p><a href="https://user-images.githubusercontent.com/24570061/88334243-78955200-ccff-11ea-8196-4db6298cdec5.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88334243-78955200-ccff-11ea-8196-4db6298cdec5.png" width="600" style="max-width:100%;"></a></p>
+<p><a href="https://user-images.githubusercontent.com/24570061/88334248-79c67f00-ccff-11ea-926b-a713efbb94d0.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88334248-79c67f00-ccff-11ea-926b-a713efbb94d0.png" width="600" style="max-width:100%;"></a></p>
+
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+  </div>
+  <div>&nbsp;</div>
+  </div><script>
+    function showCanonicalImages() {
+      var images = document.getElementsByTagName('img');
+      if (!images) {
+        return;
+      }
+      for (var index = 0; index < images.length; index++) {
+        var image = images[index];
+        if (image.getAttribute('data-canonical-src') && image.src !== image.getAttribute('data-canonical-src')) {
+          image.src = image.getAttribute('data-canonical-src');
+        }
+      }
+    }
+
+    function scrollToHash() {
+      if (location.hash && !document.querySelector(':target')) {
+        var element = document.getElementById('user-content-' + location.hash.slice(1));
+        if (element) {
+           element.scrollIntoView();
+        }
+      }
+    }
+
+    function autorefreshContent(eventSourceUrl) {
+      var initialTitle = document.title;
+      var contentElement = document.getElementById('grip-content');
+      var source = new EventSource(eventSourceUrl);
+      var isRendering = false;
+
+      source.onmessage = function(ev) {
+        var msg = JSON.parse(ev.data);
+        if (msg.updating) {
+          isRendering = true;
+          document.title = '(Rendering) ' + document.title;
+        } else {
+          isRendering = false;
+          document.title = initialTitle;
+          contentElement.innerHTML = msg.content;
+          showCanonicalImages();
+        }
+      }
+
+      source.onerror = function(e) {
+        if (e.readyState === EventSource.CLOSED && isRendering) {
+          isRendering = false;
+          document.title = initialTitle;
+        }
+      }
+    }
+
+    window.onhashchange = function() {
+      scrollToHash();
+    }
+
+    window.onload = function() {
+      scrollToHash();
+    }
+
+    showCanonicalImages();
+
+    var autorefreshUrl = document.getElementById('preview-page').getAttribute('data-autorefresh-url');
+    if (autorefreshUrl) {
+      autorefreshContent(autorefreshUrl);
+    }
+  </script>
+</body>
+</html>

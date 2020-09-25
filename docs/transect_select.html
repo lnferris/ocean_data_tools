@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>transect_select.md - Grip</title>
+  <link rel="icon" href="/__/grip/static/favicon.ico" />
+  <link rel="stylesheet" href="/__/grip/asset/github-ff8802b1c626720c9ee3a0a4cb7cf3b2.css" />
+  <link rel="stylesheet" href="/__/grip/asset/site-fb6f4a56fa12a642004cb7c08bdc8f02.css" />
+  <link rel="stylesheet" href="/__/grip/asset/frameworks-c4d3a737ed86a598505e48f9c81adb77.css" />
+  <link rel="stylesheet" href="/__/grip/static/octicons/octicons.css" />
+  <style>
+    /* Page tweaks */
+    .preview-page {
+      margin-top: 64px;
+    }
+    /* User-content tweaks */
+    .timeline-comment-wrapper > .timeline-comment:after,
+    .timeline-comment-wrapper > .timeline-comment:before {
+      content: none;
+    }
+    /* User-content overrides */
+    .discussion-timeline.wide {
+      width: 920px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div id="preview-page" class="preview-page" data-autorefresh-url="/__/grip/refresh/">
+
+
+
+      <div role="main" class="main-content">
+        <div class="container new-discussion-timeline experiment-repo-nav">
+          <div class="repository-content">
+            <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
+
+                <h3>
+                  <span class="octicon octicon-book"></span>
+                </h3>
+
+              <article class="markdown-body entry-content" itemprop="text" id="grip-content">
+                <h3>
+<a id="user-content-transect_select" class="anchor" href="#transect_select" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>transect_select</h3>
+<h4>
+<a id="user-content-syntax" class="anchor" href="#syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Syntax</h4>
+<div class="highlight highlight-source-matlab"><pre>[xcoords,ycoords] = transect_select()
+[xcoords,ycoords] = transect_select(scheme,value)</pre></div>
+<h4>
+<a id="user-content-description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h4>
+<p><code>[xcoords,ycoords] = transect_select()</code> creates a list of x and y coordinates selected by clicking stations on an existing (latitude vs. longitude) plot, returning them as <code>xcoords</code> and <code>ycoords</code></p>
+<p><code>[xcoords,ycoords] = transect_select(scheme,value)</code> auto-generates additional stations with based on the scheme chosen. <code>scheme = 'densify'</code> auto-generates additional stations with the multiplier <code>value</code>; <code>value=10</code> would fill in 10 stations for every station clicked using linear interpolation of complex coordinates. <code>scheme = 'spacing'</code> auto-generates additional stations with the specified spacing <code>value</code>, where <code>value</code> is the longitude or latitude spacing in degrees; <code>value=0.5</code> would fill in stations such that stations are 0.5 degrees apart.</p>
+<p>If <code>scheme = 'densify'</code>, <code>value</code> (no units) should be an integer. If it is not an integer it will be rounded to an integer.</p>
+<p>If <code>scheme = 'spacing'</code>, <code>value</code> (in degrees) should be single, double, or integer and represents the prescribed grid spacing between auto-generated stations in degrees. The spacing criterion is applied to each dimension separately and is not the diagonal displacement.</p>
+<p><code>xcoords</code> and <code>ycoords</code> are vectors of coordinates representing a polygonal chain. -180/180 or 0/360 notation will match that of the existing plot.</p>
+<h4>
+<a id="user-content-example-1" class="anchor" href="#example-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 1</h4>
+<div class="highlight highlight-source-matlab"><pre>
+<span class="pl-c"><span class="pl-c">%</span> Plot HYCOM surface salinity:</span>
+
+model_type = <span class="pl-s"><span class="pl-pds">'</span>hycom<span class="pl-pds">'</span></span>;
+source = <span class="pl-s"><span class="pl-pds">'</span>http://tds.hycom.org/thredds/dodsC/GLBv0.08/expt_57.7<span class="pl-pds">'</span></span>;
+date = <span class="pl-s"><span class="pl-pds">'</span>28-Aug-2017 00:00:00<span class="pl-pds">'</span></span>;
+variable = <span class="pl-s"><span class="pl-pds">'</span>salinity<span class="pl-pds">'</span></span>;
+region = [-<span class="pl-c1">5.0</span>, <span class="pl-c1">45.0</span> ,<span class="pl-c1">160</span>,-<span class="pl-c1">150</span> ];
+depth = -<span class="pl-c1">150</span>;
+model_simple_plot(model_type,source,date,variable,region,depth);
+
+<span class="pl-c"><span class="pl-c">%</span> Click stations on the plot to create a coordinate list:</span>
+
+[xcoords,ycoords] = transect_select(<span class="pl-s"><span class="pl-pds">'</span>densify<span class="pl-pds">'</span></span>,<span class="pl-c1">10</span>); <span class="pl-c"><span class="pl-c">%</span> click desired transect on the figure, densify selection by 10x</span>
+</pre></div>
+<p><a href="https://user-images.githubusercontent.com/24570061/88406388-9f569580-cd9e-11ea-9871-e4d55941d7c4.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88406388-9f569580-cd9e-11ea-9871-e4d55941d7c4.png" width="500" style="max-width:100%;"></a></p>
+<div class="highlight highlight-source-matlab"><pre>
+<span class="pl-c"><span class="pl-c">%</span> Build a uniform struct from the coordinates:</span>
+
+variable_list = {<span class="pl-s"><span class="pl-pds">'</span>water_temp<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>salinity<span class="pl-pds">'</span></span>}; <span class="pl-c"><span class="pl-c">%</span> 'water_u' 'water_v' 'water_temp' 'salinity'</span>
+[hycom] =  model_build_profiles(source,date,variable_list,xcoords,ycoords);
+
+<span class="pl-c"><span class="pl-c">%</span> Map stations:</span>
+
+bathymetry_dir = <span class="pl-s"><span class="pl-pds">'</span>/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc<span class="pl-pds">'</span></span>;
+general_map(hycom,bathymetry_dir,<span class="pl-s"><span class="pl-pds">'</span>2Dcontour<span class="pl-pds">'</span></span>)
+</pre></div>
+<p><a href="https://user-images.githubusercontent.com/24570061/88406404-a67da380-cd9e-11ea-8d49-bd4db591c282.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88406404-a67da380-cd9e-11ea-8d49-bd4db591c282.png" width="500" style="max-width:100%;"></a></p>
+
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+  </div>
+  <div>&nbsp;</div>
+  </div><script>
+    function showCanonicalImages() {
+      var images = document.getElementsByTagName('img');
+      if (!images) {
+        return;
+      }
+      for (var index = 0; index < images.length; index++) {
+        var image = images[index];
+        if (image.getAttribute('data-canonical-src') && image.src !== image.getAttribute('data-canonical-src')) {
+          image.src = image.getAttribute('data-canonical-src');
+        }
+      }
+    }
+
+    function scrollToHash() {
+      if (location.hash && !document.querySelector(':target')) {
+        var element = document.getElementById('user-content-' + location.hash.slice(1));
+        if (element) {
+           element.scrollIntoView();
+        }
+      }
+    }
+
+    function autorefreshContent(eventSourceUrl) {
+      var initialTitle = document.title;
+      var contentElement = document.getElementById('grip-content');
+      var source = new EventSource(eventSourceUrl);
+      var isRendering = false;
+
+      source.onmessage = function(ev) {
+        var msg = JSON.parse(ev.data);
+        if (msg.updating) {
+          isRendering = true;
+          document.title = '(Rendering) ' + document.title;
+        } else {
+          isRendering = false;
+          document.title = initialTitle;
+          contentElement.innerHTML = msg.content;
+          showCanonicalImages();
+        }
+      }
+
+      source.onerror = function(e) {
+        if (e.readyState === EventSource.CLOSED && isRendering) {
+          isRendering = false;
+          document.title = initialTitle;
+        }
+      }
+    }
+
+    window.onhashchange = function() {
+      scrollToHash();
+    }
+
+    window.onload = function() {
+      scrollToHash();
+    }
+
+    showCanonicalImages();
+
+    var autorefreshUrl = document.getElementById('preview-page').getAttribute('data-autorefresh-url');
+    if (autorefreshUrl) {
+      autorefreshContent(autorefreshUrl);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>general_map.md - Grip</title>
+  <link rel="icon" href="/__/grip/static/favicon.ico" />
+  <link rel="stylesheet" href="/__/grip/asset/github-ff8802b1c626720c9ee3a0a4cb7cf3b2.css" />
+  <link rel="stylesheet" href="/__/grip/asset/site-fb6f4a56fa12a642004cb7c08bdc8f02.css" />
+  <link rel="stylesheet" href="/__/grip/asset/frameworks-c4d3a737ed86a598505e48f9c81adb77.css" />
+  <link rel="stylesheet" href="/__/grip/static/octicons/octicons.css" />
+  <style>
+    /* Page tweaks */
+    .preview-page {
+      margin-top: 64px;
+    }
+    /* User-content tweaks */
+    .timeline-comment-wrapper > .timeline-comment:after,
+    .timeline-comment-wrapper > .timeline-comment:before {
+      content: none;
+    }
+    /* User-content overrides */
+    .discussion-timeline.wide {
+      width: 920px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div id="preview-page" class="preview-page" data-autorefresh-url="/__/grip/refresh/">
+
+
+
+      <div role="main" class="main-content">
+        <div class="container new-discussion-timeline experiment-repo-nav">
+          <div class="repository-content">
+            <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
+
+                <h3>
+                  <span class="octicon octicon-book"></span>
+                </h3>
+
+              <article class="markdown-body entry-content" itemprop="text" id="grip-content">
+                <h3>
+<a id="user-content-general_map" class="anchor" href="#general_map" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>general_map</h3>
+<h4>
+<a id="user-content-syntax" class="anchor" href="#syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Syntax</h4>
+<div class="highlight highlight-source-matlab"><pre>general_map(object)
+general_map(object,bathymetry_dir)
+general_map(object,bathymetry_dir,ptype)</pre></div>
+<h4>
+<a id="user-content-description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h4>
+<p><code>general_map(object)</code> plots coordinate locations (<code>object.lon</code> and <code>object.lat</code>); where <code>object</code> is a struct created by any of the <code>_build</code> functions in ocean_data_tools (e.g. <code>argo</code>, <code>cruise</code>, <code>hycom</code>, <code>mercator</code>, <code>woa</code>, <code>wod</code>).</p>
+<p><code>general_map(object,bathymetry_dir)</code> adds bathymetry contours from Smith &amp; Sandwell Global Topography with path <code>bathymetry_dir</code>.</p>
+<p><code>general_map(object,bathymetry_dir,ptype)</code> allows the user to modify plot type from the default contours e.g. <code>ptype = '2Dscatter'</code> or <code>'2Dcontour'</code></p>
+<p><code>bathymetry_dir</code> is the character array path to the Smith &amp; Sandwell Global Topography file "topo_20.1.nc"</p>
+<h4>
+<a id="user-content-example-1" class="anchor" href="#example-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 1</h4>
+<div class="highlight highlight-source-matlab"><pre>
+<span class="pl-c"><span class="pl-c">%</span> Get variable information:</span>
+
+argo_dir = <span class="pl-s"><span class="pl-pds">'</span>/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc<span class="pl-pds">'</span></span>;
+listing = dir(argo_dir);
+ncdisp([listing(<span class="pl-c1">1</span>).folder <span class="pl-s"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span> listing(<span class="pl-c1">1</span>).name]) <span class="pl-c"><span class="pl-c">%</span> Peek at netCDF header info to inform choice of variable_list.</span>
+
+<span class="pl-c"><span class="pl-c">%</span> Load Argo data from west of New Zealand:</span>
+
+region = [-<span class="pl-c1">60.0</span> -<span class="pl-c1">50.0</span> <span class="pl-c1">150.0</span> <span class="pl-c1">160.0</span>]; <span class="pl-c"><span class="pl-c">%</span>  Search region [-90 90 -180 180]</span>
+start_date = <span class="pl-s"><span class="pl-pds">'</span>01-Nov-2015 00:00:00<span class="pl-pds">'</span></span>;
+end_date = <span class="pl-s"><span class="pl-pds">'</span>01-Jan-2017 00:00:00<span class="pl-pds">'</span></span>;
+variable_list = {<span class="pl-s"><span class="pl-pds">'</span>TEMP_ADJUSTED<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>PSAL_ADJUSTED<span class="pl-pds">'</span></span>};
+[argo,matching_files] = argo_build(argo_dir,region,start_date,end_date,variable_list);
+
+<span class="pl-c"><span class="pl-c">%</span> Make a map:</span>
+
+bathymetry_dir = <span class="pl-s"><span class="pl-pds">'</span>/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc<span class="pl-pds">'</span></span>;
+ptype = <span class="pl-s"><span class="pl-pds">'</span>2Dcontour<span class="pl-pds">'</span></span>; <span class="pl-c"><span class="pl-c">%</span> '2Dscatter' '2Dcontour'</span>
+general_map(argo,bathymetry_dir,ptype) <span class="pl-c"><span class="pl-c">%</span> bathymetry_dir, ptype optional</span>
+</pre></div>
+<p><a href="https://user-images.githubusercontent.com/24570061/88301724-fd1dab80-ccd2-11ea-9ea7-7badf1424865.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88301724-fd1dab80-ccd2-11ea-9ea7-7badf1424865.png" width="600" style="max-width:100%;"></a></p>
+
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+  </div>
+  <div>&nbsp;</div>
+  </div><script>
+    function showCanonicalImages() {
+      var images = document.getElementsByTagName('img');
+      if (!images) {
+        return;
+      }
+      for (var index = 0; index < images.length; index++) {
+        var image = images[index];
+        if (image.getAttribute('data-canonical-src') && image.src !== image.getAttribute('data-canonical-src')) {
+          image.src = image.getAttribute('data-canonical-src');
+        }
+      }
+    }
+
+    function scrollToHash() {
+      if (location.hash && !document.querySelector(':target')) {
+        var element = document.getElementById('user-content-' + location.hash.slice(1));
+        if (element) {
+           element.scrollIntoView();
+        }
+      }
+    }
+
+    function autorefreshContent(eventSourceUrl) {
+      var initialTitle = document.title;
+      var contentElement = document.getElementById('grip-content');
+      var source = new EventSource(eventSourceUrl);
+      var isRendering = false;
+
+      source.onmessage = function(ev) {
+        var msg = JSON.parse(ev.data);
+        if (msg.updating) {
+          isRendering = true;
+          document.title = '(Rendering) ' + document.title;
+        } else {
+          isRendering = false;
+          document.title = initialTitle;
+          contentElement.innerHTML = msg.content;
+          showCanonicalImages();
+        }
+      }
+
+      source.onerror = function(e) {
+        if (e.readyState === EventSource.CLOSED && isRendering) {
+          isRendering = false;
+          document.title = initialTitle;
+        }
+      }
+    }
+
+    window.onhashchange = function() {
+      scrollToHash();
+    }
+
+    window.onload = function() {
+      scrollToHash();
+    }
+
+    showCanonicalImages();
+
+    var autorefreshUrl = document.getElementById('preview-page').getAttribute('data-autorefresh-url');
+    if (autorefreshUrl) {
+      autorefreshContent(autorefreshUrl);
+    }
+  </script>
+</body>
+</html>

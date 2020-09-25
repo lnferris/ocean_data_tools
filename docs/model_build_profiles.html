@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>model_build_profiles.md - Grip</title>
+  <link rel="icon" href="/__/grip/static/favicon.ico" />
+  <link rel="stylesheet" href="/__/grip/asset/github-ff8802b1c626720c9ee3a0a4cb7cf3b2.css" />
+  <link rel="stylesheet" href="/__/grip/asset/site-fb6f4a56fa12a642004cb7c08bdc8f02.css" />
+  <link rel="stylesheet" href="/__/grip/asset/frameworks-c4d3a737ed86a598505e48f9c81adb77.css" />
+  <link rel="stylesheet" href="/__/grip/static/octicons/octicons.css" />
+  <style>
+    /* Page tweaks */
+    .preview-page {
+      margin-top: 64px;
+    }
+    /* User-content tweaks */
+    .timeline-comment-wrapper > .timeline-comment:after,
+    .timeline-comment-wrapper > .timeline-comment:before {
+      content: none;
+    }
+    /* User-content overrides */
+    .discussion-timeline.wide {
+      width: 920px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div id="preview-page" class="preview-page" data-autorefresh-url="/__/grip/refresh/">
+
+
+
+      <div role="main" class="main-content">
+        <div class="container new-discussion-timeline experiment-repo-nav">
+          <div class="repository-content">
+            <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
+
+                <h3>
+                  <span class="octicon octicon-book"></span>
+                </h3>
+
+              <article class="markdown-body entry-content" itemprop="text" id="grip-content">
+                <h3>
+<a id="user-content-model_build_profiles" class="anchor" href="#model_build_profiles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>model_build_profiles</h3>
+<h4>
+<a id="user-content-syntax" class="anchor" href="#syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Syntax</h4>
+<div class="highlight highlight-source-matlab"><pre>[model] = model_build_profiles(source,date,variable_list,xcoords,ycoords)
+[model] = model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid)</pre></div>
+<h4>
+<a id="user-content-description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h4>
+<p><code>[model] = model_build_profiles(source,date,variable_list,xcoords,ycoords)</code> builds a struct of profiles from HYCOM or Operational Mercator GLOBAL_ANALYSIS_FORECAST_PHY_001_024, pulling profiles nearest to coordinates specified by <code>xcoords</code> and <code>ycoords</code>. Profiles are loaded into the struct array <code>model</code> with all variables specified in <code>variable_list</code>.</p>
+<p><code>[model] = model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid)</code> depth-interpolates the profiles to a vertical grid of <code>zgrid</code>, in meters. <code>zgrid=2</code> would produce profiles interpolated to 2 meter vertical grid.</p>
+<p><code>source</code> (a character array) is the path to either a local netcdf file or an OpenDAP url.</p>
+<p><code>date</code> is a date string in format 'dd-mmm-yyyy HH:MM:SS'.</p>
+<p><code>variable_list</code> is a cell array where each element is the string name of a variable to be read and included in struct <code>model</code>.</p>
+<p><code>xcoords</code> and <code>ycoords</code> are vectors of coordinates. Rows or columns are fine, and both -180/180 or 0/360 notation are fine.</p>
+<p>HYCOM variables:</p>
+<div class="highlight highlight-source-matlab"><pre><span class="pl-s"><span class="pl-pds">'</span>water_u<span class="pl-pds">'</span></span>
+<span class="pl-s"><span class="pl-pds">'</span>water_v<span class="pl-pds">'</span></span>
+<span class="pl-s"><span class="pl-pds">'</span>water_temp<span class="pl-pds">'</span></span>
+<span class="pl-s"><span class="pl-pds">'</span>salinity<span class="pl-pds">'</span></span> </pre></div>
+<p>Mercator variables:</p>
+<div class="highlight highlight-source-matlab"><pre><span class="pl-s"><span class="pl-pds">'</span>thetao<span class="pl-pds">'</span></span>
+<span class="pl-s"><span class="pl-pds">'</span>so<span class="pl-pds">'</span></span>
+<span class="pl-s"><span class="pl-pds">'</span>uo<span class="pl-pds">'</span></span>
+<span class="pl-s"><span class="pl-pds">'</span>vo<span class="pl-pds">'</span></span> </pre></div>
+<h4>
+<a id="user-content-example-1" class="anchor" href="#example-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 1</h4>
+<div class="highlight highlight-source-matlab"><pre>
+<span class="pl-c"><span class="pl-c">%</span> Setup nctoolbox: </span>
+
+setup_nctoolbox
+
+<span class="pl-c"><span class="pl-c">%</span> Plot temperature at the depth level closest to 150m:</span>
+
+model_type = <span class="pl-s"><span class="pl-pds">'</span>mercator<span class="pl-pds">'</span></span>; <span class="pl-c"><span class="pl-c">%</span> 'hycom' 'mercator'</span>
+source = <span class="pl-s"><span class="pl-pds">'</span>/Users/lnferris/Documents/GitHub/ocean_data_tools/data/mercator/global-analysis-forecast-phy-001-024_1593408360353.nc<span class="pl-pds">'</span></span>;
+date = <span class="pl-s"><span class="pl-pds">'</span>18-Mar-2020 00:00:00<span class="pl-pds">'</span></span>;
+variable = <span class="pl-s"><span class="pl-pds">'</span>thetao<span class="pl-pds">'</span></span>;
+region = [<span class="pl-c1">60.0</span>, <span class="pl-c1">70.0</span> ,-<span class="pl-c1">80</span>, -<span class="pl-c1">60</span>];      <span class="pl-c"><span class="pl-c">%</span> [-90 90 -180 180]</span>
+depth = -<span class="pl-c1">150</span>;
+arrows = <span class="pl-c1">0</span>;
+model_simple_plot(model_type,source,date,variable,region,depth,arrows)
+
+<span class="pl-c"><span class="pl-c">%</span> Click stations on the plot to create a coordinate list:</span>
+
+[xcoords,ycoords] = transect_select(<span class="pl-s"><span class="pl-pds">'</span>densify<span class="pl-pds">'</span></span>,<span class="pl-c1">10</span>); <span class="pl-c"><span class="pl-c">%</span> click desired transect on the figure, densify selection by 10x </span>
+</pre></div>
+<p><a href="https://user-images.githubusercontent.com/24570061/88411026-3c1c3180-cda5-11ea-81d3-d3b656315464.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88411026-3c1c3180-cda5-11ea-81d3-d3b656315464.png" width="600" style="max-width:100%;"></a></p>
+<div class="highlight highlight-source-matlab"><pre>
+<span class="pl-c"><span class="pl-c">%</span> Build a uniform struct of profiles:</span>
+
+variable_list = {<span class="pl-s"><span class="pl-pds">'</span>thetao<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>so<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>uo<span class="pl-pds">'</span></span>}; <span class="pl-c"><span class="pl-c">%</span> thetao' 'so' 'uo' 'vo'</span>
+zgrid = <span class="pl-c1">1</span>; <span class="pl-c"><span class="pl-c">%</span> vertical grid for linear interpolation in meters</span>
+[mercator] =  model_build_profiles(source,date,variable_list,xcoords,ycoords,zgrid); <span class="pl-c"><span class="pl-c">%</span> zgrid optional, no interpolation if unspecified</span>
+
+<span class="pl-c"><span class="pl-c">%</span> Make plots:</span>
+
+general_map(mercator,bathymetry_dir,<span class="pl-s"><span class="pl-pds">'</span>2Dcontour<span class="pl-pds">'</span></span>)
+general_section(mercator,<span class="pl-s"><span class="pl-pds">'</span>thetao<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>stn<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>depth<span class="pl-pds">'</span></span>,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>)
+</pre></div>
+<p><a href="https://user-images.githubusercontent.com/24570061/88411140-6b32a300-cda5-11ea-922e-48bf06df90b3.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88411140-6b32a300-cda5-11ea-922e-48bf06df90b3.png" width="600" style="max-width:100%;"></a></p>
+<p><a href="https://user-images.githubusercontent.com/24570061/88411172-7685ce80-cda5-11ea-9ae9-0989c763bef9.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88411172-7685ce80-cda5-11ea-9ae9-0989c763bef9.png" width="600" style="max-width:100%;"></a></p>
+
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+  </div>
+  <div>&nbsp;</div>
+  </div><script>
+    function showCanonicalImages() {
+      var images = document.getElementsByTagName('img');
+      if (!images) {
+        return;
+      }
+      for (var index = 0; index < images.length; index++) {
+        var image = images[index];
+        if (image.getAttribute('data-canonical-src') && image.src !== image.getAttribute('data-canonical-src')) {
+          image.src = image.getAttribute('data-canonical-src');
+        }
+      }
+    }
+
+    function scrollToHash() {
+      if (location.hash && !document.querySelector(':target')) {
+        var element = document.getElementById('user-content-' + location.hash.slice(1));
+        if (element) {
+           element.scrollIntoView();
+        }
+      }
+    }
+
+    function autorefreshContent(eventSourceUrl) {
+      var initialTitle = document.title;
+      var contentElement = document.getElementById('grip-content');
+      var source = new EventSource(eventSourceUrl);
+      var isRendering = false;
+
+      source.onmessage = function(ev) {
+        var msg = JSON.parse(ev.data);
+        if (msg.updating) {
+          isRendering = true;
+          document.title = '(Rendering) ' + document.title;
+        } else {
+          isRendering = false;
+          document.title = initialTitle;
+          contentElement.innerHTML = msg.content;
+          showCanonicalImages();
+        }
+      }
+
+      source.onerror = function(e) {
+        if (e.readyState === EventSource.CLOSED && isRendering) {
+          isRendering = false;
+          document.title = initialTitle;
+        }
+      }
+    }
+
+    window.onhashchange = function() {
+      scrollToHash();
+    }
+
+    window.onload = function() {
+      scrollToHash();
+    }
+
+    showCanonicalImages();
+
+    var autorefreshUrl = document.getElementById('preview-page').getAttribute('data-autorefresh-url');
+    if (autorefreshUrl) {
+      autorefreshContent(autorefreshUrl);
+    }
+  </script>
+</body>
+</html>

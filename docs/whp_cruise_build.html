@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>whp_cruise_build.md - Grip</title>
+  <link rel="icon" href="/__/grip/static/favicon.ico" />
+  <link rel="stylesheet" href="/__/grip/asset/github-ff8802b1c626720c9ee3a0a4cb7cf3b2.css" />
+  <link rel="stylesheet" href="/__/grip/asset/site-fb6f4a56fa12a642004cb7c08bdc8f02.css" />
+  <link rel="stylesheet" href="/__/grip/asset/frameworks-c4d3a737ed86a598505e48f9c81adb77.css" />
+  <link rel="stylesheet" href="/__/grip/static/octicons/octicons.css" />
+  <style>
+    /* Page tweaks */
+    .preview-page {
+      margin-top: 64px;
+    }
+    /* User-content tweaks */
+    .timeline-comment-wrapper > .timeline-comment:after,
+    .timeline-comment-wrapper > .timeline-comment:before {
+      content: none;
+    }
+    /* User-content overrides */
+    .discussion-timeline.wide {
+      width: 920px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div id="preview-page" class="preview-page" data-autorefresh-url="/__/grip/refresh/">
+
+
+
+      <div role="main" class="main-content">
+        <div class="container new-discussion-timeline experiment-repo-nav">
+          <div class="repository-content">
+            <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
+
+                <h3>
+                  <span class="octicon octicon-book"></span>
+                </h3>
+
+              <article class="markdown-body entry-content" itemprop="text" id="grip-content">
+                <h3>
+<a id="user-content-whp_cruise_build" class="anchor" href="#whp_cruise_build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>whp_cruise_build</h3>
+<h4>
+<a id="user-content-syntax" class="anchor" href="#syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Syntax</h4>
+<div class="highlight highlight-source-matlab"><pre>[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list)</pre></div>
+<h4>
+<a id="user-content-description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h4>
+<p><code>[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list)</code> searches pathways <code>ctdo_dir</code>, <code>uv_dir</code>, <code>wvke_dir</code> for CTD data in whp_netcdf format, horizontal LADCP data in netcdf format, and vertical LACDP data in netcdf format respectively. Variable lists for LADCP are fixed, while the CTD variable list is specified using <code>variable_list</code> (station, woce_date, longitude, latitude, and pressure are included automatically.) Lat/lon information (metadata) is pulled from the CTD files by default. If CTD is not found, metadata from LACDP files are used instead.</p>
+<p>The paths used as arguments should point to data from the <em>same oceanographic cruise</em>.</p>
+<p><code>ctdo_dir</code> is a character array search path with wildcards. The search path should be the path to the CTD netcdf files (in whp_netcdf format) themselves, not their directory.</p>
+<p><code>variable_list</code> is a cell array where each element is the string name of a variable to be included from CTD files.</p>
+<p><code>uv_dir</code> is a character array search path with wildcards. The search path should be the path to the horizontal LADCP data netcdf files themselves, not their directory.</p>
+<p><code>wvke_dir</code> is a character array path to all files in the directory.</p>
+<p>Example paths:</p>
+<div class="highlight highlight-source-matlab"><pre>ctdo_dir = <span class="pl-s"><span class="pl-pds">'</span>/Users/lnferris/Documents/S14/ctd/*.nc<span class="pl-pds">'</span></span>;
+uv_dir = <span class="pl-s"><span class="pl-pds">'</span>/Users/lnferris/Documents/S14/whp_cruise/uv/*.nc<span class="pl-pds">'</span></span>;
+wvke_dir = <span class="pl-s"><span class="pl-pds">'</span>/Users/lnferris/Documents/S14/whp_cruise/wvke/<span class="pl-pds">'</span></span>;</pre></div>
+<h4>
+<a id="user-content-example-1" class="anchor" href="#example-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 1</h4>
+<div class="highlight highlight-source-matlab"><pre>
+<span class="pl-c"><span class="pl-c">%</span> Paths to data:</span>
+
+ctdo_dir = <span class="pl-s"><span class="pl-pds">'</span>/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/ctd/*.nc<span class="pl-pds">'</span></span>; <span class="pl-c"><span class="pl-c">%</span> included</span>
+uv_dir = <span class="pl-s"><span class="pl-pds">'</span>/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/uv/*.nc<span class="pl-pds">'</span></span>; <span class="pl-c"><span class="pl-c">%</span> included</span>
+wvke_dir = <span class="pl-s"><span class="pl-pds">'</span>/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/wvke/<span class="pl-pds">'</span></span>; <span class="pl-c"><span class="pl-c">%</span> included</span>
+bathymetry_dir = <span class="pl-s"><span class="pl-pds">'</span>/Users/lnferris/Documents/data/bathymetry/topo_20.1.nc<span class="pl-pds">'</span></span>; <span class="pl-c"><span class="pl-c">%</span> need to download</span>
+
+<span class="pl-c"><span class="pl-c">%</span> Get information about available CTD+ variables:</span>
+
+listing = dir(ctdo_dir);
+ncdisp([listing(<span class="pl-c1">1</span>).folder <span class="pl-s"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span> listing(<span class="pl-c1">1</span>).name]) <span class="pl-c"><span class="pl-c">%</span> Peek at netCDF header info to inform choice of variable_list.</span>
+
+variable_list = {<span class="pl-s"><span class="pl-pds">'</span>salinity<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>temperature<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>oxygen<span class="pl-pds">'</span></span>};
+
+<span class="pl-c"><span class="pl-c">%</span> Build a uniform struct of cruise data:</span>
+
+[cruise] = whp_cruise_build(ctdo_dir,uv_dir,wvke_dir,variable_list); <span class="pl-c"><span class="pl-c">%</span> Use a dummy path (e.g. uv_dir ='null') if missing data. </span>
+
+<span class="pl-c"><span class="pl-c">%</span> Map cruise stations:</span>
+
+general_map(cruise,bathymetry_dir,<span class="pl-s"><span class="pl-pds">'</span>2Dcontour<span class="pl-pds">'</span></span>)
+</pre></div>
+<p><a href="https://user-images.githubusercontent.com/24570061/88341972-89989000-cd0c-11ea-8961-70c76fc639d8.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88341972-89989000-cd0c-11ea-8961-70c76fc639d8.png" width="700" style="max-width:100%;"></a></p>
+<div class="highlight highlight-source-matlab"><pre><span class="pl-c"><span class="pl-c">%</span> Plot a salinity section:</span>
+
+variable = <span class="pl-s"><span class="pl-pds">'</span>salinity<span class="pl-pds">'</span></span>; <span class="pl-c"><span class="pl-c">%</span> See cruise for options.</span>
+xref = <span class="pl-s"><span class="pl-pds">'</span>lon<span class="pl-pds">'</span></span>; <span class="pl-c"><span class="pl-c">%</span> See cruise for options.</span>
+zref = <span class="pl-s"><span class="pl-pds">'</span>pressure<span class="pl-pds">'</span></span>; <span class="pl-c"><span class="pl-c">%</span> See cruise for options.</span>
+general_section(cruise,variable,xref,zref)
+</pre></div>
+<p><a href="https://user-images.githubusercontent.com/24570061/88346894-7939e280-cd17-11ea-96a2-735db5a527d5.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88346894-7939e280-cd17-11ea-96a2-735db5a527d5.png" width="800" style="max-width:100%;"></a></p>
+
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+  </div>
+  <div>&nbsp;</div>
+  </div><script>
+    function showCanonicalImages() {
+      var images = document.getElementsByTagName('img');
+      if (!images) {
+        return;
+      }
+      for (var index = 0; index < images.length; index++) {
+        var image = images[index];
+        if (image.getAttribute('data-canonical-src') && image.src !== image.getAttribute('data-canonical-src')) {
+          image.src = image.getAttribute('data-canonical-src');
+        }
+      }
+    }
+
+    function scrollToHash() {
+      if (location.hash && !document.querySelector(':target')) {
+        var element = document.getElementById('user-content-' + location.hash.slice(1));
+        if (element) {
+           element.scrollIntoView();
+        }
+      }
+    }
+
+    function autorefreshContent(eventSourceUrl) {
+      var initialTitle = document.title;
+      var contentElement = document.getElementById('grip-content');
+      var source = new EventSource(eventSourceUrl);
+      var isRendering = false;
+
+      source.onmessage = function(ev) {
+        var msg = JSON.parse(ev.data);
+        if (msg.updating) {
+          isRendering = true;
+          document.title = '(Rendering) ' + document.title;
+        } else {
+          isRendering = false;
+          document.title = initialTitle;
+          contentElement.innerHTML = msg.content;
+          showCanonicalImages();
+        }
+      }
+
+      source.onerror = function(e) {
+        if (e.readyState === EventSource.CLOSED && isRendering) {
+          isRendering = false;
+          document.title = initialTitle;
+        }
+      }
+    }
+
+    window.onhashchange = function() {
+      scrollToHash();
+    }
+
+    window.onload = function() {
+      scrollToHash();
+    }
+
+    showCanonicalImages();
+
+    var autorefreshUrl = document.getElementById('preview-page').getAttribute('data-autorefresh-url');
+    if (autorefreshUrl) {
+      autorefreshContent(autorefreshUrl);
+    }
+  </script>
+</body>
+</html>

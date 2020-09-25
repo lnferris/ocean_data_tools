@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>glider_build.md - Grip</title>
+  <link rel="icon" href="/__/grip/static/favicon.ico" />
+  <link rel="stylesheet" href="/__/grip/asset/github-ff8802b1c626720c9ee3a0a4cb7cf3b2.css" />
+  <link rel="stylesheet" href="/__/grip/asset/site-fb6f4a56fa12a642004cb7c08bdc8f02.css" />
+  <link rel="stylesheet" href="/__/grip/asset/frameworks-c4d3a737ed86a598505e48f9c81adb77.css" />
+  <link rel="stylesheet" href="/__/grip/static/octicons/octicons.css" />
+  <style>
+    /* Page tweaks */
+    .preview-page {
+      margin-top: 64px;
+    }
+    /* User-content tweaks */
+    .timeline-comment-wrapper > .timeline-comment:after,
+    .timeline-comment-wrapper > .timeline-comment:before {
+      content: none;
+    }
+    /* User-content overrides */
+    .discussion-timeline.wide {
+      width: 920px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div id="preview-page" class="preview-page" data-autorefresh-url="/__/grip/refresh/">
+
+
+
+      <div role="main" class="main-content">
+        <div class="container new-discussion-timeline experiment-repo-nav">
+          <div class="repository-content">
+            <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
+
+                <h3>
+                  <span class="octicon octicon-book"></span>
+                </h3>
+
+              <article class="markdown-body entry-content" itemprop="text" id="grip-content">
+                <h3>
+<a id="user-content-glider_build" class="anchor" href="#glider_build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>glider_build</h3>
+<h4>
+<a id="user-content-syntax" class="anchor" href="#syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Syntax</h4>
+<div class="highlight highlight-source-matlab"><pre>[glider] = glider_build(glider_dir)
+[glider] = glider_build(glider_dir,variable_list)</pre></div>
+<h4>
+<a id="user-content-description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h4>
+<p><code>[glider] = glider_build(glider_dir,variable_list)</code> loads data (a single netCDF file downloaded from <a href="https://gliders.ioos.us/erddap/index.html" rel="nofollow">gliders.ioos.us/erddap</a>) from <code>glider_dir</code> into struct array <code>glider</code>. Glider profiles are loaded with all variables specified in <code>variable_list</code>.</p>
+<p>The only required argument is <code>glider_dir</code>. By default, the following variables are loaded:</p>
+<pre><code>'profile_id'
+'time'
+'latitude'
+'longitude'
+'precise_time'
+'depth'
+'pressure'
+'temperature'
+'conductivity'
+'salinity'
+'density'
+'precise_lat'
+'precise_lon'
+'time_uv'
+'lat_uv',
+'lon_uv'
+'u'
+'v'
+</code></pre>
+<p>This default list can be overridden by passing a user-defined <code>variable_list</code>, a cell array where each element is the string name of a variable.</p>
+<p><code>glider_dir</code> is a character array search path to a single netcdf file downloaded from gliders.ioos.us/erddap). The path should be the path to the netcdf file itself, not its directory.</p>
+<h4>
+<a id="user-content-example-1" class="anchor" href="#example-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 1</h4>
+<div class="highlight highlight-source-matlab"><pre>
+<span class="pl-c"><span class="pl-c">%</span> Get variable information:</span>
+
+glider_dir = <span class="pl-s"><span class="pl-pds">'</span>/Users/lnferris/Desktop/ce_311-20170725T1930.nc<span class="pl-pds">'</span></span>;  <span class="pl-c"><span class="pl-c">%</span> included</span>
+ncdisp(glider_dir) <span class="pl-c"><span class="pl-c">%</span> Peek at netCDF header info to inform choice of variable_list.</span>
+
+<span class="pl-c"><span class="pl-c">%</span> Load glider data:</span>
+
+[glider] = glider_build(glider_dir);
+
+<span class="pl-c"><span class="pl-c">%</span> Make plots:</span>
+
+figure
+general_map(glider,bathymetry_dir)
+
+figure
+general_section(glider,<span class="pl-s"><span class="pl-pds">'</span>salinity<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>km<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>pressure<span class="pl-pds">'</span></span>)
+</pre></div>
+<p><a href="https://user-images.githubusercontent.com/24570061/94057510-b66d3000-fdad-11ea-8261-c2dddbf72439.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/94057510-b66d3000-fdad-11ea-8261-c2dddbf72439.png" width="600" style="max-width:100%;"></a></p>
+<p><a href="https://user-images.githubusercontent.com/24570061/94057516-b79e5d00-fdad-11ea-85e0-3e274feff845.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/94057516-b79e5d00-fdad-11ea-85e0-3e274feff845.png" width="600" style="max-width:100%;"></a></p>
+
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+  </div>
+  <div>&nbsp;</div>
+  </div><script>
+    function showCanonicalImages() {
+      var images = document.getElementsByTagName('img');
+      if (!images) {
+        return;
+      }
+      for (var index = 0; index < images.length; index++) {
+        var image = images[index];
+        if (image.getAttribute('data-canonical-src') && image.src !== image.getAttribute('data-canonical-src')) {
+          image.src = image.getAttribute('data-canonical-src');
+        }
+      }
+    }
+
+    function scrollToHash() {
+      if (location.hash && !document.querySelector(':target')) {
+        var element = document.getElementById('user-content-' + location.hash.slice(1));
+        if (element) {
+           element.scrollIntoView();
+        }
+      }
+    }
+
+    function autorefreshContent(eventSourceUrl) {
+      var initialTitle = document.title;
+      var contentElement = document.getElementById('grip-content');
+      var source = new EventSource(eventSourceUrl);
+      var isRendering = false;
+
+      source.onmessage = function(ev) {
+        var msg = JSON.parse(ev.data);
+        if (msg.updating) {
+          isRendering = true;
+          document.title = '(Rendering) ' + document.title;
+        } else {
+          isRendering = false;
+          document.title = initialTitle;
+          contentElement.innerHTML = msg.content;
+          showCanonicalImages();
+        }
+      }
+
+      source.onerror = function(e) {
+        if (e.readyState === EventSource.CLOSED && isRendering) {
+          isRendering = false;
+          document.title = initialTitle;
+        }
+      }
+    }
+
+    window.onhashchange = function() {
+      scrollToHash();
+    }
+
+    window.onload = function() {
+      scrollToHash();
+    }
+
+    showCanonicalImages();
+
+    var autorefreshUrl = document.getElementById('preview-page').getAttribute('data-autorefresh-url');
+    if (autorefreshUrl) {
+      autorefreshContent(autorefreshUrl);
+    }
+  </script>
+</body>
+</html>
