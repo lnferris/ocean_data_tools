@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="utf-8"?>
 <toc version="1.0">
 
-    <tocitem target="README.html">ocean_data_tools
+    <tocitem target="ocean_data_tools.html">ocean_data_tools
             <tocitem target="argo_build.html">argo_build</tocitem>
             <tocitem target="argo_platform_map.html">argo_platform_map</tocitem>
             <tocitem target="argo_platform_subset.html">argo_platform_subset</tocitem>
@@ -30,7 +30,7 @@
             <tocitem target="woa_build_profiles.html">woa_build_profiles</tocitem>
             <tocitem target="woa_domain_plot.html">woa_domain_plot</tocitem>
             <tocitem target="woa_simple_plot.html">woa_simple_plot</tocitem>
-            <tocitem target="wod_build.html">wod_build</tocitem>        
+            <tocitem target="wod_build.html">wod_build</tocitem>
     </tocitem>
 
 </toc>
