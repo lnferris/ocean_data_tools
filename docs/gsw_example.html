@@ -53,8 +53,8 @@
 general_section(hycom,<span class="pl-s"><span class="pl-pds">'</span>water_temp<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>depth<span class="pl-pds">'</span></span>,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>)
 general_section(hycom,<span class="pl-s"><span class="pl-pds">'</span>salinity<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>depth<span class="pl-pds">'</span></span>,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>)
 </pre></div>
-<p><a href="https://user-images.githubusercontent.com/24570061/88403123-16d5f600-cd9a-11ea-9ca6-c1e0403a44da.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88403123-16d5f600-cd9a-11ea-9ca6-c1e0403a44da.png" width="700" style="max-width:100%;"></a></p>
-<p><a href="https://user-images.githubusercontent.com/24570061/88403126-176e8c80-cd9a-11ea-846f-8e97e80f3805.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88403126-176e8c80-cd9a-11ea-846f-8e97e80f3805.png" width="700" style="max-width:100%;"></a></p>
+<p><a href="png/gsw_example1.png" target="_blank" rel="nofollow"><img src="png/gsw_example1.png" width="700" style="max-width:100%;"></a></p>
+<p><a href="png/gsw_example2.png" target="_blank" rel="nofollow"><img src="png/gsw_example2.png" width="700" style="max-width:100%;"></a></p>
 <div class="highlight highlight-source-matlab"><pre>
 <span class="pl-c"><span class="pl-c">%</span> Using GSW, append the struct with absolute salinity, conservative temperature, and density:</span>
 
@@ -66,7 +66,7 @@ hycom.rho = gsw_rho(hycom.SA,hycom.CT,-hycom.depth);
 
 general_section(hycom,<span class="pl-s"><span class="pl-pds">'</span>rho<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>depth<span class="pl-pds">'</span></span>,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>)
 </pre></div>
-<p><a href="https://user-images.githubusercontent.com/24570061/88403129-19d0e680-cd9a-11ea-9b4e-4e733cdb3c5b.png" target="_blank" rel="nofollow"><img src="https://user-images.githubusercontent.com/24570061/88403129-19d0e680-cd9a-11ea-9b4e-4e733cdb3c5b.png" width="700" style="max-width:100%;"></a></p>
+<p><a href="png/gsw_example3.png" target="_blank" rel="nofollow"><img src="png/gsw_example3.png" width="700" style="max-width:100%;"></a></p>
 
               </article>
             </div>
