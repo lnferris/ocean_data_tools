@@ -31,8 +31,8 @@ perform custom calculations, and make graphics.
 # Summary
 
 Structure arrays, the common currency of ``ocean_data_tools``, are more user-friendly than the native data storage underlying many of the datasets because they allow the user to neatly group related data of any type or size into containers called fields. Both the structure array and its fields are mutable, and data is directly visible and accessible in the Matlab workspace (unlike NetCDF which requires a function call to read variables).
-Matlab was chosen as the languange of choice for this toolbox because it is already extensively used within the oceanographic community.
-It is also a primary languange for much of the community, which is important because this toolbox aims to lower the barrier to entry for using the growing variety of freely-available field- and model-derived oceanographic datasets.
+Matlab was chosen as the language of choice for this toolbox because it is already extensively used within the oceanographic community.
+It is also a primary language for much of the community, which is important because this toolbox aims to lower the barrier to entry for using the growing variety of freely-available field- and model-derived oceanographic datasets.
 
 The workflow of ``ocean_data_tools`` is to build uniform structure arrays (e.g. ``argo``,
 ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``) from raw datasets and 
