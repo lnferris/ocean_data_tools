@@ -9,13 +9,15 @@
 
 ocean_data_tools simplifies the process of extracting, formatting, and visualizing freely-available oceanographic data. While a wealth of oceanographic data is accessible online, some end-users may be dissuaded from utilizing this data due to the overhead associated with obtaining and formatting it into usable data structures. ocean_data_tools solves this problem by allowing the user to transform common oceanographic data sources into uniform structs, call generalized functions on these structs, easily perform custom calculations, and make graphics.
 
-Find a bug, have a question, or want to contribute? Open an issue or email lnferris@alum.mit.edu.
+Find a bug, have a question, or want to chat about contributing? Open an issue or email lnferris@alum.mit.edu.
 
 ### [Getting Started](#getting-started-1)
 
 ### [Dependencies](#dependencies-1)
 
 ### [Accessing Help](#accessing-help-1)
+
+### [How to Contribute](#how-to-contribute-1)
 
 ### [Contents](#contents-1)
 
@@ -33,7 +35,6 @@ Find a bug, have a question, or want to contribute? Open an issue or email lnfer
 - ocean_data_tools/ocean_data_tools/utilities
 - nctoolbox/
 
-
 4. Run each demonstration in **demos/demos.m**, which contains example usages for all functions. All required test data is included in **data/**.
 
 Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function.
@@ -49,6 +50,12 @@ It is recommended to also download [Gibbs-SeaWater (GSW) Oceanographic Toolbox](
 ## Accessing Help
 
 To access help, run the command ``doc ocean_data_tools``.
+
+## How to Contribute
+
+* Find a bug in the code? Open an 'issue' to notify contributors and create an official record.
+* Want to make changes or add a new function? First 'fork' the repository (make your own separate copy), then make changes, then open a 'pull request'. Once approved, it can be merged into the master branch. If you wish to inquire beforehand whether your contribution fits the scope of ocean_data_tools, open an issue or email lnferris@alum.mit.edu. 
+* Don't use git often and don't want to remember all the terminal commands? Download GitHub for desktop <https://desktop.github.com/>.
 
 ## Contents
 
@@ -83,7 +90,7 @@ To access help, run the command ``doc ocean_data_tools``.
 
 **[wod_build](docs/wod_build.md)** builds a uniform struct of profiles from World Ocean Database data
 
-*Don't see a function yet for your preferred data source? Email lnferris@alum.mit.edu to request or contribute.*
+*Don't see a function yet for your preferred data source? Email lnferris@alum.mit.edu to request or [contribute](#how-to-contribute-1).*
 
 ### General functions for subsetting and plotting uniform structs
 
