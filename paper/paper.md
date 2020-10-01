@@ -28,6 +28,14 @@ solves this problem by allowing the user to transform common oceanographic
 data sources into uniform structure arrays, call general functions on these structure arrays, 
 perform custom calculations, and make graphics. 
 
+![Building a virtual cruise from the Operational Mercator global ocean
+analysis and forecast system at 1/12 degree with 3D bathymetry [@Smith:1997]. 
+Showing (a) a 3D velocity plot created using ``model_domain_plot``, (b) 
+virtual cruise selection using ``transect_select``, and ``model_build_profiles``, 
+(c) coordinates of the resulting uniform structure array, and (d) a temperature section 
+plotted using ``general_section`` with ``bathymetry_section``. Three of the 
+subplots use colormaps from cmocean [@Thyng:2016]. \label{fig:1}](figure.png)
+
 # Summary
 
 Structure arrays, the common currency of ``ocean_data_tools``, are more user-friendly than the native data storage underlying many of the datasets because they allow the user to neatly group related data of any type or size into containers called fields. Both the structure array and its fields are mutable, and data is directly visible and accessible in the Matlab workspace (unlike NetCDF which requires a function call to read variables).
@@ -48,22 +56,6 @@ comparison of observations with model output, or to support decision-making in u
 piloting (using model forecasts to inform ballasting or adjust flight for ocean currents).  Some ``ocean_data_tools`` functions
 employ ``nctoolbox`` [@nctoolbox].
 
-![Building a virtual cruise from the Operational Mercator global ocean
-analysis and forecast system at 1/12 degree with 3D bathymetry [@Smith:1997]. 
-Showing (a) a 3D velocity plot created using ``model_domain_plot``, (b) 
-virtual cruise selection using ``transect_select``, and ``model_build_profiles``, 
-(c) coordinates of the resulting uniform structure array, and (d) a temperature section 
-plotted using ``general_section`` with ``bathymetry_section``. Three of the 
-subplots use colormaps from cmocean [@Thyng:2016]. \label{fig:1}](figure.png)
-
-There are several high-quality ocean and/or climate related Matlab toolboxes such as Climate Data Toolbox for Matlab [@Greene:2019], those part of SEA-MAT: Matlab Tools for Oceanographic Analysis (https://sea-mat.github.io/sea-mat/), and Gibbs-SeaWater (GSW) Oceanographic Toolbox [@McDougall:2011]. However, there are no other documented and designed-to-be-shared toolboxes filling the same data exploration niche as this one. ``ocean_data_tools`` is unique in encouraging the user to invoke a variety of freely-available data into their exploration and does not expect the user to provide privately-collected measurements or privately-generated model output. It connects users to specific, well-documented data sources Table \ref{table:1}. ``ocean_data_tools`` has already been used for data exploration in support of scientific publications [@Bemis:2020] 
-and [@Crear:2020]. This toolbox is built for extensibility; the objective is 
-is to welcome contributors and continuously add support for additional datasets such as Remote Sensing 
-Systems (http://www.remss.com/) products and European Centre for Medium-Range 
-Weather Forecasts (ECMWF) products. The source code for ``ocean_data_tools`` has
-been archived to Zenodo with the linked DOI: [@Ferris:2020].
-
-
 | Data Source | DOI, Product Code, or Link    |
 |:--  |:--|
 | Argo floats | doi:10.17882/42182 |
@@ -77,6 +69,13 @@ been archived to Zenodo with the linked DOI: [@Ferris:2020].
 | Word Ocean Database | https://www.ncei.noaa.gov/products/world-ocean-database |
 
 : Data sources currently supported. \label{table:1}
+
+There are several high-quality ocean and/or climate related Matlab toolboxes such as Climate Data Toolbox for Matlab [@Greene:2019], those part of SEA-MAT: Matlab Tools for Oceanographic Analysis (https://sea-mat.github.io/sea-mat/), and Gibbs-SeaWater (GSW) Oceanographic Toolbox [@McDougall:2011]. However, there are no other documented and designed-to-be-shared toolboxes filling the same data exploration niche as this one. ``ocean_data_tools`` is unique in encouraging the user to invoke a variety of freely-available data into their exploration and does not expect the user to provide privately-collected measurements or privately-generated model output. It connects users to specific, well-documented data sources Table \ref{table:1}. ``ocean_data_tools`` has already been used for data exploration in support of scientific publications [@Bemis:2020] 
+and [@Crear:2020]. This toolbox is built for extensibility; the objective is 
+is to welcome contributors and continuously add support for additional datasets such as Remote Sensing 
+Systems (http://www.remss.com/) products and European Centre for Medium-Range 
+Weather Forecasts (ECMWF) products. The source code for ``ocean_data_tools`` has
+been archived to Zenodo with the linked DOI: [@Ferris:2020].
 
 # Acknowledgements
 
