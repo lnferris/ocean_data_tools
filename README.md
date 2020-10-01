@@ -59,7 +59,7 @@ To access help, run the command ``doc ocean_data_tools``.
 
 Before contributing, please see [Contents](#contents-1) and consider how your function fits into ocean_data_tools and its ethos of structure arrays. At a minimum, functions must be well-documented and address a specific freely-available oceanographic data source which can be accessed by anyone online.
 
-You don't have to design a new function. Python, Julia, etc. translations of existing Matlab functions are also welcomed!
+Adding a new function isn't the only way to help ocean_data_tools in bringing data to the people. Python, Julia, etc. translations of existing Matlab functions are also welcomed!
 
 ## Contents
 
