@@ -71,8 +71,8 @@ been archived to Zenodo with the linked DOI: [@Ferris:2020].
 | IOOS Glider DAC | https://gliders.ioos.us/ |
 | MOCHA Climatology | doi:10.7282/T3XW4N4M |
 | HYbrid Coordinate Ocean Model (HYCOM) | https://hycom.org |
-| CMEMS Global Ocean 1/12° Physics Analysis and Forecast | GLOBAL_ANALYSIS_FORECAST_PHY_001_024 |
-| U.S. Global Ocean Ship-based Hydrographic Investigations Program (GO-SHIP) | https://usgoship.ucsd.edu/ |
+| CMEMS Global Ocean 1/12° Physics Analysis and Forecast | GLOBAL_ANALYSIS_FORECAST_ PHY_001_024 |
+| U.S. GO-SHIP | https://usgoship.ucsd.edu/ |
 | World Ocean Atlas 2018 | https://www.ncei.noaa.gov/products/world-ocean-atlas |
 | Word Ocean Database | https://www.ncei.noaa.gov/products/world-ocean-database |
 
