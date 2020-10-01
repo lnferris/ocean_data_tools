@@ -65,7 +65,7 @@ been archived to Zenodo with the linked DOI: [@Ferris:2020].
 
 
 | Data Source | DOI, Product Code, or Link    |
-|:---  |:---|
+|:--  |:--|
 | Argo floats | doi:10.17882/42182 |
 | Smith & Sandwell bathymetry | doi:10.1126/science.277.5334.1956 |
 | IOOS Glider DAC | https://gliders.ioos.us/ |
