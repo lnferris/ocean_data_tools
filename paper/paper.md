@@ -66,7 +66,7 @@ been archived to Zenodo with the linked DOI: [@Ferris:2020].
 # Acknowledgements
 
 The Virginia Institute of Marine Science (VIMS) provided financial support for this project.
-I am grateful to Donglai Gong for ongoing mentorship. I thank the many organizations providing freely-available
+I am grateful to Donglai Gong for ongoing mentorship. Figure generated using E.U. Copernicus Marine Service Information. I thank the many organizations providing freely-available
 data to the oceanography community including (but not limited to) Argo, the HYCOM 
 consortium, the Copernicus Programme, the International Global Ship-based Hydrographic
 Investigations Program (GO-SHIP), and the National Oceanic and Atmospheric 
