@@ -39,6 +39,19 @@ Find a bug, have a question, or want to chat about contributing? Open an issue o
 
 Functions are named using a two-part system. The prefix (``argo_``, ``bathymetry_``, ``general_``, etc.) indicates the appropriate data source, while the suffix (``\_build``, ``\_profiles``, ``\_section``, etc.) indicates the action performed. Functions with the ``\_build`` suffix load raw data into uniform structs (e.g. ``argo``, ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``). Uniform structs created by ``\_build`` functions are compatable with any ``general_`` function.
 
+Data sources currently supported:
+| Data Source | DOI, Product Code, or Link    |
+|:--  |:--|
+| Argo floats | [doi:10.17882/42182](https://doi.org/10.17882/42182) |
+| Smith & Sandwell bathymetry | [doi:10.1126/science.277.5334.1956](https://doi.org/10.1126/science.277.5334.1956) |
+| IOOS Glider DAC | https://gliders.ioos.us/ |
+| MOCHA Climatology | [doi:10.7282/T3XW4N4M](https://doi.org/10.7282/T3XW4N4M) |
+| HYbrid Coordinate Ocean Model | https://hycom.org |
+| CMEMS Global Ocean 1/12° Physics Analysis and Forecast | GLOBAL_ANALYSIS_FORECAST_ PHY_001_024 |
+| GO-SHIP hydrographic cruises | https://www.go-ship.org/ |
+| World Ocean Atlas 2018 | https://www.ncei.noaa.gov/products/world-ocean-atlas |
+| World Ocean Database | https://www.ncei.noaa.gov/products/world-ocean-database |
+
 Main functions are located in **ocean_data_tools/**. Demonstrations are located in **demos/**. Test datas are located in **data/**. Shell scripts for batch downloading data are located in **shell_scripts/**. While shell scripts can be run directly in a macOS Terminal, running them in Windows requires [Cygwin](https://www.cygwin.com/) (and perhaps slight modification of commands). Python syntax examples are located in **python/**, which may be grow to become a module in the future.
 
 ## Dependencies
