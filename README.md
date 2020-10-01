@@ -53,7 +53,7 @@ To access help, run the command ``doc ocean_data_tools``.
 
 ## How to Contribute
 
-* Want to make changes or add a new function? (1) Fork the repository (make your own separate copy), (2) make changes, and (3) open a 'pull request'. Once approved, it can be merged into the master branch. If you wish to chat beforehand about how your contribution fits into ocean_data_tools, open an issue or email lnferris@alum.mit.edu. 
+* Want to make changes or add a new function? (1) Fork the repository (make your own separate copy), (2) make changes, and (3) open a 'pull request'. Once approved, it can be merged into the master branch. If you wish to chat beforehand about how your contribution fits into ocean_data_tools (or if this entire paragraph confuses you), open an issue or email lnferris@alum.mit.edu. 
 * Don't use git often and don't want to remember all the terminal commands? Download GitHub for desktop <https://desktop.github.com/>.
 * Find a bug in the code? Open an 'issue' to notify contributors and create an official record.
 
