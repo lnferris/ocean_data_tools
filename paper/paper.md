@@ -64,8 +64,7 @@ employ ``nctoolbox`` [@nctoolbox].
 | MOCHA Climatology | [doi:10.7282/T3XW4N4M](https://doi.org/10.7282/T3XW4N4M) |
 | HYbrid Coordinate Ocean Model | https://hycom.org |
 | CMEMS Global Ocean 1/12° Physics Analysis and Forecast | GLOBAL_ANALYSIS_FORECAST_ PHY_001_024 |
-| Global Ship-based Hydrographic
-Investigations Program (GO-SHIP) | https://www.go-ship.org/ |
+| GO-SHIP hydrographic cruises | https://www.go-ship.org/ |
 | World Ocean Atlas 2018 | https://www.ncei.noaa.gov/products/world-ocean-atlas |
 | World Ocean Database | https://www.ncei.noaa.gov/products/world-ocean-database |
 
