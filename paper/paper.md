@@ -76,7 +76,7 @@ been archived to Zenodo with the linked DOI: [@Ferris:2020].
 | World Ocean Atlas 2018 | https://www.ncei.noaa.gov/products/world-ocean-atlas |
 | Word Ocean Database | https://www.ncei.noaa.gov/products/world-ocean-database |
 
-  : Data sources currently supported. \label{table:1}
+  :-- Data sources currently supported. \label{table:1}
 
 # Acknowledgements
 
