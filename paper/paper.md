@@ -58,10 +58,10 @@ employ ``nctoolbox`` [@nctoolbox].
 
 | Data Source | DOI, Product Code, or Link    |
 |:--  |:--|
-| Argo floats | doi:10.17882/42182 |
-| Smith & Sandwell bathymetry | doi:10.1126/science.277.5334.1956 |
+| Argo floats | https://doi.org/10.17882/42182 |
+| Smith & Sandwell bathymetry | https://doi.org/10.1126/science.277.5334.1956 |
 | IOOS Glider DAC | https://gliders.ioos.us/ |
-| MOCHA Climatology | doi:10.7282/T3XW4N4M |
+| MOCHA Climatology | https://doi.org/10.7282/T3XW4N4M |
 | HYbrid Coordinate Ocean Model (HYCOM) | https://hycom.org |
 | Global Ocean 1/12° Physics Analysis and Forecast | GLOBAL_ANALYSIS_FORECAST_ PHY_001_024 |
 | U.S. GO-SHIP | https://usgoship.ucsd.edu/ |
