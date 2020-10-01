@@ -68,7 +68,7 @@ employ ``nctoolbox`` [@nctoolbox].
 | World Ocean Atlas 2018 | https://www.ncei.noaa.gov/products/world-ocean-atlas |
 | World Ocean Database | https://www.ncei.noaa.gov/products/world-ocean-database |
 
-: Data sources currently supported \label{table:1}
+: Data sources currently supported. \label{table:1}
 
 There are several high-quality ocean and/or climate related Matlab toolboxes such as Climate Data Toolbox for Matlab [@Greene:2019], those part of [SEA-MAT: Matlab Tools for Oceanographic Analysis](https://sea-mat.github.io/sea-mat/), and Gibbs-SeaWater (GSW) Oceanographic Toolbox [@McDougall:2011]. However, there are no other documented and designed-to-be-shared toolboxes filling the same data exploration niche as this one. ``ocean_data_tools`` is unique in encouraging the user to invoke a variety of freely-available data into their exploration and does not expect the user to provide privately-collected measurements or privately-generated model output. It connects users to specific, well-documented data sources Table \ref{table:1}. ``ocean_data_tools`` has already been used for data exploration in support of scientific publications [@Bemis:2020] 
 and [@Crear:2020]. This toolbox is built for extensibility; the objective is 
