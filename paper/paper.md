@@ -25,7 +25,7 @@ with large datasets) can be dissuaded from utilizing this data because of the
 overhead associated with determining how to batch download data and 
 format it into easily-manipulable data structures. ``ocean_data_tools``
 solves this problem by allowing the user to transform common oceanographic 
-data sources into uniform structure arrays, call general functions on these structure arrays, 
+data sources \ref{table:1} into uniform structure arrays, call general functions on these structure arrays, 
 perform custom calculations, and make graphics. 
 
 # Summary
@@ -33,6 +33,20 @@ perform custom calculations, and make graphics.
 Structure arrays, the common currency of ``ocean_data_tools``, are more user-friendly than the native data storage underlying many of the datasets because they allow the user to neatly group related data of any type or size into containers called fields. Both the structure array and its fields are mutable, and data is directly visible and accessible in the Matlab workspace (unlike NetCDF which requires a function call to read variables).
 Matlab was chosen as the language of choice for this toolbox because it is already extensively used within the oceanographic community.
 It is also a primary language for much of the community, which is important because this toolbox aims to lower the barrier to entry for using the growing variety of freely-available field- and model-derived oceanographic datasets.
+
+| Data Source | DOI, Product Code, or Link    |
+|-:|:---|
+| Argo floats | doi:10.17882/42182 |
+| Smith & Sandwell bathymetry | doi:10.1126/science.277.5334.1956 |
+| IOOS Glider DAC | https://gliders.ioos.us/ |
+| Mid-Atlantic Ocean Climatological Hydrographic Analysis (MOCHA) Climatology | doi:10.7282/T3XW4N4M |
+| HYbrid Coordinate Ocean Model (HYCOM) | https://hycom.org |
+| CMEMS Global Ocean 1/12° Physics Analysis and Forecast Updated Daily | GLOBAL_ANALYSIS_FORECAST_PHY_001_024 |
+| U.S. Global Ocean Ship-based Hydrographic Investigations Program (GO-SHIP) | https://usgoship.ucsd.edu/ |
+| World Ocean Atlas 2018 | https://www.ncei.noaa.gov/products/world-ocean-atlas |
+| Word Ocean Database | https://www.ncei.noaa.gov/products/world-ocean-database |
+
+  : Data sources currently supported. \label{table:1}
 
 The workflow of ``ocean_data_tools`` is to build uniform structure arrays (e.g. ``argo``,
 ``cruise``, ``hycom``, ``mercator``, ``woa``, ``wod``) from raw datasets and 
