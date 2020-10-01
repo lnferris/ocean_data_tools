@@ -61,6 +61,8 @@ Before contributing, please see [Contents](#contents-1) and consider how your fu
 
 Adding a new function isn't the only way to help ocean_data_tools in bringing data to the people. Python, Julia, etc. translations of existing Matlab functions are also welcomed!
 
+If you are interested in becoming a formal collaborator (e.g. have direct access and co-manage this repository), please reach out.
+
 ## Contents
 
 #### [Building uniform structs from data sources](#building-uniform-structs-from-data-sources-1)
