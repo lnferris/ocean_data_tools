@@ -62,9 +62,9 @@ employ ``nctoolbox`` [@nctoolbox].
 | Smith & Sandwell bathymetry | [doi:10.1126/science.277.5334.1956](https://doi.org/10.1126/science.277.5334.1956) |
 | IOOS Glider DAC | https://gliders.ioos.us/ |
 | MOCHA Climatology | [doi:10.7282/T3XW4N4M](https://doi.org/10.7282/T3XW4N4M) |
-| HYbrid Coordinate Ocean Model (HYCOM) | https://hycom.org |
+| HYbrid Coordinate Ocean Model | https://hycom.org |
 | CMEMS Global Ocean 1/12° Physics Analysis and Forecast | GLOBAL_ANALYSIS_FORECAST_ PHY_001_024 |
-| U.S. GO-SHIP | https://usgoship.ucsd.edu/ |
+| GO-SHIP | https://www.go-ship.org/ |
 | World Ocean Atlas 2018 | https://www.ncei.noaa.gov/products/world-ocean-atlas |
 | Word Ocean Database | https://www.ncei.noaa.gov/products/world-ocean-database |
 
