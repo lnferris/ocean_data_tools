@@ -84,6 +84,6 @@ data to the oceanography community including (but not limited to) Argo, the HYCO
 consortium, the Copernicus Programme, the International Global Ship-based Hydrographic
 Investigations Program (GO-SHIP), and the National Oceanic and Atmospheric 
 Administration (NOAA). I also thank the two reviewers for helpful feedback, especially 
-Kelly Kearney for her insightful suggestions. The figure was generated using E.U. Copernicus Marine Service Information. This paper is VIMS Contribution No.3960.
+Kelly Kearney for her insightful suggestions. The figure was generated using E.U. Copernicus Marine Service Information. This paper is VIMS Contribution No.3960 , William & Mary.
 
 # References
