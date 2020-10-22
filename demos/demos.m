@@ -1,6 +1,6 @@
 
 %  Website: https://github.com/lnferris/ocean_data_tools
-%  Jun 2020; Last revision: 23-Sep-2020
+%  Jun 2020; Last revision: 22-Oct-2020
 %  Dependencies: nctoolbox
 
 %  These are demonstrations of each function in ocean_data_tools. 
@@ -24,6 +24,7 @@ uv_dir = [data_path,'whp_cruise/uv/*.nc'];
 wvke_dir = [data_path,'whp_cruise/wvke/'];
 wod_dir = [data_path,'wod/*.nc']; 
 glider_dir = [data_path,'glider/ce_311-20170725T1930.nc'];
+mercator_dir = [data_path,'mercator/global-analysis-forecast-phy-001-024_1593408360353.nc'];
 
 % Uncomment any of the following to hard-code paths.
 %argo_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/argo/*profiles*.nc'; % uncomment to hard-code path
@@ -32,6 +33,7 @@ glider_dir = [data_path,'glider/ce_311-20170725T1930.nc'];
 %wvke_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/whp_cruise/wvke/'; % uncomment to hard-code path
 %wod_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/wod/*.nc'; % uncomment to hard-code path
 %glider_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/glider/ce_311-20170725T1930.nc'; % uncomment to hard-code path
+%mercator_dir = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/mercator/global-analysis-forecast-phy-001-024_1593408360353.nc'; % uncomment to hard-code path
 
 
 %%                  argo demonstration
@@ -240,7 +242,7 @@ model_domain_plot(model_type,source,date,variable,region)
 % model_simple_plot - MERCATOR EXAMPLE
 
 model_type = 'mercator'; % 'hycom' 'mercator'
-source = '/Users/lnferris/Documents/GitHub/ocean_data_tools/data/mercator/global-analysis-forecast-phy-001-024_1593408360353.nc'; % included
+source = mercator_dir;
 date = '18-Mar-2020 00:00:00';   
 variable = 'thetao'; % 'thetao' 'so' 'uo' 'vo' 'velocity' 'mlotst' 'siconc' 'usi' 'vsi' 'sithick' 'bottomT' 'zos'
 region = [60.0, 70.0 ,-80, -60];      % [-90 90 -180 180]
