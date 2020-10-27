@@ -82,7 +82,7 @@ assert(iscell(variable_list),'Error: variable_list must be a cell array where ea
     is_matrix = sz1(1,:)~=1;
 
     % load data into structured array
-    wod.stn = NaN(1,prof_dim);
+    wod.stn = 1:prof_dim;
     for var = 1:var_dim
         variable = variable_list{var};
         if is_matrix(var)
