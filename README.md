@@ -3,7 +3,7 @@
 <img src="https://user-images.githubusercontent.com/24570061/85356569-4664ba80-b4dd-11ea-9ec7-8ec26df76dcf.png" width="500">
 
 [![GitHub license](https://img.shields.io/github/license/lnferris/ocean_data_tools)](https://github.com/lnferris/ocean_data_tools/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/lnferris/ocean_data_tools)](https://github.com/lnferris/ocean_data_tools/stargazers) [![GitHub forks](https://img.shields.io/github/forks/lnferris/ocean_data_tools)](https://github.com/lnferris/ocean_data_tools/network) 
-[![View ocean_data_tools on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/80047-ocean_data_tools)
+[![View ocean_data_tools on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/80047-ocean_data_tools) [![DOI](https://joss.theoj.org/papers/10.21105/joss.02497/status.svg)](https://doi.org/10.21105/joss.02497)
 
 **Copyright (c) 2020 lnferris** 
 
@@ -230,5 +230,5 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 Cite as:
 
-*Ferris, L., (2020): ocean_data_tools: A MATLAB toolbox for interacting with bulk freely-available oceanographic data. July. Zenodo. doi:10.5281/zenodo.3353610.*
+*Ferris, L., (2020).  ocean_data_tools:  A MATLAB toolbox for interacting with bulk freely-available oceanographic data. Journal of OpenSource Software, 5(54), 2497. https://doi.org/10.21105/joss.02497*
 
