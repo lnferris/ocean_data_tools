@@ -230,5 +230,5 @@ Search the [World Ocean Database](https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/
 
 Cite as:
 
-*Ferris, L., (2020).  ocean_data_tools:  A MATLAB toolbox for interacting with bulk freely-available oceanographic data. Journal of OpenSource Software, 5(54), 2497. https://doi.org/10.21105/joss.02497*
+Ferris, L., (2020).  ocean_data_tools:  A MATLAB toolbox for interacting with bulk freely-available oceanographic data. Journal of OpenSource Software, 5(54), 2497. https://doi.org/10.21105/joss.02497
 
