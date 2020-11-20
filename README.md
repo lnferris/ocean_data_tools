@@ -48,6 +48,7 @@ Data sources currently supported:
 | MOCHA Climatology | [doi:10.7282/T3XW4N4M](https://doi.org/10.7282/T3XW4N4M) |
 | HYbrid Coordinate Ocean Model | https://hycom.org |
 | CMEMS Global Ocean 1/12° Physics Analysis and Forecast | GLOBAL_ANALYSIS_FORECAST_ PHY_001_024 |
+| CMEMS Global Ocean Waves Multi Year | GLOBAL_REANALYSIS_WAV_001_032 |
 | GO-SHIP hydrographic cruises | https://www.go-ship.org/ |
 | World Ocean Atlas 2018 | https://www.ncei.noaa.gov/products/world-ocean-atlas |
 | World Ocean Database | https://www.ncei.noaa.gov/products/world-ocean-database |
@@ -102,6 +103,8 @@ If you are interested in becoming a formal collaborator (e.g. have direct access
 **[model_build_profiles](docs/model_build_profiles.md)**  builds a uniform struct of profiles from HYCOM or Operational Mercator CMEMS GLOBAL_ANALYSIS_FORECAST_PHY_001_024
 
 <img src="https://user-images.githubusercontent.com/24570061/88250150-ac776580-cc74-11ea-8c72-cea7cc50b4d9.png" width="700">
+
+**waves_build** builds a uniform struct of timeseries from CMEMS Global Ocean Waves Multi Year product GLOBAL_REANALYSIS_WAV_001_032
 
 **[whp_cruise_build](docs/whp_cruise_build.md)** builds a uniform struct of profiles from GO-SHIP cruise data in WHP-Exchange Format
 
@@ -213,6 +216,10 @@ HYCOM data may be accessed remotely using OpenDAP. Get the data url by visiting 
 Alteratively, download subsetted HYCOM data using NCSS. Get the data url by visiting the [HYCOM website](https://www.hycom.org/dataserver/gofs-3pt1/analysis). For example, click Access Data Here -> GLBv0.08/expt_57.7 (Jun-01-2017 to Sep-30-2017)/ -> Hindcast Data: Jun-01-2017 to Sep-30-2017. Click on the NetcdfSubset link. Set constraints and copy the NCSS Request URL at the bottom of the page. Run **shell_scripts/download_hycom_lite**. To download multiple months or years, run **shell_scripts/download_hycom_bulk_daily** (partition files by day) or **shell_scripts/download_hycom_bulk_monthly** (partition files by month). Please use responsibly.
 
 For Mercator, download Copernicus Marine data directly from FTP servers. First make a [Copernicus account](http://marine.copernicus.eu/services-portfolio/access-to-products/). Use the selection tool to download GLOBAL_ANALYSIS_FORECAST_PHY_001_024. Alternatively run **shell_scripts/download_mercator**. Before running the script, follow the instructions for modifying your ~/.netrc file in the comments of the script.
+
+#### waves<sup>1</sup>
+
+First make a [Copernicus account](http://marine.copernicus.eu/services-portfolio/access-to-products/). Use the selection tool to download CMEMS Global Ocean Waves Multi Year product GLOBAL_REANALYSIS_WAV_001_032.
 
 #### whp_cruise<sup>1</sup>
 
