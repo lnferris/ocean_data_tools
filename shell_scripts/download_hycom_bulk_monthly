@@ -7,7 +7,6 @@
 #  Distributed under the terms of the MIT License
 
 # Instructions:
-# 0. Save and close the file to store login information.
 # 1. Copy the below script into a *new* text file. Save as 'download_hycom_bulk_monthly' (no file extension).
 # 2. Open a terminal window.
 # 3. Run command:  chmod ugo+x download_hycom_bulk_monthly
