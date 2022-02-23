@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Instructions:
+# 1. Copy the below script into a *new* text file. Save as 'download_hycom_bulk_daily' (no file extension).
+# 2. Open a terminal window (Cygwin with wget package).
+# 3. Run command:  chmod ugo+x download_hycom_bulk_daily
+# 4. Run command:  ./download_hycom_bulk_daily
+# 5. Set user inputs (lines 13-29).
+
+
+WGET='/usr/bin/wget'
+
+YEAR='2018'
+MONTH='10'
+DAY='01'
+StartSeq='0'
+EndSeq='50'           # How many days from start date to pull
+
+NCSS='https://ncss.hycom.org/thredds/ncss'
+MODEL='GLBu0.08'
+EXPT='expt_93.0'
+
+VARS="var=water_u&var=water_v"
+Subset='spatial=bb'
+NORTH='north=20'
+SOUTH='south=10'
+EAST='east=-50'
+WEST='west=-70'
+LEVEL='vertCoord=0'
+
+for PlusDay in `seq $StartSeq $EndSeq`; do
+
+  MyTimeSt=`date -d "$YEAR-$MONTH-$DAY +$PlusDay days" +%Y-%m-%dT00`
+  MyTimeEn=`date -d "$YEAR-$MONTH-$DAY +$PlusDay days" +%Y-%m-%dT21`
+  TimeStart="time_start=$MyTimeSt"
+  TimeEnd="time_end=$MyTimeEn"
+
+  OutFile=$MODEL"_"$EXPT"_"$LEVEL"_`echo $MyTimeSt | cut -d 'T' -f 1`T00Z.nc"
+
+  URL="$NCSS/$MODEL/$EXPT?$VARS&$NORTH&$WEST&$EAST&$SOUTH&horizStride=1&$TimeStart%3A00%3A00Z&$TimeEnd%3A00%3A00Z&timeStride=1&$LEVEL&accept=netcdf"
+
+  if [ -s $OutFile ]; then
+  	echo "[warning] File $OutFile exists (skipping)"
+  else
+  	wget -O $OutFile "$URL" --no-check-certificate
+  fi
+done
